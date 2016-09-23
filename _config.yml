@@ -6,7 +6,7 @@
 name: Aaron Mamula
 
 # Short bio or description (displayed in the header)
-description: novice programmer, part-time economist, full-time data junkie
+description: novice programmer, part-time economist, full-time data junkie, craft beer aficionado
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://github.com/aaronmams.png
@@ -18,16 +18,16 @@ avatar: https://github.com/aaronmams.png
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: aaron.mams@gmail.com
   facebook:
   flickr:
-  github: www.github.com/aaronmams
+  github: aaronmams
   instagram:
-  linkedin: www.linkedin.com/in/aaron-mamula
+  linkedin: 
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: @mamulsaurus
-  stackoverflow: http://stackoverflow.com/users/5390641/aaronmams # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  twitter: 
+  stackoverflow:  # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
