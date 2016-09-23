@@ -16,6 +16,6 @@ I created <b> The Samuelson Condition </b> as a place where I could comment on p
 
 ### Contact me
 
--- For work: aaron.mamula@noaa.gov or aamamula@ucsc.edu
--- For other stuff: aaron.mams@gmail.com
--- For code repos: github.com/aaronmams
+* For work: aaron.mamula@noaa.gov or aamamula@ucsc.edu
+* For other stuff: aaron.mams@gmail.com
+* For code repos: github.com/aaronmams
