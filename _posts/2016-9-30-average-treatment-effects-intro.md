@@ -1,6 +1,6 @@
 ---
-title: "Average Treatment Effect Examples"
 layout: post
+title: "Average Treatment Effect Examples"
 ---
 
 #Introduction
