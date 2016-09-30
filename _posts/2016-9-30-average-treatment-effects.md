@@ -151,7 +151,6 @@ Using the propensity score as a regression adjustment simply amounts to includin
 In the chunk below the treatment model is specified as a probit model where the [0,1] outcome smoker v. non-smoker is modeled as a function of age, age squared, marital status, education level, and an indicator for whether the mother has had a baby before.  Parameter estimates from this model are used to generate a predicted probability of smoking for each individual in the sample.  This predicted probability is the propensity score.  
 
 ```R
-
 #the treatment model
 pscore.df <- df %>% mutate(mage2=mage*mage) %>%
         mutate(marriedYN=ifelse(mmarried=='married',1,0),
