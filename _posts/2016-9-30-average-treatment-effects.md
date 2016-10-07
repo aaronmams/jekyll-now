@@ -125,6 +125,7 @@ ggplot(z,aes(x=age,y=bw,color=factor(smoke),size=weight)) + geom_point(shape=1) 
 
 ```
 
+![ipw_weights](/images/pom_weighted.png)
 
 In the following chunk we estimate the Average Treatment Effect with our Cattaneo (2010) data using the inverse probability weights to adjust the means:
 
@@ -145,8 +146,9 @@ weighted.mean.ns <- (1/sum(((1-df$z)/(1-df$w))))*(sum(((1-df$z)*df$bweight)/(1-d
 
 #ATE
 weighted.mean.smoker - weighted.mean.ns
-
+[1] -275.5007
 ```
+
 
 ## Propensity Score Regression Adjustment
 
@@ -169,6 +171,25 @@ pscore.df <- df %>% mutate(ipwra.w=ifelse(mbsmoke=='smoker',1/ipwra.p,1/(1-ipwra
 
 #Birthweight regression adjusted using the propensity score
 summary(lm(bweight~factor(mbsmoke)+ipwra.p,data=pscore.df))
+
+Call:
+lm(formula = bweight ~ factor(mbsmoke) + ipwra.p, data = df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-3099.51  -313.05    23.66   352.16  2023.94 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(>|t|)    
+(Intercept)            3510.18      15.75 222.852  < 2e-16 ***
+factor(mbsmoke)smoker  -226.88      22.25 -10.197  < 2e-16 ***
+ipwra.p                -572.52      75.26  -7.607 3.36e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 565.4 on 4639 degrees of freedom
+Multiple R-squared:  0.04616,	Adjusted R-squared:  0.04575 
+F-statistic: 112.3 on 2 and 4639 DF,  p-value: < 2.2e-16
 
 ```
 
@@ -242,7 +263,31 @@ Step 4A: inspect covariate balance using a t-test of means
 ```R
 #t-test of means
 t.test(matched$mage[matched$mbsmoke=="smoker"],matched$mage[matched$mbsmoke!="smoker"])
+
+	Welch Two Sample t-test
+
+data:  matched$mage[matched$mbsmoke == "smoker"] and matched$mage[matched$mbsmoke != "smoker"]
+t = 0.23643, df = 1708, p-value = 0.8131
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.4644314  0.5917462
+sample estimates:
+mean of x mean of y 
+ 25.16667  25.10301 
+ 
+ 
 t.test(matched$medu[matched$mbsmoke=="smoker"],matched$medu[matched$mbsmoke!="smoker"])
+
+	Welch Two Sample t-test
+
+data:  matched$medu[matched$mbsmoke == "smoker"] and matched$medu[matched$mbsmoke != "smoker"]
+t = 0.96778, df = 1708.4, p-value = 0.3333
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1093186  0.3222815
+sample estimates:
+mean of x mean of y 
+ 11.63889  11.53241 
 
 ```
 
@@ -254,6 +299,19 @@ Step 5: Finally, to get the average treatment effect from our PSM set-up, we com
 
 ```R
 with(matched, t.test(bweight ~ mbsmoke))
+
+	Welch Two Sample t-test
+
+data:  bweight by mbsmoke
+t = 6.9866, df = 1704.9, p-value = 4.023e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 143.8564 256.1505
+sample estimates:
+mean in group nonsmoker    mean in group smoker 
+               3337.663                3137.660 
+
+
 ```
 
 
