@@ -125,7 +125,7 @@ ggplot(z,aes(x=age,y=bw,color=factor(smoke),size=weight)) + geom_point(shape=1) 
 
 ```
 
-![ipw_weights](/images/pom_weighted.png)
+![ipw_weights](/images/pom_wieghted.png)
 
 In the following chunk we estimate the Average Treatment Effect with our Cattaneo (2010) data using the inverse probability weights to adjust the means:
 
