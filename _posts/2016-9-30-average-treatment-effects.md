@@ -166,10 +166,87 @@ summary(lm(bweight~factor(mbsmoke)+ipwra.p,data=pscore.df))
 
 ```
 
-# Summary of Results
+## Propensity Score Matching 
+The intuition and mechanics of Propensity Score Matching are pretty simply to understand.  The statistical foundations (i.e. how to do PSM right) are pretty complex. My understanding of causal inference doesn't come close to a Paul Rosenbaum, Don Rubin, Andrew Gelman, or Judea Pearl...so I'm not going to preface this discussion of PSM with a lot of cautionary tales.  I'm not going to run through a big list of 'potential pitfalls' or common violations of the ignorability condition.  I'm just going to walk through the nuts-and-bolts of how to take our birthweight data and estimate an average treatment effect using PSM.
+
+But since I'm not providing a bigger discussion of technical minutia let me offer this advice: if any of you are considering using Propensity Score Matching Models in any serious application you should first:
+
+1. Read Rosenbaum and Rubin 1983: http://biomet.oxfordjournals.org/content/70/1/41.short
+2. Read Judea Pearl's Causality (http://bayes.cs.ucla.edu/BOOK-2K/)...yes, the whole thing...but if not the cover-to-cover than at least Chapter 11 where Propensity Score Matching is specifically addressed.
+3. Read Andrew Gelman's thoughts on causality and PSM...this is a good place to start: http://andrewgelman.com/2009/07/23/pearls_and_gelm/
+
+A typical propensity score matching application goes something this:
+
+1. run a probit or a logit regression modeling the assignment to treatment $z /in (0,1)$ as a function of covariates $x$.
+2. using the regression in 1, generate a predicted probability of receiving the treatment for each observation in the sample.
+3. match treated units to untreated units using the propensity score.  NOTE: there are a number of options for carrying out this matching (many-to-one match, one-to-many match, one-to-one match, nearest neighbor match, Mahalanobis distance, etc.)
+4. examine the covariate balance in the matched data...interestingly, there seem to be a rash of PSM applications that don't offer much advice in way of what to do if your model doesn't provide good covariate balance.
+5. compare group means in the matched data.
+
+
+Step 0: read in the data...I know this is a little repetitive...I should probably clean this up but for now just live with it please.
 
 ```R
-data.frame(Estimator=c('Difference in POMs','Difference in IP Weighted Means','Regression Adjustment (Propensity Score)'),TreatmentEffect=c(-277.061,-275.50,-226.88))
+library(MatchIt)
+#read the Cattaneo2.dta data set in
+df <- tbl_df(read.csv("data/cattaneo2.csv")) %>% 
+      mutate(smoker=ifelse(mbsmoke=='smoker',1,0))
+
+```
+
+Steps 1 and 2: run the logit model and get the predicted probability of receiving the treatment (propensity score).
+```R
+#use mother's age, marital status, and education level to predict smoke/non-smoke
+smoke.model <- glm(smoker~mage+medu+mmarried,family=binomial, data=df)
+
+pr.df <- data.frame( pr_score = predict(smoke.model, type = "response"),
+                      smoke = df$smoker )
+
+```
+
+Step 3: use the 'MatchIt' package to match treated units to similar non-treated units
+
+```R
+#The 'MatchIt' package will perform the actual propensity score matching for us:
+m.out <- matchit(smoker ~ mage + medu + mmarried,
+                 method = "nearest", data = df)
+
+#match.data creates a dataframe with only the matched obs
+matched <- match.data(m.out)
+
+```
+
+Step 4: examine the covariate balance.  In a good PSM study the covariate distributions conditional on propensity score should be similar across groups.
+
+```R
+
+#inspect the covariate balance
+ggplot(matched,aes(x=distance,y=mage,color=mbsmoke)) + geom_point(alpha=0.4,size=1.5) + geom_smooth() +
+  theme_bw() + scale_color_manual(values=c('red','black'))
+
+ggplot(matched,aes(x=distance,y=medu,color=mbsmoke)) + geom_point(alpha=0.4,size=1.5) + geom_smooth() +
+  theme_bw() + scale_color_manual(values=c('red','black'))
+
+```
+
+
+Step 4A: inspect covariate balance using a t-test of means
+
+```R
+#t-test of means
+t.test(matched$mage[matched$mbsmoke=="smoker"],matched$mage[matched$mbsmoke!="smoker"])
+t.test(matched$medu[matched$mbsmoke=="smoker"],matched$medu[matched$mbsmoke!="smoker"])
+
+```
+
+
+Step 4C: inspect the covariate balance using average absolute standardized difference....I plan to add this a little later....for now have a look at Simon Ejdemyr's PSM tutorial: http://stanford.edu/~ejdemyr/r-tutorials-archive/tutorial8.html
+
+
+Step 5: Finally, to get the average treatment effect from our PSM set-up, we compare the grouped means in the matched sample:
+
+```R
+with(matched, t.test(bweight ~ mbsmoke))
 ```
 
 
