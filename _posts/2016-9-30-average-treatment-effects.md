@@ -55,6 +55,9 @@ ggplot(z,aes(x=age,y=bw,color=factor(smoke))) + geom_point() + geom_smooth(metho
 
 ```
 
+![POM_example](/images/pom_simulated.png)
+
+
 If we are interested in an unbiased estimate of the impact of smoking on birthweight the plot above suggests some issues...namely that we don't have very many smokers on the low end of the age distribution and, relatedly, we don't have many non-smokers in the high end of the age distribution.
 
 # Potential Outcome Mean (POM) Estimator:
@@ -64,18 +67,21 @@ One way researchers have concocted to deal with this phenomenon is to use the Po
 ```R
 lm.smoker <- lm(bweight~mage,data=df[df$mbsmoke=='smoker',])
 pred.smoker <- predict(lm.smoker,newdata=df)
-#mean(pred.smoker)
+mean(pred.smoker)
+[1] 3132.374
 
 lm.ns <- lm(bweight~mage,data=df[df$mbsmoke!='smoker',])
 pred.ns <- predict(lm.ns,newdata=df)
-#mean(pred.ns)
+mean(pred.ns)
+[1] 3409.435
 
 #ATE using the POM approach is just the difference in mean fitted values for smokers and non-smokers
 # using the two different regression models
 ate <- mean(pred.smoker)-mean(pred.ns)
 ate
-
+[1] -275.2519
 ```
+
 
 It's important to note here that the pattern in the actual data (from Cattaneo 2010) is different from the one we simulated earlier (namely, in the actual data, younger mothers are more likely to smoke).
 
