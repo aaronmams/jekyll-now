@@ -93,7 +93,7 @@ The propensity score is basically the estimated probability that an individual w
 
 In general, the Treatment Model can be specified many ways.  In this application we specify a probit model where the binary outcome, 'smoker' is modeled as function of age:
 
-$P(Y=1|Age) = \Phi(\alpha + \beta age)$,
+$$P(Y=1|Age) = \Phi(\alpha + \beta age)$$
 
 where $\Phi$ is the cumulative density function for the standard normal distribution.
 
@@ -222,13 +222,14 @@ df <- tbl_df(read.csv("data/cattaneo2.csv")) %>%
 ```
 
 Steps 1 and 2: run the logit model and get the predicted probability of receiving the treatment (propensity score).
+
 ```R
+
 #use mother's age, marital status, and education level to predict smoke/non-smoke
 smoke.model <- glm(smoker~mage+medu+mmarried,family=binomial, data=df)
 
 pr.df <- data.frame( pr_score = predict(smoke.model, type = "response"),
                       smoke = df$smoker )
-
 ```
 
 Step 3: use the 'MatchIt' package to match treated units to similar non-treated units
