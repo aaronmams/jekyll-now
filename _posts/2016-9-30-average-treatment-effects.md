@@ -229,6 +229,7 @@ ggplot(matched,aes(x=distance,y=medu,color=mbsmoke)) + geom_point(alpha=0.4,size
 
 ```
 
+![A Cool Picture of Freddy Mercury](/images/covariate_balance_education.jpg)
 
 Step 4A: inspect covariate balance using a t-test of means
 
