@@ -154,7 +154,7 @@ weighted.mean.smoker - weighted.mean.ns
 
 ## Propensity Score Regression Adjustment
 
-We can also use the propensity score as a regression adjustment.  A good reference for this estimator is http://www.stat.columbia.edu/~gelman/stuff_for_blog/posner.pdf.  
+We can also use the propensity score as a regression adjustment.  A good reference for this estimator is [this post on Andrew Gelman's Blog](http://www.stat.columbia.edu/~gelman/stuff_for_blog/posner.pdf).  
 
 Using the propensity score as a regression adjustment simply amounts to including the propensity score ($p_i$) in a regression of birthweight on mother's age.
 
@@ -200,9 +200,9 @@ The intuition and mechanics of Propensity Score Matching are pretty simply to un
 
 But since I'm not providing a bigger discussion of technical minutia let me offer this advice: if any of you are considering using Propensity Score Matching Models in any serious application you should first:
 
-1. Read Rosenbaum and Rubin 1983: http://biomet.oxfordjournals.org/content/70/1/41.short
-2. Read Judea Pearl's Causality (http://bayes.cs.ucla.edu/BOOK-2K/)...yes, the whole thing...but if not the cover-to-cover than at least Chapter 11 where Propensity Score Matching is specifically addressed.
-3. Read Andrew Gelman's thoughts on causality and PSM...this is a good place to start: http://andrewgelman.com/2009/07/23/pearls_and_gelm/
+1. [Read Rosenbaum and Rubin 1983](http://biomet.oxfordjournals.org/content/70/1/41.short)
+2. [Read Judea Pearl's Causality](http://bayes.cs.ucla.edu/BOOK-2K/)...yes, the whole thing...but if not the cover-to-cover than at least Chapter 11 where Propensity Score Matching is specifically addressed.
+3. [Read Andrew Gelman's thoughts on causality and PSM...this is a good place to start](http://andrewgelman.com/2009/07/23/pearls_and_gelm/)
 
 A typical propensity score matching application goes something this:
 
@@ -259,7 +259,7 @@ ggplot(matched,aes(x=distance,y=medu,color=mbsmoke)) + geom_point(alpha=0.4,size
 
 ```
 
-![A Cool Picture of Freddy Mercury](/images/covariate_balance_education.png)
+![covariate balancing](/images/covariate_balance_education.png)
 
 Step 4A: inspect covariate balance using a t-test of means
 
@@ -295,7 +295,7 @@ mean of x mean of y
 ```
 
 
-Step 4C: inspect the covariate balance using average absolute standardized difference....I plan to add this a little later....for now have a look at Simon Ejdemyr's PSM tutorial: http://stanford.edu/~ejdemyr/r-tutorials-archive/tutorial8.html
+Step 4C: inspect the covariate balance using average absolute standardized difference....I plan to add this a little later....for now have a look at [Simon Ejdemyr's PSM tutorial](http://stanford.edu/~ejdemyr/r-tutorials-archive/tutorial8.html).
 
 
 Step 5: Finally, to get the average treatment effect from our PSM set-up, we compare the grouped means in the matched sample:
