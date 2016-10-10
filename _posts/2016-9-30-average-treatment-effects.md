@@ -6,6 +6,8 @@ title: "Average Treatment Effect Examples"
 
 Here, I've added a bit more substance to an earlier post on quasi-treatement-control methods for social science research.  More specifically, I've added some content on Propensity Score Matching to the discussion.  Enjoy.
 
+Quick procedural note: you can get the data in .csv format via [my github repo here](https://github.com/aaronmams/treatment-effects).  
+
 # Introduction
 
 This vignette present a few simple ways to evaluate average treatment effects when some covariates are correlated with both the assignment to treatment and the outcome variable.  This is sometimes refered to as sample selection bias or the self selection problem.  Let's consider the example from Matai Cattaneo's 2010 *Journal of Econometrics* study of the effect of smoking during pregnancy on babys' birthweights.  The precise empirical problem posed here is that women choose whether or not to smoke, so assignment into treatment and control groups may be non-random.  Moreover, the probability of receiving the treatment (smoke v. not smoke) may be correlated with other variables in the model (like age) which are also correlated with the outcome.  This is sometimes refered to as a confounding variables problem.  
