@@ -27,6 +27,8 @@ $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
 
 The state-space framework is attractive to many researchers because it results in a pretty straightforward likelihood function which can be estimated using familiar methods.
 
+[The Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter) is the dominant estimation strategy for most state-space models.
+
 
 # A Seasonal State Space Model in R
 
