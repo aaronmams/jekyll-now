@@ -139,7 +139,12 @@ ggplot(pred,aes(x=date,y=y)) + geom_line() +
 
 ![kfas fit](/images/trips_tripshat.png)
 
-Next, we extract the smoothed estimates of the state (the monthly seasonal components) and plot them:
+An important thing to note here is that the KFAS package will return both the filtered and smoothed estimates of the state. To get estimates of the seasonal factors which are comparable to seasonal dummy variable regression parameters we extract the smoothed estimates of the state.  
+
+Here, we extract the smoothed estimates of the state (the monthly seasonal components) and plot them.  In the code below, the object tripsSmooth$alphahat contains the smoothed state estimates:
+
+$E(Z_{t}\alpha_{t}|y_{1},...,y_{T})$.
+
 
 ```R
 #---------------------------------------------------------------------------
