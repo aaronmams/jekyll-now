@@ -13,6 +13,7 @@ For more depth on state space models I recommend (in order):
 * [Durbin and Koopmans, 2001](http://www.ssfpack.com/DKbook.html)
 * [Harvey, 1989](https://www.amazon.com/Forecasting-Structural-Models-Kalman-Filter/dp/0521405734)
 
+If you want to follow along I have the code for this post reasonably well annotated in my [cool-time-series-stuff GitHub repo](https://github.com/aaronmams/cool-time-series-stuff), in the file: "ssm.R".
 
 # Quick State-Space Introduction
 
