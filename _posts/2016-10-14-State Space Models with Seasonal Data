@@ -9,3 +9,12 @@ For more depth on state space models I recommend (in order):
 * [Durbin and Koopmans, 2001](http://www.ssfpack.com/DKbook.html)
 * [Harvey, 1989](https://www.amazon.com/Forecasting-Structural-Models-Kalman-Filter/dp/0521405734)
 
+# Quick State-Space Introduction
+
+As an economist I favor basic illustration of state space models in the context of time-varying regression parameters.  Consider the linear model $y=Z'\alpha$, where $\alpha$ is a vector of coefficients, $Z$ a data matrix, and $y$ a vector of dependent variables.  
+
+If we want to allow the marginal impact of the exogenous variables to evolve over time we might write the system as:
+
+$$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$
+
+$$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
