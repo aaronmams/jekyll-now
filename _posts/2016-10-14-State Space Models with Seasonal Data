@@ -1,3 +1,11 @@
 
 A little while back [I wrote a few posts on time-series methods for seasonal data](https://thesamuelsoncondition.com/2016/02/19/time-series-iv-markov-regime-switching-models/).  
 While I mentioned state space models as an option for modeling seasonal data, I didn't really provide much meat there.  In this post I'm going to give a few examples applying state space models (using the 'KFAS' package in R) to seasonal data.  
+
+Much has been written about state-space modeling and most of it by people with substantially more expertise than I have.  I'm not going to try and compete with the experts on statistical depth....my focus here will be on providing a few reproducible examples you can use to get the feel of how state-space models with the KFAS package behave.
+
+For more depth on state space models I recommend (in order):
+
+* [Durbin and Koopmans, 2001](http://www.ssfpack.com/DKbook.html)
+* [Harvey, 1989](https://www.amazon.com/Forecasting-Structural-Models-Kalman-Filter/dp/0521405734)
+
