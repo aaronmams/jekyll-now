@@ -210,11 +210,26 @@ data.frame(date=chow.df$date[chow.df$year>2010],
 yhat$y <- as.numeric(trips)
 yhat$model <- 'Seasonal Dummy'
 
-ggplot(yhat,aes(x=date,y=y)) + geom_line() + geom_line(aes(x=date,y=that,color='red'))
+# the KFAS model
+kfas.pred <- data.frame(date=dates,that=fitted(tripsSmooth),y=as.numeric(trips),model='KFAS')
 
+#combine the two
+model.comp <- rbind(yhat,kfas.pred)
 
+model.comp$eps <- model.comp$y-model.comp$that
+
+ggplot(model.comp,aes(x=date,y=eps,color=model)) + geom_line() + theme_bw()
 ```
 
-![sim_seasonals](/images/trips_sim_seasonal.png)
+![seasonals](/images/trips_pred_error.png)
 
 
+We can compare the mean absolute in-sample prediction error between the two models:
+
+```R
+
+#get mean absolute in-sample prediction error:
+tbl_df(model.comp) %>% mutate(abs.error=abs(eps)) %>% group_by(model) %>%
+              summarise(mean(abs.error,na.rm=T))
+
+```
