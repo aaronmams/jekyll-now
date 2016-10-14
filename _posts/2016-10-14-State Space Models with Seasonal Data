@@ -18,3 +18,5 @@ If we want to allow the marginal impact of the exogenous variables to evolve ove
 $$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$
 
 $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
+
+The state-space framework is attractive to many researchers because it results in a pretty straightforward likelihood function which can be estimated using familiar methods.
