@@ -97,6 +97,8 @@ $$\alpha_{t} = [\mu_{t},\gamma_{1,t},\gamma_{2,t},...\gamma_{11,t}]$$
 
 then it's pretty easy to see how the basic structural time-series model can be expressed as a state-space model.
 
+Now, we turn our attention to specifying this model in R using 'KFAS':
+
 ```R
 
 #-----------------------------------------------------------------------
@@ -132,3 +134,26 @@ ggplot(pred,aes(x=date,y=y)) + geom_line() +
 ```
 
 ![kfas fit](/images/trips_tripshat.png)
+
+Next, we extract the smoothed estimates of the state (the monthly seasonal components) and plot them:
+
+```R
+#---------------------------------------------------------------------------
+#plot the seasonal
+trips.sea <- as.numeric(tripsSmooth$alphahat[,2])
+plot.df <- data.frame(date=dates,seasonal=trips.sea)
+#add a reference point to the seasonal data frame
+plot.df <- plot.df %>% mutate(month=month(date),july=ifelse(month==7,1,0))
+
+ggplot(plot.df,aes(x=date,y=seasonal)) + geom_line() + 
+  geom_point(aes(color=factor(july))) + scale_color_manual(values=c('red','black'))+
+  theme_bw() + 
+  theme(legend.position="none")
+
+#----------------------------------------------------------------------------
+
+```
+
+![seasonals](/images/trips_seasonals.png)
+
+
