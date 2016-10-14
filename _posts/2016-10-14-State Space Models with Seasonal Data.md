@@ -17,7 +17,7 @@ If you want to follow along I have the code for this post reasonably well annota
 
 # Quick State-Space Introduction
 
-As an economist I favor basic illustration of state space models in the context of time-varying regression parameters.  Consider the linear model $y=Z'\alpha$, where $\alpha$ is a vector of coefficients, $Z$ a data matrix, and $y$ a vector of dependent variables.  
+As an economist I favor the basic illustration of state space models in the context of time-varying regression parameters.  Consider the linear model $y=Z'\alpha$, where $\alpha$ is a vector of coefficients, $Z$ a data matrix, and $y$ a vector of dependent variables.  
 
 If we want to allow the marginal impact of the exogenous variables to evolve over time we might write the system as:
 
@@ -170,7 +170,7 @@ The seasonal dummy variable model with a structural break can be formalized as:
 
 $$y_{it} = \alpha + \sum_{i=1}^{11}\gamma_{it}D_{i}Z_{i}$$
 
-where $Z_{i}$ is 1 if $t>2010$ and 0 otherwise$.  
+where $Z_{i}$ is 1 if $t>2010$ and 0 otherwise.  
 
 
 ```R
