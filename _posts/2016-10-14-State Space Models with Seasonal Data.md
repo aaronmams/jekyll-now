@@ -28,7 +28,7 @@ The state-space framework is attractive to many researchers because it results i
 
 # A Seasonal State Space Model in R
 
-Here we will use some non-confidential data I have on the number of fishing trips taken in the West Coast Groundfish Fishery over time.  The practical background here is that there have been multiple policy changes over time and I am interested in whether any of these regulatory events have altered the seasonal pattern of fishing activity. 
+Here we will use some non-confidential data I have on the number of fishing trips taken in the West Coast Groundfish Fishery over time.  The data are monthly from 1994 - 2014 and the variable 'trips' is a count of the total number of fishing trips taken in that month.  The practical background here is that there have been multiple policy changes over time and I am interested in whether any of these regulatory events have altered the seasonal pattern of fishing activity. 
 
 ```R
 library(Quandl)
@@ -44,6 +44,8 @@ df.monthly <- readRDS('data/gf_monthly.RDA')
 #----------------------------------------------------------------
 
 ```
+
+Next, we'll do some simple processing and plot the series.  I'm cheating a bit here but I know there is a pretty consistent summer peak in these data....In the plot below I mark the 'July' observations with a black dot and other months are red.  
 
 ```R
 #create a univariate ts object---------------------------------
@@ -69,5 +71,54 @@ ggplot(df.monthly,aes(x=date,y=ntrips)) + geom_line() +
 
 ```
 
-
 ![POM_example](/images/north_trips.png)
+
+Note that from 1994 to 2010 we get a consistent seasonal peak in July (with some noise as, in some years the peak is June and others it is August).  Also note that from 2011 to 2014 we get a very consistent August peak.  This is important to me because in Jan. 2011 the West Coast Groundfish Fishery transitioned to a new management model.  An open question, that part of my research will hopefully inform, is whether or not this management transition altred seasonality in the fishery.
+
+Next, I'm going to fit a state-space model to these seasonal data.  First, let's get a little more specific about our seasonal state-space model:
+
+## Seasonal State-Space Model in R and 'KFAS'
+
+The first thing to note here is that the basic presentation of the standard structural time-series decomposition is to express a time-series of observations $y_{t}$ as a function of a level, seasonal, and cyclical component:
+
+$$y_{t}=\mu_{t} + \gamma_{t} + \c_{t}$$
+
+where $\mu_{t}$ is the level, $\gamma_{t}$ is the seasonal, and $c_{t}$ is the cyclical component.
+
+If we consider 
+
+```R
+
+#-----------------------------------------------------------------------
+# A state-space model with a local time-varying level and time varying
+# seasonal effects:
+tripsmodel<-SSModel(trips ~ SSMtrend(degree = 1, Q=list(matrix(NA))) + 
+                       SSMseasonal(period=12, sea.type="dummy", Q = NA), H = NA)
+str(tripsmodel)
+#-----------------------------------------------------------------------
+
+#------------------------------------------------------------------------
+#Estimate the model:
+tripsFit<-fitSSM(tripsmodel,inits=c(0.1,0.05, 0.001),method='BFGS')$model
+
+#Recover the smoothed state estimates
+tripsSmooth <- KFS(tripsFit,smooth= c('state', 'mean','disturbance'))
+
+#Get smoothed estimates for the level
+tripsLevel <-signal(tripsSmooth, states = 'level')
+tripsLevel$signal <- xts(tripsLevel$signal, order.by = dates)
+
+#plot level
+autoplot(cbind(trips, tripsLevel$signal),facets = FALSE)
+#----------------------------------------------------------------------
+
+#----------------------------------------------------------------------
+#plot fitted values with raw data
+pred <- data.frame(date=dates,kfas=fitted(tripsSmooth),y=as.numeric(trips))
+
+ggplot(pred,aes(x=date,y=y)) + geom_line() + 
+  geom_line(aes(x=date,y=kfas),data=pred,color='red') +theme_bw()
+#------------------------------------------------------------------------------
+```
+
+![kfas fit](/images/trips_tripshat.png)
