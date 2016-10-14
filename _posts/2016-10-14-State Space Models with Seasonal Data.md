@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Average Treatment Effect Examples"
+title: "State Space Models with Seasonal Data"
 ---
 
 A little while back [I wrote a few posts on time-series methods for seasonal data](https://thesamuelsoncondition.com/2016/02/19/time-series-iv-markov-regime-switching-models/).  
@@ -24,3 +24,24 @@ $$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$
 $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
 
 The state-space framework is attractive to many researchers because it results in a pretty straightforward likelihood function which can be estimated using familiar methods.
+
+
+# A Seasonal State Space Model in R
+
+Here we will use some non-confidential data I have on the number of fishing trips taken in the West Coast Groundfish Fishery over time.  The practical background here is that there have been multiple policy changes over time and I am interested in whether any of these regulatory events have altered the seasonal pattern of fishing activity. 
+
+```R
+library(Quandl)
+library(KFAS)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library("ggfortify")
+library(xts)
+
+#Read in the groundfish effort data------------------------------
+df.monthly <- readRDS('data/gf_monthly.RDA')
+#----------------------------------------------------------------
+
+```
+
