@@ -45,3 +45,28 @@ df.monthly <- readRDS('data/gf_monthly.RDA')
 
 ```
 
+```R
+#create a univariate ts object---------------------------------
+trips <- df.monthly$ntrips
+#--------------------------------------------------------------
+
+#do some other convenience operations---------------------------
+df.monthly$date <- as.Date(paste(df.monthly$year,"-",df.monthly$month,"-","01",sep=""),format="%Y-%m-%d")
+dates <- df.monthly$date
+trips <- xts(trips,order.by=dates)
+
+df.monthly <- df.monthly %>% mutate(july=ifelse(month==7,1,0))
+#-----------------------------------------------------------------
+
+#-------------------------------------------------------------------
+# a few quick illustative plots
+ggplot(df.monthly,aes(x=date,y=ntrips)) + geom_line() + 
+  geom_point(aes(color=factor(july))) +  
+  scale_color_manual(values=c('red','black')) +
+  theme_bw() +
+  theme(legend.position='none') 
+#---------------------------------------------------------------------
+
+```
+
+[a plot of 
