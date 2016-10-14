@@ -156,4 +156,65 @@ ggplot(plot.df,aes(x=date,y=seasonal)) + geom_line() +
 
 ![seasonals](/images/trips_seasonals.png)
 
+So...first, it's pretty encouraging that our estimates of the seasonal effect seem to evolve in ways that mirror that our first look at the data.  That is, we originally noted that the data seem to exhibit a seasonal peak in July from 1994 to 2010 and also seem to transition to a seasonal peak in August from 2011 - 2014.  Our estimate of the seasonal effect obtained from fitting the state-space model also peaks in July in the early parts of the data and moves to a peak in August in the later years of the data.
+
+# A Fun Model Comparison Exercise
+
+From the data, we observed (or at least we think we observed) a transition from a July peak to an August peak somewhere around 2010.  Another way we could have modeled these data (if, for example we weren't stoked about the state-space set-up) is with a seasonal dummy variable model and a structural break.  
+
+Here, we propose a structural break in 2010 and compare a seasona dummy variable model with a break in 2010 to the state-space model we just fit.
+
+The seasonal dummy variable model with a structural break can be formalized as:
+
+$$y_{it} = \alpha + \sum_{i=1}^{11}\gamma_{it}D_{i}Z_{i}$$
+
+where $Z_{i}$ is 1 if $t>2010$ and 0 otherwise$.  
+
+
+```R
+#==========================================================================
+#COMPARISON OF THE STATE-SPACE MODEL WITH A DUMMY VARIABLE REGRESSION WITH
+# A STRUCTURAL BREAK
+#==========================================================================
+#get mean absolute error from the KFAS model and compare it to the
+# dummy variable model with structural break in 2010.
+
+#the dummy variable model...I know this is clunky but I 
+# prefer the traditional dummy variable set up.
+chow.df <- df.monthly  %>%
+            mutate(jan=ifelse(month==1,1,0),
+                   feb=ifelse(month==2,1,0),
+                   march=ifelse(month==3,1,0),
+                   april=ifelse(month==4,1,0),
+                   may=ifelse(month==5,1,0),
+                   june=ifelse(month==6,1,0),
+                   july=ifelse(month==7,1,0),
+                   aug=ifelse(month==8,1,0),
+                   sept=ifelse(month==9,1,0),
+                   oct=ifelse(month==10,1,0),
+                   nov=ifelse(month==11,1,0),
+                   dec=ifelse(month==12,1,0))
+
+model.pre <- lm(ntrips~feb+march+april+may+june+july+aug+
+                  sept+oct+nov+dec+factor(year),data=subset(chow.df,year<=2010))
+model.post <- lm(ntrips~feb+march+april+may+june+july+aug+
+                   sept+oct+nov+dec+factor(year),data=subset(chow.df,year>2010))
+
+yhat <- rbind(
+data.frame(date=chow.df$date[chow.df$year<=2010],
+              that=predict(model.pre,newdata=chow.df[chow.df$year<=2010,])),
+data.frame(date=chow.df$date[chow.df$year>2010],
+           that=predict(model.post,newdata=chow.df[chow.df$year>2010,]))
+)
+
+yhat$y <- as.numeric(trips)
+yhat$model <- 'Seasonal Dummy'
+
+ggplot(yhat,aes(x=date,y=y)) + geom_line() + geom_line(aes(x=date,y=that,color='red'))
+
+
+```
+
+![sim_seasonals](/images/trips_sim_seasonals.png)
+
 
