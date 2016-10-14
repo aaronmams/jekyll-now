@@ -81,7 +81,7 @@ Next, I'm going to fit a state-space model to these seasonal data.  First, let's
 
 The first thing to note here is that the basic presentation of the standard structural time-series decomposition is to express a time-series of observations $y_{t}$ as a function of a level, seasonal, and cyclical component:
 
-$$y_{t}=\mu_{t} + \gamma_{t} + \c_{t}$$
+$$y_{t}=\mu_{t} + \gamma_{t} + c_{t}$$
 
 where $\mu_{t}$ is the level, $\gamma_{t}$ is the seasonal, and $c_{t}$ is the cyclical component.
 
