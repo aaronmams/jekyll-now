@@ -1,8 +1,6 @@
-
 ---
 layout: post
 title: "Average Treatment Effect Examples"
-
 ---
 
 A little while back [I wrote a few posts on time-series methods for seasonal data](https://thesamuelsoncondition.com/2016/02/19/time-series-iv-markov-regime-switching-models/).  
