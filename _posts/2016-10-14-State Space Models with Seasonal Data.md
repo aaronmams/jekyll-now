@@ -85,7 +85,17 @@ $$y_{t}=\mu_{t} + \gamma_{t} + \c_{t}$$
 
 where $\mu_{t}$ is the level, $\gamma_{t}$ is the seasonal, and $c_{t}$ is the cyclical component.
 
-If we consider 
+Consider the familiar seasonal dummy variable regression model with monthly observations:
+
+$$y_{t}=\alpha + \sum_{i=1}^{11}D_{i}\beta_{i}$$ 
+
+where $D_{i}$ equal 1 if observation $t$ is in month $i$ and 0 otherwise.
+
+If we were to re-write the $\alpha$ term from the original state-space representation as,
+
+$$\alpha_{t} = [\mu_{t},\gamma_{1,t},\gamma_{2,t},...\gamma_{11,t}]$$
+
+then it's pretty easy to see how the basic structural time-series model can be expressed as a state-space model.
 
 ```R
 
