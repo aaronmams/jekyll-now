@@ -215,6 +215,6 @@ ggplot(yhat,aes(x=date,y=y)) + geom_line() + geom_line(aes(x=date,y=that,color='
 
 ```
 
-![sim_seasonals](/images/trips_sim_seasonals.png)
+![sim_seasonals](/images/trips_sim_seasonal.png)
 
 
