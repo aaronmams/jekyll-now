@@ -70,4 +70,4 @@ ggplot(df.monthly,aes(x=date,y=ntrips)) + geom_line() +
 ```
 
 
-![POM_example](/images/trips.png)
+![POM_example](/images/north_trips.png)
