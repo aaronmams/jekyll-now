@@ -13,6 +13,7 @@ For more depth on state space models I recommend (in order):
 * [Durbin and Koopmans, 2001](http://www.ssfpack.com/DKbook.html)
 * [Harvey, 1989](https://www.amazon.com/Forecasting-Structural-Models-Kalman-Filter/dp/0521405734)
 
+
 # Quick State-Space Introduction
 
 As an economist I favor basic illustration of state space models in the context of time-varying regression parameters.  Consider the linear model $y=Z'\alpha$, where $\alpha$ is a vector of coefficients, $Z$ a data matrix, and $y$ a vector of dependent variables.  
@@ -231,5 +232,11 @@ We can compare the mean absolute in-sample prediction error between the two mode
 #get mean absolute in-sample prediction error:
 tbl_df(model.comp) %>% mutate(abs.error=abs(eps)) %>% group_by(model) %>%
               summarise(mean(abs.error,na.rm=T))
+              
+              # A tibble: 2 × 2
+           model `mean(abs.error, na.rm = T)`
+           <chr>                        <dbl>
+1           KFAS                     45.48411
+2 Seasonal Dummy                     86.62774
 
 ```
