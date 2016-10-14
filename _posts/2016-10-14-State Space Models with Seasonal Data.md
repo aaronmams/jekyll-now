@@ -143,7 +143,7 @@ An important thing to note here is that the KFAS package will return both the fi
 
 Here, we extract the smoothed estimates of the state (the monthly seasonal components) and plot them.  In the code below, the object tripsSmooth$alphahat contains the smoothed state estimates:
 
-$E(Z_{t}\alpha_{t}|y_{1},...,y_{T})$.
+$$E(Z_{t}\alpha_{t}|y_{1},...,y_{T})$$
 
 
 ```R
