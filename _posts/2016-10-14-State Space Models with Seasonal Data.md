@@ -25,6 +25,7 @@ As an economist I favor the basic illustration of state space models in the cont
 
 If we want to allow the marginal impact of the exogenous variables to evolve over time we might write the system as:
 
+MODEL 1: 
 $$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$
 
 $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
@@ -39,6 +40,7 @@ I was trying to avoid getting too deep into this but I think it's important for 
 
 The garden variety Gaussian state space model can be obtained by adding a little structure to the set up above.  Namely,
 
+MODEL 2: 
 $$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$, with $$\epsilon_{t} \sim N(0,H_{t})$$
 
 $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$, with $$\eta_{t} \sim N(0,Q_{t})$$, and
@@ -143,7 +145,41 @@ $$\alpha_{t} = [\mu_{t},\gamma_{1,t},\gamma_{2,t},...\gamma_{11,t}]$$
 
 then it's pretty easy to see how the basic structural time-series model can be expressed as a state-space model.
 
-Now, we turn our attention to specifying this model in R using 'KFAS':
+### SSMtrend and SSMseasonal in KFAS
+
+A structural time series model where the series is decomposed into a level/trend component and a seasonal component can be formally written in Gaussian state space form as:
+
+MODEL 4: 
+$$y_{t} = \mu_{t} + \gamma_{t} + \epsilon_{t}$$, where $$\epsilon_{t} \sim N(0,H_{t})$$
+
+$$\mu_{t+1} = \mu_{t} + v_{t} + \eta_{t}$$, where $$\eta_{t} \sim N(0,Q_{level,t}$$
+
+$$v_{t+1} = v_{t} + \zeta_{t}$$, where $$\zeta_{t} \sim N(0,Q_{slope,t})$$
+
+$$\gamma_{t+1} = -\sum_{j=1}^{s-1}\gamma_{t+1-j} + w_{t}$$, where $$w_{t} \sim N(0,Q_{seasonal,t})$$
+
+In the 'KFAS' package in R, one can build a structural time series models additively using the function:
+
+* SSMtrend(), and
+* SSMseasonal()
+
+Note that MODEL 4 above consists of a time varying level and a time-varying slope ($$\mu_{t+1}=\mu_{t} + v_{t}$$)).  If we wanted to build this model in KFAS we could do it additively like so
+
+```R
+mymodel <- SSModel(y ~ SSMtrend(degree = 2, Q = list(matrix(1), matrix(0.5))) + 
+                       SSMseasonal(period=12, sea.type="dummy", Q = 0.5), H = 0.5)
+```
+
+An interesting thing to note here is that KFAS interprets 'NA' values as estimable parameters...so if we wanted to estimate the variance parameters rather than write them into the model we would make the following change to the model above:
+
+```R
+mymodel <- SSModel(y ~ SSMtrend(degree = 2, Q = list(matrix(NA), matrix(NA))) + 
+                       SSMseasonal(period=12, sea.type="dummy", Q = NA), H = NA)
+```
+
+
+In my empirical examples I'm actually going to use a simplified version of MODEL 4.  That is, I'm going to specify a local level model withouth the trend component.  The model is built as so:
+
 
 ```R
 
@@ -154,7 +190,81 @@ tripsmodel<-SSModel(trips ~ SSMtrend(degree = 1, Q=list(matrix(NA))) +
                        SSMseasonal(period=12, sea.type="dummy", Q = NA), H = NA)
 str(tripsmodel)
 #-----------------------------------------------------------------------
+```
 
+At this point I want to take one final pause for some model checking.  The local level model 12 monthly seasonal dummy variables can be written using the Durbin and Koopmans (2001) notation for state-space models as,
+
+$$y_{t}=Z_{t}\alpha_{t} + \epsilon_{t}, \epsilon_{t} \sim N(0,H_{t})$$
+
+$$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}, \eta_{t} \sim N(0,Q_{t})$$
+
+where:
+
+* $$\alpha$$ is a 12 X 1 vector (a level term plus 11 seasonal dummy variables)
+* $$Z$$ should then be 1 X 12
+* $$T$$ should be 12 X 12 
+* $$H$$ is a scalar term containing the measurement error variance...call this $$\sigma_{\epsilon)^{2}$$
+* $$Q$$ is a 2 X 2 matrix containing the process error variance...call this $$\sigma_{\epsilon)^{2}$$
+
+So let's check that the model we specified above at least has the right properties
+
+```R
+>tripsModel$Z
+, , 1
+
+     level sea_dummy1 sea_dummy2 sea_dummy3 sea_dummy4 sea_dummy5 sea_dummy6 sea_dummy7 sea_dummy8 sea_dummy9 sea_dummy10
+[1,]     1          1          0          0          0          0          0          0          0          0           0
+     sea_dummy11
+[1,]           0
+
+> tripsmodel$H
+, , 1
+
+     [,1]
+[1,]   NA
+
+
+> tripsmodel$T
+, , 1
+
+            level sea_dummy1 sea_dummy2 sea_dummy3 sea_dummy4 sea_dummy5 sea_dummy6 sea_dummy7 sea_dummy8 sea_dummy9
+level           1          0          0          0          0          0          0          0          0          0
+sea_dummy1      0         -1         -1         -1         -1         -1         -1         -1         -1         -1
+sea_dummy2      0          1          0          0          0          0          0          0          0          0
+sea_dummy3      0          0          1          0          0          0          0          0          0          0
+sea_dummy4      0          0          0          1          0          0          0          0          0          0
+sea_dummy5      0          0          0          0          1          0          0          0          0          0
+sea_dummy6      0          0          0          0          0          1          0          0          0          0
+sea_dummy7      0          0          0          0          0          0          1          0          0          0
+sea_dummy8      0          0          0          0          0          0          0          1          0          0
+sea_dummy9      0          0          0          0          0          0          0          0          1          0
+sea_dummy10     0          0          0          0          0          0          0          0          0          1
+sea_dummy11     0          0          0          0          0          0          0          0          0          0
+            sea_dummy10 sea_dummy11
+level                 0           0
+sea_dummy1           -1          -1
+sea_dummy2            0           0
+sea_dummy3            0           0
+sea_dummy4            0           0
+sea_dummy5            0           0
+sea_dummy6            0           0
+sea_dummy7            0           0
+sea_dummy8            0           0
+sea_dummy9            0           0
+sea_dummy10           0           0
+sea_dummy11           1           0
+
+```
+
+Ok, so things look pretty good. One last thing I want to emphasize because it will be important later for extracting the smoothed estimates of the states:  Recall from MODEL 4 that the seasonal effect at time $$t+1$$ is given by:
+
+$$\gamma_{t+1} = -\sum_{j=1}^{s-1}\gamma_{t+1-j} + w_{t}$$, where $$w_{t} \sim N(0,Q_{seasonal,t})$$
+
+Also, note that row 2 of the matrix $$T_{t}$$ corresponds to seasonal dummy 1 and contains a -1 in each column.  Also note that $$Z_{t}$$ contains coefficient values equal to 1 for the level, 1 for seasonal dummy 1, and 0 for everything else. Just remember that, when we want to examine the estimated seasonal effect for time period $$t$$ in our model, this effect is contained in seasonal dummy 1 or $$\hat{\alpha}[2]$$ regardless of which month observation $$t$$ takes place in.
+
+
+
+```R
 #------------------------------------------------------------------------
 #Estimate the model:
 tripsFit<-fitSSM(tripsmodel,inits=c(0.1,0.05, 0.001),method='BFGS')$model
