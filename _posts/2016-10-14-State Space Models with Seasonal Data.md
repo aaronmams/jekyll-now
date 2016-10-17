@@ -49,7 +49,7 @@ $$\alpha_{1} \sim N(a_{t},P_{1})$$
 
 $$a_{t+1}=E(\alpha_{t+1}|y_{t},...,y_{1})$$
 
-$$v_{t} = y_{t} - Z_{t}\alpha_{t}$$$
+$$v_{t} = y_{t} - Z_{t}\alpha_{t}$$
 
 $$P_{t+1}=Var(\alpha_{t+1}|y_{t},...y_{1})$$
 
@@ -63,7 +63,14 @@ $$log L=-\frac{np}{2}log 2\pi - \frac{1}{2} \sum_{t=1}^{n}(log |F_{t}|+v_{t}'F_{
 
 ### Smoothing
 
-The Kalman Filter helps us solve the likelihood maximization problem (note tha the liklihood function gets solved iteratively since, acording to the Kalman Filter, $$F_{t}$$ relies on information up to time $$t-1$$, $$[y_{1},...y_{t-1}]$$) to obtain optimal estimates for the process and measurement error variances...which is cool...but I am generally more interested in the smoothed estimates of the state vector.  
+The Kalman Filter helps us solve the likelihood maximization problem (note tha the liklihood function gets solved iteratively since, acording to the Kalman Filter, $$F_{t}$$ relies on information up to time $$t-1$$, $$[y_{1},...y_{t-1}]$$) to obtain optimal estimates for the process and measurement error variances...which is cool...but I am generally more interested in the smoothed estimates of the state vector:
+
+$$\hat{\alpha_{t}}=E(\alpha_{t}|y_{1},...y_{n})$$
+
+$$V_{t}=Var(\alpha_{t}|y_{1},...,y_{n})$$
+
+In a seasonal model, the smoothed state estimates give us the optimal ex-post estimate of the marginal seasonal impact in each time period...using all available data.
+
 
 # A Seasonal State Space Model in R
 
