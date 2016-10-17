@@ -13,6 +13,10 @@ For more depth on state space models I recommend (in order):
 * [Durbin and Koopmans, 2001](http://www.ssfpack.com/DKbook.html)
 * [Harvey, 1989](https://www.amazon.com/Forecasting-Structural-Models-Kalman-Filter/dp/0521405734)
 
+and if you're looking for a nice code-based tutorial on R's KFAS, state space models, and time-series in general, my colleague, Roy Mendelsohnn, has pretty easy to follow R Notebook available online:
+
+* [Roy's State Space Modeling short course](http://www.pfeg.noaa.gov/outgoing/rmendels/KFAS/KFAS.nb.html)
+
 If you want to follow along I have the code for this post reasonably well annotated in my [cool-time-series-stuff GitHub repo](https://github.com/aaronmams/cool-time-series-stuff), in the file: "ssm.R".
 
 # Quick State-Space Introduction
@@ -27,7 +31,24 @@ $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
 
 The state-space framework is attractive to many researchers because it results in a pretty straightforward likelihood function which can be estimated using familiar methods.
 
-[The Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter) is the dominant estimation strategy for most state-space models.
+### Filtering and Smoothing
+
+#### Filtering
+I was trying to avoid getting too deep into this but I think it's important for some stuff I want to do later in the post so here goes:
+
+The garden variety Gaussian state space model can be obtained by adding a little structure to the set up above.  Namely,
+
+$$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$, with $$\esilon_{t} \sim N(0,H_{t})$$
+
+$$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$, with $$\eta_{t} \sim N(0,Q_{t})$$, and
+
+$$\alpha_{1} \sim N(a_{t},P_{1})$$$
+
+[The Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter) is the dominant estimation strategy for most state-space models.  The Kalman Filter provides information on the unknown latent state ($$\alpha$$) by iteratively calculating a one-step ahead expected value and covariance matrix for the state vector:
+
+$$a_{t+1}=E(\alpha_{t+1}|y_{t},...,y_{1})$$
+
+$$v_{t} = y_{t} - Z_{t}\alpha_{t}$$$
 
 
 # A Seasonal State Space Model in R
