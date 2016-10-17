@@ -208,8 +208,8 @@ where:
 * $$\alpha$$ is a 12 X 1 vector (a level term plus 11 seasonal dummy variables)
 * $$Z$$ should then be 1 X 12
 * $$T$$ should be 12 X 12 
-* $$H$$ is a scalar term containing the measurement error variance...call this $$\sigma_{\epsilon)^{2}$$
-* $$Q$$ is a 2 X 2 matrix containing the process error covariance matrix...In our model the level and the seasonal are independent so $$Q$$ is 0's on the off diagonals.  Oon the main diagonal we have $$\sigma_{level)^{2}$$ and $$\sigma_{seasonal}^{2}$$.
+* $$H$$ is a scalar term containing the measurement error variance...call this $$\sigma_{\epsilon}^{2}$$
+* $$Q$$ is a 2 X 2 matrix containing the process error covariance matrix...In our model the level and the seasonal are independent so $$Q$$ is 0's on the off diagonals.  Oon the main diagonal we have $$\sigma_{level}^{2}$$ and $$\sigma_{seasonal}^{2}$$.
 
 So let's check that the model we specified above at least has the right properties
 
@@ -336,7 +336,7 @@ From the data, we observed (or at least we think we observed) a transition from 
 
 Here, we propose a structural break in 2010 and compare a seasona dummy variable model with a break in 2010 to the state-space model we just fit.
 
-The seasonal dummy variable model with a structural break can be formalized as:
+The seasonal dummy variable model with monthly data and a structural break can be formalized as:
 
 $$y_{it} = \alpha + \sum_{i=1}^{11}\gamma_{it}D_{i}Z_{i}$$
 
