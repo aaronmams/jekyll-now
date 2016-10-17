@@ -39,7 +39,7 @@ I was trying to avoid getting too deep into this but I think it's important for 
 
 The garden variety Gaussian state space model can be obtained by adding a little structure to the set up above.  Namely,
 
-$$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$, with $$\esilon_{t} \sim N(0,H_{t})$$
+$$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$, with $$\epsilon_{t} \sim N(0,H_{t})$$
 
 $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$, with $$\eta_{t} \sim N(0,Q_{t})$$, and
 
@@ -54,6 +54,16 @@ $$v_{t} = y_{t} - Z_{t}\alpha_{t}$$$
 $$P_{t+1}=Var(\alpha_{t+1}|y_{t},...y_{1})$$
 
 $$F_{t}=Var(v_{t})=Z_{t}P_{t}^{T}+H_{t}$$
+
+### Parameter Estimation
+
+Given an initial values $$a_{1},P_{1}$$ and variance parameters $$H_{t},Q_{t}$$ a well-known logliklihood function can be derived for the basic Gaussian State Space model:
+
+$$log L=-\frac{np}{2}log 2\pi - \frac{1}{2} \sum_{t=1}^{n}(log |F_{t}|+v_{t}'F_{t}^{-1}v_{t})$$
+
+### Smoothing
+
+The Kalman Filter helps us solve the likelihood maximization problem (note tha the liklihood function gets solved iteratively since, acording to the Kalman Filter, $$F_{t}$$ relies on information up to time $$t-1$$, $$[y_{1},...y_{t-1}]$$) to obtain optimal estimates for the process and measurement error variances...which is cool...but I am generally more interested in the smoothed estimates of the state vector.  
 
 # A Seasonal State Space Model in R
 
