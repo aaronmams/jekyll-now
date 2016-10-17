@@ -31,9 +31,10 @@ $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$
 
 The state-space framework is attractive to many researchers because it results in a pretty straightforward likelihood function which can be estimated using familiar methods.
 
-### Filtering and Smoothing
+## Filtering and Smoothing
 
-#### Filtering
+### Filtering
+
 I was trying to avoid getting too deep into this but I think it's important for some stuff I want to do later in the post so here goes:
 
 The garden variety Gaussian state space model can be obtained by adding a little structure to the set up above.  Namely,
@@ -42,7 +43,7 @@ $$y_{t}=Z_{t} \alpha_{t} + \epsilon_{t}$$, with $$\esilon_{t} \sim N(0,H_{t})$$
 
 $$\alpha_{t+1}=T_{t}\alpha_{t} + R_{t}\eta_{t}$$, with $$\eta_{t} \sim N(0,Q_{t})$$, and
 
-$$\alpha_{1} \sim N(a_{t},P_{1})$$$
+$$\alpha_{1} \sim N(a_{t},P_{1})$$
 
 [The Kalman Filter](https://en.wikipedia.org/wiki/Kalman_filter) is the dominant estimation strategy for most state-space models.  The Kalman Filter provides information on the unknown latent state ($$\alpha$$) by iteratively calculating a one-step ahead expected value and covariance matrix for the state vector:
 
@@ -50,6 +51,9 @@ $$a_{t+1}=E(\alpha_{t+1}|y_{t},...,y_{1})$$
 
 $$v_{t} = y_{t} - Z_{t}\alpha_{t}$$$
 
+$$P_{t+1}=Var(\alpha_{t+1}|y_{t},...y_{1})$$
+
+$$F_{t}=Var(v_{t})=Z_{t}P_{t}^{T}+H_{t}$$
 
 # A Seasonal State Space Model in R
 
