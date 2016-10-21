@@ -100,9 +100,9 @@ What I've done here is simulated a monthly seasonal process with a little bit of
 
 In the simulated data the column *trips* follows the seasonal dynamics but also has a consistent positive upward trend.  The series *trips.s* is not influenced by the persistent trend.
 
-![simulated trips](/images/north_trips.png)(simulated_seasonal_trips.png)
+![simulated trips](/images/simulated_seasonal_trips.png)
 
-![simulated trips with trend](/imagessimulated_seasonal_trips_withtrend.png)
+![simulated trips with trend](/images/simulated_seasonal_trips_withtrend.png)
 
 ## Step 2: Fit the state space models
 
