@@ -94,9 +94,9 @@ What I've done here is simulated a monthly seasonal process with a little bit of
 
 In the simulated data the column *trips* follows the seasonal dynamics but also has a consistent positive upward trend.  The series *trips.s* is not influenced by the persistent trend.
 
-[simulated trips](simulated_seasonal_trips.png)
+![simulated trips](/images/north_trips.png)(simulated_seasonal_trips.png)
 
-[simulated trips with trend](simulated_seasonal_trips_withtrend.png)
+![simulated trips with trend](/imagessimulated_seasonal_trips_withtrend.png)
 
 ## Step 2: Fit the state space models
 
@@ -251,8 +251,6 @@ In this case, we have an abrupt shift in the system at a discrete point in time.
 Let's take a pictoral look at what is going on focusing on the shift from July peak 1995-2004 to July trough 2005 - 2009:
 
 Initially, the July values are consistently around 70.  After 2004 they shift and are consistently around 20.
-
-PLOT OF ACTUAL DATA SERIES HERE
 
 If we look at the seasonal estimates from the state space model we can get some intuition for how the model is treating this shift.  Rather than introducing a discrete shift between 2004 and 2005, the model is smoothing out the transition from high July values to low July values by gradually decreasing the seasonal effect associated with July observations.  This makes sense from a structural modeling perspective in that we have specified a model where the seasonal component is a random walk with drift...so the seasonal impact in each period should be a function of the estimated impact for the same month last year plus some noise.     
 
