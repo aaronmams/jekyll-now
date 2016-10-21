@@ -10,7 +10,7 @@ title: "A Fun State Space Simulation Exercise"
 
 * [the GitHub code repository](https://github.com/aaronmams/cool-time-series-stuff)
 * [the critical script](https://github.com/aaronmams/cool-time-series-stuff/blob/master/R/ssm.R)
-* [the companion R notebook to this post]()
+
 
 # Outline
 
