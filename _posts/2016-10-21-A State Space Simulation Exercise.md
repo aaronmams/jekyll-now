@@ -1,3 +1,9 @@
+---
+layout: post
+title: "A Fun State Space Simulation Exercise"
+---
+
+
 [In this earlier post](https://aaronmams.github.io/State-Space-Models-with-Seasonal-Data/) I tried to provide some helpful nuggets regarding the use of R's KFAS package for modeling monthly seasonal data using a state space framework.  I was going to add a little simulation experiment I cooked up just to further my understanding of how KFAS and state space models behave...but that post got a little long so I decided to include the simulation as a separate, companion post.
 
 ### Play Along Here
