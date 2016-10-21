@@ -353,7 +353,7 @@ ggplot(subset(model.comp,model%in%c('Seasonal Dummy')),aes(x=date,y=that)) + geo
 
 The seasonal state space model actually looks really good...everywhere except right around the area of the structural break.  What's also pretty cool to note is that the fit of the state space model gets better every year following the break...the structural break messes it up for a year or two but the flexible dynamics in the model adjust to the break pretty quickly.
 
-## The local level model with seasonal fits great....without actually capturing the right seasonal dynamics
+## The seasonal state space model with local level fits great....without actually capturing the right seasonal dynamics
 
 The local level model with seasonal factors has a time varying level that is really good at picking up variation and hence creating a really good fit to the data.  However, it swallows up a lot of the variation that probably should get assigned to the seasonal effect.  
 
