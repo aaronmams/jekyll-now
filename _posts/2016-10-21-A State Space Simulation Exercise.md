@@ -235,6 +235,15 @@ model.comp$eps <- model.comp$y-model.comp$that
 
 tbl_df(model.comp) %>% mutate(abs.error=abs(eps)) %>% group_by(model) %>%
   summarise(mean(abs.error,na.rm=T))
+  
+  # A tibble: 4 × 2
+                   model `mean(abs.error, na.rm = T)`
+                   <chr>                        <dbl>
+1                   KFAS                  6.490529250
+2             KFAS trend                  0.002371808
+3         Seasonal Dummy                  3.470531813
+4 Seasonal Dummy w/trend                  4.212804855
+> 
 
 ```
 
@@ -256,12 +265,31 @@ If we look at the seasonal estimates from the state space model we can get some 
 
 Basically, and this may be a gross over simplification but....the data are saying that the July series starts at 70 and ends at 10. The model is saying that the best way to get there is to shave a little off every year.  
 
-PLOT OF SEASONALS FROM STATE SPACE MODEL HERE
+![plot of smoothed seasonals](/images/kfas_simulation_smoothedstate_notrend)
 
-In contrast, dummy variable regression with structural break fits better because it doesn't assume a slow transition to high July values to low July values.  
+In contrast, dummy variable regression with structural break fits better because it doesn't assume a slow transition from high July values to low July values.  The seasonal effects are fixed across the two distinct data subsamples.  
 
-PLOT OF THE FITTED VALUES FROM THE SEASONAL DUMMY VARIABLE REGRESSION HERE
+Here is a plot of the fitted values versus actual values for the seasonal state space model with no local level:
 
+```R
+ggplot(subset(model.comp,model%in%c('KFAS')),aes(x=date,y=that)) + geom_line(color='red')+ geom_point(color='red') +
+  geom_line(aes(x=date,y=y),color="black") + theme_bw()
+
+```
+
+![kfas fitted](/images/kfas_fitted_notrend.png)
+
+And here is the same plot for the seasonal dummy variable regression with the correct structural break:
+
+```R
+ggplot(subset(model.comp,model%in%c('Seasonal Dummy')),aes(x=date,y=that)) + geom_line(color='red')+ geom_point(color='red') +
+  geom_line(aes(x=date,y=y),color="black") + theme_bw()
+
+```
+
+![seasonal dummy fitted](/images/seasonal_dummy_notrend.png)
+
+The seasonal state space model actually looks really good...everywhere except right around the area of the structural break.  What's also pretty cool to note is that the fit of the state space model gets better every year following the break...the structural break messes it up for a year or two but the flexible dynamics in the model adjust to the break pretty quickly.
 
 ## The local level model with seasonal fits great....without actually capturing the right seasonal dynamics
 
