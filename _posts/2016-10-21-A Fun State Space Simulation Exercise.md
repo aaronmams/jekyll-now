@@ -413,7 +413,7 @@ Kinda looks like if we didn't know where the structural break was, even with the
 
 DISCLAIMER: AIC on the dummy variable model with interaction term is probably not the most rigorous way to test and date structural breaks in a seasonal model.  For starters it's probably better to use a [Bai and Perron (2002)](http://onlinelibrary.wiley.com/doi/10.1002/jae.659/abstract) type test for testing and dating multiple potential change points.
 
- # Final Thoughts
+# Final Thoughts
  
 I'm sorry I don't have more concrete guidance for you on dynamic seasonal issues.  I'm still trying to get a good understanding of them myself.  This post was more about showing you a couple of really simple things I did in order to try and draw some pictures that would help me understand the models and processes a bit more.  
  
