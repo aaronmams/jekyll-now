@@ -325,7 +325,7 @@ Basically, and this may be a gross over simplification but....the data are sayin
 
 In contrast, dummy variable regression with structural break fits better because it doesn't assume a slow transition from high July values to low July values.  The seasonal effects are fixed across the two distinct data subsamples.  
 
-Here is a plot of the fitted values versus actual values for the seasonal state space model with no local level:
+Here is a plot of the fitted values against actual values for the seasonal state space model with no local level:
 
 ```R
 ggplot(subset(model.comp,model%in%c('KFAS')),aes(x=date,y=that)) + geom_line(color='red')+ geom_point(color='red') +
