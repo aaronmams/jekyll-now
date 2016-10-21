@@ -351,4 +351,12 @@ Kinda looks like if we didn't know where the structural break was, even with the
 
 DISCLAIMER: AIC on the dummy variable model with interaction term is probably not the most rigorous way to test and date structural breaks in a seasonal model.  For starters it's probably better to use a [Bai and Perron (2002)](http://onlinelibrary.wiley.com/doi/10.1002/jae.659/abstract) type test for testing and dating multiple potential change points.
 
+ # Final Thoughts
  
+I'm sorry I don't have more concrete guidance for you on dynamic seasonal issues.  I'm still trying to get a good understanding of them myself.  This post was more about showing you a couple of really simple things I did in order to try and draw some pictures that would help me understand the models and processes a bit more.  
+ 
+ If there is anything useful to take away from this exercise it might be this:
+ 
+ 1. State space models are really flexible.  You can stack level, seasonal, cyclic, and other terms together pretty easily...and these components can all have their own dynamics...or they can have coupled dynamics.  This flexibility is really cool....like when it gives you a really nice fit or let's you make really good one-step-ahead predictions of a time-series process.
+ 
+2. This flexibility can also be costly. We showed that a state space model with a local level was capable of providing a really awesome fit to a seasonal time-series with a trending level...but that same model actually produced rather poor insight into the magnitude of the seasonal effects.  
