@@ -80,8 +80,58 @@ df.post <- rbind(
 df.post <- tbl_df(df.post) %>% mutate(date=as.Date(paste(year,"-",month,"-","01",sep=""),format="%Y-%m-%d")) %>%
   arrange(year,month) %>% mutate(july=ifelse(month==7,1,0))
 
+#----------------------------------------------------------------
+# slightly different simulation
+error <- rnorm(120,0,5)
+chow2.df <- tbl_df(data.frame(year=c(rep(1995,12),rep(1996,12),rep(1997,12),rep(1998,12),
+                                     rep(1999,12),rep(2000,12),rep(2001,12),
+                                     rep(2002,12),rep(2003,12),rep(2004,12)),
+                              month=rep(1:12,10),
+                              int=11.206,error=error)) %>%
+  mutate(
+    feb=ifelse(month==2,7.8,0),
+    march=ifelse(month==3,17.47,0),
+    april=ifelse(month==4,30.5,0),
+    may=ifelse(month==5,38.2,0),
+    june=ifelse(month==6,49.4,0),
+    july=ifelse(month==7,59.3,0),
+    aug=ifelse(month==8,26.2,0),
+    sept=ifelse(month==9,19.2,0),
+    oct=ifelse(month==10,11.8,0),
+    nov=ifelse(month==11,7.4,0),
+    dec=ifelse(month==12,0.8,0),
+    trips.s=int+feb+march+april+may+june+july+aug+sept+oct+nov+dec+error,
+    date=as.Date(paste(year,"-",month,"-","01",sep=""),format="%Y-%m-%d")) %>%
+  arrange(year,month)
+error <- rnorm(72,0,5)              
+chow2.df2 <- tbl_df(data.frame(year=c(rep(2005,12),rep(2006,12),rep(2007,12),rep(2008,12),
+                                      rep(2009,12),rep(2010,12)),
+                               month=rep(1:12,6),
+                               int=69.6,error=error)) %>%
+  mutate(
+    feb=ifelse(month==2,-10.6,0),
+    march=ifelse(month==3,-16.5,0),
+    april=ifelse(month==4,-27.4,0),
+    may=ifelse(month==5,-37.8,0),
+    june=ifelse(month==6,-50.5,0),
+    july=ifelse(month==7,-61.6,0),
+    aug=ifelse(month==8,-50.35,0),
+    sept=ifelse(month==9,-37.11,0),
+    oct=ifelse(month==10,-26.5,0),
+    nov=ifelse(month==11,-8.5,0),
+    dec=ifelse(month==12,-3.1,0),
+    trips.s=int+feb+march+april+may+june+july+aug+sept+oct+nov+dec+error,
+    date=as.Date(paste(year,"-",month,"-","01",sep=""),format="%Y-%m-%d")) %>%
+  arrange(year,month)
+
+chow2.df <- chow2.df %>% select(trips.s,year,month,date) %>% mutate(july=ifelse(month==7,1,0))
+chow2.df2 <- chow2.df2 %>% select(trips.s,year,month,date) %>% mutate(july=ifelse(month==7,1,0))
+
+#---------------------------------------------------------------
+
 #combine the two data frames
 ss.data <- rbind(df,df.post)
+#ss.data <- rbind(chow2.df,chow2.df2)
 
 #give the data a trend
 trend <- 2
@@ -271,7 +321,7 @@ If we look at the seasonal estimates from the state space model we can get some 
 
 Basically, and this may be a gross over simplification but....the data are saying that the July series starts at 70 and ends at 10. The model is saying that the best way to get there is to shave a little off every year.  
 
-![plot of smoothed seasonals](/images/kfas_simulation_smoothedstate_notrend)
+![plot of smoothed seasonals](/images/kfas_simulation_smoothedstate_notrend.png)
 
 In contrast, dummy variable regression with structural break fits better because it doesn't assume a slow transition from high July values to low July values.  The seasonal effects are fixed across the two distinct data subsamples.  
 
