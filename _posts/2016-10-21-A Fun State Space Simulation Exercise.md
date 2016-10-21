@@ -319,7 +319,7 @@ Initially, the July values are consistently around 70.  After 2004 they shift an
 
 If we look at the seasonal estimates from the state space model we can get some intuition for how the model is treating this shift.  Rather than introducing a discrete shift between 2004 and 2005, the model is smoothing out the transition from high July values to low July values by gradually decreasing the seasonal effect associated with July observations.  This makes sense from a structural modeling perspective in that we have specified a model where the seasonal component is a random walk with drift...so the seasonal impact in each period should be a function of the estimated impact for the same month last year plus some noise.     
 
-Basically, and this may be a gross over simplification but....the data are saying that the July series starts at 70 and ends at 10. The model is saying that the best way to get there is to shave a little off every year.  
+Basically, and this may be a gross over simplification but....the data are saying that the July series starts at 70 and ends at 10. The model is saying that the best way to get there is to shave a little off the estimated seasonal effect every year.  
 
 ![plot of smoothed seasonals](/images/kfas_simulation_smoothedstate_notrend.png)
 
