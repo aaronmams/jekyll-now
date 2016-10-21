@@ -331,7 +331,7 @@ ggplot(plot.df,aes(x=date,y=seasonal)) + geom_line() + geom_point(aes(color=fact
 
 In contrast, dummy variable regression with structural break fits better because it doesn't assume a slow transition from high July values to low July values.  The seasonal effects are fixed across the two distinct data subsamples.  
 
-Here is a plot of the fitted values against actual values for the seasonal state space model with no local level:
+Here is a plot of the fitted values against actual values for the seasonal state space model with no local level...with observed values in black and fitted values in red:
 
 ```R
 ggplot(subset(model.comp,model%in%c('KFAS')),aes(x=date,y=that)) + geom_line(color='red')+ geom_point(color='red') +
