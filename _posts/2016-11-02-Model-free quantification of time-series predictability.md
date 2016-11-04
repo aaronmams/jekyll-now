@@ -28,14 +28,14 @@ The paper proceeded according to the following basic breakdown:
 1. generate several different time-series with different complexity properties
 2. Use 4 broad classes of models to try and predict out-of-sample observations of each series.  The 4 broad classes were:
 
-* naive: the naive model basically says the best predictor of $x_{t}$ given $[x_{1},...x_{t-1}]$ is the average
-* random walk: a model that says the best prediction of $x_{t}$ is $x_{t-1}$
-* ARIMA: the auto.arima procedure in R was used to determine the best ARIMA order to predict each time-series
-* The Lorenz method of analogues....I won't pretend I know what this is.  I don't.
+A. naive: the naive model basically says the best predictor of $x_{t}$ given $x_{1},...x_{t-1}$ is the average
+B. random walk: a model that says the best prediction of $x_{t}$ is $x_{t-1}$
+C. ARIMA: the auto.arima procedure in R was used to determine the best ARIMA order to predict each time-series
+D. The Lorenz method of analogues....I won't pretend I know what this is.  I don't.
 
 3. Calculate the Mean Absolute Scaled Prediction Error for each model applied to each time-series.  MASE is defined as:
 
-$$MASE=\sum_{j=n+1}^{k+n+1}\frac{|p_{j}-c_{j}|}{\frac{k}{n-1}\sum_{i=2}^{n}|x_{i}-x{i-1}|}$$
+$$ MASE=\sum_{j=n+1}^{k+n+1}\frac{|p_{j}-c_{j}|}{\frac{k}{n-1}\sum_{i=2}^{n}|x_{i}-x{i-1}|} $$
 
 4. Quantify the 'complexity' of each time-series.  Philosophically, the authors describe complexity as a function of redundancy, practically, the authors argue that *weighted permutation entropy* is an effective way to measure redundancy.
 
