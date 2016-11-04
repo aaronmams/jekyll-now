@@ -16,7 +16,7 @@ A supporting reference:
 [Practical consideration of permutation entropy: A tutorial review](http://link.springer.com/article/10.1140/epjst/e2013-01862-7)
 
 
-##The General Idea
+## The General Idea
 
 This paper focuses on the relationship between complexity of a time-series and predictability.  My interpretation of what the authors are focusing on is the following: can we measure how much structure exists in a particular time-series that may be exploited in order to make good prediction (if we had the correct model)? 
 
@@ -35,7 +35,7 @@ The paper proceeded according to the following basic breakdown:
 
 3. Calculate the Mean Absolute Scaled Prediction Error for each model applied to each time-series.  MASE is defined as:
 
-$MASE=\sum_{j=n+1}^{k+n+1}\frac{|p_{j}-c_{j}|}{\frac{k}{n-1}\sum_{i=2}^{n}|x_{i}-x{i-1}|}$
+$$MASE=\sum_{j=n+1}^{k+n+1}\frac{|p_{j}-c_{j}|}{\frac{k}{n-1}\sum_{i=2}^{n}|x_{i}-x{i-1}|}$$
 
 4. Quantify the 'complexity' of each time-series.  Philosophically, the authors describe complexity as a function of redundancy, practically, the authors argue that *weighted permutation entropy* is an effective way to measure redundancy.
 
