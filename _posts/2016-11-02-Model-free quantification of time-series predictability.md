@@ -1,4 +1,7 @@
-
+---
+layout: post
+title: "Model-free quantification of time-series predictability"
+---
 
 My lab has a small 'quantitative methods' reading group that meets every Thursday.  The idea is to focus on emerging topics in math/statistics/estimation/modeling/etc that might be applicable across disciplines.  Since I work primarily with physical and biological scientists, the papers we read tend to have an ecological bent (Journal of Statistical Physics, Applied Ecology, and Ecology Letters tend to be rich sources for this reading group).  Because of this bent, and the fact that I'm around Ecologists/Biologist/Hydrologists/Geneticists all day (and seldom around Economists), I usually use my blogging time for more pure 'Econ' related pursuits.
 
@@ -25,8 +28,8 @@ The paper proceeded according to the following basic breakdown:
 1. generate several different time-series with different complexity properties
 2. Use 4 broad classes of models to try and predict out-of-sample observations of each series.  The 4 broad classes were:
 
-* naive: the naive model basically says the best predictor of x(t) given [x(1),...x(t-1)] is the average
-* random walk: a model that says the best prediction of x(t) is x(t-1)
+* naive: the naive model basically says the best predictor of $x_{t}$ given $[x_{1},...x_{t-1}]$ is the average
+* random walk: a model that says the best prediction of $x_{t}$ is $x_{t-1}$
 * ARIMA: the auto.arima procedure in R was used to determine the best ARIMA order to predict each time-series
 * The Lorenz method of analogues....I won't pretend I know what this is.  I don't.
 
@@ -56,7 +59,7 @@ Consider the time-series x=[6,9,11,12,8,13,5] which has N=7.
 2. Initialize i=1 and $z_{j=1,...,6}=0$
 3. The rank sequence of the selected values 6,9,11 is 1,2,3.
 4. It is equal to $\pi_{1}$, therefore $z_{1}$ is increased to 1.
-5. Because i<7-3, teh next values 9,11,12 are selected which have the rank sequence 1,2,3.
+5. Because $i<7-3$, the next values 9,11,12 are selected which have the rank sequence 1,2,3.
 4. It is again equal to $\pi_{1}$, therefore $z_{1} is increased to 2.  The loop between Step 3 and Step 5 is then passed through three more times, which leads in the end to $z_{1}=2, z_{2}=0, z_{3}=1, z_{4}=2, z_{5}=0, z_{6}=0$.
 6. The values of the counters are divided by *sum=5* which leads to $p_{1}'$=2/5, $p_{2}'$=0,$p_{3}'$=1/5, $p_{4}'$=2/5, $p_{5}'$=0, $p_{6}'$=0.
 7.  On the basis of non-zero $p_{j}'$, the permutation entropy of order 3 is $H_{3}=(2/5ln(2/5)+1/5ln(1/5)+2/5ln(2/5))$.
