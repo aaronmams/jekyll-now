@@ -3,7 +3,19 @@ layout: post
 title: "Model-free quantification of time-series predictability"
 ---
 
-My lab has a small 'quantitative methods' reading group that meets every Thursday.  The idea is to focus on emerging topics in math/statistics/estimation/modeling/etc that might be applicable across disciplines.  Since I work primarily with physical and biological scientists, the papers we read tend to have an ecological bent (*Journal of Statistical Physics*, *Applied Ecology*, and *Ecology Letters* tend to be rich sources for this reading group).  Because of this bent, and the fact that I'm around Ecologists/Biologist/Hydrologists/Geneticists all day (and seldom around Economists), I usually use my blogging time for more pure 'Econ' related pursuits.
+## Executive Summary
+
+I read an interesting paper recently.  I wrote a half-ass review of it here.  If you don't want to read the rest of my discussion on this topic, here are some interesting nuggets that I took from my reading of "Model-free quantification of time-series predictability" by Garland, Jame, and Bradley, published in *Physical Review* v. 90:
+
+1. A much more experienced time-series analyst in the reading group pointed out that for a handful of time-series that we generated in our group meeting, the Weighted Permutation Entropy had no notable relationship to the maximum Lyapanov Exponent....I don't spend a lot of time with chaotic dynamics so I'm not all that confident in my understanding of Lyapanov Exponents but this divergence was generally viewed as unsettling.
+
+2. The abstract of the paper in question hinted that one implication of this line of inquiry ('model-free quantification of predictability') was that one could make some inferences about what class of time-series model was likely to yeild the best predictions for time-series exhibiting different "complexities."  If the authors did indeed make some commentary on this subject, they managed to hide it quite well.  I read the paper 3 times and didn't pick up much in the way of evaluating potential for different time-series models to perform in different "complexity" paradigms.  
+
+3. A lot of the stuff in the paper was pretty new to me.  My experience with Quantitative Ecology and Mathematical Biology is that sometimes things sound new and exciting to me because they use different words for things that I actually find old and boring...and sometimes things sound new and exciting because Ecologists and Biologists are grappling with problems that have differnt features, constraints, or dimensions than problems typically considered in the Social Sciences...I probably need to read a few more papers in the 'Complexity Theory' strand of literature to know where this stuff falls.
+
+## Background
+
+My lab has a small 'quantitative methods' reading group that meets every Thursday (I'm somewhat ashamed to admit that we, rather arrogantly, call ourselves 'math club').  The idea is to focus on emerging topics in math/statistics/estimation/modeling/etc that might be applicable across disciplines.  Since I work primarily with physical and biological scientists, the papers we read tend to have an ecological bent (*Journal of Statistical Physics*, *Applied Ecology*, and *Ecology Letters* tend to be rich sources for this reading group).  Because of this bent, and the fact that I'm around Ecologists/Biologist/Hydrologists/Geneticists all day (and seldom around Economists), I usually use my blogging time for more pure 'Econ' related pursuits.
 
 However, yesterday's paper kind of hit on the time-series theme that I've been blogging about lately so I thought it might be worth reviewing.  
 
@@ -76,6 +88,8 @@ Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is
 
 ### Get permutation entropy for a "predictable" series versus a "complicated" one
 
+For this exercise I define a "simple" time-series as $x_{t}=cos(t)$.  This is a series with deterministic dynamics and a predictable repeating pattern.  I define the "complex" time-series as a random walk.  The random walk is the cononical example of a purely complex series.
+
 ```R
 library(statcomp)
 
@@ -111,4 +125,10 @@ permutation_entropy(opd)
 
 Clearly, I'm still pretty green in this area but it is encouraging that the 'simple' time-series ($x_{t}=cos(t)$) has low permutation entropy, indicating less relative complexity than the random walk series.
 
-## 
+## Some Final Thoughts
+
+1. A much more experienced time-series analyst in the reading group pointed out that for a handful of time-series that we generated in our group meeting, the Weighted Permutation Entropy had no notable relationship to the maximum Lyapanov Exponent....I don't spend a lot of time with chaotic dynamics so I'm not all that confident in my understanding of Lyapanov Exponents but this divergence was generally viewed as unsettling.
+
+2. The abstract of the paper in question hinted that one implication of this line of inquiry ('model-free quantification of predictability') was that one could make some inferences about what class of time-series model was likely to yeild the best predictions for time-series exhibiting different "complexities."  If the authors did indeed make some commentary on this subject, they managed to hide it quite well.  I read the paper 3 times and didn't pick up much in the way of evaluating potential for different time-series models to perform in different "complexity" paradigms.  
+
+3. A lot of the stuff in the paper was pretty new to me.  My experience with Quantitative Ecology and Mathematical Biology is that sometimes things sound new and exciting to me because they use different words for things that I actually find old and boring...and sometimes things sound new and exciting because Ecologists and Biologists are grappling with problems that have differnt features, constraints, or dimensions than problems typically considered in the Social Sciences...I probably need to read a few more papers in the 'Complexity Theory' strand of literature to know where this stuff falls. 
