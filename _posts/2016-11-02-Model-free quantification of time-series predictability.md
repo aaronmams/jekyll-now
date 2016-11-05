@@ -77,27 +77,33 @@ Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is
 ```{r}
 library(statcomp)
 
-# a really simple series
+# a simple series
 t <- c(1:100)
 xt <- cos(t)
-plot(xt,type='l')
+df1 <- data.frame(t=t,xt=xt,model='cosine')
+
+# a complicated one
+t=100;
+xt = rnorm(M)
+xt = cumsum(xt)
+
+df2 <- data.frame(t=c(1:100),xt=xt,model='random walk')
+
+df <- rbind(df1,df2)
 
 #get the pattern distribution and the permutation entropy for this simple series
-opd = ordinal_pattern_distribution(x = xt, ndemb = 6)
+opd = ordinal_pattern_distribution(x = df$xt[df$model=='cosine'], ndemb = 6)
 permutation_entropy(opd)
 
 [1] 0.4202418
 
-# a complicated one...random walk.
-M=100;
-yt = rnorm(M);
-plot(cumsum(yt), type='l')
-
 #get the pattern distribution and the permutation entropy for the more complicated series
-opd = ordinal_pattern_distribution(x = yt, ndemb = 6)
+opd = ordinal_pattern_distribution(x = df$xt[df$model=='random walk'], ndemb = 6)
 permutation_entropy(opd)
 
 [1] 0.6810675
 ```
+![entropy_plots](/images/entropy_plots.png)
+
 
 Clearly, I'm still pretty green in this area but it is encouraging that the 'simple' time-series ($x_{t}=cos(t)$) has low permutation entropy, indicating less relative complexity than the random walk series.
