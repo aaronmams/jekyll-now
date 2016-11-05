@@ -25,13 +25,13 @@ An aside: I found the paper philosophically interesting because it was really tr
 ## The Set Up
 The paper proceeded according to the following basic breakdown:
 
-1. generate several different time-series with different complexity properties
+1. generate several different time-series with different complexity properties - some with simple periodic dynamics, some with highly non-linear and chaotic dynamics.
 2. Use 4 broad classes of models to try and predict out-of-sample observations of each series.  
 3. Calculate the Mean Absolute Scaled Prediction Error for each model applied to each time-series.  MASE is defined as:
 
 $$ MASE=\sum_{j=n+1}^{k+n+1}\frac{|p_{j}-c_{j}|}{\frac{k}{n-1}\sum_{i=2}^{n}|x_{i}-x{i-1}|} $$
 
-4. Quantify the 'complexity' of each time-series.  Philosophically, the authors describe complexity as a function of redundancy, practically, the authors argue that *weighted permutation entropy* is an effective way to measure redundancy.
+4. Quantify the 'complexity' of each time-series.  Philosophically, the authors describe complexity as a function of redundancy... practically, the authors argue that *weighted permutation entropy* is an effective way to measure redundancy.
 5. Evaluate the relationship between prediction error and 'complexity' for each model and each time-series.
 
 The four broad classes of model that were used from Step 2 above were:
@@ -45,6 +45,8 @@ The four broad classes of model that were used from Step 2 above were:
 ## The Metrics
 
 One of the big things I got out of this paper was the metric of Permutation Entropy for measuring the 'complexity' of a time-series.  Permutation Entropy is not a new concept/measurement but it was new to me..although saying I was unfamiliar with an arbitrary entropy measure isn't saying much of an consequence.  For whatever reason, I don't use entropy measures very often in my work.
+
+The overriding idea in this paper is that redundancy in a time-series means that the time-series has some repeating patterns and some structure that - provided one has the right model to capture the underlying dynamics - can be exploited in order to make good predictions about unobserved values in the series.  Time-series with little redundancy are 'complex' as they have very little structure that can be leveraged.  Permutation entropy, or more precisely, weighted permutation entropy is a proxy for redundancy...and therefore a measure of how much structure exists in a time-series and can be exploited in order to forecast.
 
 ## A Quick Expiriment
 
@@ -103,7 +105,10 @@ permutation_entropy(opd)
 
 [1] 0.6810675
 ```
+
 ![entropy_plots](/images/entropy_plots.png)
 
 
 Clearly, I'm still pretty green in this area but it is encouraging that the 'simple' time-series ($x_{t}=cos(t)$) has low permutation entropy, indicating less relative complexity than the random walk series.
+
+## 
