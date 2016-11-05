@@ -3,7 +3,7 @@ layout: post
 title: "Model-free quantification of time-series predictability"
 ---
 
-My lab has a small 'quantitative methods' reading group that meets every Thursday.  The idea is to focus on emerging topics in math/statistics/estimation/modeling/etc that might be applicable across disciplines.  Since I work primarily with physical and biological scientists, the papers we read tend to have an ecological bent (Journal of Statistical Physics, Applied Ecology, and Ecology Letters tend to be rich sources for this reading group).  Because of this bent, and the fact that I'm around Ecologists/Biologist/Hydrologists/Geneticists all day (and seldom around Economists), I usually use my blogging time for more pure 'Econ' related pursuits.
+My lab has a small 'quantitative methods' reading group that meets every Thursday.  The idea is to focus on emerging topics in math/statistics/estimation/modeling/etc that might be applicable across disciplines.  Since I work primarily with physical and biological scientists, the papers we read tend to have an ecological bent (*Journal of Statistical Physics*, *Applied Ecology*, and *Ecology Letters* tend to be rich sources for this reading group).  Because of this bent, and the fact that I'm around Ecologists/Biologist/Hydrologists/Geneticists all day (and seldom around Economists), I usually use my blogging time for more pure 'Econ' related pursuits.
 
 However, yesterday's paper kind of hit on the time-series theme that I've been blogging about lately so I thought it might be worth reviewing.  
 
