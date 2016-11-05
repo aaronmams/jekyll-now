@@ -96,6 +96,8 @@ plot(cumsum(yt), type='l')
 #get the pattern distribution and the permutation entropy for the more complicated series
 opd = ordinal_pattern_distribution(x = yt, ndemb = 6)
 permutation_entropy(opd)
+
 [1] 0.6810675
 ```
+
 Clearly, I'm still pretty green in this area but it is encouraging that the 'simple' time-series ($x_{t}=cos(t)$) has low permutation entropy, indicating less relative complexity than the random walk series.
