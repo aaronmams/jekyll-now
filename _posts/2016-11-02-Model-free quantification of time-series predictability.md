@@ -61,11 +61,11 @@ Consider the time-series x=[6,9,11,12,8,13,5] which has N=7.
 3. The rank sequence of the selected values 6,9,11 is 1,2,3.
 4. It is equal to $\pi_{1}$, therefore $z_{1}$ is increased to 1.
 5. Because $i<7-3$, the next values 9,11,12 are selected which have the rank sequence 1,2,3.
-4. It is again equal to $\pi_{1}$, therefore $z_{1} is increased to 2.  The loop between Step 3 and Step 5 is then passed through three more times, which leads in the end to $z_{1}=2, z_{2}=0, z_{3}=1, z_{4}=2, z_{5}=0, z_{6}=0$.
-6. The values of the counters are divided by *sum=5* which leads to $p_{1}'$=2/5, $p_{2}'$=0,$p_{3}'$=1/5, $p_{4}'$=2/5, $p_{5}'$=0, $p_{6}'$=0.
-7.  On the basis of non-zero $p_{j}'$, the permutation entropy of order 3 is $H_{3}=(2/5ln(2/5)+1/5ln(1/5)+2/5ln(2/5))$.
+4. It is again equal to $\pi_{1}$, therefore $z_{1}$ is increased to 2.  The loop between Step 3 and Step 5 is then passed through three more times, which leads in the end to $z_{1}=2, z_{2}=0, z_{3}=1, z_{4}=2, z_{5}=0, z_{6}=0$.
+6. The values of the counters are divided by *sum=5* which leads to $p_{1}$=2/5, $p_{2}$=0,$p_{3}$=1/5, $p_{4}$=2/5, $p_{5}$=0, $p_{6}$=0.
+7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is $H_{3}=(2/5ln(2/5)+1/5ln(1/5)+2/5ln(2/5))$.
 
-### Get permutation entropy for a 'predictable' series versus a 'complicated' one
+### Get permutation entropy for a "predictable" series versus a "complicated" one
 
 ```{r}
 library(statcomp)
