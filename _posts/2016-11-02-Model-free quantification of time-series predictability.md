@@ -76,7 +76,7 @@ Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is
 
 ### Get permutation entropy for a "predictable" series versus a "complicated" one
 
-```{r}
+```R
 library(statcomp)
 
 # a simple series
