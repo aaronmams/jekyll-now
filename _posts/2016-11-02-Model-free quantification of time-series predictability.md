@@ -3,9 +3,10 @@ layout: post
 title: "Model-free quantification of time-series predictability"
 ---
 
-## Executive Summary
+I read an interesting paper recently.  I wrote a half-ass review of it here.  Below I provide some notes and interesting nuggets I took from my reading of "Model-free quantification of time-series predictability" by Garland, Jame, and Bradley, published in *Physical Review* v. 90:
 
-I read an interesting paper recently.  I wrote a half-ass review of it here.  If you don't want to read the rest of my discussion on this topic, here are some interesting nuggets that I took from my reading of "Model-free quantification of time-series predictability" by Garland, Jame, and Bradley, published in *Physical Review* v. 90:
+## Executive Summary
+Here are the main points and maybe a few things to think about as you read on:
 
 1. Permutation Entropy is pretty cool.  Basically, 'complexity' of a time-series can be evaluated in terms of repetition.  That is by asking, how often do patterns of particular lengths repeat in the time-series? Permutation entropy is a measure of repetition.  It provides a way of simplifying a time-series by using symbolic dynamics and looking for patterns in the simplied series.
 
