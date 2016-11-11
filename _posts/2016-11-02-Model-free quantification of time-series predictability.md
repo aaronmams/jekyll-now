@@ -7,11 +7,17 @@ title: "Model-free quantification of time-series predictability"
 
 I read an interesting paper recently.  I wrote a half-ass review of it here.  If you don't want to read the rest of my discussion on this topic, here are some interesting nuggets that I took from my reading of "Model-free quantification of time-series predictability" by Garland, Jame, and Bradley, published in *Physical Review* v. 90:
 
+1. Permutation Entropy is pretty cool.  Basically, 'complexity' of a time-series can be evaluated in terms of repetition.  That is by asking, how often do patterns of particular lengths repeat in the time-series? Permutation entropy is a measure of repetition.  It provides a way of simplifying a time-series by using symbolic dynamics and looking for patterns in the simplied series.
+
+2. A lot of the stuff in the paper was pretty new to me.  My experience with Quantitative Ecology and Mathematical Biology is that sometimes things sound new and exciting to me because they use different words for things that I actually find old and boring...and sometimes things sound new and exciting because Ecologists and Biologists are grappling with problems that have differnt features, constraints, or dimensions than problems typically considered in the Social Sciences...I probably need to read a few more papers in the 'Complexity Theory' strand of literature to know where this stuff falls.
+
+3. I still have yet to play around with the different tuning parameters used in complexity metrics like Permutation Entropy.  I'm hoping to do some of this soon, but at the moment I'm still a bit hazy on the role of 'word length' or the maximum permuntation length.
+
+Some paper specific issues that might be interesting to others:
+
 1. A much more experienced time-series analyst in the reading group pointed out that for a handful of time-series that we generated in our group meeting, the Weighted Permutation Entropy had no notable relationship to the maximum Lyapanov Exponent....I don't spend a lot of time with chaotic dynamics so I'm not all that confident in my understanding of Lyapanov Exponents but this divergence was generally viewed as unsettling.
 
 2. The abstract of the paper in question hinted that one implication of this line of inquiry ('model-free quantification of predictability') was that one could make some inferences about what class of time-series model was likely to yeild the best predictions for time-series exhibiting different "complexities."  If the authors did indeed make some commentary on this subject, they managed to hide it quite well.  I read the paper 3 times and didn't pick up much in the way of evaluating potential for different time-series models to perform in different "complexity" paradigms.  
-
-3. A lot of the stuff in the paper was pretty new to me.  My experience with Quantitative Ecology and Mathematical Biology is that sometimes things sound new and exciting to me because they use different words for things that I actually find old and boring...and sometimes things sound new and exciting because Ecologists and Biologists are grappling with problems that have differnt features, constraints, or dimensions than problems typically considered in the Social Sciences...I probably need to read a few more papers in the 'Complexity Theory' strand of literature to know where this stuff falls.
 
 ## Background
 
@@ -53,7 +59,6 @@ The four broad classes of model that were used from Step 2 above were:
 * ARIMA: the auto.arima procedure in R was used to determine the best ARIMA order to predict each time-series
 * The Lorenz method of analogues....I won't pretend I know what this is.  I don't.
 
-
 ## The Metrics
 
 One of the big things I got out of this paper was the metric of Permutation Entropy for measuring the 'complexity' of a time-series.  Permutation Entropy is not a new concept/measurement but it was new to me..although saying I was unfamiliar with an arbitrary entropy measure isn't saying much of an consequence.  For whatever reason, I don't use entropy measures very often in my work.
@@ -68,15 +73,15 @@ I'v only spent a little time trying to 'roll my own' permutation entropy code so
 
 1. Define the order of permutation n. That leads to the possible permutation patterns $\pi_{j} (j = 1, .., n!)$ which are built from the numbers 1, ..., n. 
 
-2. Initialize i = 1 as the index of the considered time series ${xi}i=1,...,N$ and the counter $z_{j} = 0 for each \pi_{j}$.
+2. Initialize i = 1 as the index of the considered time series $x_{i}=1,...,N$ and the counter $z_{j} = 0$ for each $\pi_{j}$.
 
 3. Calculate the ranks of the values in the sequence $x_{i}, ..., x_{i+n−1}$ which leads to the rank sequence $r_{i}, ..., r_{i+n−1}$. The ranks are the indices of the values in ascending sorted order.
 
-4. Compare the rank sequence of step 3 with all permutations pattern and increase the counter of the equal pattern $/pi_{k} = r_{i}, ..., r_{i+n−1} by one (z_{k} = z_{k} + 1).$
+4. Compare the rank sequence of step 3 with all permutations pattern and increase the counter of the equal pattern $\pi_{k} = r_{i}, ..., r_{i+n−1}$ by one $(z_{k} = z_{k} + 1).$
 
 5. If $i ≤ N − n$ then increase i by one (i = i + 1) and start from step 3 again. If $i>N − n$ go to the next step.
 
-6. Calculate the relative frequency of all permutations $/pi_{j} by means of p_{j} = \frac{z_{j}}{z_{k}}$ as an estimation of their probability $p_{j}$ .
+6. Calculate the relative frequency of all permutations $/pi_{j}$ by means of $p_{j} = \frac{z_{j}}{z_{k}}$ as an estimation of their probability $p_{j}$ .
 
 7. Select all values of $p_{j}$ greater than 0 (since empty symbol classes $0 log(0) = 0$) and calculate the permutation entropy.
 
