@@ -62,7 +62,23 @@ The overriding idea in this paper is that redundancy in a time-series means that
 
 ## A Quick Expiriment
 
-I haven't had time to code up my own permutation entropy measure yet...but, as luck would have it, an R package to do it already exists...it's called [statcomp](https://cran.r-project.org/web/packages/statcomp/statcomp.pdf).  For those of you firmly in the 'roll your own camp' the supporting reference I provided above contains some pseudo-code that may be of interest:
+I'v only spent a little time trying to 'roll my own' permutation entropy code so this is probably really clunky...but, as luck would have it, an R package to do it already exists...it's called [statcomp](https://cran.r-project.org/web/packages/statcomp/statcomp.pdf).  I base my R code on the following definition and pseudo-code provided in [Practical consideration of permutation entropy: A tutorial review](http://link.springer.com/article/10.1140/epjst/e2013-01862-7)...although I note that I'm pretty sure there are a few errors in the paper.
+
+### Basic steps for calculating permutation entropy:
+
+1. Define the order of permutation n. That leads to the possible permutation patterns $\pi_{j} (j = 1, .., n!)$ which are built from the numbers 1, ..., n. 
+
+2. Initialize i = 1 as the index of the considered time series ${xi}i=1,...,N$ and the counter $z_{j} = 0 for each \pi_{j}$.
+
+3. Calculate the ranks of the values in the sequence $x_{i}, ..., x_{i+n−1}$ which leads to the rank sequence $r_{i}, ..., r_{i+n−1}$. The ranks are the indices of the values in ascending sorted order.
+
+4. Compare the rank sequence of step 3 with all permutations pattern and increase the counter of the equal pattern $/pi_{k} = r_{i}, ..., r_{i+n−1} by one (z_{k} = z_{k} + 1).$
+
+5. If $i ≤ N − n$ then increase i by one (i = i + 1) and start from step 3 again. If $i>N − n$ go to the next step.
+
+6. Calculate the relative frequency of all permutations $/pi_{j} by means of p_{j} = \frac{z_{j}}{z_{k}}$ as an estimation of their probability $p_{j}$ .
+
+7. Select all values of $p_{j}$ greater than 0 (since empty symbol classes $0 log(0) = 0$) and calculate the permutation entropy.
 
 ### Pseudo Code for calculating permutation entropy:
 
@@ -84,7 +100,7 @@ Step 4. It is again equal to $\pi_{1}$, therefore $z_{1}$ is increased to 2.  Th
 
 Step 6. The values of the counters are divided by *sum=5* which leads to $p_{1}$=2/5, $p_{2}$=0,$p_{3}$=1/5, $p_{4}$=2/5, $p_{5}$=0, $p_{6}$=0.
 
-Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is $H_{3}=(2/5ln(2/5)+1/5ln(1/5)+2/5ln(2/5))$.
+Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is $H_{3}=(\frac{2}{5}ln\frac{2}{5}+1/5ln(1/5)+2/5ln(2/5))$.
 
 ### Get permutation entropy for a "predictable" series versus a "complicated" one
 
