@@ -100,7 +100,58 @@ Step 4. It is again equal to $\pi_{1}$, therefore $z_{1}$ is increased to 2.  Th
 
 Step 6. The values of the counters are divided by *sum=5* which leads to $p_{1}$=2/5, $p_{2}$=0,$p_{3}$=1/5, $p_{4}$=2/5, $p_{5}$=0, $p_{6}$=0.
 
-Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is $H_{3}=(\frac{2}{5}ln\frac{2}{5}+1/5ln(1/5)+2/5ln(2/5))$.
+Step 7.  On the basis of non-zero $p_{j}$, the permutation entropy of order 3 is $H_{3}=(\frac{2}{5}ln\frac{2}{5}+\frac{1}{5}ln\frac{1}{5}+\frac{2}{5}ln\frac{2}{5})$.
+
+### My Permutation Entropy Code
+
+Based on the algorithms explained above I coded up a first-pass at automated permutation entropy.  Here it is:
+
+```R
+#permutation entropy
+library(gtools)
+
+x = c(6,9,11,12,8,13,5)
+
+#---------------------------------------------
+#create all the permutations
+# n -> size of source vector
+# r -> size of target vector
+# v -> source vector, defaults to 1:n
+# repeats.allowed = FALSE (default)
+
+perm.ent<-function(x,n){
+
+#create the corresponding pi's
+pi <- permutations(n = n, r = n)
+
+#empty vector to put the z values in
+z <- rep(0,nrow(pi))
+
+nloop <- (length(x)-n)+1
+for(i in 1:nloop){
+  xnow <- x[i:(i+(n-1))]
+  rnow <-  rank(xnow)
+  check<-list()
+    for(j in 1:nrow(pi)){
+      check[j]<-sum(rnow==pi[j,])
+    }
+z.idx <- which(unlist(check)==n)  
+z[z.idx]<- z[z.idx]+1  
+}
+#normalize counter values
+z <- z/sum(z)
+
+h.fn <- function(x){
+  return(x*log(x))
+}
+
+H=-sum(unlist(lapply(z[z>0],h.fn)))
+h = H/(length(z[z>0])-1)
+return(data.frame(H=H,h=h))
+}
+#------------------------------------------------
+
+```
 
 ### Get permutation entropy for a "predictable" series versus a "complicated" one
 
