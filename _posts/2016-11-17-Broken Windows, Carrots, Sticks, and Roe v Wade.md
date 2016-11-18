@@ -6,8 +6,11 @@ title: "Broken Windows, Carrots, Sticks, and Roe v Wade"
 In 1982 [Kelling and Wilson](http://www.theatlantic.com/magazine/archive/1982/03/broken-windows/304465/) published their article in *The Atlantic Monthly* titled: "Broken Windows: The Police and Neighborhood Safety." Perhaps because I have followed the academic and public policy discussions surrounding "Broken Windows" policing, I was kind of surprised to hear a segment on NPR today that made it clear to me that there are still a lot of people who think the "Broken Windows" metaphore is associated with time-tested successful policing strategies.  I guess I thought everyone basically knew that policing based on the "Broken Windows" hypothesis has been empirically shown to have extrememly questionable/uncertain benefits.  
 
 A Quick Bit of Nomenclature and History:
+
 * In 1969 a Stanford psychologist, Phillip Zimbardo, arranged to have two cars without license plates abandoned on the street.  One in Palo Alto, CA and another in The Bronx, NY.  He observed that the car abandoned in the Bronx was basically ripped apart and sold for parts within 10 minutes of being abandoned.  The car in Palo Alto sat untouched for about a week until Zimbardo himself broke a window.  After that, the car was far game and got ransacked pretty quickly.  He took this as evidence that disorder invites disorder.  
+
 * "Broken Windows" is a theory of policing that seems to have originated with Kelling and Wilson - and has its intellectual roots in the Zimbardo experiment - that says that policing low level offense vigorously reduced more serious crime..."Broken Windows" says if you turn a blind eye to vandalism, graffiti, and various other low level offenses you create an environment that invites more serious crime but if you prosecute these low level offense vigorously you can keep serious crime at bay.  
+
 * In 1990 Bill Bratton was promoted to Chief of New York City's Transit Authority. He implemented what is thought to be one of the earliest and most significant policing strategies based on the "Broken Windows" hypothesis.  He energetically prosecuted fare-dodging, graffitti, and other low level public transit related offenses.  In 1993 when Rudy Guiliani was elected Mayor, Bill Bratton become the Chief of Police and brought his "Broken Windows" inspired policing strategy to the NYPD.  The experience of New York City in the 1980s and 1990s is often used in empirical evaluations of the efficacy of "Broken Windows" policing because of these events.
 
 ## Outline
@@ -15,7 +18,9 @@ A Quick Bit of Nomenclature and History:
 As both of my regular readers know, I like to provide the goals and highlights of every post up-front...that way nobody has to get halfway through a few thousand words before realize that they are not at interested in the topic/analysis at hand.
 
 **Here's What I Plan to Do**
+
 * I've scanned a large swarth of literature that utilizes data to test the efficacy of "Broken Windows" policing.  I've also studied in-depth a few papers in this literature that I consider to be particularly reputable (either because they appear in quality journals or because I scanned the methods sections and found them to be reasonably rigorous).  I'm going to provide a review of these resources viz-a-viz i) how the analysis is conducted, ii) what data sources are leveraged, and iii) what they say positive or negative about the efficacy of policing strategies based on the "Broken Windows" hypothesis.
+
 * For most of the literature I'm going to review here I've tried to ascertain whether the data used is readily available and whether quick replication is possible.  In most cases it is not...but there are some easy to access data sources on historical crime rates.  In the 2nd part of this post I provide some code for accessing and analyzing publicly available data on crime.
 
 ## Executive Summary
