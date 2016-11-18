@@ -18,7 +18,7 @@ As both of my regular readers know, I like to provide the goals and highlights o
 * I've scanned a large swarth of literature that utilizes data to test the efficacy of "Broken Windows" policing.  I've also studied in-depth a few papers in this literature that I consider to be particularly reputable (either because they appear in quality journals or because I scanned the methods sections and found them to be reasonably rigorous).  I'm going to provide a review of these resources viz-a-viz i) how the analysis is conducted, ii) what data sources are leveraged, and iii) what they say positive or negative about the efficacy of policing strategies based on the "Broken Windows" hypothesis.
 * For most of the literature I'm going to review here I've tried to ascertain whether the data used is readily available and whether quick replication is possible.  In most cases it is not...but there are some easy to access data sources on historical crime rates.  In the 2nd part of this post I provide some code for accessing and analyzing publicly available data on crime.
 
-**Here is the 10 cent version of what this post will show**
+## Executive Summary
 
 First: what is my the verdict on the "Broken Windows" hypothesis?
 
@@ -27,6 +27,11 @@ First: what is my the verdict on the "Broken Windows" hypothesis?
 2. Despite being a good idea at the time it was proposed, I believe that a proponderance of the empirical evidence has shown highly uncertain benefits to policing strategies based on the "Broken Windows" philosophy.
 
 3. The metaphore of "Broken Windows" is really powerful in its simplicity.  This is probably why the idea has persisted in the public conciousness despite the fact that data has shown it to be of dubious quality.  I'm generally inclined to forgive researchers who's ideas get hi-jacked to satisfy and agenda...In this case however, I don't think Kelling and Wilson get off that easy since I've heard interviews where at least one has basically admitted that elementary data analysis can quickly cast shadows on the "Broken Windows" hypothesis but said that didn't change his belief that "Broken Windows" was a solid foundation for policing strategies.  Look man, I'm a researcher and a scientist too.  I have ideas and I try to turn them into something that can be helpful.  Sometimes I'm successful and sometimes my ideas are just wrong.  People who are willing to cling to an idea in the face of overwhelming evidence that the ideas is bunk are called advocates, not scientists.
+
+4. If we wanted to boil down the empirical challenges with proving or disproving that “Broken Windows” works to its essence, it would probably be this: Generally speaking, in order to implement “Broken Windows” you need to add more cops.  Once you start increasing the law enforcement footprint it becomes difficult to untangle the “more cops” effect from the “broken windows” effect.  Some people might say that it doesn’t matter and you don’t need to untangle those effects (if crime went down that’s good full stop…it doesn’t matter if it was because there were just more cops or because broken windows policing works).  Those people are wrong and they need a stronger understanding of tradeoffs. 
+
+It matters for the following reason: If you are a police force with 20 men and you are not using a “Broken Windows” strategy (presumably because you lack the man power) and your force doubles, you have to choose how to employ those extra resources.  If broken windows works then you should use those extra men to vigorously prosecute petty crime.  But there is an alternative to “Broken Windows” that many like to call “Community Policing.” Rather than spend all your time and energy arresting vandals, this theory goes, police need to be out spending time in the communities they are protecting.  Building trust, goodwill, good vibes, etc. “Broken Windows” has been shown to have a social cost in the sense that certain communities (especially ones of color) feel unfairly targeted by “Broken Windows” and learn to distrust and resent cops.  If the “Broken Windows” effect is really just a “more cops” effect then there is no reason to risk the social cost associated with broken windows policing…you’re way better off employing “Community Policing” because it gets you the same reduction in violent crime (because the reduction in violent crime is due to more cops not broken windows policing) without the backlash.
+
 
 Second: what are some high points from my lit review/data exploration?
 
@@ -38,9 +43,23 @@ Second: what are some high points from my lit review/data exploration?
 
 4. I've had some harsh words for Steve Levitt and Freakonomics in the past.  I didn't love the Levitt analysis from Freakonomics on abortions and crime.  I thought it was seriously flawed but it does provide a refreshing wake up call on the 'broken windows' discussion.  That is, one of Levitt's explanations for the reduction in the crime rate in the 1990s was the success of Roe v. Wade in 1970.  On it's face that explanation seems far-fetched and much less intuitive than the 'broken windows' explanations.  However, 'broken windows' has been shown to have no more statistical power to explain the drop in crime in NY in the 1990s than Levitt's alternative hypothesis.  To me what that says is that the 'broken windows' crowd has posited an explaination for declining crime rates that is simple and intuitive yet has no more empirical validity than a far-fetched, seemingly rediculous theory about abortion rates.  If it takes more than that the finally put the nail in the 'broken windows' coffin than I really don't understand how people evaluate evidence and form opinions.
 
+## Methods Overview
+
+Empirical work related to the “Broken Windows” hypothesis comes in a lot flavors.  I content that most of the literature falls into two basic camps:
+
+1.  Regression based analysis using misdemeanor arrests as a proxy for broken windows policing.  These studies generally use murder or some other violent crime as the dependent variable in a regression and include some combination of economic factors, demographic factors, and policing strategy as explanatory variables.  Consider the following equation:
+
+$$y=\alpha + \beta TEENS + \gamma COPS + \delta UNEMP + \rho BW + \sum_{i}\phi_{i} month_{i}$$
+
+Here TEENS controls for population structure, COPS controls for size of police force, UNEMP is the unemployment rate and controls for economic factors, and month controls for seasonal factors (maybe crime tends to be higher in the summer).
+
+Generally speaking, if $\rho$ is negative and significant it means that - holding other things constant - increasing misdemeanor arrests (or some other broken windows proxy) tends to significantly decrease incidence of violent crime.
+
+2. Treatment-control type studies.  In these studies authors choose a ‘treatment’ area that was known to have implemented some type of broken windows related policing strategy and some ‘control’ area which are (ostensibly) similar to the treatment area but differed in their adoption of broken windows policing.  Outcomes compared across the different areas should yield some insight as to whether broken windows policing reduces violent/serious crime.
+
 ## Part I: A Review of Some "Broken Windows" Literature
 
-There are 4-5 papers I found in the scholarly literature that I felt were sufficiently data driven to warrant inclusion in this post (Note: there are tons of papers on this topic in the law literature.  That shit is not really my bag baby...it tends to be really wordy, the papers are really long, and there are no equations.  The no equations thing might be a selling point for some people so don't let me turn you off of the law review lit...but don't expect me to read it.)
+There are 4-5 papers I found in the scholarly literature that I felt were sufficiently data driven to warrant inclusion in this post (Note: there are tons of papers on this topic in the law literature.  That shit is not really my bag baby...it tends to be really wordy, the papers are really long, and there are no equations.  The no equations thing might be a selling point for some people so don't let me turn you off of the law review lit...just don't expect me to read it.)
 
 ### Levitt: Journal of Economic Perspectives
 
@@ -62,5 +81,15 @@ The 6 factors that had no influence:
 5. Concile-and-carry laws - I thought this one was interesting.  From Levitt's paper, *The empirical work in support of this hypothesis, however, has proven to be fragile along a number of dimensions (Black and Nagin, 1998; Ludwig, 1998; Duggan, 2001; Ayres and Donohue, 2003). First, allowing concealed weapons should have the greatest impact on crimes that involve face-to-face contact and occur outside the home where the law might affect gun carrying. Robbery is the crime category that most clearly  ts this description, yet Ayres and Donohue (2003) demonstrate that empirically the passage of these laws is, if anything, positively related to the robbery rate. More generally, Duggan (2001) nds that for crimes that appear to decline with the law change, the declines in crime actually predate the passage of the laws, arguing against a causal impact of the law. Finally, when the original Lott and Mustard (1997) data set is extended forward in time to encompass a large number of additional law enactments, the results disappear (Ayres and Donohue, 2003). Ultimately, there appears to be little basis for believing thatconcealed weapons laws have had an appreciable impact on crime.*
 6. Increased use of capital punishment
 
+This Levitt paper doesn’t offer a lot of primary analysis, it’s mostly a review of other studies.  It’s a very good review and you should read it.  In his criticism of the myth that broken windows policing lowered crime in the 1990s Levitt makes a few points that I enjoyed:
+
+* Several quasi-randomized studies discussed in [Wilson, 1995]( https://www.amazon.com/Thinking-About-Crime-James-Wilson/dp/0465048838) failed to provide convincing evidence that broken windows policing lowered crime.
+* Much has been made of the New York experience because crime dropped so precipitously there during the 1990s.  Levitt points out that none of the studies using New York as an example have clearly articulated when the “broken windows” era of policing was supposed to have started.  Since violent crimes began a rather rapid decline in New York somewhere around 1989/1990 it’s kind of important – if you think broken windows was the reason – to decide when broken windows started.
+* Levitt also points out that a paper by Corman and Mocan (it was an NBER working paper when the Levitt paper was published by has since been published in the [Journal of Law and Economics]( http://www.jstor.org/stable/10.1086/425594) did not reliably control for the fact that the end of the crack epidemic basically coincided with the huge drop in violent crime in NY.  This is perhaps a small quibble…however, the evidence in favor of efficacy of broken windows from Corman and Mocan (2005) was rather weak to start with (they found a significant effect for robbery and motor vehicle theft but no effect for murder or other violent crimes).  So a small quibble about control for the crack epidemic takes on a bit more weight when the results were a little tenuous in the first place.
 
 
+### [Corman and Mocan (2005)]( ( http://www.jstor.org/stable/10.1086/425594)) 
+There isn’t much I need to say about this paper that wasn’t covered in the Levitt paper…but since it’s an oft-cited paper in a solid journal that seems to support the broken windows paradigm, I should at least give a quick summation:
+The authors use monthly data (1974-1999) from New York City.  The estimating equation they use is:
+
+$$CR_{it}=\lambda{i} + \sum\alpha_{ij}CR_{i,t-j}+\sum\beta_{iq}UR_{i,t-q} + \sum\gamma_{k}RMINW_{i,t-k} + \sum\delta_{ik} ARR_{i,t-k} + \sum \pi_{in} PRIS_{i,t-n} + \sum\phi_{ip} POL_{i,t-p} + \sum \eta_{im} MISARR_{i,t-m} + \sum \mu_{ts} TEENS_{t-s} + \sum \rho_{iw} SEAS_{w} + \epsilon_{it}$$ 
