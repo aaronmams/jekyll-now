@@ -13,6 +13,10 @@ A Quick Bit of Nomenclature and History:
 
 * In 1990 Bill Bratton was promoted to Chief of New York City's Transit Authority. He implemented what is thought to be one of the earliest and most significant policing strategies based on the "Broken Windows" hypothesis.  He energetically prosecuted fare-dodging, graffitti, and other low level public transit related offenses.  In 1993 when Rudy Guiliani was elected Mayor, Bill Bratton become the Chief of Police and brought his "Broken Windows" inspired policing strategy to the NYPD.  The experience of New York City in the 1980s and 1990s is often used in empirical evaluations of the efficacy of "Broken Windows" policing because of these events.
 
+A Quick Point of Order: 
+
+From now on when I used the term "Broken Windows" hypothesis or "Broken Windows" theory I am specifically referring to the ideas that vigorously policing and prosecuting low level crimes can produce declines in more serious crimes.  I don't dispute Zimbrano's psychological construct that disorder breeds disorder.  I do however dispute that this ideas means policing tactics centered on pursuing litterers and vagrants leads to reduction in the murder rate. 
+
 ## Outline
 
 As both of my regular readers know, I like to provide the goals and highlights of every post up-front...that way nobody has to get halfway through a few thousand words before realize that they are not at interested in the topic/analysis at hand.
@@ -31,7 +35,7 @@ First: what is my the verdict on the "Broken Windows" hypothesis?
 
 2. Despite being a good idea at the time it was proposed, I believe that a proponderance of the empirical evidence has shown highly uncertain benefits to policing strategies based on the "Broken Windows" philosophy.
 
-3. The metaphore of "Broken Windows" is really powerful in its simplicity.  This is probably why the idea has persisted in the public conciousness despite the fact that data has shown it to be of dubious quality.  I'm generally inclined to forgive researchers who's ideas get hi-jacked to satisfy and agenda...In this case however, I don't think Kelling and Wilson get off that easy since I've heard interviews where at least one has basically admitted that elementary data analysis can quickly cast shadows on the "Broken Windows" hypothesis but said that didn't change his belief that "Broken Windows" was a solid foundation for policing strategies.  Look man, I'm a researcher and a scientist too.  I have ideas and I try to turn them into something that can be helpful.  Sometimes I'm successful and sometimes my ideas are just wrong.  People who are willing to cling to an idea in the face of overwhelming evidence that the ideas is bunk are called advocates, not scientists.
+3. The metaphore of "Broken Windows" is really powerful in its simplicity.  This is probably why the idea has persisted in the public conciousness despite the fact that data has shown it to be of dubious quality.  I'm generally inclined to forgive researchers whose ideas get hi-jacked to satisfy an agenda...In this case however, I don't think Kelling and Wilson get off that easy. I've heard interviews where at least one has basically admitted that elementary data analysis can quickly cast shadows on the "Broken Windows" hypothesis but said that didn't change his belief that "Broken Windows" was a solid foundation for policing strategies.  Look man, I'm a researcher and a scientist too.  I have ideas and I try to turn them into something that can be helpful.  Sometimes I'm successful and sometimes my ideas are just wrong.  People who are willing to cling to an idea in the face of overwhelming evidence that the ideas is bunk are called advocates, not scientists.
 
 4. If we wanted to boil down the empirical challenges with proving or disproving that “Broken Windows” works to its essence, it would probably be this: Generally speaking, in order to implement “Broken Windows” you need to add more cops.  Once you start increasing the law enforcement footprint it becomes difficult to untangle the “more cops” effect from the “broken windows” effect.  Some people might say that it doesn’t matter and you don’t need to untangle those effects (if crime went down that’s good full stop…it doesn’t matter if it was because there were just more cops or because broken windows policing works).  Those people are wrong and they need a stronger understanding of tradeoffs. 
 
@@ -50,7 +54,7 @@ Second: what are some high points from my lit review/data exploration?
 
 ## Methods Overview
 
-Empirical work related to the “Broken Windows” hypothesis comes in a lot flavors.  I content that most of the literature falls into two basic camps:
+Empirical work related to the “Broken Windows” hypothesis comes in a lot of flavors.  I contend that most of the literature falls into two basic camps:
 
 1.  Regression based analysis using misdemeanor arrests as a proxy for broken windows policing.  These studies generally use murder or some other violent crime as the dependent variable in a regression and include some combination of economic factors, demographic factors, and policing strategy as explanatory variables.  Consider the following equation:
 
@@ -112,7 +116,7 @@ A reasonable assumed starting point for broken windows policing in NYC is often 
 ## [Braga and Bond, 2008]( http://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2008.00124.x/abstract)
 Warning, this is a really long paper.  On the spectrum of papers lending empirical support to broken windows and papers demonstrating a lack of empirical support for broken windows I put this somewhere in the middle.  I think this paper has probably been held up as evidence that broken windows works but there is a lot of nuance in the paper worth paying attention to.  For starters I’ll call your attention to this passage in the conclusion:
 
-These findings suggest that when adopting a policing disorder approach to crime prevention, police departments should work within a problem oriented policing framework and adopt a community coproduction model rather than drift toward a zero tolerance policing model that focuses on a subset of social incivilities, such as drunken people, rowdy teens, and street vagrants, and seeks to remove them from the street via arrest (Taylor, 2001, 2006). Misdemeanor arrests obviously play a noteworthy role in dealing with disorder; however, arrest strategies do not deal directly with physical conditions.
+*These findings suggest that when adopting a policing disorder approach to crime prevention, police departments should work within a problem oriented policing framework and adopt a community coproduction model rather than drift toward a zero tolerance policing model that focuses on a subset of social incivilities, such as drunken people, rowdy teens, and street vagrants, and seeks to remove them from the street via arrest (Taylor, 2001, 2006). Misdemeanor arrests obviously play a noteworthy role in dealing with disorder; however, arrest strategies do not deal directly with physical conditions.*
 
 One of the interesting tid-bits in this paper was a finding that improving the physical appearance of a crime hot-spot tends to significantly reduce serious crime.  This is broadly consistent with the original Zimbrano “Broken Windows” idea that disorder begets disorder.  However, it is pretty different from the Guiliani/Bratton interpretation of “Broken Windows” which says you need to pursue and arrest petty crimes.  Basically, Braga and Bond found that cleaning up trash and removing graffiti help curb more serious crime almost as much (and possibly more) than arresting a litterer or vandal.  
 
@@ -143,4 +147,27 @@ It pisses me off that people can get in a journal like Science without being car
 **Abstract**
 
 *Banishment policies grant police the authority to formally ban individuals from entering public housing and arrest them for trespassing if they violate the ban. Despite its widespread use and the social consequences resulting from it, an empirical evaluation of the effectiveness of banishment has not been performed. Understanding banishment enforcement is an evolution of broken windows policing, this study explores how effective bans are at reducing crime in public housing. We analyze crime data, spanning the years 2001–2012, from six public housing communities and 13 surrounding communities in one southeastern U.S. city. Using Arellano-Bond dynamic panel models, we investigate whether or not issuing bans predicts reductions in property and violent crimes as well as increases in drug and trespass arrests in public housing. We find that this brand of broken windows policing does reduce crime, albeit relatively small reductions and only for property crime, while resulting in an increase in trespass arrests. Given our findings that these policies have only a modest impact on property crime, yet produce relatively larger increases in arrests for minor offenses in communities of color, and ultimately have no significant impact on violent crime, it will be important for police, communities, and policy makers to discuss whether the returns are worth the potential costs.*
+
+# Some Data Analysis of Our Own
+
+I had hoped to get much further on this and actually try to replicate results from some of the studies I mentioned above.  In my quest to do some replication I was primarily stymied by the fact that I could not find time series data on the number of police employed by state or city.  This is a pretty key variable in all of the empirical studies and without it I don't think we can do much here in the way of replication.  
+
+What we can do is at least look at some of the statewide and city wide trends to get a feel for how we might use some of these data in the future.  As I said, I think data on crime and policing should be easier to find but here is what I did find:
+
+1. Statewide estimates of violent crimes, property crimes, and car theft from 1960 to 2012.  I got these from Quandl via the FBI's Uniform Crime Reporting system.  Notably, this data series does not contain arrests for low level misdemeanors which is an important proxy for "broken windows" policing in the empirical studies.
+
+2. Estimates of violent crime, property crime, and car theft for selected major cities from 1985 to 2012.  I got these directly through the FBI's UCR data tool and it was a pain in the ass because I could pull all major crimes for a single city...or all major cities for a single crime variable.  But I could not do both...so I had to do a lot of pointing and clicking to download all the cities with populations greater than 500,000.
+
+3. Statewide unemployment rates I got from Quandl, these were pretty easy to get.
+
+4. I did find one source for data on number of police employed.  The Bureau of Labor Statistics has a series (NAICS 922120, Police Protection) from the Quarterly Census of Employment and Wages.  I had to pull these individually by state which as a pain and several states had a lot of missing values...Also, the time series is only 2005 - 2015 which limits what we can do with these.
+
+5. Finally New York and California both had an Open Cities website where I was able to get crime and arrests for smaller cities.  These data included misdemeanors so a bargain-brand replication of the Corman and Mocan study is possible....I added county level population numbers that I go from Quandl.
+
+* [California crime stats are here](https://oag.ca.gov/crime/cjsc/stats/arrests)
+* [New York I got from here](https://data.ny.gov/Public-Safety/Adult-Arrests-by-County-Beginning-1970/rikd-mt35)
+
+
+
+
 
