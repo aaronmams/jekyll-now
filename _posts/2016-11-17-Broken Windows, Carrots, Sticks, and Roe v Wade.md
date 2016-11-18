@@ -1,3 +1,7 @@
+---
+layout: post
+title: "Broken Windows, Carrots, Sticks, and Roe v Wade"
+---
 
 In 1982 [Kelling and Wilson](http://www.theatlantic.com/magazine/archive/1982/03/broken-windows/304465/) published their article in *The Atlantic Monthly* titled: "Broken Windows: The Police and Neighborhood Safety." Perhaps because I have followed the academic and public policy discussions surrounding "Broken Windows" policing, I was kind of surprised to hear a segment on NPR today that made it clear to me that there are still a lot of people who think the "Broken Windows" metaphore is associated with time-tested successful policing strategies.  I guess I thought everyone basically knew that policing based on the "Broken Windows" hypothesis has been empirically shown to have extrememly questionable/uncertain benefits.  
 
@@ -55,8 +59,7 @@ The 6 factors that had no influence:
 2. Changing demographics
 3. Better policing strategies
 4. Gun control laws
-5. Concile-and-carry laws - I thought this one was interesting.  From Levitt's paper, *The empirical work in support of this hypothesis, however, has proven to be fragile along a number of dimensions (Black and Nagin, 1998; Ludwig, 1998; Duggan, 2001; Ayres and Donohue, 2003). First, allowing concealed weapons should have the greatest impact on crimes that involve face-to-face contact and occur outside the home where the law might affect gun carrying. Robbery is the crime category that most clearly  ts this description, yet Ayres and Donohue (2003) demonstrate that empirically the passage of these laws is, if anything, positively related to the robbery rate. More generally, Duggan (2001) nds that for crimes that appear to decline with the law change, the declines in crime actually predate
-the passage of the laws, arguing against a causal impact of the law. Finally, when the original Lott and Mustard (1997) data set is extended forward in time to encompass a large number of additional law enactments, the results disappear (Ayres and Donohue, 2003). Ultimately, there appears to be little basis for believing thatconcealed weapons laws have had an appreciable impact on crime.*
+5. Concile-and-carry laws - I thought this one was interesting.  From Levitt's paper, *The empirical work in support of this hypothesis, however, has proven to be fragile along a number of dimensions (Black and Nagin, 1998; Ludwig, 1998; Duggan, 2001; Ayres and Donohue, 2003). First, allowing concealed weapons should have the greatest impact on crimes that involve face-to-face contact and occur outside the home where the law might affect gun carrying. Robbery is the crime category that most clearly  ts this description, yet Ayres and Donohue (2003) demonstrate that empirically the passage of these laws is, if anything, positively related to the robbery rate. More generally, Duggan (2001) nds that for crimes that appear to decline with the law change, the declines in crime actually predate the passage of the laws, arguing against a causal impact of the law. Finally, when the original Lott and Mustard (1997) data set is extended forward in time to encompass a large number of additional law enactments, the results disappear (Ayres and Donohue, 2003). Ultimately, there appears to be little basis for believing thatconcealed weapons laws have had an appreciable impact on crime.*
 6. Increased use of capital punishment
 
 
