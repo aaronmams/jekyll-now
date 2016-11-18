@@ -93,3 +93,49 @@ There isn’t much I need to say about this paper that wasn’t covered in the L
 The authors use monthly data (1974-1999) from New York City.  The estimating equation they use is:
 
 $$CR_{it}=\lambda{i} + \sum\alpha_{ij}CR_{i,t-j}+\sum\beta_{iq}UR_{i,t-q} + \sum\gamma_{k}RMINW_{i,t-k} + \sum\delta_{ik} ARR_{i,t-k} + \sum \pi_{in} PRIS_{i,t-n} + \sum\phi_{ip} POL_{i,t-p} + \sum \eta_{im} MISARR_{i,t-m} + \sum \mu_{ts} TEENS_{t-s} + \sum \rho_{iw} SEAS_{w} + \epsilon_{it}$$ 
+
+$CR_{it}$ is the $i^{th}$ crime in month $t$.  Economic conditions are captured by the unemployment rate and the real minimum wage.  Prison population and size of police force are included to capture ‘deterant’ type effects.  Misdemenor arrests is included to capture the effect of broken windows policing.  
+
+Here is something that really troubled me about this paper: If you look at the plots of monthly time series for individual crimes in the paper you’ll notice a few important details:
+
+* Murders in NYC appear to have peaks in Jan 1990 or possibly Jan 1991 and have trending down since then.
+* Burglaries have been trending notably down since around Jan 1980
+* Felony assault peaked around Jan 1988 or 1989 and dropped month-after-month since then.
+
+A reasonable assumed starting point for broken windows policing in NYC is often considered to be 1993 (Guiliani became mayor and appointed Bratton Chief of Police).  But an alternative time-line might put the start of broken windows in 1990 when Bratton was named Chief of the NYC Transit Police.  The 1990 start date would coincide with the start of a decline in murders.  HOWEVER, murder was one of the crimes for which the “broken windows” coefficient was found to be insignificant.  The broken windows coefficient was found to be significant for burglary but burglaries in NYC have been in a virtual free-fall since 1980, ten years before the earliest possible start of broken windows policing.  Felony assault declines don’t miss the “broken windows” era by very much…HOWEVER, the broken windows coefficient was found to be insignificant in the felony assault equation.  
+
+## [Braga and Bond, 2008]( http://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2008.00124.x/abstract)
+Warning, this is a really long paper.  On the spectrum of papers lending empirical support to broken windows and papers demonstrating a lack of empirical support for broken windows I put this somewhere in the middle.  I think this paper has probably been held up as evidence that broken windows works but there is a lot of nuance in the paper worth paying attention to.  For starters I’ll call your attention to this passage in the conclusion:
+
+These findings suggest that when adopting a policing disorder approach to crime prevention, police departments should work within a problem oriented policing framework and adopt a community coproduction model rather than drift toward a zero tolerance policing model that focuses on a subset of social incivilities, such as drunken people, rowdy teens, and street vagrants, and seeks to remove them from the street via arrest (Taylor, 2001, 2006). Misdemeanor arrests obviously play a noteworthy role in dealing with disorder; however, arrest strategies do not deal directly with physical conditions.
+
+One of the interesting tid-bits in this paper was a finding that improving the physical appearance of a crime hot-spot tends to significantly reduce serious crime.  This is broadly consistent with the original Zimbrano “Broken Windows” idea that disorder begets disorder.  However, it is pretty different from the Guiliani/Bratton interpretation of “Broken Windows” which says you need to pursue and arrest petty crimes.  Basically, Braga and Bond found that cleaning up trash and removing graffiti help curb more serious crime almost as much (and possibly more) than arresting a litterer or vandal.  
+
+### [Keizer, Lindenberg, and Steg, 2008](http://science.sciencemag.org/content/322/5908/1681)
+The Spreading of Disorder by Keizer, Lindenberg, and Steg has also been held up as a win for “Broken Windows.”  This one is a little easier for me to dismiss because while it does support the spirit of Zimbrano’s hypothesis , it doesn’t deal in any specific terms with law enforcement interventions.
+
+It does establish that people are more likely to litter if they see litter on the street and more likely to leave a shopping cart in the parking lot if they see a bunch of shopping carts in the parking lot.  However, they don’t test whether arresting people for littering curbs littering let alone curbs violent crime.
+
+I’m going to file this one in the ‘NA’ category but I do have a few rant-type sentences for the paper overall:
+
+I think the authors of this study were cagey and sloppy with respect to the social-psychological mechanisms they claim to have informed with this paper.  In particular, saying, 
+
+1.	“people are more likely to litter if they see somebody else littering” and
+2.	“people are more likely to litter if they see litter about” 
+
+are two closely related things with very different implications.  In the first case, the individual perceives there is little risk of punishment from littering and so the individual can safely litter.  In this case, law enforcement might do pretty well to stay on top of prosecuting litterers…in the second case, if you want less litter, you just need to pick up existing trash more frequently.
+
+It pisses me off that people can get in a journal like Science without being careful about this distinction because I publish in low-level field journals with much lower impact factors that Science and I can tell with certainty that I would get raked over the coals for not specific and careful with my study implications.
+
+### A few more for the lightening round:
+
+[Harcourt, 2006, University of Chicago Law Review] (http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=2473&context=journal_articles)
+
+*Our analysis provides no empirical evidence to support the view that shifting police towards minor disorder offenses would improve the efficiency of police spending and reduce violent crime*
+
+[Torres, Apkarian, and Hawdon, 2016, Social Sciences]( http://www.mdpi.com/2076-0760/5/4/61/htm)
+
+**Abstract**
+
+*Banishment policies grant police the authority to formally ban individuals from entering public housing and arrest them for trespassing if they violate the ban. Despite its widespread use and the social consequences resulting from it, an empirical evaluation of the effectiveness of banishment has not been performed. Understanding banishment enforcement is an evolution of broken windows policing, this study explores how effective bans are at reducing crime in public housing. We analyze crime data, spanning the years 2001–2012, from six public housing communities and 13 surrounding communities in one southeastern U.S. city. Using Arellano-Bond dynamic panel models, we investigate whether or not issuing bans predicts reductions in property and violent crimes as well as increases in drug and trespass arrests in public housing. We find that this brand of broken windows policing does reduce crime, albeit relatively small reductions and only for property crime, while resulting in an increase in trespass arrests. Given our findings that these policies have only a modest impact on property crime, yet produce relatively larger increases in arrests for minor offenses in communities of color, and ultimately have no significant impact on violent crime, it will be important for police, communities, and policy makers to discuss whether the returns are worth the potential costs.*
+
