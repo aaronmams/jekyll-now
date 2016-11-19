@@ -167,9 +167,17 @@ What we can do is at least look at some of the statewide and city wide trends to
 * [California crime stats are here](https://oag.ca.gov/crime/cjsc/stats/arrests)
 * [New York I got from here](https://data.ny.gov/Public-Safety/Adult-Arrests-by-County-Beginning-1970/rikd-mt35)
 
+A WARNING:
+
+This section is going to be pretty light.  You should look at this for what it represents: I did a lot more work that I had planned on trying to find data that could help us do some of our own analysis on this topic.  So basically, I'm giving you all a little head-start on your own "Broken Windows" empirical analysis.  There are still some pretty important gaps.  In order to do our own version of a Corman and Mocan-type analysis we'll need to figure out how to get
+
+* population and unemployment numbers at the county level...or
+* misdemeanor arrests at the state level
 
 ### A Quick Look at NYC 
 So the first thing I want to do here is plot some of the New York City crime data just to make sure the data I pulled has the same broad trends as the ones described in the paper I reviewed above...this is just a quick red-face check to make sure we're dealing with the 'right' data
+
+The population data and crime data for New York are organized at the county level so we will plot each of the 5 counties that encompass New York City (as I understand it each of the 5 Boroughs are in their own county).
 
 ```R
 # Let's look at just the New York Data because they have a pretty nice data set 
@@ -236,4 +244,76 @@ ggplot(nyc.crime,aes(x=year,y=violent_pc,color=county)) + geom_line() + geom_poi
 
 ```
 
-![NYC crime](/images/nyc_violent_crime.png)
+![NYC crime](/images/nyc_county_violent.png)
+
+Next I'm going to add in a few more of more urban counties and run a quick panel data fixed-effects model.
+
+```R
+library(plm)
+
+#add in a few more of the urban counties and run a panel fixed effects model of violent crime explained
+# by misdemeanor arrest
+fe.df <- tbl_df(ny.crime) %>% filter(county %in% c('New York','Kings','Queens','Bronx','Richmond',
+                                           'Westchester','Rockland','Nassau','Erie')) %>%
+        inner_join(pop,by=c('county','year')) %>%
+        mutate(drug_pc=drug_felony/VALUE,violent_pc=violent_felony/VALUE,mis=mis_total/VALUE)
+
+summary(plm(violent_pc ~ mis, data=fe.df, index=c("county", "year"), model="within"))
+
+Oneway (individual) effect Within Model
+
+Call:
+plm(formula = violent_pc ~ mis, data = fe.df, model = "within", 
+    index = c("county", "year"))
+
+Balanced Panel: n=8, T=46, N=368
+
+Residuals :
+   Min. 1st Qu.  Median 3rd Qu.    Max. 
+-3.5200 -0.4580  0.0236  0.3390  3.1000 
+
+Coefficients :
+      Estimate Std. Error t-value Pr(>|t|)
+mis -0.0118684  0.0079311 -1.4964   0.1354
+
+Total Sum of Squares:    341.65
+Residual Sum of Squares: 339.53
+R-Squared:      0.006199
+Adj. R-Squared: 0.0060474
+F-statistic: 2.23931 on 1 and 359 DF, p-value: 0.13542
+> 
+
+
+summary(plm(violent_pc ~ mis, data=fe.df[fe.df$year>1985,], index=c("county", "year"), model="within"))
+
+Oneway (individual) effect Within Model
+
+Call:
+plm(formula = violent_pc ~ mis, data = fe.df[fe.df$year > 1985, 
+    ], model = "within", index = c("county", "year"))
+
+Balanced Panel: n=8, T=30, N=240
+
+Residuals :
+   Min. 1st Qu.  Median 3rd Qu.    Max. 
+-2.2500 -0.2520 -0.0134  0.2850  1.9800 
+
+Coefficients :
+     Estimate Std. Error t-value  Pr(>|t|)    
+mis -0.155238   0.008678 -17.889 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Total Sum of Squares:    217.35
+Residual Sum of Squares: 91.122
+R-Squared:      0.58077
+Adj. R-Squared: 0.55899
+F-statistic: 320.01 on 1 and 231 DF, p-value: < 2.22e-16
+
+```
+Obviously, my quick and dirty analysis needs substantial refinement....but it's not too encouraging that a fixed-effects model with nothing more than misdemeanor arrests only produces a significant coefficient if we restrict the time period.  I think this kind of brings into the question the mechanisms that are supposed to be at work if "Broken Windows" policing really works.
+
+### A Wider View
+
+This post is already about 3 times longer than I thought it would be when I started so I'll wrap-up soon I promise.  The last thing I want to do is some quick exploration of our state-by-state data.
+
