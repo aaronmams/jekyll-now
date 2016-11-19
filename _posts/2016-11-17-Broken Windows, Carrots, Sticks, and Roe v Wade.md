@@ -148,7 +148,7 @@ I think the authors of this study were cagey and sloppy with respect to the soci
 
 are two closely related things with very different implications.  In the first case, the individual perceives there is little risk of punishment from littering and so the individual can safely litter.  In this case, law enforcement might do pretty well to stay on top of prosecuting litterers…in the second case, if you want less litter, you just need to pick up existing trash more frequently.
 
-It pisses me off that people can get in a journal like Science without being careful about this distinction because I publish in low-level field journals with much lower impact factors that Science and I can tell with certainty that I would get raked over the coals for not specific and careful with my study implications.
+It pisses me off that people can get in a journal like Science without being careful about this distinction because I publish in low-level field journals with much lower impact factors than Science and I can tell you with certainty that I would get raked over the coals for not being specific and careful with my study implications.
 
 ### A few more for the lightening round:
 
@@ -413,3 +413,8 @@ ggplot(subset(crime,state %in% c("NJ","NY","MA","IL","CA")),aes(x=year,y=murder_
 ![broken window plot](/images/crime_allstates.png)
 
 Just for visual effect I added some bars to demarcate important "Broken Windows" time periods: 1982-83 period, 1990-1991 period, and 1993-1994 period.  1982 was when the Kelling and Wilson article first appeared, 1990 the reign of Bratton over the NY Transit Authority, and 1993 the promotion of Bratton to NYPD Police Chief.
+
+## Some Future Stuff:
+
+* [The California crime data I got](https://oag.ca.gov/crime/cjsc/stats/arrests) has violent crime and misdemeanors at the county level.  I would like to work with this a little if I can figure out how to get number of police employed at the sub-state level.
+* The data I pulled from BLS has police employment from 2005 to 2015.  This won't help us analyze data over the key "broken windows" time-frame (1990s) but I might use it to estimate a more general relationship between misdemeanor arrests and violent crime.
