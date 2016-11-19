@@ -70,7 +70,7 @@ Empirical work related to the “Broken Windows” hypothesis comes in a lot of 
 
 $$y=\alpha + \beta TEENS + \gamma COPS + \delta UNEMP + \rho BW + \sum_{i}\phi_{i} month_{i}$$
 
-Here TEENS controls for population structure, COPS controls for size of police force, UNEMP is the unemployment rate and controls for economic factors, and month controls for seasonal factors (maybe crime tends to be higher in the summer).
+Here TEENS controls for population structure (a younger population is generally considered to be a more crime-prone population), COPS controls for size of police force, UNEMP is the unemployment rate and controls for economic factors, and month controls for seasonal factors (maybe crime tends to be higher in the summer).
 
 Generally speaking, if $\rho$ is negative and significant it means that - holding other things constant - increasing misdemeanor arrests (or some other broken windows proxy) tends to significantly decrease incidence of violent crime.
 
@@ -115,6 +115,8 @@ $$CR_{it}=\lambda{i} + \sum\alpha_{ij}CR_{i,t-j}+\sum\beta_{iq}UR_{i,t-q} + \sum
 
 $CR_{it}$ is the $i^{th}$ crime in month $t$.  Economic conditions are captured by the unemployment rate and the real minimum wage.  Prison population and size of police force are included to capture ‘deterant’ type effects.  Misdemenor arrests is included to capture the effect of broken windows policing.  
 
+I give Corman and Mocan props for being careful with the time-series properties of the data.  This is something that I think the softer social science literature on "broken windows" ignores...and that ignorance compromises the validity of results, IMO.  Corman and Mocan run the appropriate battery of time-series tests (tests for unit roots, tests for stationarity, test for integration order among variables), which I very much appreciated.
+
 Here is something that really troubled me about this paper: If you look at the plots of monthly time series for individual crimes in the paper you’ll notice a few important details:
 
 * Murders in NYC appear to have peaks in Jan 1990 or possibly Jan 1991 and have trending down since then.
@@ -122,6 +124,8 @@ Here is something that really troubled me about this paper: If you look at the p
 * Felony assault peaked around Jan 1988 or 1989 and dropped month-after-month since then.
 
 A reasonable assumed starting point for broken windows policing in NYC is often considered to be 1993 (Guiliani became mayor and appointed Bratton Chief of Police).  But an alternative time-line might put the start of broken windows in 1990 when Bratton was named Chief of the NYC Transit Police.  The 1990 start date would coincide with the start of a decline in murders.  HOWEVER, murder was one of the crimes for which the “broken windows” coefficient was found to be insignificant.  The broken windows coefficient was found to be significant for burglary but burglaries in NYC have been in a virtual free-fall since 1980, ten years before the earliest possible start of broken windows policing.  Felony assault declines don’t miss the “broken windows” era by very much…HOWEVER, the broken windows coefficient was found to be insignificant in the felony assault equation.  
+
+Another thing that troubled me about this paper was the presentation of results.  They basically ran like 8 regressions and found a significant "broken windows" effect in 2 of them.  They hold this up as "some" evidence that "broken windows" policing works.  I think that's dishonest.  If you had to run 8 regressions equations a bunch of different ways (possibly 40 estimations) just to get 2 significant coefficients, then you didn't find "some" evidence...you found really weak to probably spurious evidence. 
 
 ## [Braga and Bond, 2008]( http://onlinelibrary.wiley.com/doi/10.1111/j.1745-9125.2008.00124.x/abstract)
 Warning, this is a really long paper.  On the spectrum of papers lending empirical support to broken windows and papers demonstrating a lack of empirical support for broken windows I put this somewhere in the middle.  I think this paper has probably been held up as evidence that broken windows works but there is a lot of nuance in the paper worth paying attention to.  For starters I’ll call your attention to this passage in the conclusion:
