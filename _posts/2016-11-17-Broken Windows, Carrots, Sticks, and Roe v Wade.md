@@ -394,5 +394,8 @@ ggplot(subset(crime,state %in% c("NJ","NY","MA","IL","CA")),aes(x=year,y=murder_
 
 #------------------------------------------------------------------------------
 
-![broken window plot](/images/crime_allstates.png)
+
 ```
+![broken window plot](/images/crime_allstates.png)
+
+Just for visual effect I added some bars to demarcate important "Broken Windows" time periods: 1982-83 period, 1990-1991 period, and 1993-1994 period.  1982 was when the Kelling and Wilson article first appeared, 1990 the reign of Bratton over the NY Transit Authority, and 1993 the promotion of Bratton to NYPD Police Chief.
