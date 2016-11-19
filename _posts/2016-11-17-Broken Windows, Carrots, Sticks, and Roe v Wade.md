@@ -5,6 +5,8 @@ title: "Broken Windows, Carrots, Sticks, and Roe v Wade"
 
 In 1982 [Kelling and Wilson](http://www.theatlantic.com/magazine/archive/1982/03/broken-windows/304465/) published their article in *The Atlantic Monthly* titled: "Broken Windows: The Police and Neighborhood Safety." Perhaps because I have followed the academic and public policy discussions surrounding "Broken Windows" policing, I was kind of surprised to hear a segment on NPR today that made it clear to me that there are still a lot of people who think the "Broken Windows" metaphore is associated with time-tested successful policing strategies.  I guess I thought everyone basically knew that policing based on the "Broken Windows" hypothesis has been empirically shown to have extrememly questionable/uncertain benefits.  
 
+A slightly more general grip related to this post on "Broken Windows" policing: In my opinion too many people crave simplicity with respect to policy prescriptions.  Too many people are romantically involved with the notion that "the right answer is usually the simplest one."  Our world is complex, interactions are non-linear, people's behaviors are nuanced and idiosyncratic.  I think it's foolish to assume we can credibly approach complicated problems like public safety and crime with simple, meme-like solutions.
+
 A Quick Bit of Nomenclature and History:
 
 * In 1969 a Stanford psychologist, Phillip Zimbardo, arranged to have two cars without license plates abandoned on the street.  One in Palo Alto, CA and another in The Bronx, NY.  He observed that the car abandoned in the Bronx was basically ripped apart and sold for parts within 10 minutes of being abandoned.  The car in Palo Alto sat untouched for about a week until Zimbardo himself broke a window.  After that, the car was far game and got ransacked pretty quickly.  He took this as evidence that disorder invites disorder.  
@@ -20,6 +22,12 @@ From now on when I used the term "Broken Windows" hypothesis or "Broken Windows"
 ## Outline
 
 As both of my regular readers know, I like to provide the goals and highlights of every post up-front...that way nobody has to get halfway through a few thousand words before realize that they are not at interested in the topic/analysis at hand.
+
+**Some background resources if you want them**
+
+I wrote a few primers on empirical analysis of public policy over at [The Samuelson Condition](https://thesamuelsoncondition.com/)
+* [The Synthetic Control Method](https://thesamuelsoncondition.com/2016/04/29/more-public-policy-analysis-synthetic-control-in-under-an-hour/)
+* [A Difference in Differences Primer](https://thesamuelsoncondition.com/2016/04/14/difference-in-differences-primer/)
 
 **Here's What I Plan to Do**
 
@@ -48,15 +56,17 @@ Second: what are some high points from my lit review/data exploration?
 
 2. I was a little dismayed at how difficult it was to (a) find out what data authors were using and where it came from and (b) find actual data sources once I thought I understood what data each author was using.  My dismay may partially explain #1...that is, maybe there are no good D-i-D studies because there aren't good time-series data on crime for any areas other than a small number of big metropolitan areas and state-level aggregates...this is a shame.  With the attention that this topic has gotten I would hope it would be easier to compare outcomes for NY and - for example - surrounding smaller cities that may police differently.
 
-3. I was more than a little dismayed at how easy it was for me to find strong empirical evidence that 'broken windows' is a broken/useless theory and how many people supporting 'broken windows' are still clinging to it's value even in the face of overwhelming empirical evidence that it doesn't work.
+This is actually a general grievance I have with Economics and Social Science in general.  I am an economist but I work in an agency dominated by physical scientists.  I can say with extreme confidence that biologists and other 'hard' scientist are much more transparent about the data they work with.  Too many economists (IMHO) can get away with vagaries like, "we used time-series data on crime in New York obtained from the NYPD" and still get published in good journals.  This shit would never fly in the environmental science/ecology literature.  When you see a climate change study that uses sea-surface temperature it will almost always be accompanied with a statement in the paper like, "we used the SST-007-monthly-97568 series accessed from the ERDAP server on 11/20/2016.  The series can be downloaded from [ERDAP](https://coastwatch.pfeg.noaa.gov/erddap/index.html) with the followign API call...."  
 
-4. I've had some harsh words for Steve Levitt and Freakonomics in the past.  I didn't love the Levitt analysis from Freakonomics on abortions and crime.  I thought it was seriously flawed but it does provide a refreshing wake up call on the 'broken windows' discussion.  That is, one of Levitt's explanations for the reduction in the crime rate in the 1990s was the success of Roe v. Wade in 1970.  On it's face that explanation seems far-fetched and much less intuitive than the 'broken windows' explanations.  However, 'broken windows' has been shown to have no more statistical power to explain the drop in crime in NY in the 1990s than Levitt's alternative hypothesis.  To me what that says is that the 'broken windows' crowd has posited an explaination for declining crime rates that is simple and intuitive yet has no more empirical validity than a far-fetched, seemingly rediculous theory about abortion rates.  If it takes more than that the finally put the nail in the 'broken windows' coffin than I really don't understand how people evaluate evidence and form opinions.
+3. I was more than a little dismayed at how easy it was for me to find strong empirical evidence that 'broken windows' is a broken/useless theory and how many people supporting 'broken windows' are still clinging to its value even in the face of overwhelming empirical evidence that it doesn't work.
+
+4. I've had some harsh words for Steve Levitt and Freakonomics in the past.  I didn't love the Levitt analysis from Freakonomics on abortions and crime.  I thought it was seriously flawed but it does provide a refreshing wake up call on the 'broken windows' discussion.  That is, one of Levitt's explanations for the reduction in the crime rate in the 1990s was that Roe v. Wade legalized abortion in 1970.  On it's face that explanation seems far-fetched and much less intuitive than the 'broken windows' explanations.  However, 'broken windows' has been shown to have no more statistical power to explain the drop in crime in NY in the 1990s than Levitt's alternative hypothesis.  To me what that says is that the 'broken windows' crowd has posited an explaination for declining crime rates that is simple and intuitive yet has no more empirical validity than a far-fetched, seemingly rediculous theory about abortion rates.  If it takes more than that the finally put the nail in the 'broken windows' coffin than I really don't understand how people evaluate evidence and form opinions.
 
 ## Methods Overview
 
 Empirical work related to the “Broken Windows” hypothesis comes in a lot of flavors.  I contend that most of the literature falls into two basic camps:
 
-1.  Regression based analysis using misdemeanor arrests as a proxy for broken windows policing.  These studies generally use murder or some other violent crime as the dependent variable in a regression and include some combination of economic factors, demographic factors, and policing strategy as explanatory variables.  Consider the following equation:
+1.  Regression-based analysis using misdemeanor arrests as a proxy for broken windows policing.  These studies generally use murder or some other violent crime as the dependent variable in a regression and include some combination of economic factors, demographic factors, and policing strategy as explanatory variables.  Consider the following equation:
 
 $$y=\alpha + \beta TEENS + \gamma COPS + \delta UNEMP + \rho BW + \sum_{i}\phi_{i} month_{i}$$
 
@@ -138,7 +148,7 @@ It pisses me off that people can get in a journal like Science without being car
 
 ### A few more for the lightening round:
 
-[Harcourt, 2006, University of Chicago Law Review] (http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=2473&context=journal_articles)
+[Harcourt, 2006, University of Chicago Law Review](http://chicagounbound.uchicago.edu/cgi/viewcontent.cgi article=2473&context=journal_articles)
 
 *Our analysis provides no empirical evidence to support the view that shifting police towards minor disorder offenses would improve the efficiency of police spending and reduce violent crime*
 
