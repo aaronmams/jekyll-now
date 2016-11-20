@@ -3,6 +3,9 @@ layout: post
 title: "Broken Windows, Carrots, Sticks, and Roe v Wade"
 ---
 
+The empirical section of this post is still a work-in-progress but the data and R scripts are available in my [crime repository on GitHub](https://github.com/aaronmams/crime).
+
+## Intro/Background
 In 1982 [Kelling and Wilson](http://www.theatlantic.com/magazine/archive/1982/03/broken-windows/304465/) published their article in *The Atlantic Monthly* titled: "Broken Windows: The Police and Neighborhood Safety." Perhaps because I have followed the academic and public policy discussions surrounding "Broken Windows" policing, I was kind of surprised to hear a segment on NPR today that made it clear to me that there are still a lot of people who think the "Broken Windows" metaphore is associated with time-tested successful policing strategies.  I guess I thought everyone basically knew that policing based on the "Broken Windows" hypothesis has been empirically shown to have extrememly questionable/uncertain benefits.  
 
 A slightly more general grip related to this post on "Broken Windows" policing: In my opinion too many people crave simplicity with respect to policy prescriptions.  Too many people are romantically involved with the notion that "the right answer is usually the simplest one."  Our world is complex, interactions are non-linear, people's behaviors are nuanced and idiosyncratic.  I think it's foolish to assume we can credibly approach complicated problems like public safety and crime with simple, meme-like solutions.
@@ -210,7 +213,7 @@ essex <- Quandl("FRED/NYESSE1POP", api_key="1i2uuiN7DQ-Ltizgjb_q")
 essex$county='Essex'
 
 new_york_county <- Quandl("FRED/NYNEWY1POP", api_key="1i2uuiN7DQ-Ltizgjb_q") #nyc
-new_york_county$county='New york'
+new_york_county$county='New York'
 
 kings <- Quandl("FRED/NYKING7POP", api_key="1i2uuiN7DQ-Ltizgjb_q")  #nyc
 kings$county = 'Kings'
