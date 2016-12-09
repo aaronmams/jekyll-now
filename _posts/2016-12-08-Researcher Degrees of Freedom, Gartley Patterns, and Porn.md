@@ -398,7 +398,7 @@ This chart should provide any analyst with a little heartburn:
 
 * If we do include it, do we mark it as a success or failure?  This is complicated question because price did decline modestly following the "D" point.  So how much price movement does the Gartley say we should look for with the Gartley 222 pattern?  In my readings I came across this bit of guidance that says a good price target after identifying a bearish Gartley is D - 0.618(D-C).  In this case, that would be around $139.  This pattern doesn't get anywhere near that before running topside of the D point.
 
-So back to Research Degrees of Freedom.  My claim is this: if you want to believe there is something magical about the Gartley 222 pattern and that 70% of the time you trade it, it leads to market beating profits you can easily prove yourself right.  
+So back to RESEARCHER DEGREES OF FREEDOM.  My claim is this: if you want to believe there is something magical about the Gartley 222 pattern and that 70% of the time you trade it, it leads to market beating profits you can easily prove yourself right.  
 
 For starters suppose I assemble a list of 100 Gartley 222 buy patterns, 50 of which produced profits in excess of D + (0.618(C-D)) and 50 of which did not.  Given the ambiguity outlined above regarding what is and is not a Gartley 222 pattern, I could easily assemble 5 experienced traders to comb through my list of the 50 losing Gartleys and tell me why 30 of them aren't really Gartleys.  Then I'd be at 50/70 (71%) and the 70% Gartley success rate claim would win.
 
