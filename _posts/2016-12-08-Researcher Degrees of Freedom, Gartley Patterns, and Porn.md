@@ -428,7 +428,7 @@ As far as I can tell [The I know-it-when-I-see-it](https://en.wikipedia.org/wiki
 
 Gartley patterns appear to fall under this same statute.  And, in fact, most technical trading education platforms will go as far as to:
 
-1. acknowledge that identifying Gartley's is more art than science, and
+1. acknowledge that identifying Gartleys is more art than science, and
 
 2. provide some encouragement along the lines of, "the more you look for them the better you'll get at identifying them."  
 
