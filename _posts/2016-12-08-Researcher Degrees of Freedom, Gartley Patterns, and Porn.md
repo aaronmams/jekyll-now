@@ -86,7 +86,7 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
 
 ![the gartley](/images/gart222.png)
 
-In the chart above the dotted blue line indicates a commonly cited profit target at D + 0.618 * |D-C| for a buy signal or D - 0.618 * |D-C| for a sell signal.
+In the chart above the dotted blue line indicates a commonly cited profit target at $D + 0.618 * |D-C|$ for a buy signal or $D - 0.618 * |D-C|$ for a sell signal.
 
 As I understand it the Gartley 222 should have:
 
@@ -152,11 +152,11 @@ ggplot(data=qqq, aes(x=factor(date))) +
 ![QQQ Gartley](/images/gart_qqq.png)
 
 
-1. (B-A)/(X-A) = 0.683 which is neither 0.618 or 0.786...but it is between those two so let's be generous and say the Fibonacci retracement for the A to B leg of our Gartley should be 'between 0.618 and 0.786.'
+1. $\frac{B-A}{X-A} = 0.683$ which is neither 0.618 or 0.786...but it is between those two so let's be generous and say the Fibonacci retracement for the A to B leg of our Gartley should be 'between 0.618 and 0.786.'
 
-2.  (B-C)/(B-A) = 0.4826.  Here we get to the real ambiguity of the Gartley pattern.  Some sources say B to C should be a 0.618 or a 0.786 retracement of the A - B move.  Other sources say that B to C can be anywhere from 0.328 to 0.886 times the A to B move.
+2.  $\frac{B-C}{B-A}$ = 0.4826.  Here we get to the real ambiguity of the Gartley pattern.  Some sources say B to C should be a 0.618 or a 0.786 retracement of the A - B move.  Other sources say that B to C can be anywhere from 0.328 to 0.886 times the A to B move.
 
-3. Finally, in this example (D-A)/(X-A) = 0.9171 which is a pretty far cry from the recommended 0.786.
+3. Finally, in this example $\frac{D-A}{X-A} = 0.9171$ which is a pretty far cry from the recommended 0.786.
 
 > A quick rant:  Tom O'Brien is really adement in his book that a Gartley 222 pattern MUST HAVE an AB=CD structure.  I have seen this language in other places as well and it is an infuriating bit of poo.  AB=CD is not a structure, it is a statement...and in the case of the QQQ example above it is a verifiably false statement.   
 
