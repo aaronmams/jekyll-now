@@ -162,7 +162,7 @@ ggplot(data=qqq, aes(x=factor(date))) +
 
 > I think these technical traders are using the word 'structure' in the phrase "AB=CD structure" to connote that AB=CD should not be taken literally but rather that a Gartley should have AB and CD legs that are similar. 
 
-> I wish they would just say that because "AB=CD structure" is a completely meaningless pile of poppycock.  AB is either equal to CD or it is not.  There is not structure involved. 
+> I wish they would just say that because "AB=CD structure" is a completely meaningless pile of poppycock.  AB is either equal to CD or it is not.  There is no structure involved. 
 
 
 ### Gartley Example 2:
@@ -398,12 +398,11 @@ This chart should provide any analyst with a little heartburn:
 
 * If we do include it, do we mark it as a success or failure?  This is complicated question because price did decline modestly following the "D" point.  So how much price movement does the Gartley say we should look for with the Gartley 222 pattern?  In my readings I came across this bit of guidance that says a good price target after identifying a bearish Gartley is D - 0.618(D-C).  In this case, that would be around $139.  This pattern doesn't get anywhere near that before running topside of the D point.
 
-So back to Research Degrees of Freedom.  My claim is this: if you want to believe there is something magical about the Gartley 222 pattern and that 70% of the time it lead to market beating profits you can easily prove yourself right.  
+So back to Research Degrees of Freedom.  My claim is this: if you want to believe there is something magical about the Gartley 222 pattern and that 70% of the time you trade it, it leads to market beating profits you can easily prove yourself right.  
 
 For starters suppose I assemble a list of 100 Gartley 222 buy patterns, 50 of which produced profits in excess of D + (0.618(C-D)) and 50 of which did not.  Given the ambiguity outlined above regarding what is and is not a Gartley 222 pattern, I could easily assemble 5 experienced traders to comb through my list of the 50 losing Gartleys and tell me why 30 of them aren't really Gartleys.  Then I'd be at 50/70 (71%) and the 70% Gartley success rate claim would win.
 
 This would be pretty nefarious...that kind of ex-post data mining is more like statistical cherry-picking than Researcher Degrees of Freedom.  But there is a more innocent way to prove the 70% rule:  simple ask Tom O'Brien or Larry Pesavento to compile the list for me.    
-
 You see, when Larry Pesavento says 70% of Gartley trades are profitable what he is really saying is: 70% (or more) of the time that HE HAS EXECUTED a trade off of a Gartley it was profitable.  The thing is that Larry Pesavento and Tom O'Brien have been trading 10 hours a day every day for the last 30 years.  They probably see a thousand Gartley set-ups a day and may only trade off a couple a week.  We have no idea what happened with the 20,000 Gartley set-ups a month that they decided not to act on because:
 
 * volume was weak
@@ -412,10 +411,16 @@ You see, when Larry Pesavento says 70% of Gartley trades are profitable what he 
 
 My claim is that even if he wanted to compile the most objective and un-biased list of Gartley 222 set-ups for testing purposes, Larry Pesavento would not be able to.  Larry Pesavento has made money off of Gartley-type chart patterns and his brain has filed those under "the Gartley 222 pattern."  Larry has also disregarded thousands of Gartley 222 patterns for various reasons (the Baltic Dry Index, the upcoming OPEC meeting, the current moon phase) and his brain has put those in a file called "Not Gartleys."  So if I backtest a list of 100 historical Gartleys handpicked by Larry himself to see if the 70% rule holds, it will... because Larry Pesavento's brain has coupled "Gartley" with "made money" and those things can't be uncoupled.
 
+If you think I'm exaggerating let me provide you with another data point (albeit anecdotal).  I have now read about 15 white papers on the subject of Back Testing Gartleys. [They almost all look somethign like this](www.forexfactory.com/attachment.php?attachmentid=1060284&d=1350500562).  This analysis looks vaguely professional...they're reasonably clear about their experimental set-up and the parameters of their "Back Test" but notice what they are NOT doing.  They're not telling us:
+
+* what stocks/currency pairs/commodities and what time periods are included in thier backtesting data sample
+* they're not providing any link to the data so we can see what the chart patterns that they tested look like
+* and most importantly, they're telling you anything about how they decided not to include any of the 25,000 + Gartleys that happen on a daily basis that didn't make it into their study. 
+
 
 ## Pornography
 
-To their modest credit most experienced traders seem to recognize the inherent bias toward the "I'll-know-it-when-I-see-it" method of picking out Gartleys.  
+To their modest credit a lot of experienced traders seem to recognize the inherent bias toward the "I'll-know-it-when-I-see-it" method of picking out Gartleys.  
  
 As far as I can tell [The I know-it-when-I-see-it](https://en.wikipedia.org/wiki/Jacobellis_v._Ohio) characterization of pornography originated with Justice Potter Stewart's opinion in the case of Nico Jacobellis v. Ohio (1964)....Stewart's opinion held that the Constitution protects all obscenity except "hard-core pornography." He famously wrote, "I shall not today attempt further to define the kinds of material I understand to be embraced within that shorthand description; and perhaps I could never succeed in intelligibly doing so. But I know it when I see it, and the motion picture involved in this case is not that."
 
