@@ -280,13 +280,21 @@ Trader: Bring me a Gartley and I'll show you the perfect trade set up.
 
 Me: OK, what's a Gartley?
 
-Trader: it has $\frac{|A-B|}{|X-A|} = 0.618$ and $\frac{|A-D|}{|X-A|} = 0.786$ and $\frac{|B-C|}{|A-B|}$ between 0.3 and 0.8.
+Trader: it has 
+
+* $$\frac{|A-B|}{|X-A|} = 0.618$$ 
+* $$\frac{|A-D|}{|X-A|} = 0.786$$ 
+* $$\frac{|B-C|}{|A-B|}$$ between 0.3 and 0.8.
 
 Me: Ok, here ya go.
 
 Trader: no that's not a Gartley, it has a gap.
 
-Me: Ok, got it...$$\frac{|A-B|}{|X-A|} = 0.618$$ and $$\frac{|A-D|}{|X-A|} = 0.786$$ and $$\frac{|B-C|}{|A-B|} between 0.3 and 0.8$$ and no gaps...
+Me: Ok, got it...
+
+* $$\frac{|A-B|}{|X-A|} = 0.618$$ 
+* $$\frac{|A-D|}{|X-A|} = 0.786$$ 
+* $$\frac{|B-C|}{|A-B|}$$ 0.3 and 0.8 and no gaps...
 
 Trader: yes.
 
@@ -298,7 +306,12 @@ Me: but the one you showed be before had $$AD = 0.92XA$$
 
 Trader: yes but that's because the C point was a high volume swing point so we expected it to take a little longer on the CD leg to burn off all the energy.
 
-Me: Ok, got it....So...$$AB=0.6XA$$, $$AD=0.7XA$$ - AD can sometimes be > 0.7 but only if C is a high volume swing point - and $$BC = 0.3AB to 0.8AB$$, and no gaps...
+Me: Ok, got it....So...
+
+* $$AB=0.6XA$$ 
+* $$AD=0.7XA$$ 
+* AD can sometimes be > 0.7 but only if C is a high volume swing point
+* and $$BC = 0.3AB to 0.8AB$$, and no gaps...
 
 Me: here you go
 
