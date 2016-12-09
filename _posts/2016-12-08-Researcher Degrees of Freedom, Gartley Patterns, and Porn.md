@@ -53,6 +53,58 @@ Ok, let's get started.
 The hypothesis we are looking to test is the claim that the Gartley 222 pattern has a 70% success rate.  So the first thing we need to do define what a Gartley 222 pattern is.  The figure below illustrates what I claim is the most common understanding of a Gartley sell signal.
 
 ```R
+#first gotta load some quantative finance stuff I wrote
+require(ggplot2)
+require(dplyr)
+require(lubridate)
+require(zoo)
+require(quantmod)
+require(data.table)
+library(ggthemes)
+############################################################################
+############################################################################
+############################################################################
+#Use QuantMod package to pull quotes from Yahoo Finance
+
+df.pull <- function(tickers,startDate,endDate){
+  stockData <- new.env() #Make a new environment for quantmod to store data in
+  
+  #create a character vector of ticker symbols to pull data for
+  #tickers <- c("FCNTX","PRNHX","FSENX","VGPMX","BAC","SPY","^GSPC", "^DJI","^RUT",
+  #             "FSCOX","XLF") #Define the tickers we are interested in
+  
+  #some small and mid-cap growth funds
+  #tickers <- c('BUFTX','FCPGX','FDEGX','IWB','FMCSX','VISGX','VMGRX')
+  
+  #some diversified emerging markets
+  #tickers <- c('FEMKX','FEDDX','PRMSX','VEIEX','FSCOX')
+  
+  
+  #Download the stock history (for all tickers)
+  getSymbols(tickers, env = stockData, src = "yahoo", from = startDate, to = endDate)
+  
+  #first coerce the environment to a data frame....this gives us a list of 
+  # data frames
+  df2 <- eapply(stockData,as.data.frame)
+  
+  #now if we change the column names in each of the list objects we can use 
+  # rbindlist to get them in a single data frame...the problem  here is that
+  # the assets are not in the data frame 'df2' in the same order I put them in
+  # the object 'tickers'.  For each data frame in the list I need to recover the name
+  # of the asset and also give the columns new names.
+  df.clean <- function(tmp.data){
+    asset <- unlist(strsplit(names(tmp.data)[1],"[.]"))[1]
+    names(tmp.data) <- c("Open","High","Low","Close","Volume","Adjusted")
+    tmp.data$asset<-asset
+    tmp.data$date <- as.Date(row.names(tmp.data),format="%Y-%m-%d")
+    return(tmp.data)
+  }
+  #apply the function above to each element in the df2 list...then coerce the output
+  # to a data frame
+  return(tbl_df(data.frame(rbindlist(lapply(df2,df.clean)))))
+}
+##########################################################################################
+
 
 #first I'm just going to draw the perfect Gartley
 X <- 2
@@ -414,13 +466,13 @@ You see, when Larry Pesavento says 70% of Gartley trades are profitable what he 
 
 My claim is that even if he wanted to compile the most objective and un-biased list of Gartley 222 set-ups for testing purposes, Larry Pesavento would not be able to.  Larry Pesavento has made money off of Gartley-type chart patterns and his brain has filed those under "the Gartley 222 pattern."  Larry has also disregarded thousands of Gartley 222 patterns for various reasons (the Baltic Dry Index, the upcoming OPEC meeting, the current moon phase) and his brain has put those in a file called "Not Gartleys."  So if I backtest a list of 100 historical Gartleys handpicked by Larry himself to see if the 70% rule holds, it will... because Larry Pesavento's brain has coupled "Gartley" with "made money" and those things can't be uncoupled.
 
-If you think I'm exaggerating let me provide you with another data point (albeit anecdotal).  I have now read about 15 white papers on the subject of Back Testing Gartleys. They almost all look like a white paper I came across from Mark Conway"..I'm not going to provide the link because it looks a little suspect but just Google "backtesting gartley 222 Mark Conway if you want the .pdf.  
+If you think I'm exaggerating let me provide you with another data point (albeit anecdotal).  I have now read about 15 white papers on the subject of Back Testing Gartleys. They almost all look like a white paper I came across from Mark Conway"..I'm not going to provide the link because it looks a little suspect but just Google "backtesting gartley 222 Mark Conway" if you want the .pdf.  
 
 This analysis looks vaguely professional...they're reasonably clear about their experimental set-up and the parameters of their "Back Test" but notice what they are NOT doing.  They're not telling us:
 
 * what stocks/currency pairs/commodities and what time periods are included in thier backtesting data sample
 * they're not providing any link to the data so we can see what the chart patterns that they tested look like
-* and most importantly, they're telling you anything about how they decided not to include any of the 25,000 + Gartleys that happen on a daily basis that didn't make it into their study. 
+* and most importantly, they're not telling you anything about how they decided not to include any of the 25,000 + Gartleys that happen on a daily basis that didn't make it into their study. 
 
 
 ## Pornography
