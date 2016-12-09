@@ -86,15 +86,15 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
 
 ![thegartley](/images/gart222.png)
 
-In the chart above the dotted blue line indicates a commonly cited profit target at $$D + 0.618|D-C|$$ for a buy signal or $$D - 0.618|D-C|$$ for a sell signal.
+In the chart above the dotted blue line indicates a commonly cited profit target at D - 0.618(D-C) for a sell signal or D - 0.618(D-C) for a sell signal.
 
 As I understand it the Gartley 222 should have:
 
 1. an impulse leg X to A
-2. a rebound at A such that $|A-B| = 0.618*|X-A|$
-3. a retracement at B such that $|B-C| = 0.618 * |A-B|$...another common retracement is $|B-C| = 0.786 * |A-B|$
-4. a reversal at C such that $|C-D| = 1.27$ or $1.618 * |B-C|$
-5. A "D" point such that $|A - D| = 0.786 * |X - A|$ 
+2. a rebound at A such that $$|A-B| = 0.618|X-A|$$
+3. a retracement at B such that $$|B-C| = 0.618|A-B|$$...another common retracement is $$|B-C| = 0.786|A-B|$$
+4. a reversal at C such that $$|C-D| = 1.27$$ or $$1.618|B-C|$$
+5. a D point such that $$|A - D| = 0.786|X - A|$$ 
 
 Common invalidations of a Gartley:
 
@@ -218,13 +218,13 @@ ggplot(data=lmt, aes(x=factor(date))) +
 
 ```
 
-![lmt gartley](/images/bullishgart_lmt.png)
+![lmtgartley](/images/bullighgart_lmt.png)
 
 In this pattern we have:
 
-1. (A-B)/(A-X) = 0.484
-2. (C-B)/(A-B) = 0.676
-3. (A-D)/(A-X) = 0.75
+1. $$\frac{A-B}{A-X} = 0.484$$
+2. $$\frac{C-B}{A-B} = 0.676$$
+3. $$\frac{A-D}{A-X} = 0.75$$
 
 ### Summary
 
@@ -256,19 +256,21 @@ It was pretty easy for me to find stock market patterns that were consistent wit
 
 *SBUX 4/10/2008 to 5/30/2008*
 
+![sbux](/images/bearishgart_sbux.png)
+
 This one has:
 
-* X on 4/18/2008 at $18.32
-* A on 4/24/2008 at 15.29
-* B on 5/2/2008 at $17.1
-* C on 5/9/2008 at $15.68
-* D on 5/19/2008 at $17.44
+* X on 4-18-2008 at $18.32
+* A on 4-24-2008 at 15.29
+* B on 5-2-2008 at $17.1
+* C on 5-9-2008 at $15.68
+* D on 5-19-2008 at $17.44
 
 The key Gartley ratios here are:
 
-* |A-B|/|X-A| = 0.5836177
-* |A-D|/|X-A| = 0.699659
-* |C-B|/|A-B| = 0.8304094
+* $$\frac{|A-B|}{|X-A|} = 0.5836177$$
+* $$\frac{|A-D|}{|X-A|} = 0.699659$$
+* $$\frac{|C-B|}{|A-B|} = 0.8304094$$
 
 I'm being a little cheeky here because the X - A leg has a pretty ugly gap...however, neither Tom O'Brien, Larry Pesavento, or any of the anonymous internet sources said anything about gaps.
 
