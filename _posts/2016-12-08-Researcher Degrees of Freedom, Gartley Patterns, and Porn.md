@@ -109,6 +109,44 @@ Note, if you don't like the Gartley Rules I laid out here don't worry.  We are n
 I'll start with the Gartley example from Tom O'Brien's book [The Art of Timing the Trade](https://www.amazon.com/Timing-Ultimate-Trading-Mastery-System/dp/0976352923).  He says that the QQQ formed a Gartley 'sell' pattern between 6/18/2010 and 8/9/2010.  
 
 ```R
+#the QQQ example from Tom's book
+qqq <- df.pull(tickers="QQQ",startDate='2010-06-09',endDate='2010-08-27')
+
+ggplot(data=qqq, aes(x=factor(date))) + 
+  theme_bw() +
+  geom_linerange(aes(ymin=Low,ymax=High)) +
+  geom_point(aes(x=factor(date),y=Open),shape=3)
+
+X <- qqq$High[qqq$date=='2010-06-21']
+A <- qqq$Low[qqq$date=='2010-07-01']
+B <- qqq$High[qqq$date=='2010-07-14']
+C <- qqq$Low[qqq$date=='2010-07-20']
+D <- qqq$High[qqq$date=='2010-08-09']
+
+BC.rt <- B - ((B-A)*0.32)
+f79 <- A + ((X-A)*0.782)
+f60 <- A + ((X-A)*0.618)
+fC38 <- B - ((B-A)*0.318)
+fC88 <- B - ((B-A)*0.886)
+
+ggplot(data=qqq, aes(x=factor(date))) + 
+  theme_bw() +
+  geom_linerange(aes(ymin=Low,ymax=High)) +
+  geom_point(aes(x=factor(date),y=Open),shape=3) + 
+  geom_hline(yintercept=X,color="blue",linetype='dashed') + 
+  geom_hline(yintercept=f79,color="blue") + 
+  geom_hline(yintercept=f60,color="blue") +
+#  geom_hline(yintercept=fC38,color="pink") +
+#  geom_hline(yintercept=fC88,color="pink") +
+  annotate("text",x='2010-06-21',y=48.00,label="X",size=6) + 
+  annotate("text",x='2010-07-01',y=41.67,label="A", size=6) + 
+  annotate("text",x='2010-07-14',y=45.90,label="B",size=6) + 
+  annotate("text",x='2010-07-20',y=43.56,label="C",size=6) + 
+  annotate("text",x='2010-08-09',y=47.18,label="D",size=6) + 
+  annotate("text",x='2010-07-02',y=46.30,label="A + 0.78*|X-A|") + 
+  annotate("text",x='2010-07-02',y=45.32,label="A + 0.618*|X-A|") + 
+  theme(axis.text.x=element_text(angle=90)) +
+  xlab("Date") + ylab("Price")
 
 ```
 
@@ -121,16 +159,12 @@ I'll start with the Gartley example from Tom O'Brien's book [The Art of Timing t
 
 3. Finally, in this example (D-A)/(X-A) = 0.9171 which is a pretty far cry from the recommended 0.786.
 
-```java
-A quick rant:  
+> A quick rant:  Tom O'Brien is really adement in his book that a Gartley 222 pattern MUST HAVE an AB=CD structure.  I have seen this language in other places as well and it is an infuriating bit of poo.  AB=CD is not a structure, it is a statement...and in the case of the QQQ example above it is a verifiably false statement.   
 
-Tom O'Brien is really adement in his book that a Gartley 222 pattern MUST HAVE an AB=CD structure.  I have seen this language in other places as well and it is an infuriating bit of poo.  AB=CD is not a structure, it is a statement...and in the case of the QQQ example above it is a verifiably false statement.   
+> I think these technical traders are using the word 'structure' in the phrase "AB=CD structure" to connote that AB=CD should not be taken literally but rather that a Gartley should have AB and CD legs that are similar. 
 
-I think these technical traders are using the word 'structure' in the phrase "AB=CD structure" to connote that AB=CD should not be taken literally but rather that a Gartley should have AB and CD legs that are similar. 
+> I wish they would just say that because "AB=CD structure" is a completely meaningless pile of poppycock.  AB is either equal to CD or it is not.  There is not structure involved. 
 
-I wish they would just say that because "AB=CD structure" is a completely meaningless pile of poppycock.  AB is either equal to CD or it is not.  There is not structure involved. 
-
-```
 
 ### Gartley Example 2:
 
@@ -151,6 +185,41 @@ These numbers give us:
 ### Gartley Example 3:
 
 This one come from the internet so take it for what it's worth.  A site called [Trader's Library](http://blog.traderslibrary.com/traders-library/2013/01/lmt-bullish-gartley-pattern.html) has an example of a bullish Gartley that presented itself in the chart of Lockheed-Martin between November 12th and December 14th of 2012.
+
+```R
+lmt<-df.pull(tickers="LMT",startDate='2012-11-01',endDate='2013-01-01')
+ggplot(data=lmt, aes(x=factor(date))) + 
+  theme_bw() +
+  geom_linerange(aes(ymin=Low,ymax=High)) +
+  theme(axis.text.x=element_text(angle=45))
+
+X <- lmt$Low[lmt$date=='2012-11-15']
+A <- lmt$High[lmt$date=='2012-11-30']
+B <- lmt$Low[lmt$date=='2012-12-05']
+C <- lmt$High[lmt$date=='2012-12-11']
+D <- lmt$Low[lmt$date=='2012-12-17']
+
+
+ggplot(data=lmt, aes(x=factor(date))) + 
+  theme_bw() +
+  geom_linerange(aes(ymin=Low,ymax=High)) +
+  geom_hline(yintercept=X,color="blue",linetype='dashed') + 
+  geom_hline(yintercept=A -  (0.786*(A-X)),color="blue") +
+  annotate("text",x='2012-11-28',y=(A-(0.768*(A-X)))-0.2,label="F 0.768") + 
+  geom_hline(yintercept=A - (0.618*(A-X)),color="blue") +
+  annotate("text",x='2012-11-28',y=(A-(0.618*(A-X)))+0.2,label="F 0.618") + 
+  geom_hline(yintercept=B + (0.618*(A-B)),color="pink") +
+  annotate("text",x='2012-11-15',y=87,label="X",size=6) + 
+  annotate("text",x='2012-11-30',y=94.05,label="A", size=6) + 
+  annotate("text",x='2012-12-05',y=B-0.05,label="B",size=6) + 
+  annotate("text",x='2012-12-11',y=C+0.05,label="C",size=6) + 
+  annotate("text",x='2012-12-17',y=D-0.05,label="D",size=6) + 
+  theme(axis.text.x=element_text(angle=90)) + 
+  ylab("Price") + xlab("Date")
+
+```
+
+![lmt gartley](/images/bullishgart_lmt.png)
 
 In this pattern we have:
 
