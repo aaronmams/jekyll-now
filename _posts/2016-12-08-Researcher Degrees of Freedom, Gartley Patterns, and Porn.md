@@ -4,11 +4,11 @@ I've been thinking a lot lately about pattern trading and 'technical stock analy
 
 First, an excerpt from the paper that brought us the term, "Researcher Degrees of Freedom", [Simmons et al. 2011](http://pss.sagepub.com/content/22/11/1359):
 
-*[I]t is unacceptably easy to publish “statistically significant” evidence consistent with any hypothesis.
+*It is unacceptably easy to publish “statistically significant” evidence consistent with any hypothesis.*
 
-The culprit is a construct we refer to as researcher degrees of freedom. In the course of collecting and analyzing data, researchers have many decisions to make: Should more data be collected? Should some observations be excluded? Which conditions should be combined and which ones compared? Which control variables should be considered? Should specific measures be combined or transformed or both?
+*The culprit is a construct we refer to as researcher degrees of freedom. In the course of collecting and analyzing data, researchers have many decisions to make: Should more data be collected? Should some observations be excluded? Which conditions should be combined and which ones compared? Which control variables should be considered? Should specific measures be combined or transformed or both?*
 
-It is rare, and sometimes impractical, for researchers to make all these decisions beforehand. Rather, it is common (and accepted practice) for researchers to explore various analytic alternatives, to search for a combination that yields “statistical significance,” and to then report only what “worked.” The problem, of course, is that the likelihood of at least one (of many) analyses producing a falsely positive finding at the 5% level is necessarily greater than 5%.*
+*It is rare, and sometimes impractical, for researchers to make all these decisions beforehand. Rather, it is common (and accepted practice) for researchers to explore various analytic alternatives, to search for a combination that yields “statistical significance,” and to then report only what “worked.” The problem, of course, is that the likelihood of at least one (of many) analyses producing a falsely positive finding at the 5% level is necessarily greater than 5%.*
 
 ## Here is the lightening round overview of today's post:
 
@@ -87,13 +87,15 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
 
 ![the gartley](/images/gart222.png)
 
-It has:
+In the chart above the dotted blue line indicates a commonly cited profit target at D + 0.618 * |D-C| for a buy signal or D - 0.618 * |D-C| for a sell signal.
+
+As I understand it the Gartley 222 should have:
 
 1. an impulse leg X to A
-2. a rebound at A such that |A-B| = 0.618*|X-A|
-3. a retracement at B such that |B-C| = 0.618 * |A-B|...another common retracement is |B-C| = 0.786 * |A-B|
-4. a reversal at C such that |C-D| = 1.27 or 1.618 * |B-C|
-5. A D point such that |A - D| = 0.786 * |X - A| 
+2. a rebound at A such that $|A-B| = 0.618*|X-A|$
+3. a retracement at B such that $|B-C| = 0.618 * |A-B|$...another common retracement is $|B-C| = 0.786 * |A-B|$
+4. a reversal at C such that $|C-D| = 1.27$ or $1.618 * |B-C|$
+5. A "D" point such that $|A - D| = 0.786 * |X - A|$ 
 
 Common invalidations of a Gartley:
 
@@ -105,6 +107,13 @@ Note, if you don't like the Gartley Rules I laid out here don't worry.  We are n
 ### Gartley Example 1:
 
 I'll start with the Gartley example from Tom O'Brien's book [The Art of Timing the Trade](https://www.amazon.com/Timing-Ultimate-Trading-Mastery-System/dp/0976352923).  He says that the QQQ formed a Gartley 'sell' pattern between 6/18/2010 and 8/9/2010.  
+
+```R
+
+```
+
+![QQQ Gartley](/images/gart_qqq.png)
+
 
 1. (B-A)/(X-A) = 0.683 which is neither 0.618 or 0.786...but it is between those two so let's be generous and say the Fibonacci retracement for the A to B leg of our Gartley should be 'between 0.618 and 0.786.'
 
