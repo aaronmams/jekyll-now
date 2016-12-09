@@ -26,7 +26,7 @@ Here are the main things my inquiry has turned up:
 
 1. The claim that "the Gartley 222 pattern has a 70% success rate" is both totally meaningless and absolute nonsense.
 
-2. The reason, in my humble opinion, behind many of these asinine claims of Gartley success is researcher degrees of freedom.
+2. The reason, in my humble opinion, behind many of these asinine claims of Gartley success is RESEARCHER DEGREES OF FREEDOM (RDF).
 
 3. Some technical traders are total snake oil salesmen trying to get you to buy a shitty piece of technical analysis software and then pay them to teach you how to use it in 'webinars.' Don't do this.  Ever.  You want to learn to tape-read or trade off of chart patterns? Like [Jesse Livermore](https://en.wikipedia.org/wiki/Jesse_Lauriston_Livermore) or [Wycoff](http://www.businessinsider.com/the-richard-wyckoff-stock-trading-method-2013-2)  That's cool, I won't say a bad word about you.  But please, please, please don't ever poney up a grand for some dude's "Gartley screener." 
 
@@ -46,7 +46,7 @@ Upon re-reading this it sounds a little like I'm bashing Tom O'Brien and Larry P
 
 but that doens't mean I think the people who do these things are criminals or idiots. Totally the opposite actually. At least in the case of O'Brien and Pesavento they do make a lot of money with their systems, they genuinely want to help you make money, they really want to help you understand their system...the issue that I will discuss further in this post is that they may or may not realize how untethered their systems are to quantifiable metrics like Gartley patterns or Fibonacci retracements.  
 
-## The Gartley 222 and Researcher Degrees of Freedom
+## The Gartley 222 and RESEARCHER DEGREES OF FREEDOM
 
 Ok, let's get started.  
 
@@ -86,7 +86,7 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
 
 ![thegartley](/images/gart222.png)
 
-In the chart above the dotted blue line indicates a commonly cited profit target at D - 0.618(D-C) for a sell signal or D - 0.618(D-C) for a sell signal.
+In the chart above the dotted blue line indicates a commonly cited profit target at D - 0.618(D-C) for a sell signal or D + 0.618(D-C) for a buy signal.
 
 As I understand it the Gartley 222 should have:
 
@@ -105,7 +105,7 @@ Note, if you don't like the Gartley Rules I laid out here don't worry.  We are n
 
 ### Gartley Example 1:
 
-I'll start with the Gartley example from Tom O'Brien's book [The Art of Timing the Trade](https://www.amazon.com/Timing-Ultimate-Trading-Mastery-System/dp/0976352923).  He says that the QQQ formed a Gartley 'sell' pattern between 6/18/2010 and 8/9/2010.  
+I'll start with the Gartley example from Tom O'Brien's book [The Art of Timing the Trade](https://www.amazon.com/Timing-Ultimate-Trading-Mastery-System/dp/0976352923).  He says that the QQQ (The ETF that tracks the Nasdaq 100) formed a Gartley 'sell' pattern between 6/18/2010 and 8/9/2010.  
 
 ```R
 #the QQQ example from Tom's book
@@ -247,7 +247,7 @@ then you can probably call that "A Gartley."
 
 I find this problematic because with over 2,800 companies, hundreds of commodities, and hundreds of currency and currency-pair spreads traded every day, there are literally tens of thousands of prices changing every minute of every day creating billions of possible price movements that can be examined for Gartley-ness.
 
-In order to test whether the Gartley in fact has a 70% success rate we would basically want to find a bunch of Gartley Patterns and examine how many of them exhibited the expected price move following the D point.  This is where researcher degrees of freedom come in:
+In order to test whether the Gartley in fact has a 70% success rate we would basically want to find a bunch of Gartley Patterns and examine how many of them exhibited the expected price move following the D point.  This is where RESEARCHER DEGREES OF FREEDOM come in:
 
 
 ### Illustrating RDF
@@ -402,7 +402,7 @@ So back to Research Degrees of Freedom.  My claim is this: if you want to believ
 
 For starters suppose I assemble a list of 100 Gartley 222 buy patterns, 50 of which produced profits in excess of D + (0.618(C-D)) and 50 of which did not.  Given the ambiguity outlined above regarding what is and is not a Gartley 222 pattern, I could easily assemble 5 experienced traders to comb through my list of the 50 losing Gartleys and tell me why 30 of them aren't really Gartleys.  Then I'd be at 50/70 (71%) and the 70% Gartley success rate claim would win.
 
-This would be pretty nefarious...that kind of ex-post data mining is more like statistical cherry-picking than Researcher Degrees of Freedom.  But there is a more innocent way to prove the 70% rule:  simple ask Tom O'Brien or Larry Pesavento to compile the list for me.    
+This would be pretty nefarious...that kind of ex-post data mining is more like statistical cherry-picking than RESEARCHER DEGREES OF FREEDOM.  But there is a more innocent way to prove the 70% rule:  simple ask Tom O'Brien or Larry Pesavento to compile the list for me.    
 You see, when Larry Pesavento says 70% of Gartley trades are profitable what he is really saying is: 70% (or more) of the time that HE HAS EXECUTED a trade off of a Gartley it was profitable.  The thing is that Larry Pesavento and Tom O'Brien have been trading 10 hours a day every day for the last 30 years.  They probably see a thousand Gartley set-ups a day and may only trade off a couple a week.  We have no idea what happened with the 20,000 Gartley set-ups a month that they decided not to act on because:
 
 * volume was weak
@@ -438,7 +438,7 @@ One reason for this is the Baader-Meinhof Phenomenon. [I love this explanation o
 
 *your friend just told you about that obscure bluegrass-electro-punk band yesterday morning. That afternoon, you ran across one of their albums at a garage sale. Wait a minute — that’s them in that Doritos commercial, too! Coincidence … or conspiracy? More likely, you’re experiencing “frequency illusion,” somewhat better known as the Baader-Meinhof phenomenon*
 
-Another reason is researcher degrees of freedom: I have three candidate occurrences of sea shells.  The first one could be a "<" or it could be a "C"; the next one is a backwards "C"...does that count?; the third one is like two "C"s stacked on top of one another...is that 2 "C"s or 1 "E"?
+Another reason is RESEARCHER DEGREES OF FREEDOM: I have three candidate occurrences of sea shells.  The first one could be a "<" or it could be a "C"; the next one is a backwards "C"...does that count?; the third one is like two "C"s stacked on top of one another...is that 2 "C"s or 1 "E"?
 
 
 ## Final Words
