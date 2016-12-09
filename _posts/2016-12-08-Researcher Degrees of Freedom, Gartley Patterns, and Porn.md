@@ -91,10 +91,10 @@ In the chart above the dotted blue line indicates a commonly cited profit target
 As I understand it the Gartley 222 should have:
 
 1. an impulse leg X to A
-2. a rebound at A such that $$|A-B| = 0.618|X-A|$$
-3. a retracement at B such that $$|B-C| = 0.618|A-B|$$...another common retracement is $$|B-C| = 0.786|A-B|$$
-4. a reversal at C such that $$|C-D| = 1.27$$ or $$1.618|B-C|$$
-5. a D point such that $$|A - D| = 0.786|X - A|$$ 
+2. a rebound at A such that absolute value of A-B = 0.618 time absolute value X-A
+3. a retracement at B such that absolute value B-C = 0.618 times absolute value A-B...another common retracement is 0.786 time absolute value A-B
+4. a reversal at C such that absolute value C-D = 1.27 or 1.618 times absolute value B-C
+5. a D point such that absolute value A - D = 0.786 time absolute value X - A 
 
 Common invalidations of a Gartley:
 
@@ -280,25 +280,25 @@ Trader: Bring me a Gartley and I'll show you the perfect trade set up.
 
 Me: OK, what's a Gartley?
 
-Trader: it has |A-B|/|X-A| ~ 0.6 and |A-D|/|X-A| ~ 0.7 and |B-C|/|A-B| between 0.3 and 0.8.
+Trader: it has $$\frac{|A-B|}{|X-A|} = 0.618$$ and $$\frac{|A-D|}{|X-A|} = 0.786$$ and $$\frac{|B-C|}{|A-B|} between 0.3 and 0.8$$.
 
 Me: Ok, here ya go.
 
 Trader: no that's not a Gartley, it has a gap.
 
-Me: Ok, got it...so AB~0.6*XA, AD~0.7*XA, BC ~ 0.3 to 0.8 * AB and now gaps...
+Me: Ok, got it...$$\frac{|A-B|}{|X-A|} = 0.618$$ and $$\frac{|A-D|}{|X-A|} = 0.786$$ and $$\frac{|B-C|}{|A-B|} between 0.3 and 0.8$$ and no gaps...
 
 Trader: yes.
 
 Me: found one
 
-Trader: no way, that one has AD = 0.91*XA.
+Trader: no way, that one has $$AD = 0.91XA$$.
 
-Me: but the one you showed be before had AD = 0.92*XA
+Me: but the one you showed be before had $$AD = 0.92XA$$
 
 Trader: yes but that's because the C point was a high volume swing point so we expected it to take a little longer on the CD leg to burn off all the energy.
 
-Me: Ok, got it....So...AB~0.6*XA, AD~0.7*XA - AD can sometimes be > 0.7 but only if C is a high volume swing point - and BC ~ 0.3 to 0.8 * AB, and no gaps...
+Me: Ok, got it....So...$$AB=0.6XA$$, $$AD=0.7XA$$ - AD can sometimes be > 0.7 but only if C is a high volume swing point - and $$BC = 0.3AB to 0.8AB$$, and no gaps...
 
 Me: here you go
 
@@ -333,13 +333,50 @@ Look, I shouldn't have to babysit you on this.  If you can't get me the rock I n
  
 *The IBB (Nasdaq Biotech Sector ETF) from Oct, 2012 to to Feb, 2013*  
 
+```R
+ibb<-df.pull(tickers="IBB",startDate='2012-10-01',endDate='2013-03-05')
+ggplot(data=ibb, aes(x=factor(date))) + 
+  theme_bw() +
+  geom_linerange(aes(ymin=Low,ymax=High)) +
+  theme(axis.text.x=element_text(angle=45))
+
+X <- ibb$High[ibb$date=='2012-10-05']
+A <- ibb$Low[ibb$date=='2012-11-09']
+B <- ibb$High[ibb$date=='2012-12-12']
+C <- ibb$Low[ibb$date=='2012-12-31']
+D <- ibb$High[ibb$date=='2013-02-01']
+
+  
+f79 <- A + ((X-A)*0.782)
+f60 <- A + ((X-A)*0.618)
+fC38 <- B - ((B-A)*0.318)
+fC88 <- B - ((B-A)*0.886)
+
+ggplot(ibb, aes(x=factor(date))) + 
+  theme_bw() +
+  geom_linerange(aes(ymin=Low,ymax=High)) +
+  annotate("text",x='2012-10-05',y=X+1,label="X",size=6) + 
+  annotate("text",x='2012-11-09',y=A-1,label="A", size=6) + 
+  annotate("text",x='2012-12-12',y=B+1,label="B",size=6) + 
+  annotate("text",x='2012-12-31',y=C-1,label="C",size=6) + 
+  annotate("text",x='2013-02-01',y=D+1,label="D",size=6) + 
+#  annotate("text",x='2010-07-02',y=46.30,label="Fib 0.78") + 
+#  annotate("text",x='2010-07-02',y=45.32,label="Fib 0.618") + 
+  theme(axis.text.x=element_text(angle=90)) +
+  ylab("Price") + xlab("Date") + 
+  scale_x_discrete(breaks=c('2012-10-01','2012-11-01','2012-12-03',
+                            '2013-01-04','2013-02-11'))
+
+```
+![ibb](/images/bearishgartley_ibb.png)
+
 Here we have: 
 
-1. (B-A)/(X-A) = 0.708....between the 0.618 and 0.786 levels we want
+1. $$\frac{(B-A)}{(X-A)} = 0.708$$....between the 0.618 and 0.786 levels we want
 
-2. (B-C)/(B-A) = 0.47...not quite the 0.618 we're looking for but our first 'textbook' Gartley was 0.48 so this one doesn't seem to be an egregious violation.
+2. $$\frac{(B-C)}{(B-A)} = 0.47$$...not quite the 0.618 we're looking for but our first 'textbook' Gartley was 0.48 so this one doesn't seem to be an egregious violation.
 
-3.  (D-A)/(X-A) = 0.994.  This seems a bit extreme.
+3. $$\frac{(D-A)}{(X-A)} = 0.994$$.  This seems a bit extreme.
 
 This chart should provide any analyst with a little heartburn:
 
