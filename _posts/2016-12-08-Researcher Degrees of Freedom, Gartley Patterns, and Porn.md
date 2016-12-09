@@ -461,6 +461,14 @@ It is my firm belief that:
 2. It's human nature to try and assign objective motives to our decision making process.  Especially people in fields like finance that are increasingly celebrating data driven decision making, algorithms, and quants.   
 
 
-Experience traders like O'Brien and Pesavento do make money.  They make money even over the long-haul because price movements in liquid markets like the stock market are not random.  They are complex enough not to be predicted with any accuracy over long time scales but, in the short-run, they are governed by buyers and sellers in the market place.  If you understand who the big buyers and seller are, and what rules they hold themselves to, you probably can identify some helpful patterns.  
+Experience traders like O'Brien and Pesavento make money.  They make money even over the long-haul because price movements in liquid markets like the stock market are not random.  They are complex enough not to be predicted with any accuracy over long time scales but, in the short-run, they are governed by buyers and sellers in the market place.  If you understand who the big buyers and seller are, and what rules they hold themselves to, you probably can identify some helpful patterns.  
 
 For example, many managers of exchange traded funds (like sector funds: XLE for the energy sector, XLK for technology) are bound by pretty rigid rules.  They have to buy and sell actual shares of the companies that make up the index that their fund is supposed to track. When the underlying index moves they have to re-weight their portfolio.  These funds are not buying 10 or 20 shares, they're buying hundreds of thousands to millions of shares.  They're buying lots that have the potential to move markets.  
+
+To some scientists this whole post will serve as a big chest beating exercise but I assure you that's not how it's intended.  My claim that experienced traders like Tom O'Briend and Larry Pesevento are not responding to quantifiable metrics but rather to 'feel' that has been developed over decades of trading in various equity and commodity markets is not meant as a knock on those guys.  
+
+Tom O'Brien is a hustler...in the very best way.  He started out pushing a fucking hot-dog cart around Boston and now he runs a plethora of profitable funds.  It's sure as shit not because the 0.618 Fibonacci retracement has any natural or intrinsic meaning in markets...it's because he's worked day-in and day-out to try and understand the complexity of markets.  
+
+Can you make money trading stocks, currancies, commodities? In my opinion, sure, if you're willing to work diligently at it.  Some might find that disturbing.  I find it pretty comforting...comparative advantage and all that. 
+
+ 
