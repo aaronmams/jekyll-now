@@ -84,9 +84,9 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
   xlab("") + ylab("price")
 ```
 
-![the gartley](/images/gart222.png)
+![thegartley](/images/gart222.png)
 
-In the chart above the dotted blue line indicates a commonly cited profit target at $D + 0.618 * |D-C|$ for a buy signal or $D - 0.618 * |D-C|$ for a sell signal.
+In the chart above the dotted blue line indicates a commonly cited profit target at $D + 0.618|D-C|$ for a buy signal or $D - 0.618|D-C|$ for a sell signal.
 
 As I understand it the Gartley 222 should have:
 
