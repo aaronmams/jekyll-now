@@ -280,7 +280,7 @@ Trader: Bring me a Gartley and I'll show you the perfect trade set up.
 
 Me: OK, what's a Gartley?
 
-Trader: it has $$\frac{|A-B|}{|X-A|} = 0.618$$ and $$\frac{|A-D|}{|X-A|} = 0.786$$ and $$\frac{|B-C|}{|A-B|} between 0.3 and 0.8$$.
+Trader: it has $\frac{|A-B|}{|X-A|} = 0.618$ and $\frac{|A-D|}{|X-A|} = 0.786$ and $\frac{|B-C|}{|A-B|}$ between 0.3 and 0.8.
 
 Me: Ok, here ya go.
 
