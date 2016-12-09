@@ -108,6 +108,9 @@ Note, if you don't like the Gartley Rules I laid out here don't worry.  We are n
 I'll start with the Gartley example from Tom O'Brien's book [The Art of Timing the Trade](https://www.amazon.com/Timing-Ultimate-Trading-Mastery-System/dp/0976352923).  He says that the QQQ (The ETF that tracks the Nasdaq 100) formed a Gartley 'sell' pattern between 6/18/2010 and 8/9/2010.  
 
 ```R
+#make sure to get the quantmod package loaded so you can pull stock prices
+library(quantmod)
+
 #the QQQ example from Tom's book
 qqq <- df.pull(tickers="QQQ",startDate='2010-06-09',endDate='2010-08-27')
 
