@@ -82,7 +82,6 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
     theme_bw() + 
   theme(axis.text.x=element_blank()) + 
   xlab("") + ylab("price")
-
 ```
 
 ![the gartley](/images/gart222.png)
