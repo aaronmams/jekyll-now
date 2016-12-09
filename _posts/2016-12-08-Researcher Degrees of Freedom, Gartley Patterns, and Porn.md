@@ -85,7 +85,7 @@ ggplot(g.df,aes(x=x,y=y)) + geom_line() +
 
 ```
 
-
+![the gartley](/images/gart222.png)
 
 It has:
 
