@@ -1,5 +1,5 @@
 
-[Earlier today]((https://aaronmams.github.io/Researcher-Degrees-of-Freedom,-Gartley-Patterns,-and-Porn/) I tried to put together a semi-coherent post on technical trading, chart pattern stock trading, and a concept called researcher degrees of freedom.  This will be a sort of continuation of that post. In particular, I think there was something I didn't cover earlier that I should: what is the right way to evaluate the success of trading off Gartley patterns?  What is the credible counter factual scenario that a Gartley trade should be measured against?
+[Earlier today](https://aaronmams.github.io/Researcher-Degrees-of-Freedom,-Gartley-Patterns,-and-Porn/) I tried to put together a semi-coherent post on technical trading, chart pattern stock trading, and a concept called researcher degrees of freedom.  This will be a sort of continuation of that post. In particular, I think there was something I didn't cover earlier that I should: what is the right way to evaluate the success of trading off Gartley patterns?  What is the credible counter factual scenario that a Gartley trade should be measured against?
 
  ## Now A Little Thought Experiment
 
