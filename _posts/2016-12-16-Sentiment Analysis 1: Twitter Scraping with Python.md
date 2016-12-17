@@ -51,6 +51,19 @@ I searched Twitter for tweets involving @NOAAFisheries but filtered out retweets
 
 ```python
 import tweepy
+from tweepy import OAuthHandler
+
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_secret = ''
+
+ 
+auth = OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_secret)
+ 
+api = tweepy.API(auth)
+
 import csv
 # Open/Create a file to append data
 csvFile = open('result.csv', 'a')
@@ -102,16 +115,28 @@ nltk.download('punkt')
 
 test=word_tokenize(tlist[1])
 print(test)
-test.append('positive')
-print(test)
 
+['Richard', 'Merrick', 'chief', 'scientist', 'of', 'NOAAFisheries', 'discusses', 'changing', 'climate', 'oceans', 'and', 'America', 's', 'fisheries', 'https', 't', 'co', 'DoP9COsLE7']
 
 ```
+
 Next Steps:
 
-1. train a set of tweets
-2. use the training set to classify NOAA tweets as positive or negative
+So from here we have a few things left to do in order to be able to use some Machine Learning algorithms to classify tweets for us:
 
+### Train a test set
+We have a decent set of tweets that we scrapped from Twitter but now we need to classify them.  I currently have the tweets stored in a list and what I plan to do next is append that list so that each of those tokenized tweets is associated with a 'positive' or 'negative' sentiment.  Also, since a lot of the tweets involving NOAA Fisheries are news items I think I'll add a third classifier: 'neutral'.  I imagine the new list I will want to create will look something like this:
+
+```python
+[('Richard', 'Merrick', 'chief', 'scientist', 'of', 'NOAAFisheries', 'discusses', 'changing', 'climate', 'oceans', 'and', 'America', 's', 'fisheries', 'https', 't', 'co', 'DoP9COsLE7'),'neutral',
+('NOAA','lax', 'hatchery','regs','killing','native','fish','must','act','now'),'negative']
+```
+
+###  Use the training set to classify new tweets
+
+This is where the fun stuff happens.  Here we can leverage any number of supervised machine learning approaches (Naive Bayes, Support Vector Machines, etc) to do the actual classification.  
+
+## Final Notes
 
 Both the Python and R solutions I've worked with are limited by Twitter's API in the sense that you can only get about a weeks worth of tweets matching any set of search terms.  For something like sentiment dynamics this is not terribly limiting...basically what you would be using the Twitter stream for is:
 
