@@ -92,7 +92,7 @@ where the numerator is just the number of occurrences of $x_{1}$ in $c_{1}$ and 
 
 Bayes' Rule combines a prior expectation with a likelihood to form the posterior probability.  Here the prior is the unconditional probability of observing a positive tweet, 
 
-$$P(c_{1}|)$$  
+$$P(c_{1})$$  
 
 We can again estimate this from frequencies,
 
