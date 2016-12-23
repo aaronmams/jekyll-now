@@ -9,13 +9,23 @@ There is a lot that goes into doing a half decent sentiment analysis both mechan
 
 3. use the trained algorithm to classify tweets as positive v. negative
 
-## Background 1: Motivation
+## Background 1: Resources
+
+For this post I borrowed heavily from a great post by [Laurent Luce](http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/).  There were a number of other blog posts that I got some helpful nuggets from:
+
+* http://chengjunwang.com/en/2012/03/sentiment-analysi-with-python/
+* https://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/
+* http://mark-kay.net/2013/12/18/collecting-tweets-using-python/
+
+These were all really good resources...for my Python knowledge level, I found them all lacking in some small ways.  I've tried to fill in those gaps with my post.
+
+## Background 2: Motivation
 
 This little exercise (along with my early post of scrapping from Twitter) is mainly focused on a conceptually simple idea: can we use data from Twitter to determine whether, on net, people have a positive or negative view of the National Oceanic and Atmospheric Administration?  Admittedly, this is a little campy.  It's probably a lot more important (or at least more potentially profitable) for businesses and brands to gauge public opinion about themselves then it is a government science agency.  However, the basic concept of knowing whether people think we are doing a good job or a shitty one is still somewhat important.  And beyond the little toy example I set up here, Sentiment Analysis can probably be leveraged to address other important issues along the lines of, "how to communicate science effectively to the public"...which is something that is a very important part of NOAA's mission.
 
 Spoiler Alert: I'm not actually going to provide a satisfying answer to the motivating question, "do people think we are doing a good job."  However, maybe some of the tools I'm providing here will motivate some industrious young researcher to follow-up with a better analysis than I'm about to shit out here.
 
-## Background 2: Naive Bayes Classifier
+## Background 3: Naive Bayes Classifier
 
 There is no shortage of reputable resources for learning about Naive Bayes classification.  I enjoyed the mix of practicality, mathematical rigor, and conciseness [available here](http://sebastianraschka.com/Articles/2014_naive_bayes_1.html)...but 'the Google' abounds with free and accessable introductions to Naive Bayes classification.
 
