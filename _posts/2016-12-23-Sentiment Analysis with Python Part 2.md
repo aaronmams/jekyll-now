@@ -306,6 +306,9 @@ Notice that, if you look very close, you can see the line
 
 "contains(doing): true"...surrounded by a bunch of "contains(otherwords): false."
 
+Perhaps the complexity of text classification was/is readily apparent to everyone else...it wasn't really until I looked under the hood at some of these feature extractors that realized the scale of this type of operation.  The screen shot above is an entry for A SINGLE TWEET in the training data...and there are over a million tweets in the training data.    
+
+Now the fun stuff, we actually train the classifier:
 ```python
 #now for some real black box shit:
 
@@ -322,11 +325,33 @@ Out[265]: 908.8567419999999
 Once the Naive Bayes Classifier is trained, it is ready to receive input in the form of new tweets to classify.  This is where our earlier twitter scraping comes in.  We pass our list of a few hundred tweets mentioning @NOAA Fisheries to the classifier and we get back the modeled sentiment ('positive' or 'negative') of each tweet.
 
 ```python
-In [266] tweet = 'Larry is my friend'
-		...print classifier.classify(extract_features(tweet.split()))
+#first a trivial one just to see if things pass the sniff test:
+
+tweet = 'Larry is my friend'
+	...print classifier.classify(extract_features(tweet.split()))
 positive
 ```
+So now I'm going to try this out on one of the actual tweets that I pulled [in my last post using tweepy to interface with Twitter (https://aaronmams.github.io/Sentiment-Analysis-1-Twitter-Scraping-with-Python/).  I intentionally picked a difficult tweet in order to demonstrate some conceptual hurdles with Sentiment Analysis and text classification.  The parsed tweet looks like this:
+
+ "Under reported fish catch is a serious issue that has to be addressed Kenneth Sherman from NOAAFisheries LME18 https t co zXJX2JHgov"
 
 ```python
+#finally try the classifier out on the NOAA tweets...
+# row 91 in the noaa_tweets is a good reference tweetnoaa_text = noaa_tweets['tweet']
 
+testtweet=noaa_text[91]
+
+#parse it           
+testtweet = re.sub('[^A-Za-z0-9]+', ' ', testtweet)       
+testtweet
+
+#split it
+print classifier.classify(extract_features(testtweet.split()))
+negative
 ```
+
+Our test tweet from the data set of all tweets with an @NOAAFisheries mention is a difficult one to classify as positive or negative because it's not really either of those.
+
+# Some Final Words
+
+
