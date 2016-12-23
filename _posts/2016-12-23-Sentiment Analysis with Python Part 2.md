@@ -54,7 +54,7 @@ I'm going to rewrite Bayes' Rule with a notation I like a little better.  Let,
 
 The posterior probability that a tweet is positive ($$c_{1}$$) given the content of the tweet can be written as an application of Bayes' Rule:
 
-$$ P(c_{1}|x)=\frac{P(x|c_{1])P(c_{1})}{P(x)}$$
+$$P(c_{1}|x)=\frac{P(x|c_{1])P(c_{1})}{P(x)}$$
 
 Let's make this slightly more concrete and suppose that the tweet we are looking to classify is 'NOAA sucks.'  Here, the feature of the tweet are 
 
@@ -66,13 +66,13 @@ $$P(c_{1}|x)>P(c_{2}|x)$$
 
 Let's illustrate by calculating,
 
-$$ P(c_{1}|x)=\frac{P(x|c_{1])P(c_{1})}{P(x)}$$
+$$P(c_{1}|x)=\frac{P(x|c_{1])P(c_{1})}{P(x)}$$
 
 There are three parts to this posterior probability:
 
-* $$P(x|c_{1})$$, the class conditional probability
-* $$P(c_{1})$$, the prior probability
-* $$P(x)$$, the evidence
+1. $$P(x|c_{1})$$, the class conditional probability
+2. $$P(c_{1})$$, the prior probability
+3. $$P(x)$$, the evidence
 
 ### Class Conditional Probability
 
