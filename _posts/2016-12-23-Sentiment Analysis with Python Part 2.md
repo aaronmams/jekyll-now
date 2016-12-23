@@ -84,7 +84,7 @@ The cool thing about conditional independence is that it makes things really sim
 
 $$P(x|c_{1})=P(x_{1}|c_{1})P(x_{2}|c_{1})$$
 
-and these individual likelihoods like, $P(x_{1}|c_{1}$ can be estimated from frequencies,
+and these individual likelihoods can be estimated from frequencies,
 
 $$P(x_{1}|c_{1})=\frac{N_{x_{1},c_{1}}}{N_{c_{1}}$$ 
 
