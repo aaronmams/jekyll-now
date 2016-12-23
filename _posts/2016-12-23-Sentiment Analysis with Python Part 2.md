@@ -309,6 +309,7 @@ Notice that, if you look very close, you can see the line
 Perhaps the complexity of text classification was/is readily apparent to everyone else...it wasn't really until I looked under the hood at some of these feature extractors that realized the scale of this type of operation.  The screen shot above is an entry for A SINGLE TWEET in the training data...and there are over a million tweets in the training data.    
 
 Now the fun stuff, we actually train the classifier:
+
 ```python
 #now for some real black box shit:
 
@@ -318,8 +319,8 @@ toc = time.clock()
 toc - tic
 
 Out[265]: 908.8567419999999
-
 ```
+
 ### Step 3: Apply the trained classifier
 
 Once the Naive Bayes Classifier is trained, it is ready to receive input in the form of new tweets to classify.  This is where our earlier twitter scraping comes in.  We pass our list of a few hundred tweets mentioning @NOAA Fisheries to the classifier and we get back the modeled sentiment ('positive' or 'negative') of each tweet.
@@ -331,27 +332,45 @@ tweet = 'Larry is my friend'
 	...print classifier.classify(extract_features(tweet.split()))
 positive
 ```
+
 So now I'm going to try this out on one of the actual tweets that I pulled [in my last post using tweepy to interface with Twitter (https://aaronmams.github.io/Sentiment-Analysis-1-Twitter-Scraping-with-Python/).  I intentionally picked a difficult tweet in order to demonstrate some conceptual hurdles with Sentiment Analysis and text classification.  The parsed tweet looks like this:
 
  "Under reported fish catch is a serious issue that has to be addressed Kenneth Sherman from NOAAFisheries LME18 https t co zXJX2JHgov"
 
 ```python
 #finally try the classifier out on the NOAA tweets...
-# row 91 in the noaa_tweets is a good reference tweetnoaa_text = noaa_tweets['tweet']
+# row 91 in the noaa_tweets is a good reference tweet 
 
+noaa_text = noaa_tweets['tweet']
 testtweet=noaa_text[91]
+
+testtweet
+'"Under-reported #fish catch is a serious issue that has to be addressed", Kenneth Sherman from @NOAAFisheries #LME18 https://t.co/zXJX2JHgov'
 
 #parse it           
 testtweet = re.sub('[^A-Za-z0-9]+', ' ', testtweet)       
-testtweet
 
 #split it
 print classifier.classify(extract_features(testtweet.split()))
 negative
 ```
 
-Our test tweet from the data set of all tweets with an @NOAAFisheries mention is a difficult one to classify as positive or negative because it's not really either of those.
+Our test tweet from the data set of all tweets with an @NOAAFisheries mention is a difficult one to classify as positive or negative because it's not really either of those.  
 
 # Some Final Words
+
+Here are a couple things I took from my 3 day dive into Sentiment Analysis with Python:
+
+##  Pay attention to the size training data
+
+It's probably really important to put some thought and attention into the training data.  I didn't really do this but for a careful, commerical grade, Sentiment Analysis I see this being pretty important.  Here are a couple concrete things that occurred to me while doing this:
+
+Most of the tweets in the training data contain one or two Twitter Handles (@JohnWick11, @jeezy2090, etc).  I filtered out the '@' but not the related texts.  These values ('JohnWick11', 'jeezy', etc) are showing up as features in my training set and they probably need to be filtered out.  At the very least this filtering would have to improve the speed of the training process because, with a training set of 10,000 tweets, I'd be getting rid of at least 10,000 uninformative features.
+
+## Pay attention to the relevance of the training data
+
+A lot of the tweets in my training data contained slang and other natural language features that could also be really uninformative for classifying tweets about a government research agency.  Maybe, maybe not.  I'm not an expert in Sentiment Analysis (I'm hardly even a novice) but I have to wonder if having the tweet, *browz on fleek today ya'll* is going to have a lot of linguistic cross-over with the typical NOAA Fisheries Twitter follower.
+
+I'm not fan of throwing away potentially valuable information...but adding more features to the training data clearly comes at a cost and it's probably worth thinking about whether one really needs "fleek" in thier training dictionary.
 
 
