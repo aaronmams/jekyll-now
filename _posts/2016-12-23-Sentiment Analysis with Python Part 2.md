@@ -70,9 +70,11 @@ $$P(c_{1}|x)=\frac{P(x|c_{1})P(c_{1})}{P(x)}$$
 
 There are three parts to this posterior probability:
 
-1. $$P(x|c_{1})$$, the class conditional probability
-2. $$P(c_{1})$$, the prior probability
-3. $$P(x)$$, the evidence
+$$P(x|c_{1})$$, the class conditional probability
+
+$$P(c_{1})$$, the prior probability
+
+$$P(x)$$, the evidence
 
 ### Class Conditional Probability
 
