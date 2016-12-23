@@ -96,7 +96,7 @@ $$P(c_{1})$$
 
 We can again estimate this from frequencies,
 
-$$P(c_{1})=\frac{number of positive tweets in the data}{number of total tweets in the data}$$
+$$P(c_{1})=\frac{number-of-positive-tweets-in-the-data}{number-of-total-tweets-in-the-data}$$
 
 ### The Evidence
 
