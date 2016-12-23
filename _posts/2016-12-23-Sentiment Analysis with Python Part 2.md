@@ -115,7 +115,7 @@ then, classify $$x$$ as positive.
 
 The decision rule for a positive classification can be rewritten,
 
-$$\frac{P(x|c_{1])P(c_{1})}{P(x)>\frac{P(x|c_{2])P(c_{2})}{P(x)$$
+$$\frac{P(x|c_{1})P(c_{1})}{P(x)>\frac{P(x|c_{2})P(c_{2})}{P(x)$$
 
 Writing it this way we can see that the denominator is the same on both sides of the inequality and hence won't affect the classification.
 
@@ -363,7 +363,7 @@ Our test tweet from the data set of all tweets with an @NOAAFisheries mention is
 
 2. Related to number 1 above, there is a lot of content involving NOAA Fishieres on Twitter that is simply people sharing a weblink and mentioning @NOAAFisheres.  I suspect I could establish more sophisticated filters when pinging Twitter for data that would solve this problem (if it is a problem)...
 
-Related to issue number 1 about neutral content, I'm currently airing on the side of just forcing a positive/negative classification.  In my reading on Naive Bayes I came across the same claim many different times, "Naive Bayes is about 75 accurate at classifying text according to sentiment which is almost as accurate as actual human classification as real humans only agree on sentiment of a group of words about 80% of the time."  This tells me that what I think is 'neutral' might in fact have some sentiment so I should go ahead an let the algorithm classify it.
+Related to issue number 1 about neutral content, I'm currently airing on the side of just forcing a positive/negative classification.  In my reading on Naive Bayes I came across the same claim many different times, "Naive Bayes is about 75% accurate at classifying text according to sentiment which is almost as accurate as actual human classification as real humans only agree on sentiment of a group of words about 80% of the time."  This tells me that what I think is 'neutral' might in fact have some sentiment so I should go ahead an let the algorithm classify it.
 
 # Some Final Words
 
