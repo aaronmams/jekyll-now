@@ -115,7 +115,7 @@ then, classify $$x$$ as positive.
 
 The decision rule for a positive classification can be rewritten,
 
-$$\frac{P(x|c_{1})P(c_{1})}{P(x)>\frac{P(x|c_{2})P(c_{2})}{P(x)$$
+$$\frac{P(x|c_{1})P(c_{1})}{P(x)}>\frac{P(x|c_{2})P(c_{2})}{P(x)}$$
 
 Writing it this way we can see that the denominator is the same on both sides of the inequality and hence won't affect the classification.
 
