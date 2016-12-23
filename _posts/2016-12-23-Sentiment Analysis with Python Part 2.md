@@ -355,7 +355,13 @@ print classifier.classify(extract_features(testtweet.split()))
 negative
 ```
 
-Our test tweet from the data set of all tweets with an @NOAAFisheries mention is a difficult one to classify as positive or negative because it's not really either of those.  
+Our test tweet from the data set of all tweets with an @NOAAFisheries mention is a difficult one to classify as positive or negative because it's not really either of those.  This brings up a few complications with Sentiment Analysis that occured to me while I was doing this:
+
+1. There is a lot of content related to NOAA Fisheries that is news-related.  It's neither positive nor negative but just a statement of fact: "NOAAFisheries establishes new rules for mitigating sea turtle bycatch in the Gulf of Mexico" or "NOAA Fisheries estimates spawning stock biomass of purple delicious fish declined."  I'm not really sure what, if anythign to do about this.  
+
+2. Related to number 1 above, there is a lot of content involving NOAA Fishieres on Twitter that is simply people sharing a weblink and mentioning @NOAAFisheres.  I suspect I could establish more sophisticated filters when pinging Twitter for data that would solve this problem (if it is a problem)...
+
+Related to issue number 1 about neutral content, I'm currently airing on the side of just forcing a positive/negative classification.  In my reading on Naive Bayes I came across the same claim many different times, "Naive Bayes is about 75 accurate at classifying text according to sentiment which is almost as accurate as actual human classification as real humans only agree on sentiment of a group of words about 80% of the time."  This tells me that what I think is 'neutral' might in fact have some sentiment so I should go ahead an let the algorithm classify it.
 
 # Some Final Words
 
