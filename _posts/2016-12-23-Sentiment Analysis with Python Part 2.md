@@ -52,7 +52,7 @@ I'm going to rewrite Bayes' Rule with a notation I like a little better.  Let,
 * $$x_{i}$$ be the features of $$x$$...if you want to get away from the ML jargon for right now just think of 'features' as the words in a tweet.  In more general applications they don't need to be limited to just the words but if the abstractness of 'features' is giving you heartburn just replace it 'words.'
 
 
-The posterior probability that a tweet is positive ($$c_{1}$$) given the content of the tweet can be written as an application of Bayes' Rule:
+The posterior probability that a tweet is positive ($c_{1}$) given the content of the tweet can be written as an application of Bayes' Rule:
 
 $$P(c_{1}|x)=\frac{P(x|c_{1])P(c_{1})}{P(x)}$$
 
