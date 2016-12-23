@@ -300,7 +300,7 @@ Out[309]: ('@DavidArchie i WISH you were doing a Toronto show on tour ', 'negati
 
 For illustrative purposes I've dumped the element from the object 'training_set' corresponding to this tweet from the training data into a text file so you can get an idea of what the 'training_set' object looks like: 
 
-![json_text_dump](/images/python_dict_list.png)
+![json_text_dump](images/python_dict_list.png)
 
 Notice that, if you look very close, you can see the line 
 
