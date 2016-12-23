@@ -86,7 +86,7 @@ $$P(x|c_{1})=P(x_{1}|c_{1})P(x_{2}|c_{1})$$
 
 and these individual likelihoods can be estimated from frequencies,
 
-$$P(x_{1}|c_{1})=\frac{N_{x_{1},c_{1}}}{N_{c_{1}}$$ 
+$$P(x_{1}|c_{1})=\frac{N_{x_{1}}}{N_{c_{1}}$$ 
 
 where the numerator is just the number of occurrences of $x_{1}$ in $c_{1}$ and the denominator is total number of features in $c_{1}$.
 
