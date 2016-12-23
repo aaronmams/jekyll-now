@@ -1,7 +1,7 @@
 
 [My first post on this topic](https://aaronmams.github.io/Sentiment-Analysis-1-Twitter-Scraping-with-Python/) was pretty rushed. 
 
-There is a lot that goes into doing a half decent sentiment analysis both mechanically and analytically.  Like a lot of my post I'm a little more concerned with getting you guys up and running (and hopefully able to start your own learn by doing process) quickly...With that goal in mind, I'm leaving the heavy lifting (relative strength and weakness of Naive Bayes v. Support Vector Machine v. insert favorite ensemble classifier here) to somebody else and focusing mainly on how to:
+There is a lot that goes into doing a half decent sentiment analysis both mechanically and analytically.  Like a lot of my post I'm a little more concerned with getting you guys up and running (and hopefully able to start your own learn-by-doing process) quickly...With that goal in mind, I'm leaving the heavy lifting (relative strength and weakness of Naive Bayes v. Support Vector Machine v. insert favorite ensemble classifier here) to somebody else and focusing mainly on how to:
 
 1. get some data you might want
 
@@ -9,46 +9,50 @@ There is a lot that goes into doing a half decent sentiment analysis both mechan
 
 3. use the trained algorithm to classify tweets as positive v. negative
 
-## Background: Naive Bayes Classifier
+## Background 1: Motivation
+
+This little exercise (along with my early post of scrapping from Twitter) is mainly focused on a conceptually simple idea: can we use data from Twitter to determine whether, on net, people have a positive or negative view of the National Oceanic and Atmospheric Administration?  Admittedly, this is a little campy.  It's probably a lot more important (or at least more potentially profitable) for businesses and brands to gauge public opinion about themselves then it is a government science agency.  However, the basic concept of knowing whether people think we are doing a good job or a shitty one is still somewhat important.  And beyond the little toy example I set up here, Sentiment Analysis can probably be leveraged to address other important issues along the lines of, "how to communicate science effectively to the public"...which is something that is a very important part of NOAA's mission.
+
+Spoiler Alert: I'm not actually going to provide a satisfying answer to the motivating question, "do people think we are doing a good job."  However, maybe some of the tools I'm providing here will motivate some industrious young researcher to follow-up with a better analysis than I'm about to shit out here.
+
+## Background 2: Naive Bayes Classifier
 
 There is no shortage of reputable resources for learning about Naive Bayes classification.  I enjoyed the mix of practicality, mathematical rigor, and conciseness [available here](http://sebastianraschka.com/Articles/2014_naive_bayes_1.html)...but 'the Google' abounds with free and accessable introductions to Naive Bayes classification.
 
 Like many things I discuss here there is a lot of nuance to the Naive Bayes text classifier that I encourage you to flush out on your own.  The 2 cent version of the classifier goes something like this:
 
-Bayes Rule says that,
+Bayes' Rule says that,
 
 $$P(A|B)=\frac{P(B|A)P(A)}{P(B)}$$
 
 The basic philosophy of Bayesian decision making is that one has:
 
-1. a prior expectation about the probability of an event: It typically rains 20 days out of 30 days in November in Portland)
+1. a prior expectation about the probability of an event: It typically rains 20 days out of 30 days in November in Portland
 
-2. a piece of data: the weather man predicts rain tomorrow
+2. a piece of data: the weather man predicts rain today
 
 3. a likelihood: the weather man predicts rain 50% of the time that it actually rains.
 
-The object of Bayes Rule is to combine prior expectation with data and a likelihood to update one's subjective expectation about an outcome.  This updated expectation is the posterior probability...in the case above,
+The object of Bayes' Rule is to combine prior expectation with data and a likelihood to update one's subjective expectation about an outcome.  This updated expectation is the posterior probability...in the case above,
 
 $$P(rain today|weatherman predicts rain) = \frac{P(weatherman predicts rain|rain)P(rain)}{P(weatherman predicts rain)}$$
 
-To finish this with a numerical example we need an additional piece of data: the likelihood the weather man predicts rain when it does not rain (let's call this 30%)...then the posterior (updated probability) of rain tomorrow given that it is November in Portland and the weatherman predicts rain is,
+To finish this with a numerical example we need an additional piece of data: the likelihood the weather man predicts rain when it does not rain (let's call this 30%)...then the posterior (updated probability) of rain today given that it is November in Portland and the weatherman predicts rain is,
 
 $$P(rain|weatherman predicts rain)=\frac{0.5(20/30)}{((20/30)(0.5)) + ((10/30)(0.3))}$$
 
 ...that is we started out thinking that there was a 67% chance of rain but after we observed the weatherman's prediction we updated our expectation to 76%. 
 
-
 Let's now consider a more relevant and concrete example: classifying a newly viewed tweet as either positive or negative. 
 
-I'm going to rewrite Bayes Rule with a notation I like a little better.  Let,
+I'm going to rewrite Bayes' Rule with a notation I like a little better.  Let,
 
 * $$x$$ be the tweet
-* $$c$$ be the possible classifications $$c_{1} and c_{2}$$
-* $$x_{i} be the features of $$x$$...if you want to get away from the ML jargon for right now just think of 'features' as the words in a tweet.  In more general applications they don't need to be limited to just the words but if the abstractness of 'features' is giving you heartburn just replace it 'words.'
+* $$c$$ be the possible classifications $$c_{1} and c_{2}$$ corresponding to 'positive' and 'negative' respectively.
+* $$x_{i}$$ be the features of $$x$$...if you want to get away from the ML jargon for right now just think of 'features' as the words in a tweet.  In more general applications they don't need to be limited to just the words but if the abstractness of 'features' is giving you heartburn just replace it 'words.'
 
 
-
-The posterior probability that a tweet is positive ($$c_{1}$$) given the content of the tweet can be written as an application of Baye's Rule:
+The posterior probability that a tweet is positive ($$c_{1}$$) given the content of the tweet can be written as an application of Bayes' Rule:
 
 $$ P(c_{1}|x)=\frac{P(x|c_{1])P(c_{1})}{P(x)}$$
 
@@ -86,13 +90,13 @@ where the numerator is just the number of occurrences of $x_{1}$ in $c_{1}$ and 
 
 ### The Prior
 
-Bayes Rule combines a prior expectation with a likelihood to form the posterior probability.  Here the prior is the unconditional probability of observing a positive tweet, $$P(c_{1}|)$$.  We can again estimate this from frequencies,
+Bayes' Rule combines a prior expectation with a likelihood to form the posterior probability.  Here the prior is the unconditional probability of observing a positive tweet, $$P(c_{1}|)$$.  We can again estimate this from frequencies,
 
 $$P(c_{1})=\frac{number of positive tweets in the data}{number of total tweets in the data}$$
 
 ### The Evidence
 
-The denominator in Bayes Rule is the unconditional probability of observing the data $$P(x)$$.  In our case, this is just like asking what is the probability of observing a tweet with features "NOAA" and "sucks" in our data sample.  This probability can be calculated,
+The denominator in Bayes' Rule is the unconditional probability of observing the data $$P(x)$$.  In our case, this is just like asking what is the probability of observing a tweet with features "NOAA" and "sucks" in our data sample.  This probability can be calculated,
 
 $$P(X) = P(x|c_{1})P(c_{1}) + P(x|c_{2})P(c_{2})$$
 
