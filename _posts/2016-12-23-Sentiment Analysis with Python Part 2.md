@@ -80,7 +80,7 @@ A key, and sometimes considered limiting feature of Naive Bayes Classifiers is t
 
 The cool thing about conditional independence is that it makes things really simple,
 
-$$P(x|c_{1})=P(x_{1}|c_{1})P(x_{2}|c_{1}$$
+$$P(x|c_{1})=P(x_{1}|c_{1})P(x_{2}|c_{1})$$
 
 and these individual likelihoods like ($P(x_{1}|c_{1}$) can be estimated from frequencies,
 
