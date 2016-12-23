@@ -134,7 +134,7 @@ I know I've said it like 3 times already but I'm gonna say it again: good conten
 
 Ok, now that we've dispensed with a small introduction on Naive Bayes Classification, here are the mechanics to performing a Twitter Based Sentiment Analysis in Python:
 
-## Step 1: Train the Classifier
+## Step 1: Set up the training data
 
 The ultimate goal here is to have an algorithm capable of looking at a tweet involving the key phrase 'NOAA Fisheries' and tell if the tweet is positive or negative in sentiment.  We are going to use the Naive Bayes Classifier.  In order to apply that method to our 'NOAA Fisheries' tweets we need to teach it what a positive tweet looks like and what a negative tweet looks like. 
 
@@ -179,7 +179,7 @@ Quick note on the subsetting: I tried training the Naive Bayes Classifier on the
 
 Update: even cutting the training set down to 100,000 took forever...so I cut it again to 10,000.  Even that took 15 minutes to train.  Most of that I believe is due to inefficiencies that I am responsible for (I'll talk about these at the end).
 
-### Step 2A: Massage the training set
+### Step 1B: Massage the training set
 
 Basically what I need to do here is to extract the features of training set.  To do that I'm going to:
 
@@ -229,7 +229,7 @@ Basically what I've done here is taken a data frame that had tweets stored as a 
 * threw out words less than 3 letters in length (common stop words like 'a', 'an', 'he', etc).
 
 
-### Step 3: Extract features
+### Step 1C: Extract features
 
 So now I have the list of tweets set up the way I want, the next step is to create the inputs that the NLTK module in Python needs in order to do the classification.  
 
@@ -265,7 +265,7 @@ Here is something worth spending a few lines on: our feature extractor here basi
 
 In our training set there are A LOT of slang words and A LOT of proper nouns like Twitter Handles.  I'm guessing I could make the classifier a lot more efficient by removing Twitter Handles from the training dictionary.  I don't think these add much to the ability to correctly identify sentiment.   
 
-### Step 4: Train the Classifier
+### Step 2: Train the Classifier
 
 Finally, we train the classifier:
 
@@ -319,6 +319,7 @@ toc - tic
 Out[265]: 908.8567419999999
 
 ```
+### Step 3: Apply the trained classifier
 
 Once the Naive Bayes Classifier is trained, it is ready to receive input in the form of new tweets to classify.  This is where our earlier twitter scraping comes in.  We pass our list of a few hundred tweets mentioning @NOAA Fisheries to the classifier and we get back the modeled sentiment ('positive' or 'negative') of each tweet.
 
