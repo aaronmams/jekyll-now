@@ -241,15 +241,12 @@ def get_words_in_tweets(tweets):
       all_words.extend(words)
     return all_words
 
-
 def get_word_features(wordlist):
     wordlist = nltk.FreqDist(wordlist)
     word_features = wordlist.keys()
     return word_features
 
 word_features = get_word_features(get_words_in_tweets(tweets))
-
-
 
 def extract_features(document):
     document_words = set(document)
@@ -273,11 +270,12 @@ Finally, we train the classifier:
 #this creates a set of T/F entries for every tweet in the training
 # set.  The T/F outcomes indicate which features contained in the 
 # training set are present in each training tweet
-training_set = nltk.classify.apply_features(extract_features, tweets)
 
+training_set = nltk.classify.apply_features(extract_features, tweets)
 
 #Let's have a look at this traning_set object...it's too big to print
 # to the console so I'll print it to a text file and open in an editor
+
 import json
 
 t1=training_set[1]
@@ -302,8 +300,7 @@ Out[309]: ('@DavidArchie i WISH you were doing a Toronto show on tour ', 'negati
 
 For illustrative purposes I've dumped the element from the object 'training_set' corresponding to this tweet from the training data into a text file so you can get an idea of what the 'training_set' object looks like: 
 
-put screen shot of text dump here
-
+![json_text_dump](/images/python)
 Notice that, if you look very close, you can see the line 
 
 "contains(doing): true"...surrounded by a bunch of "contains(otherwords): false."
