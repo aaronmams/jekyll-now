@@ -1,6 +1,7 @@
 
 After re-reading my last two posts on this topic, I felt like they were a little unfocused.  I'm going to take one more shot at putting simple realistic example out there.  
 
+## Background
 [In this post](https://aaronmams.github.io/Sentiment-Analysis-with-Python-Part-2/) I pointed out a couple of first-pass issues with setting up a sentiment analysis to gauge public opinion of NOAA Fisheries as a federal agency. The main issues I came across were:
 
 1. the default Naive Bayes Classifier in Python's NLTK took a pretty long-ass time to train using a data set of around 1 million tweets.  Hell, it took like 15 minutes to train on a data set of 10,0000 tweets.  
@@ -11,6 +12,7 @@ After re-reading my last two posts on this topic, I felt like they were a little
 
 For now, let's assume that problems 2 and 3 have been solved.  Let's also assume that problem 1 is not really an issue...imagine that we just let the training algorithm run overnight and the next morning we had a fully trained text classifier ready to rock and roll.
 
+## Research Questions/Motivation
 In my last two posts I suggested that the motivating questions were:
 
 * can I automate a process to pull tweets mentioning NOAA Fisheries directly from Twitter?, and
@@ -37,7 +39,7 @@ where $$m^{p}$$ is number of positive mentions and $$m^{n}$$ is number of negati
 To track sentiment over time let's assume that:
 
 * we start with a baseline score, $$S_{t-1}=\frac{m_{t-1}^{p}}{m_{t-1}^{p}+m_{t-1}^{n}}$$
-* each week we run our script which classifies all the new tweets since last week and we get $$m_{t}^{p}$$ and $$m_{t}^{n}$$ and calculate the new sentiment score.
+* each week we run our script which classifies all the new tweets since last week and we get $$m_{t}^{p}$$ and $$m_{t}^{n}$$ and calculate the new Sentiment Score.
 
 The following chunk of code (just copy-pasted from the last two posts) will 
 
@@ -102,7 +104,7 @@ n=len(sent)-p
 
 To update the Sentiment Score let's suppose that I have the Sentiment Score from previous data pulls saved in a .csv that I update every week.  So now I'm going to:
 
-1. read in the Sentiment data frame
+1. read in the sentiment data frame
 2. add a row for the new Sentiment Score
 
 ```python
@@ -142,10 +144,23 @@ Some things that data people might be interested in:
 2. how quickly or slowly did the positive 'bump' wear off?
 3. was there a sustained increase in Twitter mentions following the positive press?
 
-Note that number 3 isn't as much about the sentiment score as much as just the volume of activity...volume is probably an important thing to track along with the actual sentiment score.  Much the way price movements in the stock market are considered to be a more meaningful signal about underlying market sentiment if they occurred on 'high volume' rather than 'low volume', I imagine that a sentiment score increase of a few percentage points would mean more if the total volume of activity was also picking up.   
+These questions can all be addressed with the representative data frame I illustrated above.
+
+Note that number 3 isn't as much about the Sentiment Score as much as just the volume of activity...volume is probably an important thing to track along with the actual Sentiment Score.  Much the way price movements in the stock market are considered to be a more meaningful signal about underlying market sentiment if they occurred on 'high volume' rather than 'low volume', I imagine that a Sentiment Score increase of a few percentage points would mean more if the total volume of activity was also picking up.   
 
 ![sentscoreplot](/images/sentscore_plot.png)
- 
+
+## Final Thoughts
+I don't have any particularly enlightened final commentary on this post.  My goal for this little 3 part series was to illustrate that a bargain variety sentiment analysis using Twitter data can be accomplished without too much hassle.  For this post in particular I wanted to go one step beyond, "can it be done" and do a little thinking out loud on the related question, "why should it be done?" 
+
+I'm becoming increasingly convinced that there are some really cool potential applications of Twitter Scraping and Sentiment Analysis in the realm of things I get paid to work on (environmental science and policy).  Obviously, I still have to flush out many, many, many of the details of a Sentiment Analysis in general...but at least now I know that the underlying mechanics aren't totall out of reach.
+
+## Appendix
+For completeness, here is the full annotated scripts that I used to:
+
+1. get tweets mentioning @NOAAFisheries via the tweepy module in python
+2. use a set of 'training tweets' to train a Naive Bayes Binary Text Classifier using the NLTK module
+3. use the trained classifier to labels the @NOAAFisheries tweets as either 'positive' or 'negative'
 
 ```python
 #import necessary modules
