@@ -1,3 +1,7 @@
+---
+layout: post
+title: "Sentiment Analysis with Python 3: Final wrap up"
+---
 
 After re-reading my last two posts on this topic, I felt like they were a little unfocused.  I'm going to take one more shot at putting simple realistic example out there.  
 
