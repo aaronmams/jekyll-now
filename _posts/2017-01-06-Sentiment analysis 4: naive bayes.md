@@ -6,6 +6,58 @@ I've already covered the quick and dirty theoretical/conceptual elements of the 
 Also, be warned, I'm reverting back to my R roots here because I'm not yet fluent enough with Python to do a lot of the quick off-the-cuff 
 coding I want to include here.
 
+## First Pass
+
+Here is some preliminary nomenclature:
+
+* I have a statement that I want to classify as positive or negative.  I call this a document and I distinguish it from other documents (such as those that will populate the training data) with the subscript j: $$d_{j}$$.
+* I have a bunch of statements that have been classified as 'positive' and 'negative' and I call the the training set, $$D$$.
+* The universe of possible classification is denoted as $$C$$. And $$C$$ can take the values $$p$$ for positive and $$n$$ for negative.
+
+The statement $$d_{j}$$ will be classified as either $$p$$ or $$n$$ depending on which class has a higher posterior probability:
+
+The posterior probability that $$d_{j}$$ is positive is,
+
+$$P(C=p|d_{j})=\frac{P(d_{j}|C=p)P(C=p)}{P(d_{j})}$$
+
+The posterior probability that $$d_{j}$$ is negative is,
+
+$$P(C=n|d_{j})=\frac{P(d_{j}|C=n)P(C=p)}{P(d_{j})}$$
+
+As discussed previously, the denomenator turns out to be irrelevant in the calculation since it's the same in both quantities.  Therefore the key quantities necessary to evaluate the posterior probabilities are:
+
+* $$P(d_{j}|C)$$ the likelihood of the document
+* $$P(C)$$ the prior probability of observing a document class.
+
+In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the posterior probability that document $$j$$ is positive is,
+
+$$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
+
+In the equation above, $$b_{jt}$$ is a [0,1] indicator for whether word, $$w_{t}$$ appears in document $$j$$ or not.  
+
+### Word Likelihoods
+
+The individual components of the overall document likelihood $$P(w_{t}|C=p)$$, in the simple model, are approximated by relative frequencies:
+
+$$P(w_{t}|C=p)=\frac{n_{p}(w_{t})}{N_{p}}$$
+
+where $$n_{p}(w_{t})$$ is the number of documents in class $$p$$ where $$w_{t}$$ appears.  And $$N_{p}$$ is the total number of positively classified document.
+
+### The Priors 
+
+The prior probability of observing a document classified as positive or negative can be parameterized using the relative frequencies of document of different classes:
+
+$$P(C=p)=\frac{N_{p}}{N}$$
+
+where $$N_{p}$$ is the total number of documents classified as positive and $$N$$ is the total number of documents.  
+
+## An Example
+
+In the example below I do the following:
+
+* start with a training set of documents that have been classified as positive or negative. 
+* then create a vocabulary (sometimes called the 'feature set') which is just a listing of all the words in the documents in the training set.  
+* then, for every word in the vocabulary, tabulate the number 'positive' documents containing that word divided by the total number of positive documents and the number of 'negative' documents containing the word divided by the total number of negative documents.   
 
 
 ```R
@@ -58,42 +110,12 @@ prior.neg <- nrow(train.df[train.df$Sent=='negative',])/nrow(train.df)
 d_j <- 'just had my first cheeto ever it was awesome'
 ```
 
-## First Pass
 
-Here is some preliminary nomenclature:
 
-* I have a statement that I want to classify as positive or negative.  I call this a document and I distinguish it from other documents (such as those that will populate the training data) with the subscript j: $$d_{j}$$.
-* I have a bunch of statements that have been classified as 'positive' and 'negative' and I call the the training set, $$D$$.
-* The universe of possible classification is denoted as $$C$$. And $$C$$ can take the values $$p$$ for positive and $$n$$ for negative.
 
-The statement $$d_{j}$$ will be classified as either $$p$$ or $$n$$ depending on which class has a higher posterior probability:
 
-The posterior probability that $$d_{j}$$ is positive is,
 
-$$P(C=p|d_{j})=\frac{P(d_{j}|C=p)P(C=p)}{P(d_{j})}$$
 
-The posterior probability that $$d_{j}$$ is negative is,
-
-$$P(C=n|d_{j})=\frac{P(d_{j}|C=n)P(C=p)}{P(d_{j})}$$
-
-As discussed previously, the denomenator turns out to be irrelevant in the calculation since it's the same in both quantities.  Therefore the key quantities necessary to evaluate the posterior probabilities are:
-
-* $$P(d_{j}|C)$$ the likelihood of the document
-* $$P(C)$$ the prior probability of observing a document class.
-
-In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the posterior probability that document $$j$$ is positive is,
-
-$$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
-
-In the equation above, $$b_{jt}$$ is a [0,1] indicator for whether word, $$w_{t}$$ appears in document $$j$$ or not.  
-
-### Word Likelihoods
-
-The individual components of the overall document likelihood $$P(w_{t}|C=p)$$, in the simple model, are approximated by relative frequencies:
-
-$$P(w_{t}|C=p)=\frac{n_{p}(w_{t})}{N_{p}}$$
-
-where $$n_{p}(w_{t})$$ is the number of documents in class $$p$$ where $$w_{t}$$ appears.  And $$N_{p}$$ is the total number of positively classified document.
 
 
 
