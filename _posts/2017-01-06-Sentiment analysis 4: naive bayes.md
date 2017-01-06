@@ -101,6 +101,29 @@ words <- words %>% mutate(p_hat_pos=(n_pos)/nrow(train.df[train.df$Sent=='positi
 prior.pos <- nrow(train.df[train.df$Sent=='positive',])/nrow(train.df)
 prior.neg <- nrow(train.df[train.df$Sent=='negative',])/nrow(train.df)
 
+> print.data.frame(words)
+          w n_pos n_neg p_hat_pos p_hat_neg
+1      book     1     0       0.5      0.00
+2   awesome     1     0       0.5      0.00
+3     harry     0     1       0.0      0.25
+4    potter     0     1       0.0      0.25
+5     books     0     1       0.0      0.25
+6      suck     0     1       0.0      0.25
+7  pretzles     0     1       0.0      0.25
+8    making     0     1       0.0      0.25
+9   thirsty     0     1       0.0      0.25
+10  choppin     0     1       0.0      0.25
+11  fingers     0     1       0.0      0.25
+12      off     0     1       0.0      0.25
+13      Ira     0     1       0.0      0.25
+14  supreme     1     0       0.5      0.00
+15   beings     1     0       0.5      0.00
+16  leisure     1     0       0.5      0.00
+17     rock     1     0       0.5      0.00
+18   cheeto     0     1       0.0      0.25
+19    jesus     0     1       0.0      0.25
+20   tyrant     0     1       0.0      0.25
+
 #classify an unlabeled document:
 #note: we won't be able to compute the posterior probability
 # of this document because the word 'cheeto' is not observed in
@@ -108,7 +131,19 @@ prior.neg <- nrow(train.df[train.df$Sent=='negative',])/nrow(train.df)
 # not observed in any negative training document:
 
 d_j <- 'just had my first cheeto ever it was awesome'
+
 ```
+
+So this is actually an example of something that doesn't work.  Here's the reason:
+
+We want to calculate the posterior probability that document $$j$$ is positive and compare that to the posterior probability that document $$j$$ is negative.  Let's start by defining document $$j$$ as a binary vector with entries equal to the number of entries in the vocabulary (in the code above this is the data frame 'words').  So the document that I want to classify ('just had my first cheeto ever it was awesome') can be represented by the vector:
+
+```R
+dj <- c(0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0)
+```
+
+
+
 
 
 
