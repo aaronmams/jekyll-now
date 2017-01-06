@@ -81,6 +81,19 @@ As discussed previously, the denomenator turns out to be irrelevant in the calcu
 * $$P(d_{j}|C)$$ the likelihood of the document
 * $$P(C)$$ the prior probability of observing a document class.
 
-In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$ conditional on the document belonging to class $$i$$.  More specifically, the posterior probability that document $$j$$ is positive is,
+In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the posterior probability that document $$j$$ is positive is,
 
 $$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
+
+In the equation above, $$b_{jt}$$ is a [0,1] indicator for whether word, $$w_{t}$$ appears in document $$j$$ or not.  
+
+### Word Likelihoods
+
+The individual components of the overall document likelihood $$P(w_{t}|C=p)$$, in the simple model, are approximated by relative frequencies:
+
+$$P(w_{t}|C=p)=\frac{n_{p}(w_{t}}{N_{p}}$$
+
+where $$n_{p}(w_{t})$$ is the number of documents in class $$p$$ where $$w_{t}$$ appears.  And $$N_{p}$$ is the total number of positively classified document.
+
+
+
