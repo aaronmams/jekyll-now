@@ -83,4 +83,4 @@ As discussed previously, the denomenator turns out to be irrelevant in the calcu
 
 In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$ conditional on the document belonging to class $$i$$.  More specifically, the posterior probability that document $$j$$ is positive is,
 
-$$P(d_{j}|C=p)=\Prod_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
+$$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
