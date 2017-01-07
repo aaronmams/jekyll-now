@@ -138,12 +138,17 @@ So this is actually an example of something that doesn't work.  Here's the reaso
 
 We want to calculate the posterior probability that document $$j$$ is positive and compare that to the posterior probability that document $$j$$ is negative.  Let's start by defining document $$j$$ as a binary vector with entries equal to the number of entries in the vocabulary (in the code above this is the data frame 'words').  So the document that I want to classify ('just had my first cheeto ever it was awesome') can be represented by the vector:
 
-```R
-dj <- c(0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0)
-```
+$$d_{j} = \begin{pmatrix}0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\end{pmatrix}$$ and
 
-$$begin{pmatrix}0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 \end{pmatrix}\begin{pmatrix}0.5\\0.5\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.5\\0.5\\0.5\\0.5\\0.5\\0.5\\0.0\\0.0\end{pmatrix} + begin{pmatrix}1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 \end{pmatrix}\begin{pmatrix}0.5\\0.5\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.0\\0.5\\0.5\\0.5\\0.5\\0.5\\0.5\\0.0\\0.0\end{pmatrix}$$
+$$(1-d_{j}) = \begin{pmatrix}1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1\end{pmatrix}$$
 
+and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
+
+$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5 0.5 0 0 0 0 0 0 0 0 0 0 0 0.5 0.5 0.5 0.5 0 0 0\end{pmatrix}$$
+
+which yields the following likelihood calculation:
+
+$$P(d_{j}|C=positive)=1(0.5)1(0)+1(0.5)1(0)...1(0)=0$$
 
 
 
