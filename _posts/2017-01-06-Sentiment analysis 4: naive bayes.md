@@ -144,14 +144,13 @@ $$(1-d_{j}) = \begin{pmatrix}1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1\end{pmatrix
 
 and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
 
-$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5 0.5 0 0 0 0 0 0 0 0 0 0 0 0.5 0.5 0.5 0.5 0 0 0\end{pmatrix}$$
+$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5 0.5 0 0 0 0 0 0 0 0 0 0 0 0.5 0.5 0.5 0.5 0 0 0\end{pmatrix}$$ and
+$$P(w_{t}|C=negative) = \begin{pmatrix} 0 0 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0 0 0 0 0.25 0.25 0.25\end{pmatrix}$$
 
 which yields the following likelihood calculation:
 
-$$P(d_{j}|C=positive)=1(0.5)1(0)+1(0.5)1(0)...1(0)=0$$
-
-
-
+$$P(d_{j}|C=positive)=(0(0.5)+1(0.5))(1(0.5)+0(0.5))(0(0)+1(1))...(1(0)+0(1))...=0$$
+$$P(d_{j}|C=negative)=(0(0)+1(1))(1(0)+0(1))(0(0.25)+1(0.75)).....=0$$
 
 
 
