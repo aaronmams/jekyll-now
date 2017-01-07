@@ -152,9 +152,38 @@ which yields the following likelihood calculation:
 $$P(d_{j}|C=positive)=(0(0.5)+1(0.5))(1(0.5)+0(0.5))(0(0)+1(1))...(1(0)+0(1))...=0$$
 $$P(d_{j}|C=negative)=(0(0)+1(1))(1(0)+0(1))(0(0.25)+1(0.75)).....=0$$
 
+The thing about this problem is that, because the feature 'cheeto' is not observed in any documents classified 'positive' in the training set, the calculation for the likelihood of a new document containing the feature 'cheeto' being 'positive' falls apart.  The same is true of the likelihood of a new document containing the feature 'awesome' being 'negative'...because there are no instances in the training set where 'awesome' appears in a 'negative' document.
 
+### Two Fixes 
 
+One way to deal with the absent feature problem is [to add a smoothing term](http://sebastianraschka.com/Articles/2014_naive_bayes_1.html) to the probability of observing word $$t$$ in a document of class 'positive':
 
+$$P(w_{t}|C=positive)=\frac{n_{p}(w_{t} + \alpha)}{N_{p}+alpha}$$
+
+The second fix is waaaaay more ghetto but it serves my current purpose (quick under-the-hood illustration of Naive Bayes) a little better: let's just add one positive document with the word 'cheeto' in it and one one negative document with the word 'awesome' in it to the training data:
+
+```R
+train.df <- data.frame(D=c('this book is awesome',
+                           'the book is awesome, jk',
+                           'harry potter books suck',
+                           'these pretzles are making me thirsty',
+                           'they choppin my fingers off Ira',
+                           'supreme beings of leisure rock',
+                           'cheeto jesus is a tyrant',
+                           'jesus awesome cheeto'
+                           ),
+                       Sent=c('positive',
+                              'negative',
+                              'negative',
+                              'negative',
+                              'positive',
+                              'negative'))
+#create vocabulary
+words <- data.frame(w=unlist(strsplit(as.character(train.df$D)," ")))
+words.i.dont.want <- c('a','this','me','are','of','is','my','these','they')
+words <- tbl_df(words) %>% filter(!w %in% words.i.dont.want)
+
+```
 
 
 
