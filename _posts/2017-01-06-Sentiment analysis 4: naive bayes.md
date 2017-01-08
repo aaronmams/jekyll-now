@@ -138,14 +138,16 @@ So this is actually an example of something that doesn't work.  Here's the reaso
 
 We want to calculate the posterior probability that document $$j$$ is positive and compare that to the posterior probability that document $$j$$ is negative.  Let's start by defining document $$j$$ as a binary vector with entries equal to the number of entries in the vocabulary (in the code above this is the data frame 'words').  So the document that I want to classify ('just had my first cheeto ever it was awesome') can be represented by the vector:
 
-$$d_{j} = \begin{pmatrix}0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0\end{pmatrix}$$ and
+$$d_{j} = \begin{pmatrix}0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0\end{pmatrix}$$ 
 
-$$(1-d_{j}) = \begin{pmatrix}1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1\end{pmatrix}$$
+and
+
+$$(1-d_{j}) = \begin{pmatrix}1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1\end{pmatrix}$$
 
 and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
 
-$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5 0.5 0 0 0 0 0 0 0 0 0 0 0 0.5 0.5 0.5 0.5 0 0 0\end{pmatrix}$$ and
-$$P(w_{t}|C=negative) = \begin{pmatrix} 0 0 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0.25 0 0 0 0 0.25 0.25 0.25\end{pmatrix}$$
+$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5,0.5,0,0,0,0,0,0,0,0,0,0,0,0.5,0.5,0.5,0.5,0,0,0\end{pmatrix}$$ and
+$$P(w_{t}|C=negative) = \begin{pmatrix} 0,0,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0,0,0,0,0.25,0.25,0.25\end{pmatrix}$$
 
 which yields the following likelihood calculation:
 
@@ -176,14 +178,33 @@ train.df <- data.frame(D=c('this book is awesome',
                               'negative',
                               'negative',
                               'negative',
+                              'negative',
                               'positive',
-                              'negative'))
+                              'negative',
+                              'positive'))
 #create vocabulary
 words <- data.frame(w=unlist(strsplit(as.character(train.df$D)," ")))
-words.i.dont.want <- c('a','this','me','are','of','is','my','these','they')
+words.i.dont.want <- c('a','this','me','are','of','is','my','these','they','jk')
 words <- tbl_df(words) %>% filter(!w %in% words.i.dont.want)
 
 ```
+Assuming our classifier is sophisticated enough to recognize the 'jk' and classify the second document as negative then the following minimal changes result:
+
+$$d_{j} = \begin{pmatrix}0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0\end{pmatrix}$$ 
+
+and
+
+$$(1-d_{j}) = \begin{pmatrix}1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1\end{pmatrix}$$
+
+and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
+
+$$P(w_{t}|C=positive) = \begin{pmatrix} 0.33,0.66,0,0,0,0,0,0,0,0,0,0,0,0.33,0.33,0.33,0.33,0,0.33,0\end{pmatrix}$$ and
+$$P(w_{t}|C=negative) = \begin{pmatrix} 0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0,0,0,0,0.2,0.2,0.2\end{pmatrix}$$
+
+which yields the following likelihood calculation:
+
+$$P(d_{j}|C=positive)=(0(0.33)+1(0.666))(1(0.66)+0(0.33))(0(0)+1(1))...(1(0.33)+0(0.66))...=0.0198$$
+$$P(d_{j}|C=negative)=(0(0.2)+1(0.8))(1(0.2)+0(0.8))...((1(0.2)+0(0.8))())).....=0.00274$$
 
 
 
