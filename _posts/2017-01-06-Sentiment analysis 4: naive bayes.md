@@ -29,7 +29,7 @@ As discussed previously, the denomenator turns out to be irrelevant in the calcu
 * $$P(d_{j}|C)$$ the likelihood of the document
 * $$P(C)$$ the prior probability of observing a document class.
 
-In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the posterior probability that document $$j$$ is positive is,
+In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the likelihood that document $$j$$ is positive is,
 
 $$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
 
@@ -217,6 +217,78 @@ and
 $$P(C=negative|d_{j})=\frac{P(d_{j}|C=positive)P(C=negative)}{P(d_{j})} \alpha P(d_{j}|C=negative)P(C=negative)=$$
 
 $$0.0027(\frac{5}{8})=0.00168$$.
+
+The complete script used to recover these quantities is
+
+```R
+library(dplyr)
+
+#define a training set:
+train.df <- data.frame(D=c('this book is awesome',
+                           'this book is awesome jk',
+                           'harry potter books suck',
+                           'these pretzles are making me thirsty',
+                           'they choppin my fingers off Ira',
+                           'supreme beings of leisure rock',
+                           'cheeto jesus is a tyrant',
+                           'jesus awesome cheeto'
+                           ),
+                       Sent=c('positive',
+                              'negative',
+                              'negative',
+                              'negative',
+                              'negative',
+                              'positive',
+                              'negative',
+                              'positive'))
+#create vocabulary
+words <- data.frame(w=unique(unlist(strsplit(as.character(train.df$D)," "))))
+words.i.dont.want <- c('a','this','me','are','of','is','my','these','they','jk')
+words <- tbl_df(words) %>% filter(!w %in% words.i.dont.want)
+
+#some intermediate vocabs
+positive.docs <- strsplit(as.character(train.df$D[which(train.df$Sent=='positive')])," ")
+negative.docs <- strsplit(as.character(train.df$D[which(train.df$Sent=='negative')])," ")
+
+#find the number of positive docs containing each word
+npos <- function(w){sum(as.numeric(unlist(lapply(positive.docs,function(x){w %in% x}))))}
+nneg <- function(w){sum(as.numeric(unlist(lapply(negative.docs,function(x){w %in% x}))))}
+
+n_pos<- unlist(lapply(unique(words$w),npos))
+n_neg <- unlist(lapply(unique(words$w),nneg))
+
+words$n_pos <- n_pos
+words$n_neg <- n_neg
+
+#for each word you can get P_hat(w|C=pos) and P_hat(w|C=neg)
+words <- words %>% mutate(p_hat_pos=(n_pos)/nrow(train.df[train.df$Sent=='positive',]),
+                          p_hat_neg=(n_neg)/nrow(train.df[train.df$Sent=='negative',]))
+
+#prior on positive vs. negative is just the relative frequency of each
+prior.pos <- nrow(train.df[train.df$Sent=='positive',])/nrow(train.df)
+prior.neg <- nrow(train.df[train.df$Sent=='negative',])/nrow(train.df)
+
+#classify an unlabeled document:
+#note: we won't be able to compute the posterior probability
+# of this document because the word 'cheeto' is not observed in
+# any positive training documents...and the word 'awesome' is 
+# not observed in any negative training document:
+
+d_j <- 'just had my first cheeto ever it was awesome'
+
+#create the indicator vector for words in the vocabulary
+dj <- unlist(strsplit(as.character(d_j)," "))
+
+words$b <- as.numeric(words$w %in% dj)
+words <- words %>% mutate(l_pos=(b*p_hat_pos)+((1-b)*(1-p_hat_pos)),
+                          l_neg=(b*p_hat_neg)+((1-b)*(1-p_hat_neg)))
+
+#finally, get the posterior probs by combining the prior and likelihoods
+post_pos <- (3/8)*prod(words$l_pos)
+post_neg <- (5/8)*prod(words$l_neg)
+
+```
+
 
 ## Summary
 
