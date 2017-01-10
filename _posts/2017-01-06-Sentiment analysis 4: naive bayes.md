@@ -203,20 +203,20 @@ $$P(w_{t}|C=negative) = \begin{pmatrix} 0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,
 
 which yields the following likelihood calculation:
 
-$$P(d_{j}|C=positive)=(0(0.33)+1(0.666))(1(0.66)+0(0.33))(0(0)+1(1))...(1(0.33)+0(0.66))...=0.0198$$
-$$P(d_{j}|C=negative)=(0(0.2)+1(0.8))(1(0.2)+0(0.8))...((1(0.2)+0(0.8))())).....=0.00274$$
+$$P(d_{j}|C=positive)=(0(0.33)+1(0.666))(1(0.66)+0(0.33))(0(0)+1(1))...(1(0.33)+0(0.66))...\sim 0.019$$
+$$P(d_{j}|C=negative)=(0(0.2)+1(0.8))(1(0.2)+0(0.8))...((1(0.2)+0(0.8))())).....\sim 0.002$$
 
 To get the posterior probability that our classification will be based on, we need to combine these likelihoods and the priors:
 
 $$P(C=positive|d_{j})=\frac{P(d_{j}|C=positive)P(C=positive)}{P(d_{j})} \alpha P(d_{j}|C=positive)P(C=positive)=$$
 
-$$0.0198(\frac{3}{8})=0.0074$$.
+$$0.019(\frac{3}{8})=0.007$$.
 
 and
 
 $$P(C=negative|d_{j})=\frac{P(d_{j}|C=positive)P(C=negative)}{P(d_{j})} \alpha P(d_{j}|C=negative)P(C=negative)=$$
 
-$$0.0027(\frac{5}{8})=0.00168$$.
+$$0.002(\frac{5}{8})=0.001$$.
 
 The complete script used to recover these quantities is
 
