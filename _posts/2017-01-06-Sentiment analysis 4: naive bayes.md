@@ -26,8 +26,13 @@ $$P(C=n|d_{j})=\frac{P(d_{j}|C=n)P(C=p)}{P(d_{j})}$$
 
 As discussed previously, the denomenator turns out to be irrelevant in the calculation since it's the same in both quantities.  Therefore the key quantities necessary to evaluate the posterior probabilities are:
 
-* $$P(d_{j}|C)$$ the likelihood of the document
-* $$P(C)$$ the prior probability of observing a document class.
+$$P(d_{j}|C)$$ 
+
+the likelihood of the document, and
+
+$$P(C)$$ 
+
+the prior probability of observing a document class.
 
 In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the likelihood that document $$j$$ is positive is,
 
@@ -37,7 +42,11 @@ In the equation above, $$b_{jt}$$ is a [0,1] indicator for whether word, $$w_{t}
 
 ### Word Likelihoods
 
-The individual components of the overall document likelihood $$P(w_{t}|C=p)$$, in the simple model, are approximated by relative frequencies:
+The individual components of the overall document likelihood 
+
+$$P(w_{t}|C=p)$$ 
+
+in the simple model, are approximated by relative frequencies:
 
 $$P(w_{t}|C=p)=\frac{n_{p}(w_{t})}{N_{p}}$$
 
@@ -146,12 +155,16 @@ $$(1-d_{j}) = \begin{pmatrix}1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1\end{pmatrix
 
 and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
 
-$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5,0.5,0,0,0,0,0,0,0,0,0,0,0,0.5,0.5,0.5,0.5,0,0,0\end{pmatrix}$$ and
+$$P(w_{t}|C=positive) = \begin{pmatrix} 0.5,0.5,0,0,0,0,0,0,0,0,0,0,0,0.5,0.5,0.5,0.5,0,0,0\end{pmatrix}$$ 
+
+and
+
 $$P(w_{t}|C=negative) = \begin{pmatrix} 0,0,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0,0,0,0,0.25,0.25,0.25\end{pmatrix}$$
 
 which yields the following likelihood calculation:
 
 $$P(d_{j}|C=positive)=(0(0.5)+1(0.5))(1(0.5)+0(0.5))(0(0)+1(1))...(1(0)+0(1))...=0$$
+
 $$P(d_{j}|C=negative)=(0(0)+1(1))(1(0)+0(1))(0(0.25)+1(0.75)).....=0$$
 
 The thing about this problem is that, because the feature 'cheeto' is not observed in any documents classified 'positive' in the training set, the calculation for the likelihood of a new document containing the feature 'cheeto' being 'positive' falls apart.  The same is true of the likelihood of a new document containing the feature 'awesome' being 'negative'...because there are no instances in the training set where 'awesome' appears in a 'negative' document.
@@ -160,7 +173,7 @@ The thing about this problem is that, because the feature 'cheeto' is not observ
 
 One way to deal with the absent feature problem is [to add a smoothing term](http://sebastianraschka.com/Articles/2014_naive_bayes_1.html) to the probability of observing word $$t$$ in a document of class 'positive':
 
-$$P(w_{t}|C=positive)=\frac{n_{p}(w_{t} + \alpha)}{N_{p}+alpha}$$
+$$P(w_{t}|C=positive)=\frac{n_{p}(w_{t} + \alpha)}{N_{p}+\alpha}$$
 
 The second fix is waaaaay more ghetto but it serves my current purpose (quick under-the-hood illustration of Naive Bayes) a little better: let's just add one positive document with the word 'cheeto' in it and one one negative document with the word 'awesome' in it to the training data:
 
@@ -199,11 +212,13 @@ $$(1-d_{j}) = \begin{pmatrix}1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1\end{pmatrix
 and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
 
 $$P(w_{t}|C=positive) = \begin{pmatrix} 0.33,0.66,0,0,0,0,0,0,0,0,0,0,0,0.33,0.33,0.33,0.33,0,0.33,0\end{pmatrix}$$ and
+
 $$P(w_{t}|C=negative) = \begin{pmatrix} 0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0,0,0,0,0.2,0.2,0.2\end{pmatrix}$$
 
 which yields the following likelihood calculation:
 
 $$P(d_{j}|C=positive)=(0(0.33)+1(0.666))(1(0.66)+0(0.33))(0(0)+1(1))...(1(0.33)+0(0.66))...\sim 0.019$$
+
 $$P(d_{j}|C=negative)=(0(0.2)+1(0.8))(1(0.2)+0(0.8))...((1(0.2)+0(0.8))())).....\sim 0.002$$
 
 To get the posterior probability that our classification will be based on, we need to combine these likelihoods and the priors:
