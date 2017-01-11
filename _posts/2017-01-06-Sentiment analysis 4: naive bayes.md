@@ -302,6 +302,12 @@ words <- words %>% mutate(l_pos=(b*p_hat_pos)+((1-b)*(1-p_hat_pos)),
 post_pos <- (3/8)*prod(words$l_pos)
 post_neg <- (5/8)*prod(words$l_neg)
 
+> post_pos
+[1] 0.007315958
+
+> post_neg
+[1] 0.001099512
+
 ```
 
 
@@ -316,4 +322,187 @@ The best way to conceptualize this result is probably by noting that
 * there are 3/8 total documents classified 'positive'
 * there are 5/8 total documents classified 'negative'
 
-so there is a greater share of positive documents containing the word 'awesome' than negative documents containing the word 'awesome' (1 out of 3 verses 1 out of 5) and there is a greater share of positive documents containing the word 'cheeto' than negative documents containing the word 'cheeto' (again 1 out 3 versus 1 out of 5)....so based on relative frequencies 
+Because there are more 'negative' documents than 'positive' documents the naive prior probability of a document being negative is higher: 5/8 vs. 3/8.  
+
+However there is a greater share of positive documents containing the word 'awesome' than negative documents containing the word 'awesome' (1 out of 3 verses 1 out of 5) and there is a greater share of positive documents containing the word 'cheeto' than negative documents containing the word 'cheeto' (again 1 out 3 versus 1 out of 5)...so the likelihood of D=positive conditional on the data is slightly higher than the likelihood of D=negative conditional on the data.  
+
+
+## Appendix
+
+In [a previous post here](https://aaronmams.github.io/Sentiment-Analysis-with-Python-Part-2/) I had to do some serious trimming to get my classifier trained.  In that example I started with approximately 1 million tweets (Document) and didn't strip out very many words from the tweets so the vocabulary or dictionary or whatever you want to call it (the list of words used to predict 'positive' or 'negative' for a new observation was really big...like several million.
+
+From this post one can see that procedurally - at least for the simple Naive Bayes Bag of Words Model - the computationally demanding part of the algorithm is getting the relative frequencies of each word in each class:
+
+$$P(w_{t}|C=p)=\frac{n_{p}(w_{t})}{N_{p}}$$
+
+I wanted to get some idea of whether the wait times I was experiencing with Python's NLTK were due to user error, black box algorithm inefficiency,...or if I ought to just expect the training phase of a simple sentiment analysis to take a while.  So I set up a little simulation:
+
+* I used a corpus from R's 'tm' package to get a 'bag of words'
+* I used a random sample of 3 words from this bag to define a set of documents
+* I assigned half of the documents the sentiment 'positive' and half of them the sentiment 'negative.'
+* For each word in the bag I calculated the number of positive documents containing the word and number of negative documents containing the word.
+
+### Two simulations:
+
+First I only used the words appearing in the data list 'crude' from the 'tm' package in R.  I removed some stop words and nonsense words, which resulted in a final set of 1,085 words.  I created 100,000 3-word combinations of these words and assigned half to be 'positive' and half to be 'negative.'    
+
+```R
+#load libraries
+library(tm)
+
+#load data
+data(crude)
+
+#clean up word list
+words.crude <- list()
+for(i in 1:20){
+  x <- crude[[i]]$content
+  x <- gsub('\n'," ",x)
+  x<- gsub("[[:punct:]]", " ", x)
+  x <- strsplit(x," ")
+  words.crude[[i]] <- x
+}
+words.crude <- unlist(words.crude)
+words.crude <- tolower(words.crude)
+
+words.crude <- words.crude[which(!words.crude %in% c("","is","a","the","an","this","he","she","it","in","to","its","of"))] 
+words.crude <- unique(words.crude)
+
+#create a list of 100,000 simulated documents...each document containing 3 randomly sampled
+# words from the word list
+vocab <- list()
+for(i in 1:100000){
+  xtmp <- paste(sample(words.crude,1),sample(words.crude,1),sample(words.crude,1),sep=" ")
+  vocab[[i]] <- xtmp
+}
+
+vocab <- data.frame(as.matrix(unlist(vocab),nrow=100000))
+
+#assign half of the simulated documents to be 'positive' and half 'negative'
+vocab$Sent <- c(rep('positive',50000),rep('negative',50000))
+names(vocab) <- c('D','Sent')
+
+#keep only the unique words
+v <- data.frame(w=unique(unlist(strsplit(as.character(vocab$D)," ")))) 
+
+#some intermediate vocabs
+positive.docs <- strsplit(as.character(vocab$D[which(vocab$Sent=='positive')])," ")
+negative.docs <- strsplit(as.character(vocab$D[which(vocab$Sent=='negative')])," ")
+
+#create a matrix with # of columns = # of words in the vocabulary and
+# number of rows equal to number of documents...the (i,j) element is 1 if
+# word j appears in document i and 0 otherwise.  Summing over the columns
+# of each matrix give us the number of 'positive' document containing each word
+# and number of 'negative' documents containing each word.
+t <- Sys.time()
+z <- lapply(positive.docs,function(x)which(v$w %in% x))
+#z <- matrix(0,nr=50000,nc=length(v$w))
+pos.mat <- lapply(1:50000,function(x){
+  r=rep(0,length(v$w))
+  idx <- c(z[[x]])
+  r[idx]<-1
+  return(r)
+  }
+)
+pos.mat <- matrix(c(unlist(pos.mat)),nr=50000,nc=length(v$w),byrow=T)
+v$n_pos <- apply(pos.mat,2,FUN=sum)
+
+z <- lapply(negative.docs,function(x)which(v$w %in% x))
+#z <- matrix(0,nr=50000,nc=length(v$w))
+neg.mat <- lapply(1:50000,function(x){
+  r=rep(0,length(v$w))
+  idx <- c(z[[x]])
+  r[idx]<-1
+  return(r)
+}
+)
+neg.mat <- matrix(c(unlist(neg.mat)),nr=50000,nc=length(v$w),byrow=T)
+v$n_neg <- apply(neg.mat,2,FUN=sum)
+Sys.time() - t
+
+Time difference of 16.3339 secs
+```
+
+
+
+The second simulation I doubled the number of unique words in the vocabulary to 2,000 and I doubled the number of documents in the training set to 200,000 documents each containing three randomly selected words from the vocabulary.  I again made half of these training documents positive and half of them negative.
+
+My goal here was to see how the training time changed when I increased the size of the problem considerably.
+
+
+```R
+wordlist = list()
+for(i in 1:500){
+ c <- sample(letters,4)
+ wordlist[[i]] <- paste(c[1],c[2],c[3],c[4],sep="")
+} 
+ 
+for(i in 501:1000){
+  c <- sample(letters,5)
+  wordlist[[i]] <- paste(c[1],c[2],c[3],c[4],c[5],sep="")
+} 
+
+for(i in 1001:2000){
+  c <- sample(letters,6)
+  wordlist[[i]] <- paste(c[1],c[2],c[3],c[4],c[5],c[6],sep="")
+} 
+
+wordlist <- c(unique(unlist(wordlist)))
+
+vocab <- list()
+for(i in 1:200000){
+  xtmp <- paste(sample(wordlist,1),sample(wordlist,1),sample(wordlist,1),sep=" ")
+  vocab[[i]] <- xtmp
+}
+
+vocab <- data.frame(as.matrix(unlist(vocab),nrow=200000))
+vocab$Sent <- c(rep('positive',100000),rep('negative',100000))
+names(vocab) <- c('D','Sent')
+
+v <- data.frame(w=unique(unlist(strsplit(as.character(vocab$D)," ")))) 
+
+#some intermediate vocabs
+positive.docs <- strsplit(as.character(vocab$D[which(vocab$Sent=='positive')])," ")
+negative.docs <- strsplit(as.character(vocab$D[which(vocab$Sent=='negative')])," ")
+
+
+#try a matrix with column sums version
+t <- Sys.time()
+z <- lapply(positive.docs,function(x)which(v$w %in% x))
+#z <- matrix(0,nr=50000,nc=length(v$w))
+pos.mat <- lapply(1:100000,function(x){
+  r=rep(0,length(v$w))
+  idx <- c(z[[x]])
+  r[idx]<-1
+  return(r)
+}
+)
+pos.mat <- matrix(c(unlist(pos.mat)),nr=100000,nc=length(v$w),byrow=T)
+v$n_pos <- apply(pos.mat,2,FUN=sum)
+
+z <- lapply(negative.docs,function(x)which(v$w %in% x))
+#z <- matrix(0,nr=50000,nc=length(v$w))
+neg.mat <- lapply(1:100000,function(x){
+  r=rep(0,length(v$w))
+  idx <- c(z[[x]])
+  r[idx]<-1
+  return(r)
+}
+)
+neg.mat <- matrix(c(unlist(neg.mat)),nr=100000,nc=length(v$w),byrow=T)
+v$n_neg <- apply(neg.mat,2,FUN=sum)
+Sys.time() - t
+Time difference of 53.67482 secs
+```
+
+So these preliminary results here suggest I can train a Naive Bayes , Bag of Words, positive/negative classifier with 100,000 training documents and 1,000 unique words in around 20 seconds.  If I double the number of unique words and double the number of training samples I increase training time to around a minute.  
+
+This makes me a little suspicious of the 15 minute training times I was getting using Python's NLTK with 100,000 tweets and several thousand unique words in the training data.  
+
+Before closing this post out, it's probably worth noting that my solution here of creating a matrix of 0's and 1's that can be summed column-wise to get class condtional word frequencies isn't idea for scaling.  I don't know this for fact...but I'm pretty sure that R treats matricies as vectors so the theoretical limit would be something like:
+
+$$ (nrow)(ncol) < 2^{31-1}$$
+
+in practice my instance of R Studio run on a pretty powerful workstation craps out somewhere around 1,000,000 rows and 1,500 columns.
+
+But even the least efficient case of looping over words and counting the number of documents containing that word should be relatively easy to parallelize....I'll have to test that theory another time.  
