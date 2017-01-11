@@ -14,7 +14,9 @@ Here is some preliminary nomenclature:
 * I have a bunch of statements that have been classified as 'positive' and 'negative' and I call the the training set, $$D$$.
 * The universe of possible classification is denoted as $$C$$. And $$C$$ can take the values $$p$$ for positive and $$n$$ for negative.
 
-The statement $$d_{j}$$ will be classified as either $$p$$ or $$n$$ depending on which class has a higher posterior probability:
+The document $$d_{j}$$ will be classified as either $$p$$ or $$n$$ depending on which class has a higher posterior probability:
+
+The conceptual backbone of the Naive Bayes text classifier is the question, "What is the probability that a particular object belongs to class $$i$$ given the object's features.  
 
 The posterior probability that $$d_{j}$$ is positive is,
 
@@ -34,7 +36,7 @@ $$P(C)$$
 
 the prior probability of observing a document class.
 
-In the simplest case of conditional independence that we have been operating under (meaning that the occurance of words in a document is independent of other words in the document), the probability of observing document $$j$$ in class $$i$$ can be expressed as a combination of the probabilities of observing the words in document $$j$$, ($$w$$) conditional on the document belonging to class $$i$$.  More specifically, the likelihood that document $$j$$ is positive is,
+For the last several posts I have assumed conditional independence and I'll continute that here.  Let's denote the words making up document $$j$ as $$w$$.  Informally conditional independence means that the occurance of words in a document is independent of other words in the document.  More formally, conditional independence means that the likelihood of observing $$d_{j}$$ conditional on class being positive is the product of the individual word likelihoods.  More formally still, the likelihood of observing document $$j$$ conditional on class is positive is,
 
 $$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
 
