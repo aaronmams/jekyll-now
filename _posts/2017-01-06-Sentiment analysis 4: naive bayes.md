@@ -213,7 +213,9 @@ $$(1-d_{j}) = \begin{pmatrix}1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1\end{pmatrix
 
 and the class conditional probabilities based on relative frequencies of appearance in positive documents is:
 
-$$P(w_{t}|C=positive) = \begin{pmatrix} 0.33,0.66,0,0,0,0,0,0,0,0,0,0,0,0.33,0.33,0.33,0.33,0,0.33,0\end{pmatrix}$$ and
+$$P(w_{t}|C=positive) = \begin{pmatrix} 0.33,0.66,0,0,0,0,0,0,0,0,0,0,0,0.33,0.33,0.33,0.33,0,0.33,0\end{pmatrix}$$ 
+
+and
 
 $$P(w_{t}|C=negative) = \begin{pmatrix} 0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0,0,0,0,0.2,0.2,0.2\end{pmatrix}$$
 
