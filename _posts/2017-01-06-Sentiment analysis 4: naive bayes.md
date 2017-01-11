@@ -36,7 +36,7 @@ $$P(C)$$
 
 the prior probability of observing a document class.
 
-For the last several posts I have assumed conditional independence and I'll continute that here.  Let's denote the words making up document $$j$ as $$w$$.  Informally conditional independence means that the occurance of words in a document is independent of other words in the document.  More formally, conditional independence means that the likelihood of observing $$d_{j}$$ conditional on class being positive is the product of the individual word likelihoods.  More formally still, the likelihood of observing document $$j$$ conditional on class is positive is,
+For the last several posts I have assumed conditional independence and I'll continute that here.  Let's denote the words making up document $$j$$ as $$w$$.  Informally conditional independence means that the occurance of words in a document is independent of other words in the document.  More formally, conditional independence means that the likelihood of observing $$d_{j}$$ conditional on class being positive is the product of the individual word likelihoods.  More formally still, the likelihood of observing document $$j$$ conditional on class is positive is,
 
 $$P(d_{j}|C=p)=\Pi_{t}[b_{jt}P(w_{t}|C=p)+(1-b_{it})(1-P(w_{t}|C=p))]$$
 
