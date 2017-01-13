@@ -16,6 +16,8 @@ In addition to learning how to do new things, it's also (I think) pretty importa
 
 I'm not always great about meeting these goals....so I'm hoping a little more manufactured pressure in the form of of a periodic 'Readings' update will give me the same kick-in-the-ass I get from the blog.
 
+Anyway, here's what I've been reading this week:
+
 ## Economics
 
 Two papers from a collegaue at the [University of Dayton, Nancy Haskell](https://sites.google.com/site/nancylhaskell/home/research):
@@ -31,6 +33,7 @@ There is a really interesting literture in Economics (that I don't know nearly e
 
 ## Miscellaneous Programming
 
+### Slack Bots
 [This blog post on building slack bots](https://www.fullstackpython.com/blog/build-first-slack-bot-python.html)
 
 [And this blog post](https://medium.com/@julianmartinez/how-to-write-a-slack-bot-with-python-code-examples-4ed354407b98#.ap4xn8f0h)
@@ -38,6 +41,11 @@ There is a really interesting literture in Economics (that I don't know nearly e
 [And this wiki](https://botwiki.org/tutorials/slackbots/)
 
 My brother-in-law recently, probably inadvertently, reminded me that technical skills like computer programming don't have to be applied to an immediate world-changing problem to be worthy of time-investment...They can be worthy pursuits simply because they're fun.  The backdrop for this is that I was mentioning that I really wanted to commit some time to learning how to build slack-bots in Python but I hadn't yet figured out a problem in my realm that a slack-bot would really solve (there are probably exceptions but not many scientist I know use slack or other IM clients to chat with colleagues in real time...the pace of scientific discover usually doesn't require immediate co-worker feedback).  My brother-in-law said that at his old job they programmed a slack-bot to listen on all channels and if anyone said, "we're out of beer" the bot responded by ordering more.  
+
+### Web Scraping
+[The Beautiful Soup documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+
+I'm a big fan of web-scraping and I'm always looking for faster/easier/better ways to do it.  Web scraping is pretty important for my work because a lot of state government agencies aren't sophisticated enough to have well maintained public databases or APIs.  These understaffed agencies usually put a lot of valuable time-series data on the internet in the form of html tables or pdf docs.  I routinely pay undergraduate research assistants decent amounts of money to sit in front of a computer and copy-paste data from public websites to .csv files that I can read into R or Python.
 
 ## Books
 
