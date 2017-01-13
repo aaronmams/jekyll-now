@@ -33,7 +33,7 @@ There is a really interesting literture in Economics (that I don't know nearly e
 
 [This blog post on building slack bots](https://www.fullstackpython.com/blog/build-first-slack-bot-python.html)
 
-[And this blog post]()https://medium.com/@julianmartinez/how-to-write-a-slack-bot-with-python-code-examples-4ed354407b98#.ap4xn8f0h
+[And this blog post](https://medium.com/@julianmartinez/how-to-write-a-slack-bot-with-python-code-examples-4ed354407b98#.ap4xn8f0h)
 
 [And this wiki](https://botwiki.org/tutorials/slackbots/)
 
