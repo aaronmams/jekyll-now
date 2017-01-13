@@ -31,6 +31,18 @@ There is a really interesting literture in Economics (that I don't know nearly e
 
 [Discovering governing equations from data by sparse identification of nonlinear dynamical systems](http://www.pnas.org/content/113/15/3932.abstract)
 
+If I understand this literature right I think it has some mind-blowing potential.  Economics, like most other sciences, has developed a set of theories for how people behave (firms maximize profits subject to budgetary and other constraints, individuals maximize satisfaction subject to budetary and other contraints).  When fitting models to data, these theories generally provide some guidance on what is and is not allowed with repect to model fitting.  The natural sciences, similarly, have rules governing how processes evolve:
+
+* water flows according to certain physical rules
+* fish grow according to certain systems of dynamic differential equations
+
+Theories, by their nature, make predictions about outcomes one should expect given certain initial conditions.  In science, theories are often tested by matching observed data to the predictions made by the theory to see how 'well' a theory describes actual outcomes.  The literature addressed by the PNAS paper I linked to above takes a different tactic.  It starts with, for all intents and purposes, with a big bag of data and asks whether some coherant underlying data generating process can be recovered from the coupled dynamics present in the big bag of data. 
+
+
+**Side Note**: Many people unfamiliar with how science combines theory and evidence mistakenly believe that these theories impose rigid constraints on the process of fitting models to data (in practice the mathematical concept of flexible functional forms is generally leveraged to theory to provide good first or second order approximations).  
+
+Although (in my mind at least) having a firm theoretical foundation to one's empirical work is a good thing, I can see a lot of value in the idea of trying to recover the underlying dynamics of a system (the theory) purely from data.
+
 ## Miscellaneous Programming
 
 ### Slack Bots
