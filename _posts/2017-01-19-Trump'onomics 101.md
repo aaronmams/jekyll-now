@@ -68,16 +68,81 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
+library(zoo)
+library(psych)
 
-pi.corp <- read.csv('/Users/aaronmamula/Documents/R projects/macroecon/corporateprofits.csv')
-wages <- read.csv('/Users/aaronmamula/Documents/R projects/macroecon/hourlywage_production_nonsup.csv')
+#----------------------------------------------------------
+#a bunch of data I pulled from FRED
+pi.corp <- read.csv('data/corporateprofits.csv')
+wages <- read.csv('data/hourlywage_production_nonsup.csv')
 names(wages) <- c('observation_date','wages')
-def <- read.csv('/Users/aaronmamula/Documents/R projects/macroecon/GDPDEF.csv')
-manemp <- read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manemp.csv')
-manemp.MI <- read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manufacturing_motorvehicle_MI.csv')
+def <- read.csv('data/GDPDEF.csv')
+manemp <- read.csv('data/manemp.csv')
+manemp.MI <- read.csv('data/manufacturing_motorvehicle_MI.csv')
 names(manemp.MI) <- c('observation_date','manemp_mv_MI')
-manemp.IN <- read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manufacturing_motorvehicle_IN.csv')
+manemp.IN <- read.csv('data/manufacturing_motorvehicle_IN.csv')
 names(manemp.IN) <- c('observation_date','manemp_mv_IN')
+wage_week <- read.csv('data/avgweeklypay_manufacturing.csv')
+names(wage_week) <- c('date','pay')
+cpi <- read.csv('data/cpi_all.csv')
+names(cpi) <- c('date','cpi')
+#-------------------------------------------------------------
+
+#---------------------------------------------------------------
+#manufacturing employment by state, 1,000s of jobs
+manemp.IN.all <- tbl_df(read.csv('data/manemp_all_IN.csv')) %>%
+  mutate(state='IN') %>%
+  mutate(date=as.Date(observation_date,format="%m/%d/%y")) %>%
+  select(date,INMFG,state)
+manemp.MI.all <- tbl_df(read.csv('data/manemp_all_MI.csv')) %>%
+  mutate(state='MI')
+manemp.WI.all <- tbl_df(read.csv('data/manemp_WI_all.csv')) %>%
+  mutate(state='WI')
+
+manemp.AL.all <- tbl_df(read.csv('data/manemp_all_AL.csv')) %>%
+  mutate(state='AL')
+manemp.TN.all <- tbl_df(read.csv('data/manemp_TN_all.csv')) %>%
+  mutate(state='TN')
+
+names(manemp.IN.all) <- c('date','emp','state')
+names(manemp.MI.all) <- c('date','emp','state')
+names(manemp.AL.all) <- c('date','emp','state')
+names(manemp.WI.all) <- c('date','emp','state')
+names(manemp.TN.all) <- c('date','emp','state')
+#-------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------
+#manufacturing weeking earnings by state
+pay.MI  <- tbl_df(read.csv('data/weekly_earnings_MI_man.csv')) %>%
+  mutate(state='MI', date = as.Date(observation_date,format="%Y-%m-%d"),
+         year=year(date)) %>% select(-observation_date) 
+names(pay.MI) <- c('pay','state','date','year')
+
+pay.WI  <- tbl_df(read.csv('data/weekly_earnings_WI_man.csv')) %>%
+  mutate(state='WI', date = as.Date(observation_date,format="%Y-%m-%d"),
+         year=year(date)) %>% select(-observation_date) 
+names(pay.WI) <- c('pay','state','date','year')
+
+pay.IN  <- tbl_df(read.csv('data/weekly_earnings_IN_man.csv')) %>%
+  mutate(state='IN', date = as.Date(observation_date,format="%Y-%m-%d"),
+         year=year(date)) %>% select(-observation_date) 
+names(pay.IN) <- c('pay','state','date','year')
+#-----------------------------------------------------------------------
+
+#-------------------------------------------------------------------------
+manout <-  tbl_df(read.csv('data/manout.csv')) 
+#-------------------------------------------------------------------------
+
+
+###########################################################################
+###########################################################################
+###########################################################################
+###########################################################################
+###########################################################################
+###########################################################################
+###########################################################################
+###########################################################################
+###########################################################################
 
 
 #wages are monthly so let's take the quarterly average so we can integrate GDP Deflator
