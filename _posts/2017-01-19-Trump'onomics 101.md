@@ -306,7 +306,7 @@ There is an interesting contrast here between the national average and the subse
 
 ## 3. Manufacturing output is waaaaay up
 
-There's no way around this one.  Productivity increases have pushed U.S. manufacturing output to historically high levels.
+There's no way around this one.  Productivity increases have pushed U.S. manufacturing output to historically high levels.  We are unequivocally making more shit, with less shit, and possibly - but not certainly - paying workers more to do it.
 
 Data:
 
@@ -345,7 +345,7 @@ There is a well documented 'skills gap' in U.S. manufacturing.  In fact, the Man
 
 5. [This article](http://knowledge.wharton.upenn.edu/article/can-trump-anyone-bring-back-american-manufacturing/) points out that Trump can't really bring manufacturing jobs back because there's nowhere to bring them back from.  It claims that 80% of lost U.S. manufacturing jobs weren't lost to China or Mexico, they were lost to automation.
 
-### 2.Bucking the trend
+### 2. Bucking the trend
 
 For fun, let's image that somehow Trump (because he's such a righteous deal maker) is able to create tons of jobs for low skilled, undereducated workers.  Suppose he gets Apple to start making iphones in the U.S. or something.  Will that help the Trumpkins?  Probabily....a little.  
 
