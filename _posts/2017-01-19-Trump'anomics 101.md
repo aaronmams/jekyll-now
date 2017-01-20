@@ -245,7 +245,7 @@ At the national level real weekly pay in manufacturing is down from the good ol'
 
 For some selected bell-weather states real pay seems pretty stagnant (nominal pay is the black line and real pay is the red one):
 
-![weeklypay_states](/image/weekly_pay.png)
+![weeklypay_states](/image/weekly_pay_real.png)
 
 
 
