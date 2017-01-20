@@ -248,4 +248,13 @@ For some selected bell-weather states real pay seems pretty stagnant (nominal pa
 ![weeklypay_states](/image/weekly_pay_real.png)
 
 
+## Manufacturing output is waaaaay up
+
+There's no way around this one.  Productivity increases have pushed U.S. manufacturing output to historically high levels.
+
+Data:
+
+1. [FRED, real U.S. manufacturing output, index values, 2009 = 100, not seasonally adjusted](https://fred.stlouisfed.org/series/OUTMS)
+
+![manout](/images/manout.png)
 
