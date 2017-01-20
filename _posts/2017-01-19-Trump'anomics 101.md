@@ -227,3 +227,11 @@ ggplot(plot.df,aes(x=date,emp,color=state)) + geom_line() + facet_wrap(~region) 
 
 ![manemp_states](/images/manemp_states.png)
 
+## Manufacturing pay is up...or not
+
+At the national level real weekly pay in manufacturing is down from the good ol' days but has been steadily improving since 2010...and is currently higher than at any other period in time with the exception of the boom of the 70s and 80s.
+
+
+[
+
+
