@@ -156,7 +156,7 @@ ggplot(plot.tmp,aes(x=date,y=g,color=series)) + geom_line() + theme_bw() +
 ```
 ![pi_corporate](/images/corporateprofits_manemp.png)
 
-## Corporate Cash and Stock Ownership
+## 2. Corporate Cash and Stock Ownership
 
 I believe it's highly likely that repatriating large sums of cash will have enormous benefits for wealthy people.  This is because when companies (especially publicly traded ones like IBM, Microsoft, Apple, Pfizer, etc) are blessed with cash windfalls they tend to do things distribute those profits to shareholder in the form of dividends and execute stock buybacks which pushes stock prices higher (benefiting shareholder at large but especially wealthy executives that are paid in stock).
 
@@ -170,7 +170,7 @@ About 23% of Americans with less education than a college degree have money in t
 
 I don't want to spend too much time on this because it seems really obvious to me: if Apple, Microsoft, GE, etc. bring billions of dollars home and distribute a bunch of it to share holders it aint' gonna help the people we're talking about here.  It's not. Let's move on.
 
-## Corporate Cash and Investment
+## 3. Corporate Cash and Investment
 
 The amount of money we are talking about here could also be used by corporations to beef up R&D or to acquire a presence in a hot area.  Some pretty sharp people that I listen to have made the following observations:
 
