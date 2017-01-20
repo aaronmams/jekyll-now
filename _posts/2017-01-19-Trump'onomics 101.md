@@ -362,3 +362,23 @@ Here are my assumptions:
 * The break even price for U.S. shale producers is approximately normally distributed with mean around $60/barrel West Texas Crude
 * Oil trades on a global market subject to global supply and demand forces
 * Gas is currently really cheap partly because oil is really cheap: the WTI forward contract is currently trading around $52
+
+Basically my reasoning goes something like this: 
+
+1. producing more oil might help the employment situation of unskilled, unemployed, former manufacturing workers if they are willing/able to move the North Dakota and Texas to work in the oil fields
+
+2. pay less for gas would definitely help the Trump-labor since poorer people use a bigger fraction of thier income to pay for food and gas...so they could get 'money in the pocket' from low gas prices
+
+3. Neighter 1 or 2 is likely to happen in my assessment because oil/gas prices are already about as low as they can get without basically shutting down U.S. production.
+
+I should add that it is possible that Trump could heavily subsidize oil production which would make existing capactiy economically viable at lower market prices.  I wouldn't put this one past him.
+
+A quick on-the-other-hand: althought I don't think Trump will be able to really help the workers we are focused on here with an energy policy directly at pumping more oil, much like his manufacturing schemes, he could do some real damage to upper middle class and downright wealthy people.
+
+This is once again because our equities markets are very tightly coupled to the success of:
+
+1. Big Oil Companies
+2. Big Financial Institutions
+
+Both of these groups suffer when the price of oil is low.  Oil companies lose money directly and banks take a hit because oil production is heavily leveraged and banks end up holding a lot of bad paper when oil fields get shut down.
+
