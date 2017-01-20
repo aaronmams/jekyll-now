@@ -46,7 +46,8 @@ Data:
 
 1. [Corporate profits come from FRED](https://fred.stlouisfed.org/series/CP)...specifically https://fred.stlouis.org/series/CP.  These are quarterly before tax nominal profits that I adjusted to real profits using the implicit GDP price deflator (also from FRED). 
 
-2.[Total monthly employment in manufacturing for production and nonsupervisory positions for the U.S. in 1,000s of jobs](https://fred.stlouisfed.org/series/MANEMP) is also from FRED
+2.[Total monthly employment in manufacturing for production and nonsupervisory positions for the U.S. in 1,000s of jobs](https://fred.stlouisfed.org/series/MANEMP) is also from FRED.
+
 3. [Total monthly employment in motor vehicle and motor vehicle parts manufacturing in Michigan in 1,000s of jobs](https://fred.stlouisfed.org/series/SMU26000003133630001) is also from FRED...specifically series SMU26000003133630001
 
 4. [Total monthly employment in motor vehicle and motor vehicle parts manufacturing in Indiana in 1,000s of jobs](https://fred.stlouisfed.org/series/SMU18000003133630001) is from FRED...specifically series SMU18000003133630001
