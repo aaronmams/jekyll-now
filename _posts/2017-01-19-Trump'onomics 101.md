@@ -290,7 +290,7 @@ ggplot(pay,aes(x=date,y=pay)) + geom_line() + geom_line(aes(x=date,y=real.pay,co
 
 ```
 
-![weeklypay_states](/image/weekly_pay_real.png)
+![weeklypay_states](/images/weekly_pay_real.png)
 
 
 ## Manufacturing output is waaaaay up
