@@ -46,7 +46,7 @@ Data:
 
 1. [Corporate profits come from FRED](https://fred.stlouisfed.org/series/CP)...specifically https://fred.stlouis.org/series/CP.  These are quarterly before tax nominal profits that I adjusted to real profits using the implicit GDP price deflator (also from FRED). 
 
-2.[Total monthly employment in manufacturing for production and nonsupervisory positions for the U.S. in 1,000s of jobs](https://fred.stlouisfed.org/series/MANEMP) is also from FRED.
+2. [Total monthly employment in manufacturing for production and nonsupervisory positions for the U.S. in 1,000s of jobs](https://fred.stlouisfed.org/series/MANEMP) is also from FRED.
 
 3. [Total monthly employment in motor vehicle and motor vehicle parts manufacturing in Michigan in 1,000s of jobs](https://fred.stlouisfed.org/series/SMU26000003133630001) is also from FRED...specifically series SMU26000003133630001
 
@@ -229,9 +229,23 @@ ggplot(plot.df,aes(x=date,emp,color=state)) + geom_line() + facet_wrap(~region) 
 
 ## Manufacturing pay is up...or not
 
+Data series:
+
+* Average weekly earnings of all manufacturing employees in Wisconsin, dollars per week, not seasonally adjusted: https://fred.stlouisfed.org/series/SMU55000003000000011
+* Average weekly earnings of all manufacturing employees in Michingan, dollars per week, not seasonally adjusted: https://fred.stlouisfed.org/series/SMU26000003000000011
+* Average weekly earnings of all manufacturing employees in Indiana, dollars per week, not seasonally adjusted: https://fred.stlouisfed.org/series/SMU18000003000000002
+* Average weekly earnings of all production and non-supervisory manufacturing employees in the U.S, dollars per week, not seasonally adjusted: https://fred.stlouisfed.org/series/CES3000000030
+* CPI for all urban consumers, all goods, index values, 1982-1984=100: https://fred.stlouisfed.org/series/CPIAUCSL 
+
 At the national level real weekly pay in manufacturing is down from the good ol' days but has been steadily improving since 2010...and is currently higher than at any other period in time with the exception of the boom of the 70s and 80s.
 
 
-[
+![weeklypay_US](/images/weekly_pay_man_US.png)
+
+
+For some selected bell-weather states real pay seems pretty stagnant (nominal pay is the black line and real pay is the red one):
+
+![weeklypay_states](/image/weekly_pay.png)
+
 
 
