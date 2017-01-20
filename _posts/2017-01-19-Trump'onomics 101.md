@@ -352,3 +352,13 @@ Actually, the more fundamental reason come from the Wharton study I linked to ab
 * making t-shirts? nope: 3D printers and nano-technology have turned this into a software driven industry
 * making cars? there's plenty of evidence that car manufactures will move and alter supply according to their margins.  Ford makes F-150s with backup cameras, park assist, and navigation system in the U.S. because it demands a skilled labor force.  They make Fiestas and shit in Mexico because production isn't as tech driven.  If they have to move production of the Ford Fiesta to Deerborn by order of the Trump, I think it's highly likely they would just stop making it and hire more tech-savy workers to crank out more F-150s and Expenditions.
 
+# Energy Policy
+
+Ok, so the last thing I was thinking about is a little off-the-cuff...I don't think I'll have time to pull much data on this but I'll try to keep the logic as tight as possible and the assumptions as clear as possible so - for all of you dissenters - you can pinpoint whether you disagree because you think my facts are wrong or because you think my induction is off.
+
+Here are my assumptions:
+
+* Trump wants us to pump more oil and gas
+* The break even price for U.S. shale producers is approximately normally distributed with mean around $60/barrel West Texas Crude
+* Oil trades on a global market subject to global supply and demand forces
+* Gas is currently really cheap partly because oil is really cheap: the WTI forward contract is currently trading around $52
