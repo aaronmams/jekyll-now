@@ -1,4 +1,13 @@
 
+As always, let's start with the kernel: I've been thinking a lot about some of the policy agendas that Trump has talked about and how they might (economically or financially) impact different groups of people.  Here I tried to pull and analyze data that I thought could provide some insight.  If that sounds interesting to you, please read on.
+
+##  Resources
+
+I downloaded a lot of macroeconomic time series for this.  Almost all of them came from the Federal Reserve Bank of St. Louis (FRED).  I tried to be clear in the text about exactly which series I used and linked to them where appropriate.  However, because I know it would be a pain in the ass to click 30 different links, I also put all of the data I used in the GitHub Repository in a series of .csv files.  My naming convention is janky so I'll try to get a data readme-type thing together soon.  If you want the data it's here:
+
+[trump-o-nomics data folder on GitHub](https://github.com/aaronmams/trump-o-nomics/tree/master/data)
+
+# Intro
 
 As a human being I think Trump as president is a disaster for our country...as an economist I think it's pretty unlikely that Trump's presidency will be an economic catastrophe (famous last words, I know).  To be clear, I don't think he'll be great for the economy...but the U.S. economy is pretty big and resilient animal.  Pretty much every Republican thought President Obama would be an economic nightmare and yet, 8 years later, we've enjoyed steady job growth, steady growth in corporate profits, and record highs in pretty much all of our domestic equities markets.  
 
@@ -22,12 +31,12 @@ In thinking about three initiatives I want to try and discern how they might hel
 * unemployed or underemployed unskilled labor 
 * living in a Rust Belt or Automobile Alley state 
 
-If you want a more vivid picture of whose economic fortunes I'm trying to contemplate just run with whatever comes into your head when I say, "he's one of those 'the robot took my job' guys."  That sounds pejorative but there are over 1 million currently unemployed former manufacturing employees in the Upper Midwest many of whom voted for Trump because they perceived him to be the candidate most likely to improve their economic circumstances.  There are also hundreds of thousands of manufacturing job opening going unfilled right now because of a basic skills gap.  
+If you want a more vivid picture of whose economic fortunes I'm trying to contemplate just run with whatever comes into your head when I say, "he's one of those 'the robot took my job'/'the Mexicans are taking our jobs' guys."  That sounds pejorative but there are over 1 million currently unemployed former manufacturing employees in the Upper Midwest many of whom voted for Trump because they perceived him to be the candidate most likely to improve their economic circumstances.  And just for the record there are also hundreds of thousands of manufacturing job opening going unfilled right now because of a basic skills gap.  
 
     
 # Corporate Tax Holiday
 
-let's start with repatriating cash because I think that's a relatively easy one.  In my assessment a corporate tax holiday would be really good for 
+Let's start with repatriating cash because I think that's a relatively easy one.  In my assessment a corporate tax holiday would be really good for 
 
 * Microsoft
 * GE
@@ -188,7 +197,7 @@ Trump and Trump supporters have been notably vocal about 'bringing the manufactu
 
 First, let's establish the facts:
 
-## Manufacturing employment is down...sort of
+## 1. Manufacturing employment is down...sort of
 
 Employment in manufacturing (at least in traditionally manufacturing dependent states) is down a lot from the 2000s...but in every state I looked at it has been trending pretty steadily up since 2010.
 
@@ -229,7 +238,7 @@ ggplot(plot.df,aes(x=date,emp,color=state)) + geom_line() + facet_wrap(~region) 
 
 ![manemp_states](/images/manemp_states.png)
 
-## Manufacturing pay is up...or not
+## 2. Manufacturing pay is up...or not
 
 Data series:
 
@@ -292,8 +301,10 @@ ggplot(pay,aes(x=date,y=pay)) + geom_line() + geom_line(aes(x=date,y=real.pay,co
 
 ![weeklypay_states](/images/weekly_pay_real.png)
 
+There is an interesting contrast here between the national average and the subset of traditionally manufacturing dependent states.  One reason I think this is interesting is because of what it says about manufacturing.  If there is any coherant theme here it is that U.S. manufacturing is changing/has changed.  One interesting way it is changing is geographic.  Manufacturing is no longer limited to Upper Midwest and Great Lakes States.  Because manufacturing now means more than just steel and cars, it is happening in earnest in places like California, Oregon, Arkansas, etc.  
 
-## Manufacturing output is waaaaay up
+
+## 3. Manufacturing output is waaaaay up
 
 There's no way around this one.  Productivity increases have pushed U.S. manufacturing output to historically high levels.
 
@@ -313,7 +324,7 @@ Trump wants to "bring manufacturing back" but manufacturing - the activity - nev
 1.  Continuing the manufacturing resurgence that has been going on since at least 2010, or
 2.  Somehow conducting a ressurection of old school labor intensive manufacturing that if friendly to unskilled workers
 
-### Continuing the trend
+### 1. Continuing the trend
 
 U.S. manufacturing has evolved to do things: 
 
@@ -334,7 +345,7 @@ There is a well documented 'skills gap' in U.S. manufacturing.  In fact, the Man
 
 5. [This article](http://knowledge.wharton.upenn.edu/article/can-trump-anyone-bring-back-american-manufacturing/) points out that Trump can't really bring manufacturing jobs back because there's nowhere to bring them back from.  It claims that 80% of lost U.S. manufacturing jobs weren't lost to China or Mexico, they were lost to automation.
 
-## Bucking the trend
+### 2.Bucking the trend
 
 For fun, let's image that somehow Trump (because he's such a righteous deal maker) is able to create tons of jobs for low skilled, undereducated workers.  Suppose he gets Apple to start making iphones in the U.S. or something.  Will that help the Trumpkins?  Probabily....a little.  
 
@@ -381,4 +392,23 @@ This is once again because our equities markets are very tightly coupled to the 
 2. Big Financial Institutions
 
 Both of these groups suffer when the price of oil is low.  Oil companies lose money directly and banks take a hit because oil production is heavily leveraged and banks end up holding a lot of bad paper when oil fields get shut down.
+
+When oil hit $30/bbl in the middle of last year there were some people like Kevin O'Leahrey squaking in CNBC that we should remember that low oil prices should be really GOOD for our economy because it means people pay less for gas and companies pay less for energy inputs...those low prices might have been awesome for consumers but the entire stock market pretty much shit its pants...companies that don't even have anything to do with production/finance/oil/etc lost massive amounts of value because when the banks and the oil companies hurt, the market hurts.
+
+# Summing Up
+
+1. I'm pretty sure that repatriating corporate profits would be pretty sweet for upper middle class to wealthy people with a lot of skin in the stock market.  I can't, for the life of me, see how it helps the 'left behind by the economic recovery' crowd that we know voted for Trump in pretty big numbers.  This is based on the fact that I can't find any convincing first-order correlations between corporate profits and manufacturing employment or between corporate profits and manufacturing earnings.
+
+2. I'm also pretty sure that 'bringing manufacturing back' is either impossible or unlikely to help unskilled labor very much.  
+
+
+# A Final Request
+
+I would love to hear what people think of this.  I tried to approach this as I would any other policy analysis and let the data mold my expectations.  However, I recognize implicit bias is a real thing.  I'd be super interested to hear from people who see things differently.  My only (humble) request would be this: if you think I'm wrong/an idiot just be precise about how.  Am I looking at the wrong data? Did use the rigth data but interpret it incorrectly?   
+
+
+
+
+
+
 
