@@ -406,9 +406,13 @@ When oil hit $30/bbl in the middle of last year there were some people like Kevi
 
 I would love to hear what people think of this.  I tried to approach this as I would any other policy analysis and let the data mold my expectations.  However, I recognize implicit bias is a real thing.  I'd be super interested to hear from people who see things differently.  My only (humble) request would be this: if you think I'm wrong/an idiot just be precise about how.  Am I looking at the wrong data? Did use the rigth data but interpret it incorrectly?   
 
+# Appendix
 
+I didn't do a ton of interesting reading this week but I did catch a pretty interesting paper on symbolic regression and genetic programming:
 
+[Prediction of Dynamical Systems by Symbolic Regression](https://arxiv.org/pdf/1602.04648.pdf)
 
+There are better methods papers but I liked this one because I thought it had a decent amount of helpful practical guidance on getting a genetic program to converge.
 
 
 
