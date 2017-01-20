@@ -179,3 +179,51 @@ The amount of money we are talking about here could also be used by corporations
 2. Gene-editing technologies are pretty much the hottest thing in biotech these days.  Editas Medicine, Intellia Therapeutics, and CRISPR Therapeutics are some of the gene-therapy stocks that a lot of people have their eyes on.  If a company like Pfizer suddenly had 10's of billions of dollars lying around it could buy into the gene-therapy game pretty easily.
 
 I don't have much empirical evidence to offer here...I just can't imagine this type of acquisition really helping out unskilled labor.  To the extent that investment or acquisition by the companies with lots of cash parked overseas results in manufacturing jobs, I'm pretty sure those jobs are going to be on the higher skilled end of the spectrum...like for people who can run 3D printers and know what nanotechnologies are and shit.  Don't worry I'll cover this 'skills gap' argument more in the next section.
+
+# Bringing Manufacturing Back
+
+Trump and Trump supporters have been notably vocal about 'bringing the manufacturing sector back.'  You usually here this policy prescription right after someone bemoans, "We don't make/build stuff anymore."  
+
+First, let's establish the facts:
+
+## Manufacturing employment is down...sort of
+
+Employment in manufacturing (at least in traditionally manufacturing dependent states) is down a lot from the 2000s...but in every state I looked at it has been trending pretty steadily up since 2010.
+
+```r
+#-----------------------------------------------------
+#plot manufacturing employment in MI, IN, AL
+
+manemp.IN.all <- tbl_df(read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manemp_all_IN.csv')) %>%
+                    mutate(state='IN') %>%
+                    mutate(date=as.Date(observation_date,format="%m/%d/%y")) %>%
+                    select(date,INMFG,state)
+manemp.MI.all <- tbl_df(read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manemp_all_MI.csv')) %>%
+                    mutate(state='MI')
+manemp.WI.all <- tbl_df(read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manemp_WI_all.csv')) %>%
+  mutate(state='WI')
+
+manemp.AL.all <- tbl_df(read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manemp_all_AL.csv')) %>%
+                    mutate(state='AL')
+manemp.TN.all <- tbl_df(read.csv('/Users/aaronmamula/Documents/R projects/macroecon/manemp_TN_all.csv')) %>%
+  mutate(state='TN')
+
+names(manemp.IN.all) <- c('date','emp','state')
+names(manemp.MI.all) <- c('date','emp','state')
+names(manemp.AL.all) <- c('date','emp','state')
+names(manemp.WI.all) <- c('date','emp','state')
+names(manemp.TN.all) <- c('date','emp','state')
+
+#use a moving average to get trend
+plot.df <- rbind(manemp.IN.all,manemp.MI.all,manemp.AL.all,manemp.WI.all,manemp.TN.all) %>% 
+          group_by(state) %>% arrange(state,date) %>%
+          mutate(region=ifelse(state %in% c("MI","IN","WI"),'Rust Belt','South'))
+
+ggplot(plot.df,aes(x=date,emp,color=state)) + geom_line() + facet_wrap(~region) + 
+  theme_bw() + xlab("") + ylab("thousands of employees")
+
+#----------------------------------------------------
+```
+
+![manemp_states](/images/manemp_states.png)
+
