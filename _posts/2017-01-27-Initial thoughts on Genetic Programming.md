@@ -17,6 +17,14 @@ What I've taken from the stuff I've read so far that I thought was really cool w
 
 5. There are a lot of existing prediction type applications of GP out there.  GP evolves programs that can make really good predictions about a range of things...but I'm less excited about this because we already have so many good ensemble Machine Learning predictors (Random Forests, Boltzman Machines, NN, etc, etc)...it's hard for me to get worked up over ANOTHER awesome ML ensemble learner just for prediction sake. 
 
+# The Readings
+
+* [Prediction of dynamical systems by symbolic regression](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.94.012214)
+* [Discovering governing equations from data by sparse identification of non-linear dynamical systems](http://www.pnas.org/content/113/15/3932.abstract)
+* [Distilling free from natural laws from experimental data](http://science.sciencemag.org/content/324/5923/81)
+* [A field guide to genetic programming](http://www.gp-field-guide.org.uk/)
+* [Genetic programming for economic modelling](www.genetic-programming.com/ISFB.ps)
+
 # Section 1: Two Motivating Examples:
 
 This shit right here is all about modeling philosophy and has no practical implications for actually doing GP.  I highly recommend at best skimming it and possibly skipping it altogether unless you want to engage in some serious feet-on-the-desk, pie-in-the-sky pontification.
