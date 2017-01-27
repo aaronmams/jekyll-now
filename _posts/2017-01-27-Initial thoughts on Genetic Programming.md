@@ -272,6 +272,7 @@ sample(c(1:5),2,replace=T)
 
 So here we swap node 4 in program 2 from last generation with node 2 in program 4 from last generation:
 
+```R
    -
   / \   
  1   +
@@ -279,7 +280,7 @@ So here we swap node 4 in program 2 from last generation with node 2 in program 
      * 1
     /\
     x 1
-    
+```    
     
 ### Part 2D: Reproduction...again
  
@@ -294,6 +295,7 @@ sample(c(1:4),1,prob=c(0.15,0.3,0.05,0.5))
 
 So Generation 1 looks like this:
 
+```R
      - 
     / \
    1   +
@@ -319,7 +321,8 @@ So Generation 1 looks like this:
    *   1
   /\
  x  1
- 
+```
+
 ### Next Steps
 
 From here just
