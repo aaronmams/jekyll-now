@@ -97,31 +97,47 @@ To form the initial population, we randomly sample the function set and terminal
 Suppose I have the function set F = {+,-,*,%} and the terminal set, TS={x,sample(seq(from=-1,to=1,by=0.1),1)}...this means the terminal set can either be x or a randomly sampled number from -1 to 1. 
 
 1. Assuming the root node is always a function operator I first sample from the function set
+
+``R
 sample(F,1)
 > 1 
-
+```
 
 2. The next node can be another function operator or an item from the terminal set so I sample these two
+
+```R
 sample(c(F,TS),1)
 > 'TS'
+```
 
 since I got back 'TS' for terminal set I now sample the terminal set for a value:
 
+```R
 sample(TS,1)
 > x
+```
 
 3. Now I sample the list=(F,TS) again because my tree depth is set to 2 which means the root node in the population will have two nodes
+
+```R
 sample(c(F,TS),1)
 >F
+```
 
 4. I got the result 'F' for function set so I now sample the function set for the specific operator:
+
+```R
 sample(F,1)
 > *
+```
 
 5. Since I've defined the tree depth to be 2 the children of this node must both be from the terminal set...if the tree depth were increased we could continue
 iteratively sampling from the function set and terminal set
+
+```R
 sample(TS,2)
 > x,5
+```
 
 At this point we have everything we need to represent our 'program':
 
