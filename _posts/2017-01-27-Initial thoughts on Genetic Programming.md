@@ -72,11 +72,17 @@ However, using this approach, at the end of the day, we're not really testing fo
 
 An alternative to highly structural modeling like fitting data to models derived from Economic Theory (see Example 1) is the totally theory-agnostic approach of Machine Learning.  Suppose we want predict coffee prices.  We have time series data on coffee prices ($c_{t}$), other commodity prices like cocoa ($cc_{t}$), cotton ($co_{t}$), and a bunch of maybe relevant macro economic time series...like maybe GDP per capita of major coffee consuming nations...call these $Z$ for right now.
 
-If we just want to predict the price series ($c_{t}$) without the burden of specifying a complete structural model that would require us to hypothesize, among other things, what series drive what other series, we could use something really flexible like a Neural Network.
+If we just want to predict the price series ($c_{t}$) without the burden of specifying a complete structural model that would require us to hypothesize, among other things, what series drive what other series, we could use something really flexible like a Neural Network.  Neural Networks work by basically putting a bunch of things in a box that you think might predict coffee prices (coffee prices last period, coffee prices two periods ago, etc, cotton prices, cotton prices two periods ago, Malaysian GDP, Canadian GDP per capita, artic sea ice, whatever).  Once all the stuff is in the box, the things get combined in all kinds of ways until the best predictions are generated. 
 
 A typical Neural Network looks [somethign like this](http://www.turingfinance.com/wp-content/uploads/2014/04/Multilayer-perceptron.jpg).  
 
-[Haigh and Bessler](http://www.jstor.org/stable/10.1086/422632?seq=1#page_scan_tab_contents)
+Neural Networks can produce really good prediction but they don't yeild any insight about structure.  They can't really tell you if Artic Sea Ice is a good predictor of coffee price and, even if it could, it doesn't attach a weight or an empirical impact to that driver.  If you look at diagram linked to above, all three inputs map to all three 'hidden layers' which might then pass through another 'hidden layer' and get further distorted before generating output.  Simply stated, there is no way to infer a causal relationship between Artic Sea Ice, Cocoa Price, and Coffee Price from a Neural Network.
+
+An old professor of mine was working of ways of circumventing the normal tradeoff between assumed structure and letting the data speak:
+
+[Haigh and Bessler, Causality and Price Discovery: An Application of Directed Acyclic Graphs](http://www.jstor.org/stable/10.1086/422632?seq=1#page_scan_tab_contents)
+
+Basically, they use Directed Acyclic Graphs to infer what series drive other series.  Then they use very flexible estimation techniques like Vector Autoregression to quantify those links.
 
 ### Recap
 
@@ -84,6 +90,7 @@ In the first example I was really interested in the structure of the data genera
 
 GP, I think, provides a way to bridge these two worlds.  Upon successful completion of a GP, what I'm going to get (I think) is a symbolic structural representation of the system that best fits my data....but I'm going to get it in a way that didn't need to impose any a prior constraints on what the structure of the system SHOULD be.
 
+What I really like about GP (so far) is that it adopts the model-free ethos of things Neural Networks but instead of saying, "the structure isn't really important", it says, "let me learn the structure from the data."
 
 # Section 2: Genetic Programming in (mostly) words
 
@@ -1066,6 +1073,21 @@ In fact, to take this a step further.  If we were to rank all the programs in th
 
 $$0.9962153075706 + (x * x + (x - x * x) + (x - (x + x - x * x)) + x)$$
 
+## Greedy v. non-greedy
+
+In my handwritten example from Section 3 we noticed that after a couple generations the fitness was actually getting worse.  In my experience with the R package this tends to happen a lot in the early stages of evolution of a GP.  The conceptual reason why this is good is similar to some dynamic programming algorithms that get worse before they get better: when you're dealing with a complicated non-linear function you kinda want your algorithm to cast a wide net...you want it to wander around the parameter space/state space/solution space for a while to avoid getting caught in a steepest decent right to a local minima.  
+
+In this case the probabilistic nature of evolution ensures the algorithm will tend to wander around the solution space for a while before begining to coverge to 'optimal' program stuctures.
+
+Another interesting implication of this is that, without any modifications, the R package will just keep evolving until you tell it to stop.  Basically, all the problems I've run so far have been characterized by:
+
+1. A lot time initially spent around the same fitness values or fitness values that initially get worse (the real life explanation for this is: evolution happens slow)
+
+2. A threshold iteration where fitness gets really good really fast.
+
+3. A lot of time spent trying to 'tweek' a really good solution.  Now, I'll bet anything that you could control this pretty easily by setting some convergence tolerance and penalizing programs that are adding more complexity than the residual variation explained by that complexity.  I kind of like that the program keeps looking and keeps trying to make marginal improvements because I'm not interested in GP for function approximation or prediction.  If all you want is approximation or prediction and the target function is f(x)=sin(x) you don't need to let a program run very long...there are lots of equations/polynomials that can provide a great fit to data generated from f(x)=sin(x)...but I'm interested in systems where the structure of the data generating process is of primary interest.  I already know I can approximate/estimate the data generated from these systems.  I don't want to do that.  I want GP to uncover the symbolic representation of these data generating processes.  Therefore, I want it to run beyond the point of just finding really good fits. 
+
+The GP I ran on the function f(x)=x^2+x+1 found the target program in under 2 minutes.  That seems long to me but I also didn't test out other limits...so maybe it found the function a lot faster then just spent the rest of the time trying to make some marginal improvement.
 
 Below I've copied some of the output that was printed to the console during the GP run because I think it's informative:
 
@@ -1082,27 +1104,6 @@ evolution step 800, fitness evaluations: 39950, best fitness: 0.012861, time ela
 evolution step 900, fitness evaluations: 44950, best fitness: 0.012861, time elapsed: 6.81 seconds
 evolution step 1000, fitness evaluations: 49950, best fitness: 0.012861, time elapsed: 7.46 seconds
 evolution step 1100, fitness evaluations: 54950, best fitness: 0.012861, time elapsed: 8.31 seconds
-evolution step 1200, fitness evaluations: 59950, best fitness: 0.012861, time elapsed: 9.02 seconds
-evolution step 1300, fitness evaluations: 64950, best fitness: 0.012861, time elapsed: 9.75 seconds
-evolution step 1400, fitness evaluations: 69950, best fitness: 0.012861, time elapsed: 10.45 seconds
-evolution step 1500, fitness evaluations: 74950, best fitness: 0.012861, time elapsed: 11.23 seconds
-evolution step 1600, fitness evaluations: 79950, best fitness: 0.012861, time elapsed: 11.91 seconds
-evolution step 1700, fitness evaluations: 84950, best fitness: 0.000378, time elapsed: 12.58 seconds
-evolution step 1800, fitness evaluations: 89950, best fitness: 0.000378, time elapsed: 13.24 seconds
-evolution step 1900, fitness evaluations: 94950, best fitness: 0.000378, time elapsed: 13.9 seconds
-evolution step 2000, fitness evaluations: 99950, best fitness: 0.000378, time elapsed: 14.59 seconds
-evolution step 2100, fitness evaluations: 104950, best fitness: 0.000378, time elapsed: 15.31 seconds
-evolution step 2200, fitness evaluations: 109950, best fitness: 0.000378, time elapsed: 16.1 seconds
-evolution step 2300, fitness evaluations: 114950, best fitness: 0.000378, time elapsed: 16.79 seconds
-evolution step 2400, fitness evaluations: 119950, best fitness: 0.000378, time elapsed: 17.53 seconds
-evolution step 2500, fitness evaluations: 124950, best fitness: 0.000378, time elapsed: 18.24 seconds
-evolution step 2600, fitness evaluations: 129950, best fitness: 0.000378, time elapsed: 18.94 seconds
-evolution step 2700, fitness evaluations: 134950, best fitness: 0.000378, time elapsed: 19.59 seconds
-evolution step 2800, fitness evaluations: 139950, best fitness: 0.000378, time elapsed: 20.27 seconds
-evolution step 2900, fitness evaluations: 144950, best fitness: 0.000378, time elapsed: 20.95 seconds
-evolution step 3000, fitness evaluations: 149950, best fitness: 0.000378, time elapsed: 21.65 seconds
-evolution step 3100, fitness evaluations: 154950, best fitness: 0.000378, time elapsed: 22.36 seconds
-
 
 evolution step 16200, fitness evaluations: 809950, best fitness: 0.000378, time elapsed: 1 minute, 55.16 seconds
 evolution step 16300, fitness evaluations: 814950, best fitness: 0.000378, time elapsed: 1 minute, 55.92 seconds
