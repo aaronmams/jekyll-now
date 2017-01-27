@@ -5,6 +5,8 @@ What I've taken from the stuff I've read so far that I thought was really cool w
 1. making good predictions from data and
 2. trying to answer questions about the structure of a data generating process in a model-free environment (I'll talk more about what this means).
 
+PLEASE do not mistake the fact that I've written this shit down and posted it on the interweb for expertise.  This is basically a lab book for my first attempts at understanding GP/Symbolic Regression.  If you want to learn along with me, read on.  I think I've figured a lot of things out...but there's undoubtedly a lot I haven't figured out.  
+
 # Executive Summary
 
 1. Genetic programming/symbolic regression is pretty easy to understand conceptually (high level) but really hard (both programmatically and mathematically) to do well.
