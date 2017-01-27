@@ -30,11 +30,11 @@ $$\pi(p,r,W,x)=\sum_{j}^{m}\pi_{j}(p_{j},r,w_{j}^*(p,r,W,x),x)$$
 
 Since we don't know a priori what functional form the profit function should take, we generally use a form from a class of functions called flexible functional forms...so named because they have enough parameters and enough curvature to offer a good 2nd order Taylor series approximation to an arbitrary function.  A popular flexible functional form for profits is the normalized quadratic.  The normalized quadratic parameterizes the above axiomatic definition of profits as follows:
 
-$$\Pi(p,r,W,x)=a + B \tilde(P) + 0.5 P'C \tilde(P)$$
+$$\Pi(p,r,W,x)=a + B \tildeP + 0.5 P'C \tildeP$$
 
 the quantities, [a,B,C] are parameters and the notation,
 
-$$\tilde(P)=\tilde(p),\tilde(r),w,x$$
+$$\tildeP=\tildep,\tilder,w,x$$
 
 denotes that these quantities have been normalized by one of the outputs or inputs.
 
