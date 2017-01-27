@@ -714,11 +714,13 @@ sample(c('reproduction','cross-over','mutation'),4,replace=T,prob=c(.5,.25,.25))
 
 Here we get four instances of mutation which will all apply to the function:
 
+```R
      -
     / \
    +   0
   / \
   x  1
+```
 
 I'm going to move a little faster through this generation since I think everybody is probably getting the hang of how this works by now:
 
@@ -864,6 +866,7 @@ A couple of observations:
 
 3. Efficiency needs to be balanced with diversity.  The two programs below both evaluate to x+1.  However, there are some good reasons to keep both in the population. The genetic algorithm is non-greedy which means it has an easier time escaping local minima than a greedy search.  Part of the non-greedy nature is that genes (nodes), even in less fit programs, always have some probability of wandering off into some other part of the solution space.  Simplifying programs that are empirically the same lessens the chances of genes wandering off and forming fitness improving mutations. 
 
+```R
    -
   / \
  x   -1
@@ -875,7 +878,8 @@ A couple of observations:
      x %
       / \
       1  x
-      
+```
+
 # Section 4: The Black Box
 
 Now that I've done a few generations by hand and I'm confident I have some idea what the Genetic Program is doing, I'm going to try a black box implementation using the 'rgp' package in R.
@@ -925,6 +929,126 @@ ggplot(data.frame(x=interval1,y=z),aes(x=x,y=y)) + geom_line() +
   geom_line(data=data.frame(x=interval1,y=z.est),aes(x=x,y=y),color="red") + theme_bw()
 ```  
 
+## Recovering Structure
+
+If we look at the output from the genetic program we can access the symbolic representation of the solution it found:
+
+```R
+gpResults1$population[which.min(gpResults1$fitnessValues)]
+[[1]]
+function (x) 
+0.99962153075706 + (x * x + (x - x * x) + (x - (x + x - x * x)) + 
+    x)
+```
+Astute readers will notice that the GP has recovered the target function almost exactly.  After some algebraic manipulation we can see that the function it found is,
+
+$$0.9962 + x^2 + x$$
+
+So that's REALLY cool.
+
+## Redundancy
+
+We can get a look at the programs that were in the population on the last iteration by extracting the list object 'population.'  If we do that we see something rather interesting: at the termination of evolution we end up with a lot of copies of the same function...the fitness maximizing function.  
+
+```R
+> gpResults1$population
+[[1]]
+function (x) 
+x
+
+[[2]]
+function (x) 
+0.99962153075706 + (x + (x - (x + x - x * x)) + x)
+
+[[3]]
+function (x) 
+1.3667619084903 + x
+
+[[4]]
+function (x) 
+0.99962153075706 + (x * x + (x - x * x) + (x - (x + x - x * x)) + 
+    x)
+
+[[5]]
+function (x) 
+x * x + (0.99962153075706 + x)
+
+[[6]]
+function (x) 
+x
+
+[[7]]
+function (x) 
+0.99962153075706 + (x * x + (x - x * x) + (x - (x + x - x * x)) + 
+    x)
+
+[[8]]
+function (x) 
+x
+
+[[9]]
+function (x) 
+x
+
+[[10]]
+function (x) 
+x
+
+[[11]]
+function (x) 
+x
+
+[[12]]
+function (x) 
+x
+
+[[13]]
+function (x) 
+1.3667619084903 + x
+
+[[14]]
+function (x) 
+x * x + (0.99962153075706 + x)
+
+[[15]]
+function (x) 
+x
+
+[[16]]
+function (x) 
+x
+
+[[17]]
+function (x) 
+x
+
+[[18]]
+function (x) 
+x
+
+[[19]]
+function (x) 
+x
+
+[[20]]
+function (x) 
+x
+
+[[21]]
+function (x) 
+x
+
+[[22]]
+function (x) 
+0.99962153075706 + (x * x + (x - x * x) + (x - (x + x - x * x)) + 
+    x)
+
+```
+In fact, to take this a step further.  If we were to rank all the programs in the population by fitness we would see that the top 10 programs are all identical:
+
+$$0.9962153075706 + (x * x + (x - x * x) + (x - (x + x - x * x)) + x)$$
+
+
 Below I've copied some of the output that was printed to the console during the GP run because I think it's informative:
 
 ```R
@@ -960,136 +1084,8 @@ evolution step 2800, fitness evaluations: 139950, best fitness: 0.000378, time e
 evolution step 2900, fitness evaluations: 144950, best fitness: 0.000378, time elapsed: 20.95 seconds
 evolution step 3000, fitness evaluations: 149950, best fitness: 0.000378, time elapsed: 21.65 seconds
 evolution step 3100, fitness evaluations: 154950, best fitness: 0.000378, time elapsed: 22.36 seconds
-evolution step 3200, fitness evaluations: 159950, best fitness: 0.000378, time elapsed: 23.07 seconds
-evolution step 3300, fitness evaluations: 164950, best fitness: 0.000378, time elapsed: 23.69 seconds
-evolution step 3400, fitness evaluations: 169950, best fitness: 0.000378, time elapsed: 24.32 seconds
-evolution step 3500, fitness evaluations: 174950, best fitness: 0.000378, time elapsed: 24.93 seconds
-evolution step 3600, fitness evaluations: 179950, best fitness: 0.000378, time elapsed: 25.59 seconds
-evolution step 3700, fitness evaluations: 184950, best fitness: 0.000378, time elapsed: 26.15 seconds
-evolution step 3800, fitness evaluations: 189950, best fitness: 0.000378, time elapsed: 26.74 seconds
-evolution step 3900, fitness evaluations: 194950, best fitness: 0.000378, time elapsed: 27.35 seconds
-evolution step 4000, fitness evaluations: 199950, best fitness: 0.000378, time elapsed: 27.97 seconds
-evolution step 4100, fitness evaluations: 204950, best fitness: 0.000378, time elapsed: 28.61 seconds
-evolution step 4200, fitness evaluations: 209950, best fitness: 0.000378, time elapsed: 29.19 seconds
-evolution step 4300, fitness evaluations: 214950, best fitness: 0.000378, time elapsed: 29.79 seconds
-evolution step 4400, fitness evaluations: 219950, best fitness: 0.000378, time elapsed: 30.43 seconds
-evolution step 4500, fitness evaluations: 224950, best fitness: 0.000378, time elapsed: 31.1 seconds
-evolution step 4600, fitness evaluations: 229950, best fitness: 0.000378, time elapsed: 31.72 seconds
-evolution step 4700, fitness evaluations: 234950, best fitness: 0.000378, time elapsed: 32.37 seconds
-evolution step 4800, fitness evaluations: 239950, best fitness: 0.000378, time elapsed: 32.95 seconds
-evolution step 4900, fitness evaluations: 244950, best fitness: 0.000378, time elapsed: 33.54 seconds
-evolution step 5000, fitness evaluations: 249950, best fitness: 0.000378, time elapsed: 34.14 seconds
-evolution step 5100, fitness evaluations: 254950, best fitness: 0.000378, time elapsed: 34.75 seconds
-evolution step 5200, fitness evaluations: 259950, best fitness: 0.000378, time elapsed: 35.36 seconds
-evolution step 5300, fitness evaluations: 264950, best fitness: 0.000378, time elapsed: 35.99 seconds
-evolution step 5400, fitness evaluations: 269950, best fitness: 0.000378, time elapsed: 36.59 seconds
-evolution step 5500, fitness evaluations: 274950, best fitness: 0.000378, time elapsed: 37.19 seconds
-evolution step 5600, fitness evaluations: 279950, best fitness: 0.000378, time elapsed: 37.85 seconds
-evolution step 5700, fitness evaluations: 284950, best fitness: 0.000378, time elapsed: 38.49 seconds
-evolution step 5800, fitness evaluations: 289950, best fitness: 0.000378, time elapsed: 39.15 seconds
-evolution step 5900, fitness evaluations: 294950, best fitness: 0.000378, time elapsed: 39.69 seconds
-evolution step 6000, fitness evaluations: 299950, best fitness: 0.000378, time elapsed: 40.27 seconds
-evolution step 6100, fitness evaluations: 304950, best fitness: 0.000378, time elapsed: 40.9 seconds
-evolution step 6200, fitness evaluations: 309950, best fitness: 0.000378, time elapsed: 41.52 seconds
-evolution step 6300, fitness evaluations: 314950, best fitness: 0.000378, time elapsed: 42.14 seconds
-evolution step 6400, fitness evaluations: 319950, best fitness: 0.000378, time elapsed: 42.77 seconds
-evolution step 6500, fitness evaluations: 324950, best fitness: 0.000378, time elapsed: 43.38 seconds
-evolution step 6600, fitness evaluations: 329950, best fitness: 0.000378, time elapsed: 43.98 seconds
-evolution step 6700, fitness evaluations: 334950, best fitness: 0.000378, time elapsed: 44.61 seconds
-evolution step 6800, fitness evaluations: 339950, best fitness: 0.000378, time elapsed: 45.25 seconds
-evolution step 6900, fitness evaluations: 344950, best fitness: 0.000378, time elapsed: 45.94 seconds
-evolution step 7000, fitness evaluations: 349950, best fitness: 0.000378, time elapsed: 46.48 seconds
-evolution step 7100, fitness evaluations: 354950, best fitness: 0.000378, time elapsed: 47.07 seconds
-evolution step 7200, fitness evaluations: 359950, best fitness: 0.000378, time elapsed: 47.68 seconds
-evolution step 7300, fitness evaluations: 364950, best fitness: 0.000378, time elapsed: 48.32 seconds
-evolution step 7400, fitness evaluations: 369950, best fitness: 0.000378, time elapsed: 48.94 seconds
-evolution step 7500, fitness evaluations: 374950, best fitness: 0.000378, time elapsed: 49.59 seconds
-evolution step 7600, fitness evaluations: 379950, best fitness: 0.000378, time elapsed: 50.17 seconds
-evolution step 7700, fitness evaluations: 384950, best fitness: 0.000378, time elapsed: 50.8 seconds
-evolution step 7800, fitness evaluations: 389950, best fitness: 0.000378, time elapsed: 51.48 seconds
-evolution step 7900, fitness evaluations: 394950, best fitness: 0.000378, time elapsed: 52.08 seconds
-evolution step 8000, fitness evaluations: 399950, best fitness: 0.000378, time elapsed: 52.72 seconds
-evolution step 8100, fitness evaluations: 404950, best fitness: 0.000378, time elapsed: 53.3 seconds
-evolution step 8200, fitness evaluations: 409950, best fitness: 0.000378, time elapsed: 53.92 seconds
-evolution step 8300, fitness evaluations: 414950, best fitness: 0.000378, time elapsed: 54.54 seconds
-evolution step 8400, fitness evaluations: 419950, best fitness: 0.000378, time elapsed: 55.14 seconds
-evolution step 8500, fitness evaluations: 424950, best fitness: 0.000378, time elapsed: 55.72 seconds
-evolution step 8600, fitness evaluations: 429950, best fitness: 0.000378, time elapsed: 56.38 seconds
-evolution step 8700, fitness evaluations: 434950, best fitness: 0.000378, time elapsed: 57.08 seconds
-evolution step 8800, fitness evaluations: 439950, best fitness: 0.000378, time elapsed: 57.78 seconds
-evolution step 8900, fitness evaluations: 444950, best fitness: 0.000378, time elapsed: 58.48 seconds
-evolution step 9000, fitness evaluations: 449950, best fitness: 0.000378, time elapsed: 59.13 seconds
-evolution step 9100, fitness evaluations: 454950, best fitness: 0.000378, time elapsed: 59.86 seconds
-evolution step 9200, fitness evaluations: 459950, best fitness: 0.000378, time elapsed: 1 minute, 0.49 seconds
-evolution step 9300, fitness evaluations: 464950, best fitness: 0.000378, time elapsed: 1 minute, 1.16 seconds
-evolution step 9400, fitness evaluations: 469950, best fitness: 0.000378, time elapsed: 1 minute, 1.85 seconds
-evolution step 9500, fitness evaluations: 474950, best fitness: 0.000378, time elapsed: 1 minute, 2.49 seconds
-evolution step 9600, fitness evaluations: 479950, best fitness: 0.000378, time elapsed: 1 minute, 3.24 seconds
-evolution step 9700, fitness evaluations: 484950, best fitness: 0.000378, time elapsed: 1 minute, 3.91 seconds
-evolution step 9800, fitness evaluations: 489950, best fitness: 0.000378, time elapsed: 1 minute, 4.64 seconds
-evolution step 9900, fitness evaluations: 494950, best fitness: 0.000378, time elapsed: 1 minute, 5.38 seconds
-evolution step 10000, fitness evaluations: 499950, best fitness: 0.000378, time elapsed: 1 minute, 6.2 seconds
-evolution step 10100, fitness evaluations: 504950, best fitness: 0.000378, time elapsed: 1 minute, 7 seconds
-evolution step 10200, fitness evaluations: 509950, best fitness: 0.000378, time elapsed: 1 minute, 7.78 seconds
-evolution step 10300, fitness evaluations: 514950, best fitness: 0.000378, time elapsed: 1 minute, 8.5 seconds
-evolution step 10400, fitness evaluations: 519950, best fitness: 0.000378, time elapsed: 1 minute, 9.3 seconds
-evolution step 10500, fitness evaluations: 524950, best fitness: 0.000378, time elapsed: 1 minute, 10.08 seconds
-evolution step 10600, fitness evaluations: 529950, best fitness: 0.000378, time elapsed: 1 minute, 10.89 seconds
-evolution step 10700, fitness evaluations: 534950, best fitness: 0.000378, time elapsed: 1 minute, 11.7 seconds
-evolution step 10800, fitness evaluations: 539950, best fitness: 0.000378, time elapsed: 1 minute, 12.51 seconds
-evolution step 10900, fitness evaluations: 544950, best fitness: 0.000378, time elapsed: 1 minute, 13.35 seconds
-evolution step 11000, fitness evaluations: 549950, best fitness: 0.000378, time elapsed: 1 minute, 14.08 seconds
-evolution step 11100, fitness evaluations: 554950, best fitness: 0.000378, time elapsed: 1 minute, 14.85 seconds
-evolution step 11200, fitness evaluations: 559950, best fitness: 0.000378, time elapsed: 1 minute, 15.69 seconds
-evolution step 11300, fitness evaluations: 564950, best fitness: 0.000378, time elapsed: 1 minute, 16.46 seconds
-evolution step 11400, fitness evaluations: 569950, best fitness: 0.000378, time elapsed: 1 minute, 17.25 seconds
-evolution step 11500, fitness evaluations: 574950, best fitness: 0.000378, time elapsed: 1 minute, 18.04 seconds
-evolution step 11600, fitness evaluations: 579950, best fitness: 0.000378, time elapsed: 1 minute, 18.86 seconds
-evolution step 11700, fitness evaluations: 584950, best fitness: 0.000378, time elapsed: 1 minute, 19.68 seconds
-evolution step 11800, fitness evaluations: 589950, best fitness: 0.000378, time elapsed: 1 minute, 20.48 seconds
-evolution step 11900, fitness evaluations: 594950, best fitness: 0.000378, time elapsed: 1 minute, 21.21 seconds
-evolution step 12000, fitness evaluations: 599950, best fitness: 0.000378, time elapsed: 1 minute, 21.98 seconds
-evolution step 12100, fitness evaluations: 604950, best fitness: 0.000378, time elapsed: 1 minute, 22.74 seconds
-evolution step 12200, fitness evaluations: 609950, best fitness: 0.000378, time elapsed: 1 minute, 23.54 seconds
-evolution step 12300, fitness evaluations: 614950, best fitness: 0.000378, time elapsed: 1 minute, 24.34 seconds
-evolution step 12400, fitness evaluations: 619950, best fitness: 0.000378, time elapsed: 1 minute, 25.14 seconds
-evolution step 12500, fitness evaluations: 624950, best fitness: 0.000378, time elapsed: 1 minute, 25.96 seconds
-evolution step 12600, fitness evaluations: 629950, best fitness: 0.000378, time elapsed: 1 minute, 26.68 seconds
-evolution step 12700, fitness evaluations: 634950, best fitness: 0.000378, time elapsed: 1 minute, 27.46 seconds
-evolution step 12800, fitness evaluations: 639950, best fitness: 0.000378, time elapsed: 1 minute, 28.18 seconds
-evolution step 12900, fitness evaluations: 644950, best fitness: 0.000378, time elapsed: 1 minute, 28.99 seconds
-evolution step 13000, fitness evaluations: 649950, best fitness: 0.000378, time elapsed: 1 minute, 29.8 seconds
-evolution step 13100, fitness evaluations: 654950, best fitness: 0.000378, time elapsed: 1 minute, 30.61 seconds
-evolution step 13200, fitness evaluations: 659950, best fitness: 0.000378, time elapsed: 1 minute, 31.4 seconds
-evolution step 13300, fitness evaluations: 664950, best fitness: 0.000378, time elapsed: 1 minute, 32.23 seconds
-evolution step 13400, fitness evaluations: 669950, best fitness: 0.000378, time elapsed: 1 minute, 33.01 seconds
-evolution step 13500, fitness evaluations: 674950, best fitness: 0.000378, time elapsed: 1 minute, 33.8 seconds
-evolution step 13600, fitness evaluations: 679950, best fitness: 0.000378, time elapsed: 1 minute, 34.59 seconds
-evolution step 13700, fitness evaluations: 684950, best fitness: 0.000378, time elapsed: 1 minute, 35.39 seconds
-evolution step 13800, fitness evaluations: 689950, best fitness: 0.000378, time elapsed: 1 minute, 36.19 seconds
-evolution step 13900, fitness evaluations: 694950, best fitness: 0.000378, time elapsed: 1 minute, 36.98 seconds
-evolution step 14000, fitness evaluations: 699950, best fitness: 0.000378, time elapsed: 1 minute, 37.78 seconds
-evolution step 14100, fitness evaluations: 704950, best fitness: 0.000378, time elapsed: 1 minute, 38.57 seconds
-evolution step 14200, fitness evaluations: 709950, best fitness: 0.000378, time elapsed: 1 minute, 39.37 seconds
-evolution step 14300, fitness evaluations: 714950, best fitness: 0.000378, time elapsed: 1 minute, 40.22 seconds
-evolution step 14400, fitness evaluations: 719950, best fitness: 0.000378, time elapsed: 1 minute, 41.04 seconds
-evolution step 14500, fitness evaluations: 724950, best fitness: 0.000378, time elapsed: 1 minute, 41.79 seconds
-evolution step 14600, fitness evaluations: 729950, best fitness: 0.000378, time elapsed: 1 minute, 42.59 seconds
-evolution step 14700, fitness evaluations: 734950, best fitness: 0.000378, time elapsed: 1 minute, 43.35 seconds
-evolution step 14800, fitness evaluations: 739950, best fitness: 0.000378, time elapsed: 1 minute, 44.17 seconds
-evolution step 14900, fitness evaluations: 744950, best fitness: 0.000378, time elapsed: 1 minute, 44.93 seconds
-evolution step 15000, fitness evaluations: 749950, best fitness: 0.000378, time elapsed: 1 minute, 45.68 seconds
-evolution step 15100, fitness evaluations: 754950, best fitness: 0.000378, time elapsed: 1 minute, 46.48 seconds
-evolution step 15200, fitness evaluations: 759950, best fitness: 0.000378, time elapsed: 1 minute, 47.23 seconds
-evolution step 15300, fitness evaluations: 764950, best fitness: 0.000378, time elapsed: 1 minute, 48.09 seconds
-evolution step 15400, fitness evaluations: 769950, best fitness: 0.000378, time elapsed: 1 minute, 48.83 seconds
-evolution step 15500, fitness evaluations: 774950, best fitness: 0.000378, time elapsed: 1 minute, 49.58 seconds
-evolution step 15600, fitness evaluations: 779950, best fitness: 0.000378, time elapsed: 1 minute, 50.34 seconds
-evolution step 15700, fitness evaluations: 784950, best fitness: 0.000378, time elapsed: 1 minute, 51.15 seconds
-evolution step 15800, fitness evaluations: 789950, best fitness: 0.000378, time elapsed: 1 minute, 51.92 seconds
-evolution step 15900, fitness evaluations: 794950, best fitness: 0.000378, time elapsed: 1 minute, 52.72 seconds
-evolution step 16000, fitness evaluations: 799950, best fitness: 0.000378, time elapsed: 1 minute, 53.55 seconds
-evolution step 16100, fitness evaluations: 804950, best fitness: 0.000378, time elapsed: 1 minute, 54.35 seconds
+
+
 evolution step 16200, fitness evaluations: 809950, best fitness: 0.000378, time elapsed: 1 minute, 55.16 seconds
 evolution step 16300, fitness evaluations: 814950, best fitness: 0.000378, time elapsed: 1 minute, 55.92 seconds
 evolution step 16400, fitness evaluations: 819950, best fitness: 0.000378, time elapsed: 1 minute, 56.68 seconds
