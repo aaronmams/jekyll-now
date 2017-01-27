@@ -5,6 +5,18 @@ What I've taken from the stuff I've read so far that I thought was really cool w
 1. making good predictions from data and
 2. trying to answer questions about the structure of a data generating process in a model-free environment (I'll talk more about what this means).
 
+# Executive Summary
+
+1. Genetic programming/symbolic regression is pretty easy to understand conceptually (high level) but really hard (both programmatically and mathematically) to do well.
+
+2. There is off-the-shelf code available for R, Python, and Matlab users to do simple applications.  Doing more sophisticated things like adding penalties for complexity (a simplier solution is better than a complicated one), imposing sensible constraints on the system, forcing the algorithm to consider coupled dynamic systems rather than just univariate problems will probably require a roll-your-own situation...or at least involve picking apart existing code and modifying it.
+
+3. Especially for some simple functions (sin(x), x^2+x+1) it is REALLY cool to watch a GP evolve programs that recover the target structure from nothing more than a bunch of data points generated from the target functions.
+
+4. In my opinion, the potential applications of this technique for testing some tride-and-true theoretical restrictions in Ecology and Economics is really exciting.
+
+5. There are a lot of existing prediction type applications of GP out there.  GP evolves programs that can make really good predictions about a range of things...but I'm less excited about this because we already have so many good ensemble Machine Learning predictors (Random Forests, Boltzman Machines, NN, etc, etc)...it's hard for me to get worked up over ANOTHER awesome ML ensemble learner just for prediction sake. 
+
 # Section 1: Two Motivating Examples:
 
 This shit right here is all about modeling philosophy and has no practical implications for actually doing GP.  I highly recommend at best skimming it and possibly skipping it altogether unless you want to engage in some serious feet-on-the-desk, pie-in-the-sky pontification.
