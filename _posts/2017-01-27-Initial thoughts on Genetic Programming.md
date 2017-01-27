@@ -234,10 +234,12 @@ SSE=(6781, 182, 38211.05, 171)
 
 Next we need to decided how our programs will evolve from one generation to the next.  There are other evolutionary operators but to keep this relatively simple I'm going to use only reproduction, mutation, and cross-over.  The mechanics of each will be clear as we proceed.
 
-First I'm going to sample from the list of possible evoluationary operators but I'm going to sample with probability weights: Poli et al. suggest using 50% reproduction and 25% for both mutation and cross-over:
+First I'm going to sample from the list of possible evoluationary operators but I'm going to sample with probability weights: Poli et al. suggest using 25% reproduction, 25% for mutation and 50% for cross-over:
 
+```R
 sample(c('reproduction','mutation','cross-over'),4,replace=T,prob=c(0.5,0.25,0.25))
 > reproduction, mutation, cross-over,reproduction
+```
 
 ### Part 2A: Reproduction
 
