@@ -1,6 +1,6 @@
 I've been casually reading papers on Genetic Programming and Symbolic Regression for a little over a week now so I figured it was high time I stopped thinking about GP and started trying to DO a GP.
 
-What I've taken from the stuff I've read so far that I thought was really cool was the idea of trying to uncover the underlying structure of data from nothing more than the data itself.  There are all sorts of cool applications of GP that I've seen but the things that are most relevant to the types of stuff I work on are:
+What I've taken from the stuff I've read so far that I thought was really cool is the idea of trying to uncover the underlying structure of data from nothing more than the data itself.  There are all sorts of cool applications of GP that I've seen but the things that are most relevant to the types of stuff I work on are:
 
 1. making good predictions from data and
 2. trying to answer questions about the structure of a data generating process in a model-free environment (I'll talk more about what this means).
@@ -33,7 +33,7 @@ This shit right here is all about modeling philosophy and has no practical impli
 
 ### Farm Labor and Irrigation Water Supply
 
-Suppose I'm interested in something like the impact of large federally subsidized irrigation water projects (and the water they deliver) on agricultural labor (jobs) in California's Central Valley.  One way to proceed is to specify a labor demand equation which is a function of available irrigation water and fit that equation to observed data.  The way this is usually done goes something like this:
+Suppose I'm interested in something like [the impact of large federally subsidized irrigation water projects (and the water they deliver) on agricultural labor (jobs) in California's Central Valley](http://www.worldscientific.com/doi/abs/10.1142/S2382624X15500034)....sorry for shamelessly plugging one of my papers.  One way to proceed is to specify a labor demand equation which is a function of available irrigation water and fit that equation to observed data.  The way this is usually done goes something like this:
 
 Define a profit function axiomatically for a producer facing:
 
