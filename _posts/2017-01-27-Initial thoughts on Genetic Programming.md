@@ -212,6 +212,7 @@ For the time being let's suppose we have a target function and our goal is to se
 
 Let's assume that the target function is sin(x) and the range over which we want to evaluate it is -pi:pi...so our data are 
 
+```R
  [1] -1.224606e-16 -9.983342e-02 -1.986693e-01 -2.955202e-01 -3.894183e-01 -4.794255e-01 -5.646425e-01 -6.442177e-01
  [9] -7.173561e-01 -7.833269e-01 -8.414710e-01 -8.912074e-01 -9.320391e-01 -9.635582e-01 -9.854497e-01 -9.974950e-01
 [17] -9.995736e-01 -9.916648e-01 -9.738476e-01 -9.463001e-01 -9.092974e-01 -8.632094e-01 -8.084964e-01 -7.457052e-01
@@ -220,7 +221,7 @@ Let's assume that the target function is sin(x) and the range over which we want
 [41]  7.568025e-01  8.182771e-01  8.715758e-01  9.161659e-01  9.516021e-01  9.775301e-01  9.936910e-01  9.999233e-01
 [49]  9.961646e-01  9.824526e-01  9.589243e-01  9.258147e-01  8.834547e-01  8.322674e-01  7.727645e-01  7.055403e-01
 [57]  6.312666e-01  5.506855e-01  4.646022e-01  3.738767e-01  2.794155e-01  1.821625e-01  8.308940e-02
-
+```
 
 In general the fitness function can really be any error minimizing function (with penalty for non-parismony or whatever) so I'm going to use sum of squared errors as my fitness function...the smaller the sum of squared error is the better the program is and the better chance that program will have of persisting to the next generation.
 
