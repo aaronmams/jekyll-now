@@ -930,8 +930,8 @@ inputVariableSet1 <- inputVariableSet("x")
 constantFactorySet1 <- constantFactorySet(function() rnorm(1))
 
 #Defining the 'fitness' function
-#this part is specific to the evaluation of the function sin(x) 
-#   over the interval -pi:pi
+#this part is specific to the evaluation of the function x^2+x+1 
+#   over the interval -1:1
 interval1 <- seq(from=-1,to=1,by=0.1)
 fitnessFunction1 <- function(f)rmse(f(interval1),(interval1*interval1)+interval1+1)
 
@@ -1125,3 +1125,8 @@ evolution step 16800, fitness evaluations: 839950, best fitness: 0.000378, time 
 Genetic programming evolution run FINISHED after 16811 evolution steps, 840500 fitness evaluations and 2 minutes, 0 seconds.
 > 
 ```
+
+## Just For Fun
+
+So just for fun I'm going to use the GP package to try and learn the function f(x)=sin(x).  This is example that is in the R Vignette for the RGP package.  The kicker is that we're still only going to use the really basic function set [+,-,X]...so basically we're just going to find the best polynomial approximation to the function f(x)=sin(x).
+
