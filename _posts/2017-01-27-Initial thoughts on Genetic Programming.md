@@ -1130,3 +1130,52 @@ Genetic programming evolution run FINISHED after 16811 evolution steps, 840500 f
 
 So just for fun I'm going to use the GP package to try and learn the function f(x)=sin(x).  This is example that is in the R Vignette for the RGP package.  The kicker is that we're still only going to use the really basic function set [+,-,X]...so basically we're just going to find the best polynomial approximation to the function f(x)=sin(x).
 
+As seen below...the best polynomial approximation to the sin curve is pretty good over the interval $-\pi$ to $\pi$.
+
+```R
+library(rgp)
+
+#Basic building blocks
+functionSet1 <- functionSet("+","-","*")
+inputVariableSet1 <- inputVariableSet("x")
+constantFactorySet1 <- constantFactorySet(function() rnorm(1))
+
+#Defining the 'fitness' function
+#this part is specific to the evaluation of the function sin(x) 
+#   over the interval -pi:pi
+interval1 <- seq(from=-pi,to=pi,by=0.1)
+
+#fitnessFunction1 <- function(f)rmse(f(interval1),(interval1*interval1)+interval1+1)
+fitnessFunction1 <- function(f)rmse(f(interval1),sin(interval1))
+
+#performing the GP run
+set.seed(1)
+gpResults1 <- geneticProgramming(functionSet=functionSet1,
+                                 inputVariables=inputVariableSet1,
+                                 constantSet=constantFactorySet1,
+                                 fitnessFunction=fitnessFunction1,
+                                 stopCondition=makeTimeStopCondition(2*60))
+
+
+
+
+#plot results....not totally sure how to recover the symbolic expression of the 
+# optimal function so I'm doing it by hand here:
+
+gpResults1$population[which.min(gpResults1$fitnessValues)]
+
+
+fn.opt <- function(x){
+  return(x * -0.080618198828 * (x*x) + x * -0.21904319887 + x)
+}
+
+target <- function(x){sin(x)}
+
+z <- target(interval1)
+z.est <- fn.opt(interval1)
+
+ggplot(data.frame(x=interval1,y=z),aes(x=x,y=y)) + geom_line() + 
+  geom_line(data=data.frame(x=interval1,y=z.est),aes(x=x,y=y),color="red") + theme_bw()
+```
+
+![sine wave](/images/sinx.png)
