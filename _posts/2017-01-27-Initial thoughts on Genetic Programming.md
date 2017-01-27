@@ -68,9 +68,15 @@ If we were interested in testing the sensativity of our results to the assumed f
 
 However, using this approach, at the end of the day, we're not really testing for the TRUE underlying structure of the system....we're really just testing whether a system derived from a normalized quadratic, translog, or cobb-douglas functional form fits the data better.
 
-### Example 2: Predicting Commodity Prices
+### Example 2: Price Dynamics
 
+An alternative to highly structural modeling like fitting data to models derived from Economic Theory (see Example 1) is the totally theory-agnostic approach of Machine Learning.  Suppose we want predict coffee prices.  We have time series data on coffee prices ($c_{t}$), other commodity prices like cocoa ($cc_{t}$), cotton ($co_{t}$), and a bunch of maybe relevant macro economic time series...like maybe GDP per capita of major coffee consuming nations...call these $Z$ for right now.
 
+If we just want to predict the price series ($c_{t}$) without the burden of specifying a complete structural model that would require us to hypothesize, among other things, what series drive what other series, we could use something really flexible like a Neural Network.
+
+A typical Neural Network looks [somethign like this](http://www.turingfinance.com/wp-content/uploads/2014/04/Multilayer-perceptron.jpg).  
+
+[Haigh and Bessler](http://www.jstor.org/stable/10.1086/422632?seq=1#page_scan_tab_contents)
 
 ### Recap
 
