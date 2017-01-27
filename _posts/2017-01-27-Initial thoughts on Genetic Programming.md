@@ -120,10 +120,7 @@ The conceptual backbone of Genetic Programming and, relatedly, symbolic regressi
 
 1. function set: +, -, *, %, sin, cosine, exp,
 
-2. terminal set: this is the stuff that will be manipulated by the items in the function set.  These are things like:
-
-A. variables in the model: x, y, z
-B. coefficients or constants of the model: 0, 3.5, 
+2. terminal set: this is the stuff that will be manipulated by the items in the function set.  These are things like: variables in the model: x, y, z AND coefficients or constants of the model: 0, 3.5, 
 
 The terminal set can also include 0-arity functions like rand(), go_left, etc....but I don't want to worry about those right now.
 
