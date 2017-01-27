@@ -5,7 +5,7 @@ What I've taken from the stuff I've read so far that I thought was really cool w
 1. making good predictions from data and
 2. trying to answer questions about the structure of a data generating process in a model-free environment (I'll talk more about what this means).
 
-## Two Motivating Examples:
+# Section 1: Two Motivating Examples:
 
 This shit right here is all about modeling philosophy and has no practical implications for actually doing GP.  I highly recommend at best skimming it and possibly skipping it altogether unless you want to engage in some serious feet-on-the-desk, pie-in-the-sky pontification.
 
@@ -30,11 +30,11 @@ $$\pi(p,r,W,x)=\sum_{j}^{m}\pi_{j}(p_{j},r,w_{j}^*(p,r,W,x),x)$$
 
 Since we don't know a priori what functional form the profit function should take, we generally use a form from a class of functions called flexible functional forms...so named because they have enough parameters and enough curvature to offer a good 2nd order Taylor series approximation to an arbitrary function.  A popular flexible functional form for profits is the normalized quadratic.  The normalized quadratic parameterizes the above axiomatic definition of profits as follows:
 
-$$\Pi(p,r,W,x)=a + B \tildeP + 0.5 P'C \tildeP$$
+$$\Pi(p,r,W,x)=a + B \tilde{P} + 0.5 P'C \tilde{P}$$
 
 the quantities, [a,B,C] are parameters and the notation,
 
-$$\tildeP=\tildep,\tilder,w,x$$
+$$\tilde{P}=\tilde{p},\tilde{r},w,x$$
 
 denotes that these quantities have been normalized by one of the outputs or inputs.
 
@@ -56,7 +56,7 @@ If we were interested in testing the sensativity of our results to the assumed f
 
 However, using this approach, at the end of the day, we're not really testing for the TRUE underlying structure of the system....we're really just testing whether a system derived from a normalized quadratic, translog, or cobb-douglas functional form fits the data better.
 
-### Predicting Commodity Prices
+### Example 2: Predicting Commodity Prices
 
 
 
@@ -67,7 +67,7 @@ In the first example I was really interested in the structure of the data genera
 GP, I think, provides a way to bridge these two worlds.  Upon successful completion of a GP, what I'm going to get (I think) is a symbolic structural representation of the system that best fits my data....but I'm going to get it in a way that didn't need to impose any a prior constraints on what the structure of the system SHOULD be.
 
 
-# Genetic Programming in (mostly) words
+# Section 2: Genetic Programming in (mostly) words
 
 First order of business is nomenclature: the 'programs' that I'm about to talk about here are what most of us would think about as functions or equation.  They will be things like,
 
@@ -185,7 +185,7 @@ Let's assume that the target function is sin(x) and the range over which we want
 
 In general the fitness function can really be any error minimizing function (with penalty for non-parismony or whatever) so I'm going to use sum of squared errors as my fitness function...the smaller the sum of squared error is the better the program is and the better chance that program will have of persisting to the next generation.
 
-SSE = sum_i sin(x_i)-f(x_i)
+$$SSE = \sum_{i} sin(x_{i})-f(x_{i})$$
 
 The sum of squared errors for the four programs above are:
 
@@ -205,8 +205,10 @@ This is the simplest of the operators because it just move a program from one ge
 
 When we sample the program population we want to use a weighted sampling scheme because we want programs with higher fitness to have a higer probability of being select.  Here, because I only have a population size of 4 I'm going to use a simple rule that says the program with the best fitness has a 50% of being selected, the next best program has a 30% chance, the 3rd best has a 15% chance and the worst one has a 5% chance.
 
+```R
 sample(c(1:4),1,prob=c(0.15,.3,0.05,0.5))
 > 2
+```
 
 This means that our 2nd function from Generation 0 moves into the population for Generation 1.
 
@@ -216,8 +218,10 @@ With mutation what happens is that we generate an entirely new program using the
 
 First we randomly sample the population of Generation 0 to find the program that will be mutated:
 
+```R
 sample(c(1:4),1,prob=c(0.15,0.3,0.05,0.5))
 > 2
+```
 
 Next we run the program generator and get the new program:
 
@@ -229,9 +233,11 @@ Next we run the program generator and get the new program:
         
 Next we randomly sample the node from the population program to be the site of mutation and the node from the new program that provides the mutation
 
+```R
 sample(c(1:5),2,replace=T)
 > 3
 > 4
+```
 
 Replacing the 3rd node of the 2nd program in Generation 0 with the 4th node of our new program gives us:
 
@@ -243,15 +249,19 @@ Replacing the 3rd node of the 2nd program in Generation 0 with the 4th node of o
 
 Cross-over occurs when two existing programs swap nodes.  When cross-over happens we randomly select two programs from the previous generation, then we randomly select nodes (much like in mutation) that will be the site of cross-over and we swap those nodes.  Just like in other operation we want there to be a higher probability of breeding two programs with superior fitness so we, again, use the weighted sampling scheme to select two program from the previous generation to breed:
 
+```R
 sample(c(1:4),2,replace=T,prob=c(0.15,0.3,0.05,0.5)) 
 > 2
 > 4
+```
 
 Next, we randomly select nodes to be the site of cross-over:
 
+```R
 sample(c(1:5),2,replace=T)
 > 4
 > 2
+```
 
 So here we swap node 4 in program 2 from last generation with node 2 in program 4 from last generation:
 
@@ -264,12 +274,14 @@ So here we swap node 4 in program 2 from last generation with node 2 in program 
     x 1
     
     
- ### Part 2D: Reproduction...again
+### Part 2D: Reproduction...again
  
 Let's make this quick.  Sample another program from the Gen 0 population program to reproduce:
- 
+
+```R
 sample(c(1:4),1,prob=c(0.15,0.3,0.05,0.5)) 
 > 4
+```
 
 ### Generation 1:
 
@@ -309,7 +321,7 @@ From here just
 * use fitness to establish sampling weights to use in the selection of program for next generation
 * repeat the steps we followed up to this point until you reach some convergence criteria or iteration criteria.
 
-# An Example By Hand
+# Section 3: An Example By Hand
 
 So I got to a point where I thought I had the basic idea but I needed to try it to see if I really understood the mechanics.  So I tried to solve a simple problem by hand - something in between pseudo-code and a full roll-your-own implementation.  
 
