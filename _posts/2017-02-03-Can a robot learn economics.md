@@ -22,7 +22,7 @@ Product in billions of 1982 dollars.
 
 4. Interest rates approximate money velocity and are measured with the FYGM3 series: monthly interest rate yields of 3-month Treasury bills, averaged for each quarter.
 
-I pulled these series from the Federal Reserve Bank of St. Louis.  You can get them from the .csv files in the github repository.
+I pulled these series from the Federal Reserve Bank of St. Louis.  You can get them from the .csv files in [the github repository](https://github.com/aaronmams/gp/tree/master/data).
 
 ## A First Pass
 
