@@ -1,7 +1,11 @@
 
+I spent a non-trivial amount of time this week trying to pick apart the code in R's [rgp](https://cran.r-project.org/web/packages/rgp/index.html) package and Matlab's [GP tips](https://www.mathworks.com/matlabcentral/fileexchange/47197-genetic-programming-matlab-toolbox?requestedDomain=www.mathworks.com) to see if I could modify it to do coupled dynamical systems...I have no notable progress to report on this front.
+
+I do have something a little less cool but a little more digestable ready to go:
+
 [JR Koza](www.genetic-programming.com/ISFB.ps) has a pretty nice vignette/working paper/something on using genetic programming to discover a fundamental macro economic relationship.  I played around with a lot of population dynamics data on predator-prey systems this week and didn't have much success 'discovering' well-established results from theoretical ecology....this problem looked a little simplier so I figured I'd try to replicate what Koza did...with one notable difference of course: Koza uses LISP (sidenote: Fuck that!) and I'm just goign to use R's black box.
 
-#Set Up
+# Set Up
 
 Koza's application uses the established relationship between price levels, money supply, interest rates, and production in an economy:
 
@@ -219,8 +223,8 @@ $$f(m,g)=\frac{m*1.7}{g}$$
 
 was on the Pareto Front...i.e. a non-dominated function.
 
-## Try with the actual data
+## Some Wrap-up Observations
 
-It's probably foolish to even try to run this with the full set of actual data since, at this point, there are still a lot of unknowns (for me anyway) w.r.t R's implementation...but I'm going for it.  I got a hammer and I'm gonna swing it by God!
+1. It is pretty common in the literature on symbolic regression and genetic programming to fixate on the Pareto Front.  This, for economists, is much like an indifference curve: it maps out the programs the tradeoff between program complexity and program fitness.  I tried to use these plots to sort through my results but the R implementation of GP uses a multi-objective search hueristic by default so, as far as I can tell, it incorporates a pretty decent complexity penalty.  As a result, when I plot terminal program population in complexity-fitness space, it's pretty lumpy.
 
-
+2. R's GP implementation has an option "extinctionPrevention." According the documentation this should try to remove duplicate programs from the population...however, I seem to to keep getting a terminal population at the end of each run that is basically just a bunch of copies of 2 or 3 really fit functions.  Not sure why this is...gonna look into it next week.
