@@ -17,4 +17,4 @@ Or you can get them from the GitHub Repo I set up
 In addition to county boundaries, I grabbed the estimated number of individuals with health insurance in California by Census Tract.  This was a bit of a pain in the ass because the Census Bureau's American Community Survey is notoriously difficult to navigate.   
 
 
-![CA insurance](/images/CA_insurance.png)
+![CA insurance](images/CA_insurance.png)
