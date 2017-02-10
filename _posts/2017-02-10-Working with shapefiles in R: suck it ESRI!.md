@@ -93,8 +93,9 @@ ggplot() +
 ```
 
 
-![CA insurance](/images/CA_insured.png)
+![CA insurance](/images/CA_insured2.png)
 
+So what we get here is a really cool map of the percent of white people with ages 18-64 with health insurance in each California Census Tract.  The map is displayed with county boundaries instead of Census Tract boundaries so it is easier to see some of the spatial contrasts in coverage rates.
 
 ## Now for the boring shit
 
