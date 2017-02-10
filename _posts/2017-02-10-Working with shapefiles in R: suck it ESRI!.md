@@ -140,5 +140,14 @@ Here is what worked for me:
 ```bash
 R CMD INSTALL /path-to-rgeos/rgeos_version.tar.gz --configure-args='--with-geos-config=/Library/Frameworks/GEOS.framework/unix/bin/geos-config'
 ```
-Replace /path-to-rgeos/rgeos_version.tar.gz to point towards the directory and filename of the actual rgeos tarball you downloaded in step 
-For example for me, the path was /Users/andy/Downloads/rgeos_0.3-8.tar.gz. You can get the path of a file by selecting it in Finder and pressing command+I (Info window).
+Replace /path-to-rgeos/rgeos_version.tar.gz to point towards the directory and filename of the actual rgeos tarball you downloaded in step 1. For example for me, the path was /Users/aaronmamula/Downloads/rgeos_0.3-22.tar.gz. You can get the path of a file by selecting it in Finder and pressing command+I (Info window).
+
+At this point I was pretty stoked that I finally had 'rgeos' installed and I figured I was out of the woods because I had been able to install 'rgdal' from a simple R Console Install.  Well, I was wrong: I was not out of the woods.  I tried to load rgdal and rgeos into a workspace and use them and I kept encountering this funky error message about gcplibPermitStatus() which I couldn't get around...
+
+When I re-installed rgdal from the GDAL Complete Framework the gpclibPermitStatus() issue went away.  To get rgdal working properly I did another command line install: 
+
+```bash
+R CMD INSTALL /path-to-downloads/rgdal_1.2-5.tar.gz --configure-args='--with-gdal-config=/Library/Frameworks/GDAL.framework/Programs/gdal-config
+ --with-proj-include=/Library/Frameworks/PROJ.framework/Headers
+ --with-proj-lib=/Library/Frameworks/PROJ.framework/unix/lib'
+ ```
