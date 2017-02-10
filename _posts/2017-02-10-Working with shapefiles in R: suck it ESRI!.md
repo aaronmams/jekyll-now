@@ -1,3 +1,6 @@
+
+I have been looking at other peoples' awesome R-powered geospatial analysis for what feels like years and, until now, every time I've sat down to try and do some spatial analytics in R I've been stymied by wierd package load errors.  I've been poking around this problem rather casually for several months and last night I think I finally made some tangible progress.  I'm pretty stoked about this so I hope you will be too.
+
 ## Outline:
 
 I got two things I think are worth sharing here.  The first is some really tedious shit involved in getting set up to work with shapefiles in R if you're working on a Mac.  Like I said, this is tedious but it's worth discussing because it has taken me quite a long time to get the right spatial libraries installed on my system....i.e. it's not quite as straightforward as install.packages('rgeos').  In fact, for reasons I don't totally understand it's way more complicated than that.
