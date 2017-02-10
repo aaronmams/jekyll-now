@@ -1,6 +1,23 @@
+## Outline:
 
+I got two things I think are worth sharing here.  The first is some really tedious shit involved in getting set up to work with shapefiles in R if you're working on a Mac.  Like I said, this is tedious but it's worth discussing because it has taken me quite a long time to get the right spatial libraries installed on my system....i.e. it's not quite as straightforward as install.packages('rgeos').  In fact, for reasons I don't totally understand it's way more complicated than that.
 
-## A Quick California Insurance Example
+The second thing I want to show you is a quick example of using R to join and display of different types (shapefiles, SpatialPolygonsDataFrames, regular dataframes, etc).
+
+Because the set up is necessary but boring, I'm going to present these two things in inverse order:
+
+1. I'm goin to show you the cool shit first
+
+2. Then I'll walk through how to get the right tools set up.
+
+## A California Insurance Example
+
+The crucial libraries you need in order to work with shapefiles in the ggplot environment or even to convert R's spatial objects (SpatialPolygonsDataFrame) to regular vanilla dataframes that are easier to manipulate are: 
+
+* rgdal
+* rgeos
+
+For the moment let's assume those libraries have been successfully installed and loaded.
 
 This exercise was shamelessly pirated from [Kevin Johnson's badass post](http://www.kevjohnson.org/making-maps-in-r/). 
 
@@ -77,3 +94,51 @@ ggplot() +
 
 
 ![CA insurance](/images/CA_insured.png)
+
+
+## Now for the boring shit
+
+Getting the *rgdal* package installed on my R version was no problem...install.packages('rgdal') worked just fine.  The real sticking point for me was the *rgeos* package.  It seems I am not alone in this regard:
+
+[Dr. Dyer astutely points out](https://dyerlab.bio.vcu.edu/2015/03/31/install-rgeos-on-osx/) "there seems to be a nefarious conspiracy against packaging spatial R packages on the R platform."  
+
+Just to be clear, there are plenty of people lurking on Stack Overflow waiting to tell users that they just need to install 'rgeos' from source rather than do a console install.  This did not work for me:
+
+```R	
+install.packages("rgeos", repos="http://R-Forge.R-project.org", type="source")
+trying URL 'http://R-Forge.R-project.org/src/contrib/rgeos_0.3-9.tar.gz'
+Content type 'application/x-gzip' length 238246 bytes (232 KB)
+opened URL
+==================================================
+downloaded 232 KB
+ 
+* installing *source* package ‘rgeos’ ...
+configure: CC: clang
+configure: CXX: clang++
+configure: rgeos: 0.3-8
+checking for /usr/bin/svnversion... yes
+cat: inst/SVN_VERSION: No such file or directory
+configure: svn revision: 
+checking for geos-config... no
+configure: error: geos-config not found or not executable.
+ERROR: configuration failed for package ‘rgeos’
+* removing ‘/Library/Frameworks/R.framework/Versions/3.1/Resources/library/rgeos’
+ 
+In install.packages("rgeos", repos = "http://R-Forge.R-project.org",  :
+  installation of package ‘rgeos’ had non-zero exit status
+```
+
+
+Here is what worked for me:
+
+[Following the direction here](http://tlocoh.r-forge.r-project.org/mac_rgeos_rgdal.html) I download and installed the GDAL Complete frameworks for Mac.  I got the complete framework [here](http://www.kyngchaos.com/software:frameworks).  
+
+1. Download the latest source package of rgeos from https://r-forge.r-project.org/R/?group_id=602 (click the "Package source (.tar.gz)" link). You should see a *.tar.gz file in your downloads folder. Do not decompress the file (i.e. make it a folder). If Safari automatically decompressed it without asking you, try to ctrl+click on the link and save it to your downloads folder.
+
+2. Install the rgeos package from the command line (terminal)
+
+```bash
+R CMD INSTALL /path-to-rgeos/rgeos_version.tar.gz --configure-args='--with-geos-config=/Library/Frameworks/GEOS.framework/unix/bin/geos-config'
+```
+Replace /path-to-rgeos/rgeos_version.tar.gz to point towards the directory and filename of the actual rgeos tarball you downloaded in step 
+For example for me, the path was /Users/andy/Downloads/rgeos_0.3-8.tar.gz. You can get the path of a file by selecting it in Finder and pressing command+I (Info window).
