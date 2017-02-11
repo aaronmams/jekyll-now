@@ -151,7 +151,5 @@ At this point I was pretty stoked that I finally had 'rgeos' installed and I fig
 When I re-installed rgdal from the GDAL Complete Framework the gpclibPermitStatus() issue went away.  To get rgdal working properly I did another command line install: 
 
 ```bash
-R CMD INSTALL /path-to-downloads/rgdal_1.2-5.tar.gz --configure-args='--with-gdal-config=/Library/Frameworks/GDAL.framework/Programs/gdal-config
- --with-proj-include=/Library/Frameworks/PROJ.framework/Headers
- --with-proj-lib=/Library/Frameworks/PROJ.framework/unix/lib'
+R CMD INSTALL /path-to-downloads/rgdal_1.2-5.tar.gz --configure-args='--with-gdal-config=/Library/Frameworks/GDAL.framework/Programs/gdal-config --with-proj-include=/Library/Frameworks/PROJ.framework/Headers --with-proj-lib=/Library/Frameworks/PROJ.framework/unix/lib'
  ```
