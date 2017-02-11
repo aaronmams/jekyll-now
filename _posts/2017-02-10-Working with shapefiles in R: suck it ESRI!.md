@@ -5,7 +5,7 @@ I have been looking at other peoples' awesome R-powered geospatial analysis for 
 
 I got two things I think are worth sharing here.  The first is some really tedious shit involved in getting set up to work with shapefiles in R if you're working on a Mac.  Like I said, this is tedious but it's worth discussing because it has taken me quite a long time to get the right spatial libraries installed on my system....i.e. it's not quite as straightforward as install.packages('rgeos').  In fact, for reasons I don't totally understand it's way more complicated than that.
 
-The second thing I want to show you is a quick example of using R to join and display of different types (shapefiles, SpatialPolygonsDataFrames, regular dataframes, etc).
+The second thing I want to show you is a quick example of using R to join and display different types (shapefiles, SpatialPolygonsDataFrames, regular dataframes, etc).
 
 Because the set up is necessary but boring, I'm going to present these two things in inverse order:
 
@@ -104,7 +104,7 @@ So what we get here is a really cool map of the percent of white people with age
 
 Getting the *rgdal* package installed on my R version was no problem...install.packages('rgdal') worked just fine.  The real sticking point for me was the *rgeos* package.  It seems I am not alone in this regard:
 
-[Dr. Dyer astutely points out](https://dyerlab.bio.vcu.edu/2015/03/31/install-rgeos-on-osx/) "there seems to be a nefarious conspiracy against packaging spatial R packages on the R platform."  
+[Dr. Dyer astutely points out](https://dyerlab.bio.vcu.edu/2015/03/31/install-rgeos-on-osx/) "there seems to be a nefarious conspiracy against packaging spatial R packages on the Mac platform."  
 
 Just to be clear, there are plenty of people lurking on Stack Overflow waiting to tell users that they just need to install 'rgeos' from source rather than do a console install.  This did not work for me:
 
