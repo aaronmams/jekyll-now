@@ -245,7 +245,9 @@ ggplot() +
 ![education plot here](/images/edu_by_cd.png)
 
 
-Ok, so the map is a little campy and maybe not super informative without some city-type context.  I'll try one more with a static google map basemap:
+Ok, so the map is a little campy and maybe not super informative without some city-type context. However, I'm pretty sure there is some really cool quantitive policy I could do with this ability to quickly pull data Census data at the Congressional District level with the API and map it in R.
+
+I'll try one more with a static google map basemap just to see what it looks like:
 
 ## One last map...I promise
 
