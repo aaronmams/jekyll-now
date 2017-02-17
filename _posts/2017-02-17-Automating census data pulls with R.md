@@ -244,8 +244,9 @@ ggplot() +
 
 ![education plot here](/images/edu_by_cd.png)
 
+Ok, so the map is a little campy and maybe not super informative without some city-type context. It's also probably worth noting that here I plotted 1 - percent of age 25 and over population wiht a Bachelor's Degree.  I wanted to display the education 'hotspots' in the darkest shades but didn't want to spend all day monkeying with the palette brewer...so the darker reds are the congressional districts where relatively more of the population holds Bachelor's Degrees. 
 
-Ok, so the map is a little campy and maybe not super informative without some city-type context. However, I'm pretty sure there is some really cool quantitive policy I could do with this ability to quickly pull data Census data at the Congressional District level with the API and map it in R.
+I'm pretty sure there is some really cool quantitive policy I could do with this ability to quickly pull data Census data at the Congressional District level with the API and map it in R.  Hopefully, I'll be able to illustrate some of the analysis I have in mind in the next few blog posts.
 
 I'll try one more with a static google map basemap just to see what it looks like:
 
