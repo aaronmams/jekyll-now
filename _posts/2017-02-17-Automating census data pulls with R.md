@@ -31,11 +31,13 @@ There are two crucial prerequisites for this section:
 
 2. The R package *RJSONIO*.  
 
-A quick word on item 2: there is an R package called *acs* or something like that which is designed to work with data from the Census Bureau's American Communities Survey.  Try it out if you want.  I monkeyed with it but found it was overkill.  The *fromJSON()* in the *RJSONIO* library is pretty much all I need...or want for that matter
+A quick word on item 2: there is an R package called *acs* or something like that which is designed to work with data from the Census Bureau's American Communities Survey.  Try it out if you want.  I monkeyed with it but found it was overkill.  The *fromJSON()* function in the *RJSONIO* library is pretty much all I need...or want for that matter
 
 ## An Example
 
-The sample API call on the [Census Bureau's Developers](http://www.census.gov/data/developers/data-sets/acs-1year.html) page to get population by state from the 1 year estimates of the 2015 American Communities Survey is api.census.gov/data/2015/acs1?get=NAME,B01001_001E&for=state:*&key=...
+The sample API call on the [Census Bureau's Developers](http://www.census.gov/data/developers/data-sets/acs-1year.html) page to get population by state from the 1 year estimates of the 2015 American Communities Survey is:
+
+api.census.gov/data/2015/acs1?get=NAME,B01001_001E&for=state:*&key=...
 
 In the code below I pass this API call to the Census Bureau, use the *fromJSON()* function to collect the JSON results in an R list, and clean up the list 
 
@@ -84,7 +86,7 @@ head(pop)
 ```
 
 
-## This Shitty Stuff
+## The Shitty Stuff
 
 After toggling my way through the Census Bureau's data GUI a few times to try and find basic shit like population, educational attainment, etc., I loved working with the API.  However, the drawback to automating data retrieval with the API is that you have to know what series you are looking for.  The Census Bureau does not make this easy.
 
@@ -240,7 +242,7 @@ ggplot() +
 
 ```
 
-![education plot here](images/edu_by_cd.png)
+![education plot here](/images/edu_by_cd.png)
 
 
 Ok, so the map is a little campy and maybe not super informative without some city-type context.  I'll try one more with a static google map basemap:
