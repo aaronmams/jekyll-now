@@ -294,3 +294,5 @@ ggmap(map) +
   guides(fill = guide_legend(reverse = TRUE, override.aes = 
                                list(alpha = 1)))
 ```
+
+![heat map](/images/healthinsurance_ct_fresno.png)
