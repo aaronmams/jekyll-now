@@ -297,4 +297,4 @@ ggmap(map) +
                                list(alpha = 1)))
 ```
 
-![heat map](/images/healthinsurance_ct_fresno.png)
+![heat map](/images/health insurance_ct_fresno.png)
