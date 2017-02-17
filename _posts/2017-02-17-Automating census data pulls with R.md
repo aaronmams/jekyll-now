@@ -85,6 +85,111 @@ head(pop)
 6   Colorado  5456574    08
 ```
 
+## Another Example
+
+I like examples.  Especially when you are coding, I think it's hyper-useful to have a stock of examples.  It ups the probability that, for whatever specific thing you want to do, you'll just have to alter a couple lines of existing code.
+
+Here's what's going on in this example:
+
+* I used the API call to pull total Hispanic population by congressional district for the U.S.
+* used a separate API call to pull total population by congressional district for the U.S.
+* combined those 2 to create the % Hispanic population in each congressional district
+* merged that with results of the 2016 Congressional Elections
+
+```R
+#set up the API call for Hispanic Population by Congressional District
+resURL <- paste("http://api.census.gov/data/2015/acs1?get=NAME,B01001I_001E&for=congressional+district:*&key=",
+                key,sep="")
+latinos <- fromJSON(resURL)
+latinos <- latinos[2:length(latinos)]
+
+#Set up the API call for total population
+resURL <- paste("http://api.census.gov/data/2015/acs1?get=NAME,B01001_001E&for=congressional+district:*&key=",
+                key,sep="")
+pop <- fromJSON(resURL)
+pop <- pop[2:length(pop)]
+pop.L <- data.frame(name=unlist(lapply(pop,function(x){unlist(x)[1]})),
+                    pop=unlist(lapply(pop,function(x){unlist(x)[2]})),
+                    state=unlist(lapply(pop,function(x){unlist(x)[3]})),
+                    cd=unlist(lapply(pop,function(x){unlist(x)[4]})))
+
+latinos <- data.frame(name=unlist(lapply(latinos,function(x){unlist(x)[1]})),
+                      latino.pop=unlist(lapply(latinos,function(x){unlist(x)[2]})))
+
+pop.L <- pop.L %>% inner_join(latinos,by=c('name')) %>%
+            mutate(pct_latino=as.numeric(as.character(latino.pop))/
+                     as.numeric(as.character(pop)))
+
+#get the 2016 Congressional Election results
+house_election_2016 <- read.csv('data/congressionalelections2016.csv')
+#get the numeric codes for each state
+state.codes <- read.csv('data/state_fips_codes.csv')
+names(state.codes) <- c('statename','state.num','state')
+
+votes <- house_election_2016 %>% 
+          inner_join(state.codes,by=c('state'))
+
+#fix pop.L congressional districts
+pop.L$cd <- as.numeric(as.character(pop.L$cd))
+pop.L$state <- as.numeric(as.character(pop.L$state))
+
+votes <- votes %>% select(state.num,cd,winning_party)
+names(votes) <- c('state','cd','party')
+
+votes <- votes %>% inner_join(pop.L,by=c('state','cd'))
+
+#order it by latino population and see if there are any notable 'R's
+votes %>% arrange(-pct_latino)
+
+   state cd party                                                     name    pop latino.pop pct_latino
+1      6 21     R   Congressional District 21 (114th Congress), California 716371     535377 0.74734600
+2     48 23     R        Congressional District 23 (114th Congress), Texas 747732     521424 0.69734076
+3     12 26     R      Congressional District 26 (114th Congress), Florida 776959     541186 0.69654383
+4      6 10     R   Congressional District 10 (114th Congress), California 739784     316229 0.42746126
+5      6 25     R   Congressional District 25 (114th Congress), California 720316     268191 0.37232409
+6      6 24     D   Congressional District 24 (114th Congress), California 736757     264994 0.35967626
+7     32  4     D        Congressional District 4 (114th Congress), Nevada 722406     201492 0.27891795
+8      6 49     R   Congressional District 49 (114th Congress), California 735828     189640 0.25772327
+9      8  3     R      Congressional District 3 (114th Congress), Colorado 737812     181423 0.24589326
+10     4  1     D       Congressional District 1 (114th Congress), Arizona 759663     173716 0.22867508
+11    17 10     D     Congressional District 10 (114th Congress), Illinois 714251     160421 0.22460032
+12    12  7     D       Congressional District 7 (114th Congress), Florida 738367     157720 0.21360651
+13     8  6     R      Congressional District 6 (114th Congress), Colorado 796156     163880 0.20583906
+14    32  3     D        Congressional District 3 (114th Congress), Nevada 758676     125431 0.16532881
+15     6  7     D    Congressional District 7 (114th Congress), California 739069     117592 0.15910828
+16     6 52     D   Congressional District 52 (114th Congress), California 755498     118641 0.15703682
+17    12 18     R      Congressional District 18 (114th Congress), Florida 748028     111507 0.14906795
+18    36  1     R      Congressional District 1 (114th Congress), New York 726589     107873 0.14846495
+19    51 10     R     Congressional District 10 (114th Congress), Virginia 807670     105618 0.13076875
+20    34  5     D    Congressional District 5 (114th Congress), New Jersey 743424      94463 0.12706477
+21    20  3     R        Congressional District 3 (114th Congress), Kansas 755396      88598 0.11728683
+22    31  2     R      Congressional District 2 (114th Congress), Nebraska 652870      71614 0.10969106
+23    36  3     D      Congressional District 3 (114th Congress), New York 721764      74127 0.10270255
+24    12 13     D      Congressional District 13 (114th Congress), Florida 716429      72211 0.10079296
+25    36 19     R     Congressional District 19 (114th Congress), New York 705044      51710 0.07334294
+26    19  3     R          Congressional District 3 (114th Congress), Iowa 812464      54484 0.06706020
+27    27  2     R     Congressional District 2 (114th Congress), Minnesota 695029      40193 0.05782924
+28    55  8     R     Congressional District 8 (114th Congress), Wisconsin 727491      36678 0.05041712
+29    42  8     R  Congressional District 8 (114th Congress), Pennsylvania 707083      35083 0.04961652
+30    26  8     R      Congressional District 8 (114th Congress), Michigan 728781      35125 0.04819692
+31    36 24     R     Congressional District 24 (114th Congress), New York 708959      31211 0.04402370
+32    27  3     R     Congressional District 3 (114th Congress), Minnesota 700121      30328 0.04331823
+33    26  7     R      Congressional District 7 (114th Congress), Michigan 697627      29680 0.04254422
+34    19  1     R          Congressional District 1 (114th Congress), Iowa 771888      28650 0.03711678
+35    36 23     R     Congressional District 23 (114th Congress), New York 708372      26115 0.03686622
+36    36 22     R     Congressional District 22 (114th Congress), New York 711391      26099 0.03668728
+37    33  1     D Congressional District 1 (114th Congress), New Hampshire 671640      24624 0.03666250
+38    18  9     R       Congressional District 9 (114th Congress), Indiana 741982      24680 0.03326226
+39    36 21     R     Congressional District 21 (114th Congress), New York 710842      23524 0.03309315
+40    17 12     R     Congressional District 12 (114th Congress), Illinois 699369      23119 0.03305694
+41    26  1     R      Congressional District 1 (114th Congress), Michigan 700136      13902 0.01985614
+42    27  8     D     Congressional District 8 (114th Congress), Minnesota 663670      11133 0.01677490
+43    23  2     R         Congressional District 2 (114th Congress), Maine 657319       8938 0.01359766
+> 
+```
+
+I didn't really do this for any reason other than it sounded fun...but it does seem pretty interesting that the top congressional districts ranked by latino population are represented by Republicans...Although it deserves mention that I didn't do any voting age population filters or anything like that here.  It's pretty off-the-cuff.  But interesting nonetheless.
+
 
 ## The Shitty Stuff
 
