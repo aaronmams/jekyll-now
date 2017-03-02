@@ -117,7 +117,7 @@ My contention is pretty simple:
 
 votes are more important than money.
 
-Planned Parenthood gets something in the neighborhood of $500 million/year in federal funding.  If congress defunds it, rich people wanting to continue providing those services aren't going to be on the hook for $1 million bucks here and there...they're gonna have to come up 100's of MILLIONS of dollars EVERY year...all well watching their tax money get appropriated for stuff they may not like, such as spending 30 billion on dumbass border wall.
+Planned Parenthood gets something in the neighborhood of 500 million a year in federal funding.  If congress defunds it, rich people wanting to continue providing those services aren't going to be on the hook for $1 million bucks here and there...they're gonna have to come up 100's of MILLIONS of dollars EVERY year...all well watching their tax money get appropriated for stuff they may not like, such as spending 30 billion on dumbass border wall.
 
 The last vote on defunding Planned Parenthood was 241 - 187 (basically a straight party line vote with Lapinski and Peterson the only 2 Democrats voting to defund and Dold and Hanna the two lone Republicans voting not to defund...and 6 note voting).  So you need to gain 27/28 votes in the House to keep this issue off the table (I want to be crystal clear that I'm not suggesting Sheryl Sandberg or a SSLE become a total partisan hack or politcal animal. The votes to protect Planned Parenthood, I believe, could be gained without 'flipping' a district...I'll explain later).  
 
