@@ -541,7 +541,7 @@ This is a data blog so I feel like I should take a few sentences to briefly disc
 
 Quick Example: 
 
-Looking at the very first data partition (pct.female < 0.14763) we can see that this results in a group  with 59 Democratic districts and 4 Republican districts.  
+Looking at the very first data partition (pct.female < 0.14763) we can see that the right branch (corresponding to 'no' or pct.female>0.14763) results in a group  with 59 Democratic districts and 4 Republican districts (i.e. if the number of females between 25-45 is more than 14.763 percent of the population, that district is most likely 'D').  
 
 ```R
 > tree.df %>% filter(pct.female > 0.14763) %>% select(name,party,pct.female,pDem,pRepub) %>% arrange(party)
