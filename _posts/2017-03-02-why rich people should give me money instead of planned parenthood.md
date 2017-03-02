@@ -65,8 +65,8 @@ I used some pretty basic and easy to obtain data for this:
 	2. education level by age
 	3. ethnic makeup
 	4. poverty status
-2. I matched the demographic data with a list of Congressmen for each district and their party affiliation. [Here is a link to the .csv file]()
-3. I also used a list of results from the 2016 presidential election by congressional district. [Here is a link to the .csv file]()
+2. I matched the demographic data with a list of Congressmen for each district and their party affiliation. 
+3. I also used a list of results from the 2016 presidential election by congressional district. 
 
 ### Resources
 
@@ -125,7 +125,7 @@ I'm not sure picking up these votes (or at least enough to convince Paul Ryan it
 
 ### The Outline
 
-If I were tasked with using 1 million bucks to try and find votes for Planned Parenthood (against measures to defund Planned Parenthood) in the House of Reps, my high-leve strategy would look something like this:
+If I were tasked with using 1 million bucks to try and find votes for Planned Parenthood (against measures to defund Planned Parenthood) in the House of Reps, my high-level strategy would look something like this:
 
 1. Identify areas of high ROI - areas currently voting against PP that look like they should be voting for it.
 2. Allocate a 'first cut' of the money to getting some 'boots on the ground' intel about these areas
@@ -142,8 +142,7 @@ My proposal is a bit more nuanced than that.  I'm suggesting that, in this expan
 
 A [2009 Gallup poll](http://www.gallup.com/poll/118931/knowing-someone-gay-lesbian-affects-views-gay-issues.aspx) found that people are more likely to support marriage equality if they know someone who is gay.  Several studies and pundits since then have attributed the rise in support for same sex marriage (to the point that it is no longer even a controversial issue) to the large and growing number of people who personally know someone who is gay. 
 
-While not exactly related to the phenomenon above, [here is an interesting discussion of the evolution of public opinion on same sex marriage by Nate Silver](http://www.gallup.com/poll/118931/knowing-someone-gay-lesbian-affects-views-gay-issues.aspx)
-https://fivethirtyeight.blogs.nytimes.com/2013/03/26/how-opinion-on-same-sex-marriage-is-changing-and-what-it-means/
+While not exactly related to the phenomenon above, [here is an interesting discussion of the evolution of public opinion on same sex marriage by Nate Silver](https://fivethirtyeight.blogs.nytimes.com/2013/03/26/how-opinion-on-same-sex-marriage-is-changing-and-what-it-means/)
 
 It's actually more than a little unsavory to think about Planned Parenthood targeting areas for facilities upgrades, outreach services, etc. based on propensity to influence congressional votes...but I see this fact as an opportunity for our SSLE.  
 
@@ -153,7 +152,7 @@ Solution: the SSLE gives $1 million dollars to saveplannedparenthood.org, who us
 
 2. establish a local office or outreach/educational center in a 'high priority' area that doesn't currently have services.
 
-**Quick Aside**: yes, technically NARAL is a group already set up to do some of the lobby-type work I'm talking about...but they are really bad at it.  [Campaign contribution reports](https://www.opensecrets.org/outsidespending/recips.php?cmte=C70002761&cycle=2016) indicate that in 2016 NARAL spent $11,000 to oppose Bobby Jindal's presidential campaign and $100,000 to defeat Marco Rubio in the senate.  Bobby Jindal never polled above 2% in any state and Marco Rubio's re-election to the senate was pretty much foregone in 2016.   The $111,000 they spent on these two opposition campaigns was totally wasted.
+**Quick Aside**: yes, technically NARAL is a group already set up to do some of the lobby-type work I'm talking about...but they are really bad at it.  [Campaign contribution reports](https://www.opensecrets.org/outsidespending/recips.php?cmte=C70002761&cycle=2016) indicate that in 2016 NARAL spent 11,000 bucks to oppose Bobby Jindal's presidential campaign and 100,000 duckets to defeat Marco Rubio in the senate.  Bobby Jindal never polled above 2 percent in any state and Marco Rubio's re-election to the senate was pretty much foregone in 2016.  The 111 large they spent on these two opposition campaigns was totally wasted.
 
 ### How do we prioritize areas?
 
