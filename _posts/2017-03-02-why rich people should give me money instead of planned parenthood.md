@@ -687,18 +687,18 @@ A little money coming into the district can help voting Planned Parenthood suppo
 
 ### A quick aside on leverage
 
-The thing about having money is that it gives you leverage.  In the 2016 election [Issa outspent Applegate 3:1](https://ballotpedia.org/California%27s_49th_Congressional_District_election,_2016) and still only beat him by less than 1 percentage point.  In CA-10, Jeff Denham spent $4 million to his opponent's $1.5 million and won by only about 3 percentage points.  If these guys are voting to defund Planned Parenthood out of party loyalty rather than as a reflection of their constituants values (presumably because they think voting the party line on PP will come back around when they wants votes on their issue) the threat of a few hundred thousand bucks injected into their district might convince them to start voting the interests of their constituency. 
+The thing about having money is that it gives you leverage.  In the 2016 election [Issa outspent Applegate 3:1](https://ballotpedia.org/California%27s_49th_Congressional_District_election,_2016) and still only beat him by less than 1 percentage point.  In CA-10, Jeff Denham spent 4 million to his opponent's 1.5 million and won by only about 3 percentage points.  If these guys are voting to defund Planned Parenthood out of party loyalty rather than as a reflection of their constituants values (presumably because they think voting the party line on PP will come back around when they wants votes on their issue) the threat of a few hundred thousand bucks injected into their district might convince them to start voting the interests of their constituency. 
 
 ### My Proposal
 
-If I were in charge of spending ~$1 million to develop a Planned Parenthood strategy here's my top-of-the-head idea:
+This may be a little redundant but if I were in charge of spending ~$1 million to develop a Planned Parenthood strategy here's my top-of-the-head idea:
 
 Start with the 21 districts I identified as 'predicted pro-PP' then,
 
-1. Look at voter registration statistics from the various state level Secretary of State websites ([here are the stats by county for CA](http://www.sos.ca.gov/elections/report-registration/124day-gen-16/),[here are the stata by county for CO](http://www.sos.state.co.us/pubs/elections/VoterRegNumbers/VoterRegNumbers.html)).  Could part of the 'problem' be coming from low voter turnout or low voter registration numbers? *Cost estimate*: $3,000 (~20 hours of research time)   
+1. Look at voter registration statistics from the various state level Secretary of State websites ([here are the stats by county for CA](http://www.sos.ca.gov/elections/report-registration/124day-gen-16/), [here are the stats by county for CO](http://www.sos.state.co.us/pubs/elections/VoterRegNumbers/VoterRegNumbers.html)).  Could part of the 'problem' be coming from low voter turnout or low voter registration numbers? *Cost estimate*: $3,000 (~20 hours of research time)   
 	1. Are there lot of young people who might view Planned Parenthood favorably who are not registered to vote?
 	2. Are there lots of young people, females, poor people who don't vote?	
-2. Prioritize areas where there isn't an obvious explanation for the PP opposition and commission some surveys/interviews to find out where people in the district stand on funding PP. *Cost estimate*: $100,000 ($10k each to the 10 most 'promising' districts).
+2. Prioritize areas where there isn't an obvious explanation for the PP opposition and commission some surveys/interviews to find out where people in the district stand on funding PP. *Cost estimate*: 100k (10k each to the 10 most 'promising' districts).
 3. On the basis of 1 and 2 above develop a more refined strategy for allocating remaining money:
 	1. among districts, and
 	2. among functions (enhancing services to better serve a need population, voter registration, education/outreach, organization/mobilization of existing supporters).  
@@ -715,7 +715,7 @@ The best part about my plan is that it doesn't involve influence peddling, buyin
 
 My strategy doesn't involve buying anyone's vote or changing anyone's mind.  Under my plan if you find out that a particular district that might have been algorithmically identified as pro-PP is really, truly anti-PP you walk away.    
 
-There you have it rich people.  If you like Planned Parenthood and you have $1 million burning a hole in your pocket, consider giving it to me.  I think I can get you 10-12 congressional votes which is almost halfway to the 25ish you need in order to save yourselves $500,000,000 a year.  I'll even ballpark some probabilities for you: I think there is a:
+There you have it rich people.  If you like Planned Parenthood and you have 1 million bucks burning a hole in your pocket, consider giving it to me.  I think I can get you 10-12 congressional votes which is almost halfway to the 25ish you need in order to save yourselves 500 mil a year.  I'll even ballpark some probabilities for you: I think there is a:
 
 * 60 percent chance I can get you 10 votes for $1 million
 * 75 percent chance I can get you 6 votes for $1 million, and
