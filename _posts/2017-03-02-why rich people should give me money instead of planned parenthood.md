@@ -40,7 +40,7 @@ My conclusions (if you can even call them that) are basically 2-fold:
 
 1. Outreach, education, and expansion of services seems like one pretty solid way to support the future of Planned Parenthood.  This approach works on the linked theory that:
 	1.like same sex marriage, Planned Parenthood would enjoy even more political support if more people had a personal connection to someone who has been helped by PP.
-	2. more people would have a connection to someone helped by PP if more people were aware of available services in their area and if more areas had easier to access services.
+	2.more people would have a connection to someone helped by PP if more people were aware of available services in their area and if more areas had easier to access services.
 2. straight up lobbying is also an option.  
 
 If you like Option 1 then the first pass data mining strategy is to find places currently voting to defund that have large populations of 'likely PP users.' There is some obvious bad news here: expanding services in areas that are already voting to support federal funding for PP doesn't solve the problem of needing ~25 congressional votes to ensure the future of PP.  That means there may be some very underserved areas that get passed over for investment (under the 'most bang for the Sheryl Sandberg buck) in favor of other underserved areas in districts currently voting to defund.  I KNOW this is a totally unsavory way to look at the problem BUT it should also be remembered that putting 250k into a clinic this year doesn't help much if 500,000,000 goes away next year.
