@@ -123,7 +123,18 @@ The last vote on defunding Planned Parenthood was 241 - 187 (basically a straigh
 
 I'm not sure picking up these votes (or at least enough to convince Paul Ryan it's not worth the fight to raise the issue) would be as hard as it sounds.  
 
-## Idea 1: Expand/Improve services in strategic areas
+### The Outline
+
+If I were tasked with using 1 million bucks to try and find votes for Planned Parenthood (against measures to defund Planned Parenthood) in the House of Reps, my high-leve strategy would look something like this:
+
+1. Identify areas of high ROI - areas currently voting against PP that look like they should be voting for it.
+2. Allocate a 'first cut' of the money to getting some 'boots on the ground' intel about these areas
+3. Use the info from 2 to develop a more in-depth, targeted strategy for each area
+4. Price out the strategies developed in 3 and figure out which combination satisfies the budget constraint and results in maximum vote pick up.
+
+The remainder of this post is a preveiw of sorts.  It is specifically devoted to the first pass empirical work mentioned in item 1 above.  Sorry rich people, if you want more detail on 2 - 4 I'm gonna need a retainer.
+
+### Idea 1: Expand/Improve services in strategic areas
 
 This probably sounds like a 'no-duh' idea and there might be a few people saying, "obviously, your fictional SSLE gives a million bucks to Planned Parenthood and then Planned Parenthood uses that money to provide health and wellness services to women...great idea Captain Obvious." 
 
@@ -170,6 +181,8 @@ The steps are carried out below but here is what I did:
 6. Filtered for Republican districts and sorted by female population and female poverty status to find Republican districts with demographics fitting the 'Planned Parenthood users' demographic.
 
 ```R
+########################################################
+#some data cleaning
 #----------------------------------------------------
 house2016 <- read.csv('data/Congress114_members.txt')
 house2016 <- strsplit(as.character(house2016[,1]),"\\s+")
@@ -218,8 +231,10 @@ return(party)
 }) 
 
 house2016$party <- unlist(party.afil)
+###############################################################################
 
-
+###############################################################################
+#now get demographic data by congressional district
 #-------------------------------------------------------------------------------------
 key <- 'getyourownAPIkey'
 #Now get 3 simple demographics for 2012 and 2016
@@ -229,9 +244,7 @@ key <- 'getyourownAPIkey'
 #3. percent with a college degree 
 #4. age structure...let's just use percent 25 - 50
 
-# by congressional district
-
-
+#-------------------------------------------------------------------------------
 # age and sex
 series.males <- c('001E','002E','007E','008E','009E','010E','011E','012E','013E','014E','015E','016E')
 series.females <- c('026E','031E','032E','033E','034E','035E','036E','037E','038E','039E','040E')
@@ -270,7 +283,9 @@ age.sex$f35 <- pop.fn(i=20,yr=2015)[,2]
 age.sex$f40 <- pop.fn(i=21,yr=2015)[,2]
 age.sex$f45 <- pop.fn(i=22,yr=2015)[,2]
 age.sex$f50 <- pop.fn(i=23,yr=2015)[,2]
+#----------------------------------------------------------------------------------
 
+#----------------------------------------------------------------------------------
 #percent black
 #2015 1 yr ACS estimate
 #black population
@@ -290,6 +305,7 @@ total.pop <- data.frame(rbindlist(lapply(ljson,function(x){
 
 pct.black <- tbl_df(pct.black) %>%
               inner_join(total.pop,by=c('name'))
+#---------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------
 #poverty percentages
@@ -335,7 +351,9 @@ edu.fn <- function(yr){
 }  
 
 edu2015 <- edu.fn(yr=2015)
+#---------------------------------------------------------------------------------
 
+#---------------------------------------------------------------------------------
 #add state abbreviations to the age.sex data frame
 state.codes <- read.csv('data/state_fips_codes.csv') %>% select(code,abb)
 names(state.codes) <- c('state.code','abb')
@@ -348,7 +366,9 @@ age.sex <- age.sex %>% mutate(state.code = as.numeric(as.character(state))) %>%
             inner_join(state.codes,by=c('state.code')) %>%
             mutate(cd=as.numeric(as.character(congressional_district))) %>%
             inner_join(house2016,by=c('abb','cd'))
+#---------------------------------------------------------------------------------
 
+#---------------------------------------------------------------------------------
 #now bring in the % black
 pct.black <- pct.black %>% filter(row_number() > 1) %>% 
               mutate(cd=as.numeric(as.character(cd)),
@@ -359,8 +379,9 @@ pct.black <- pct.black %>% filter(row_number() > 1) %>%
               select(cd,state.code,pct.black)
 
 age.sex <- age.sex %>% inner_join(pct.black,by=c('state.code','cd'))
+#---------------------------------------------------------------------------------
 
-
+#---------------------------------------------------------------------------------
 #bring in education
 edu2015 <- edu2015 %>% mutate(state.code=as.numeric(as.character(state)),
                               cd=as.numeric(as.character(congressional_district)),
@@ -370,13 +391,17 @@ edu2015 <- edu2015 %>% mutate(state.code=as.numeric(as.character(state)),
           select(state.code,cd,pct.bachelors)
 
 age.sex <- age.sex %>% inner_join(edu2015,by=c('state.code','cd'))
+#---------------------------------------------------------------------------------
 
+#---------------------------------------------------------------------------------
 #add in the female poverty
 age.sex <- age.sex %>% left_join(pov.df,by=c('name')) %>%
               mutate(pov.female=as.numeric(as.character(pov25))+
                        as.numeric(as.character(pov35)),
                 pct.pov.female=as.numeric(as.character(pov.female))/as.numeric(as.character(total_female)))
+#---------------------------------------------------------------------------------
 
+#filter and have a look
 > age.sex %>% select(name,party,pct.pov.female,pct.female) %>% 
 +    filter(party=='R') %>% arrange(-pct.pov.female,-pct.female)
                                                                 name party pct.pov.female pct.female
@@ -404,7 +429,7 @@ age.sex <- age.sex %>% left_join(pov.df,by=c('name')) %>%
 22               Congressional District 6 (114th Congress), Kentucky     R     0.05439300 0.13676195
 23              Congressional District 1 (114th Congress), Louisiana     R     0.05365683 0.14032922
 24             Congressional District 4 (114th Congress), Washington     R     0.05299454 0.12357510``` 
-
+```
 
 To address something I'm sure most people would be concerned about: It's probably not in Sheryl Sandberg's (or any other rich public figure) best interest to be perceived as a blatant partisan.  That is, let's assume our SSLE doesn't want to go around throwing money at red Congressional Districts in order to 'flip' them.  That's fine with me.
 
@@ -417,7 +442,7 @@ If I were operating under the assumption that the more people know about Planned
 2. if PP services are not available to populations with a large 'PP demographic' figure out how some of the SSLE gift money can be used to provide such services.
 
 
-## Idea 2: Target potential supporters rather than potential users
+### Idea 2: Target potential supporters rather than potential users
 
 This is a little bit of spin on the data-mining above...here, rather than ask, "who are the primary users of PP," I'm going to ask,
 
@@ -427,7 +452,7 @@ The basic strategy of this analysis is to find places where demographics look fr
 
 The empirical strategy I'm going to use is pretty simple: set up a classification model to predict whether a Congressional District is Democrate or Republican based on demographics, then look at where that model fails (generates bad predictions).   
 
-### A Classification Tree
+#### A Classification Tree
 
 [Classification and Regression Trees](https://en.wikipedia.org/wiki/Decision_tree_learning) are some of the most popular 'learning' algorithms...due in no small part I'm sure to their conceptual simplicity.  
 
@@ -689,4 +714,15 @@ I've presented the skeleton of a strategy that I contend could pick up 10 - 12 H
 
 The best part about my plan is that it doesn't involve influence peddling, buying votes, etc. It's simply about identifying places where people already support Planned Parenthood and helping those places establish their leverage.
 
-My strategy doesn't involve buying anyone's vote or changing anyone's mind.  Under my plan if you find out that a particular district that might have been algorithmically identified as pro-PP is really, truly anti-PP you walk away.     
+My strategy doesn't involve buying anyone's vote or changing anyone's mind.  Under my plan if you find out that a particular district that might have been algorithmically identified as pro-PP is really, truly anti-PP you walk away.    
+
+There you have it rich people.  If you like Planned Parenthood and you have $1 million burning a hole in your pocket, consider giving it to me.  I think I can get you 10-12 congressional votes which is almost halfway to the 25ish you need in order to save yourselves $500,000,000 a year.  I'll even ballpark some probabilities for you: I think there is a:
+
+* 60 percent chance I can get you 10 votes for $1 million
+* 75 percent chance I can get you 6 votes for $1 million, and
+* 30 percent chance I can get you 15 votes for $1 million
+
+Also, I work cheap...If you hired a real strategy firm they'd charge you $500 an hour for the same stuff I just gave you for free.
+
+
+
