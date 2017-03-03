@@ -430,16 +430,15 @@ age.sex <- age.sex %>% left_join(pov.df,by=c('name')) %>%
 24             Congressional District 4 (114th Congress), Washington     R     0.05299454 0.12357510``` 
 ```
 
-To address something I'm sure most people would be concerned about: It's probably not in Sheryl Sandberg's (or any other rich public figure) best interest to be perceived as a blatant partisan.  That is, let's assume our SSLE doesn't want to go around throwing money at red Congressional Districts in order to 'flip' them.  That's fine with me.
-
-For the moment, I don't really care if Darrell Issa, Mimi Walters, or any other Republican keeps their district or not.  What I am pointing out is that there are a number of districts that, demographically, look like they should be friendly to Planned Parenthood but are currently represented by someone who has voted to defund PP.  
-
 If I were operating under the assumption that the more people know about Planned Parenthood and, more specifically the more people know a person who has been helped by Planned Parenthood, the more likely they are to oppose defunding it, then 2 courses of action seem fruitful 
 
 1. make sure that people in areas with a large 'PP demographic' know what Planned Parenthood services are available to them and how to access those services, and
 
 2. if PP services are not available to populations with a large 'PP demographic' figure out how some of the SSLE gift money can be used to provide such services.
 
+Admittedly, this strategy is a little more of a long game.  The top district on this list (CA-21) is a pretty contested district but the rest of the names are pretty solid red districts (TX-5 with a PVI of R + 17, LA-1 with a PVI of R + 23).  I know I said this wasn't about flipping districts but it is about using leverage...and if you're a Republican repping a district that's R + 23 you probably aren't living in fear of a pro-PP voter uprising (at least in the short-run).
+
+That doesn't mean this strategy doesn't have merit...it just means a little patients might be required.
 
 ### Idea 2: Target potential supporters rather than potential users
 
