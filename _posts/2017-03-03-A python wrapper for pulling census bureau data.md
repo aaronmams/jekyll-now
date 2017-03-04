@@ -16,7 +16,7 @@ if shit worked right you'll probably see something like this:
 
 ![conda screenshot](/images/conda_screenshot.png)
 
-Grab total number of males 18-19 by state and coerce to pandas data frame
+Use the 'get' method to grab total number of males 18-19 by state and coerce to pandas data frame.  You can see other available methods [here](https://pypi.python.org/pypi/census).
 
 ```python
 from census import Census
