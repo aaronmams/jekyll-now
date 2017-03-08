@@ -28,6 +28,9 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 import numpy as np
 
+#enter your API Key
+c = Census("MY_API_KEY")
+
 #total males ages 18-19
 pd.DataFrame(c.acs5.get('B01001_007E', {'for': 'state:*'}))
 
