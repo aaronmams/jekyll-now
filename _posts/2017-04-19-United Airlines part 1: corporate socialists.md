@@ -1,4 +1,4 @@
-There is much to be said about United Airlines recent debaucle wherein they publicly dragged a paying customer off an aircraft, injuring him in the process.  Most of what needs to be said and written has been/will be better expressed by craftier social pundits than me.  There is however one element to this story that I feel I can comment on with some agility...and that I find particularly deplorable:
+There is much to be said about United Airlines [recent debaucle wherein they publicly dragged a paying customer off an aircraft](http://www.cnn.com/2017/04/10/travel/passenger-removed-united-flight-trnd/), injuring him in the process.  Most of what needs to be said and written has been/will be better expressed by craftier social pundits than me.  There is however one element to this story that I feel I can comment on with some agility...and that I find particularly deplorable:
 
 United Airlines created a market-based system (the 'overbook and compensate' protocol) which allowed them to profit from the uncertainties associated with air travel.  They were perfectly happy to use this system to profit at the expense of customers when the system favored them...but when the market that THEY CREATED suddenly spawned conditions that should have allowed travels to profit at United's expense, they quit.  They turned against the market and sent in the jack-booted thugs.  And that is bullshit!      
 
@@ -8,7 +8,7 @@ I'll freely admit that this is a bit of meandering blog post.  It takes a few de
 
 Yes United Airlines was monumentally stupid in their handling of the situation on flight 3411.  But the system we have in place for handling these types of incidents is equally stupid.  Specifically, in the event of an overbooking event and the absence of any passenger volunteering to get bumped in exchange for some penny-ante compensation, airlines are actually allowed to select passengers for removal.  And in the event of such an occurrence, the maximum compensation the a-grieved passenger can demand is 3 times the face value of his/her ticket. That is fucking nuts!
   
-One of the reasons this bother me is the following:
+One of the reasons this bothers me is the following:
 
 Basically, United Airlines operates inside a system which allows them to reap extraordinary profits from risky behavior when the uncertainty goes their way (some passengers on overbooked flights don't show up) while simultaneously protecting them from the consequences of their risky practices when the uncertainty moves against them.
 
@@ -20,11 +20,9 @@ The problem with this UA fiasco from an economic - or even environmental economi
 
 I don't know if I can add any value to this saturated conversation but I'm going to try for a few reasons:
 
-1. I think, in the presence of a lot of outrage about customer treatment and the questionable practice of overbooking in general, there is some economic nuance that I find fascinating that's getting neglected.  Basically, there is a line of thought being peddled on this issue that says, "Ok, well they shouldn't have dragged him off the plane BUT, when nobody volunteered the airline had every right to select passengers for removal. I think we need to have a serious talk about why we (the collective) are so willing to create systems that allow corporate entities like United Airlines to reap unlimited profits from the market at the expense of customers when market conditions favor them...but then cap the loses they have to incur when market conditions turn. 
+1. I spend a lot (almost all) of my time studying public policy and regulated industries.  This nonsense where firms/industries get to exploit extreme gains from poorly regulated markets and at the same time use market interventions to limit losses is everpresent. Industries, particularly those subject to environmental regulation, are pretty predictable in their distribution of 'pro-market' propoganda.  But when it comes right down to it, In my experience, these firms aren't really pro-free market.  They're just pro-market when the resulting allocation of resources allows them to profit at others' expense...and, like everybody else, they want protection from market forces when those forces don't favor them.
 
-2. This hypocrisy comes up a lot in my field.  I spend a lot of time studying public policy and regulated industries.  Industries, particularly those subject to environmental regulation, are pretty predictable in their distribution of 'pro-market' propoganda.  But when it comes right down to it, In my experience, these firms aren't really pro-free market.  They're just pro-market when the resulting allocation of resources allows them to profit at others' expense...and, like everybody else, they want protection from market forces when those forces don't favor them.
-
-3. I think the general practice of overbooking as a strategy for risk management is pretty interesting and I think there's some pretty neat empirical work regarding choice under uncertainty worth taking a look at.
+3. I think the general practice of overbooking as a strategy for risk management is pretty interesting and the process of writing this rant motivated me to go back and read some oldie-but-goodie scholarly work on choice under uncertainty, bounded rationality, and pricing risk.  I've tried to incorporate and annotate these citations...though I freely admit their inclusion is a little forced. 
 
 ## Establishing some important facts
 
