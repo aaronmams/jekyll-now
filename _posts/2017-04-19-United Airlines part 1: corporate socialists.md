@@ -134,9 +134,9 @@ There is some interesting mental calculus that goes on in order to arrive at the
 
 Now, lemme take a second and tie this back to the United Airlines case: when you are at the ballpark you have selected into a group of people that, on average and in that setting, have a higher willingness to pay for beer than they would in another setting.  Vendors at the ballpark know that about you and charge you accordingly for beer.  United Airlines, when they oversold their last flight of the day from Chicago to Louisville, put themselves in a position where it was worth a lot to them to get one of those seats back.  The individuals on that plane knew they were holding a good that, at that moment and to the prospective buyer, was worth a lot...and they priced the good accordingly.  When the ballpark does that to us, we complain to our friends and the other people in line then we:
 
-A. don't buy beer then complain about how much beer costs at the ballpark
-B. buy Bud Light instead of Sierra Nevada then complain about how much beer costs at the ball park
-C. buy Sierra Nevada then complain about how much beer costs at the ballpark.
+* don't buy beer then complain about how much beer costs at the ballpark
+* buy Bud Light instead of Sierra Nevada then complain about how much beer costs at the ball park
+* buy Sierra Nevada then complain about how much beer costs at the ballpark.
 
 What we DON'T do is offer the concession stand guy a 10-spot for the 12 dollar beer then punch him in the face and start a riot when he says no.  
 
