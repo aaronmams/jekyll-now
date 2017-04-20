@@ -20,9 +20,9 @@ The problem with this UA fiasco from an economic - or even environmental economi
 
 I don't know if I can add any value to this saturated conversation but I'm going to try for a few reasons:
 
-1. I spend a lot (almost all) of my time studying public policy and regulated industries.  This nonsense where firms/industries get to exploit extreme gains from poorly regulated markets and at the same time use market interventions to limit losses is everpresent. Industries, particularly those subject to environmental regulation, are pretty predictable in their distribution of 'pro-market' propoganda.  But when it comes right down to it, In my experience, these firms aren't really pro-free market.  They're just pro-market when the resulting allocation of resources allows them to profit at others' expense...and, like everybody else, they want protection from market forces when those forces don't favor them.
+1. I spend a lot (almost all) of my time studying public policy and regulated industries.  This nonsense where firms/industries get to exploit extreme gains from poorly regulated markets and at the same time use market interventions to limit losses is everpresent. Industries, particularly those subject to environmental regulation, are pretty predictable in their distribution of 'pro-market' propoganda.  But when it comes down to it, in my experience, most of these firms aren't really pro-free market.  They're just pro-market when the resulting allocation of resources allows them to profit at others' expense...and, like everybody else, they want protection from market forces when those forces don't favor them.
 
-3. I think the general practice of overbooking as a strategy for risk management is pretty interesting and the process of writing this rant motivated me to go back and read some oldie-but-goodie scholarly work on choice under uncertainty, bounded rationality, and pricing risk.  I've tried to incorporate and annotate these citations...though I freely admit their inclusion is a little forced. 
+3. I think the general practice of overbooking as a strategy for risk management is pretty interesting and the process of writing this rant motivated me to go back and read some oldie-but-goodie scholarly work on choice under uncertainty, bounded rationality, and pricing risk.  I've tried to incorporate and annotate these citations...though I freely admit their inclusion in this post is a little forced. 
 
 ## Establishing some important facts
 
@@ -32,7 +32,7 @@ I don't know if I can add any value to this saturated conversation but I'm going
 
 # Point 1: Capping 'Bumped Passenger Compensation' is Total Bullshit
 
-Let's assume we can all agree that publicly dragging a guy of your airplane was a monumentally stupid thing to do.  As many others have pointed out this action was dumb and deplorable for a host of reasons...the main financial one being that UA is almost sure to pay a huge court settlement (I'm just guessing but it's probably reasonable to think it will be in the high six figures to millions) when they could have just
+Let's assume we can all agree that publicly dragging a guy of your airplane was a monumentally stupid thing to do.  As many others have pointed out, this action was dumb and deplorable for a host of reasons...the main financial one being that UA is almost sure to pay a huge court settlement (I'm just guessing but it's probably reasonable to think it will be in the high six figures to millions) when they could have just
 
 * chartered a private flight for their crew in Chicago that needed to be in Louisville the next day.
 * chartered a private flight for some of the passengers on the plane
@@ -60,7 +60,7 @@ Let's review in somewhat pedantic terms what happened on [UA flight 3411](https:
 
 * United Airlines observers that a certain percentage of seats sold on flights go unfilled for various reasons
 * United formulates a profit maximizing response to this fact that involves selling more seats for a flight than physically exist on that airplane.
-* When United accepts your paymetn of $X$ in exchange for an airline ticket what they are doing is tranferring ownership of a seat on an airplane to you.  It is important to understand that, at this point in the transaction, United Airlines ultimately determines the market.  They may be reacting to conditions of supply and demand present at the moment of purchase...but, in the end, they own the seat and they get to decide if the $X$ you are willing to pay meets their minimum willingness to accept.  
+* When United accepts your payment of $X$ in exchange for an airline ticket what they are doing is tranferring ownership of a seat on an airplane to you.  It is important to understand that, at this point in the transaction, United Airlines ultimately determines the market.  They may be reacting to conditions of supply and demand present at the moment of purchase...but, in the end, they own the seat and they get to decide if the $X$ you are willing to pay meets their minimum willingness to accept.  
 * Implicit in UA's profit maximizing strategy is the possibility that they will 'overbook' the flight.
 * In the case that they overbook, they agree to 'buyback' the seat that they ceased to be owners of when they took your money.  Here it is important to note that, at this point, you get to (should get to) determine the market.
 * On flight 3411 United found themselves in the position of having to buyback some seats on their aircraft.  They reportedly started at 400 clams and found no takers.    
