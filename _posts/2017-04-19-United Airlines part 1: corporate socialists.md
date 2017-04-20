@@ -27,7 +27,7 @@ The problem with this UA fiasco from an economic - or even environmental economi
 
 I don't know if I can add any value to this saturated conversation but I'm going to try for a few reasons:
 
-1. I spend a lot (almost all) of my time studying public policy and regulated industries.  This nonsense where firms/industries get to exploit extreme gains from poorly regulated markets and at the same time use market interventions to limit losses is everpresent. Industries, particularly those subject to environmental regulation, are pretty predictable in their distribution of 'pro-market' propoganda.  But when it comes down to it, in my experience, most of these firms aren't really pro-free market.  They're just pro-market when the resulting allocation of resources allows them to profit at others' expense...and, like everybody else, they want protection from market forces when those forces don't favor them.
+1. I spend a lot (almost all) of my time studying public policy and regulated industries.  This nonsense where firms/industries get to exploit extreme gains from poorly regulated markets and at the same time use market interventions to limit losses is everpresent. Industries, particularly those subject to environmental regulation, are pretty predictable in their distribution of 'pro-market' propoganda.  But when it comes down to it, in my experience, a decent chunk of these firms aren't really pro-free market.  They're just pro-market when the resulting allocation of resources allows them to profit at others' expense...and, like everybody else, they want protection from market forces when those forces don't favor them.
 
 3. I think the general practice of overbooking as a strategy for risk management is pretty interesting and the process of writing this rant motivated me to go back and read some oldie-but-goodie scholarly work on choice under uncertainty, bounded rationality, and pricing risk.  I've tried to incorporate and annotate these citations...though I freely admit their inclusion in this post is a little forced. 
 
@@ -55,7 +55,7 @@ I don't want to denigrate the human instinct that say even if they absolutely HA
 
 At the nub of what happened is this: United Airlines was perfectly happy to participate in a market-based system when market conditions favored them but, when market conditions changed ever-so-slightly, they quite the market, threw up their hands, and sent in the jack-booted thugs.
 
-## Corporate Snowflakes
+## What if I want to buy something I can't afford?
 
 Individuals get a lot of shit from the 'free-marketeers' for wanting special treatment or wanting the market to make allowances for their special circumstances. But what would happen if I tried to do what United Airlines did?
 
@@ -63,7 +63,7 @@ I'm sure there are lots of example that would be relevant here but allow me to s
 
 At that moment the market isn't defined by my willingness to pay, it's defined by the owner's willingness to accept.  What United Airlines thought they should have to pay for a seat on that oversold flight should have been irrelevant.  They should have had to pay what the market determined was fair value for a seat on that flight...which apparently was more than 800 bucks.
 
-## The Play-by-Play
+## The play-by-play
 
 Let's review in somewhat pedantic terms what happened on [UA flight 3411](https://www.usatoday.com/story/news/nation/2017/04/13/united-airlines-david-dao-family-press-conference/100409492/): 
 
@@ -77,15 +77,15 @@ Let's review in somewhat pedantic terms what happened on [UA flight 3411](https:
 * United reportedly upped the ante to 800 bucks and still found no takers.  At this point, the point that irks me more than probably anything else in this story, they stopped bidding.  
 * In plain language, United Airlines didn't think they should have to pay more than 800 for a seat on that plane.  
 
-In equally plain language: THAT'S BULLSHIT! Here is a short list of people who are routinely called socialists, communists, and lib snowflakes for making the exact same claim that United Airlines implicitly made when they refused to pay more than 800 large to buyback a seat they needed (i.e. "the price is more than I am willing to/able to pay, but the good is something I need really bad so somebody needs to do something!"):
+In equally plain language: THAT'S BULLSHIT! Here is a short list of people who are routinely called socialists/communist for making the exact same claim that United Airlines implicitly made when they refused to pay more than 800 large to buyback a seat they needed (i.e. "the price is more than I am willing to/able to pay, but the good is something I need really bad so somebody needs to do something!"):
 
 * Bernie Sanders supporters who believe affordable health care is a right
 * College students protesting the high cost of tuition, and rapid rates of increase in tuition, at universities across the U.S.
 * Affordable housing advocates who want to live in expensive zip codes without paying market rates.
 
-I know this last bit is touch off-topic but felt compelled to include it because I've seen a number of media outlets (mostly the kooky right wing press) talking about how, "Well sure, United handled the situation poorly but...they had every right to remove passengers from the plane because they offered fair compensation according to their contract of carriage and nobody accepted." 
+I know this last bit is touch off-topic but felt compelled to include it because I've seen a few argument with the flavor of, "Well sure, United handled the situation poorly but...they had every right to remove passengers from the plane because they offered fair compensation according to their contract of carriage and nobody accepted." 
 
-Again I say BULLSHIT!  The people making these claims are often the people who delight in defending markets when markets are pricing marginalize people out of important things like prescription drugs...but God forbid market forces cut into corporate profits!  
+Again I say BULLSHIT!  If we are going to insist on defending markets when markets are pricing marginalize people out of important things like prescription drugs...we shouldn't get too put-out when market conditions occassionally cut into corporate profits.  
 
 If you only favor markets when markets favor you then you're not a free-marketeer, you're just another asshole trying to rig a game in your favor.  That's fine, I don't expect anything more or anything less from corporate enterprise.  But we all need to be honest and clear about what happened on UA flight 3411:
 
@@ -183,8 +183,9 @@ In California, for a surprisingly long time, agricultural firms were not require
 This wouldn't sit so poorly with me except for the fact that California Farmers had no trouble accepting a 2 billion dollar gift from the government in the form of the Central Valley Project (the CVP cost around 3 billion and irrigation districts served by the project were expected to pay back 1 billion within 50 years of construction...in the form of a principal-only loan of course).  
 
 I know this seems like a reach but I don't really think it is.  In arguing against imposing minimum wage compliance on farms, the California Farm Bureau made the case that farmers shouldn't have to bear the cost of artificial distortions to the labor market...that the agricultural labor market should be unregulated and the free-market should be allowed to efficiently allocate resources. Ok.  BUT...in accepting a massive government handout to build irrigation infrastructure the exact opposite case was made.  Specifically, if forced to participate in capital markets as they were in 1933, California Farmers would never have been able to afford the critical infrastructure that delivers water (their primary productive input) to the farms.  So on the one hand they wanted to be free to profit from an unregulated/poorly regulated labor market but, on the other hand, they wanted protection and relief from a capital market that put necessary infrastructure totally out of reach.  In short, they wanted exactly what United Airlines wants: to participate and profit from the parts of a market that favor them while reaping the benefits of intervention in the parts of the market that don't. 
-
-
+ 
+**Side Note**: 
+I know it probably feels like I beat-up on California Ag a lot.  I'm not at all antagonistic to CA agriculture and most of the irrigation districts I work with are centered, balanced business people.  However, thier lobbiest have a habit of picking fights over things like minimum wage compliance and overtime pay that I find hypocritical. 
 
 
 
