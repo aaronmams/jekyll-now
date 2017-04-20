@@ -34,9 +34,9 @@ I don't know if I can add any value to this saturated conversation but I'm going
 
 Let's assume we can all agree that publicly dragging a guy of your airplane was a monumentally stupid thing to do.  As many others have pointed out this action was dumb and deplorable for a host of reasons...the main financial one being that UA is almost sure to pay a huge court settlement (I'm just guessing but it's probably reasonable to think it will be in the high six figures to millions) when they could have just
 
-A. chartered a private flight for their crew in Chicago that needed to be in Louisville the next day.
-B. chartered a private flight for some of the passengers on the plane
-C. get an Uber for the guy or the flight crew
+* chartered a private flight for their crew in Chicago that needed to be in Louisville the next day.
+* chartered a private flight for some of the passengers on the plane
+* get an Uber for the guy or the flight crew
 
 I'm putting aside the main issue of how much easier it would have been to do one of the three things above (or almost literally ANYTHING other than what they actually did)...because, as I mentioned above, this meta-issue is better left to someone with more expertise in law, marketing, PR, etc.  What I want to focus on is why United Airlines didn't do the one thing that their practice of overbooking and (occasionally) bribing passengers to take another flight was actually set up to do:
 
@@ -50,7 +50,9 @@ At the nub of what happened is this: United Airlines was perfectly happy to part
 
 Individuals get a lot of shit from the 'free-marketeers' for wanting special treatment or wanting the market to make allowances for their special circumstances. But what would happen if I tried to do what United Airlines did?
 
-I'm sure there are lots of example that would be relevant here but allow me to start with the one that popped into my head when I first thought about this: Nobody wanted to get off that plane for 800 bucks.  When UA oversold that flight, in my mind, they endowed people with a right.  They sold a service.  They're own practices and precedent dictated that, when such things occur, UA is obligated to buy back that right.  The friction here came from the fact that when UA went to buyback some of the rights they sold, they found that the market had changed dramatically from the market under which they sold the original rights.  Shit happens.  If I sell my house for 800,000 and then find out that the Real Estate market is so hot that I can't buy a comparable house for 800,000 I don't have the right to go into the house I just sold to some other people and kick them out because they refuse to accept my offer to buy my house back for 800,000.
+I'm sure there are lots of example that would be relevant here but allow me to start with the one that popped into my head when I first thought about this: Nobody wanted to get off that plane for 800 bucks.  When UA oversold that flight, in my mind, they endowed people with a right.  They sold a service.  They're own practices and precedent dictated that, when such things occur, UA is obligated to buy back that right.  The friction here came from the fact that when UA went to buyback some of the rights they sold, they found that the market had changed dramatically from the market under which they sold the original rights.  Shit happens!  If I sell my house for 800,000 and then find out that the Real Estate market is so hot that I can't buy a comparable house for 800,000 I don't have the right to go into the house I just sold to some other people and kick them out because they refuse to accept my offer to buy my house back for 800k/850k/etc.  
+
+At that moment the market isn't defined by my willingness to pay, it's defined by the owner's willingness to accept.  What United Airlines thought they should have to pay for a seat on that oversold flight should have been irrelevant.  They should have had to pay what the market determined was fair value for a seat on that flight...which apparently was more than 800 bucks.
 
 ## The Play-by-Play
 
@@ -58,13 +60,13 @@ Let's review in somewhat pedantic terms what happened on [UA flight 3411](https:
 
 * United Airlines observers that a certain percentage of seats sold on flights go unfilled for various reasons
 * United formulates a profit maximizing response to this fact that involves selling more seats for a flight than physically exist on that airplane.
-* When United accepts your $D$ in exchange for an airline ticket what they are doing is tranferring ownership of a seat on an airplane to you.  It is important to understand that, at this point in the transaction, United Airlines ultimately determines the market.  They may be reacting to conditions of supply and demand present at the moment of purchase...but, in the end, they own the seat and they get to decide if the $D$ you are willing to pay meets their minimum willingness to accept.  
+* When United accepts your paymetn of $X$ in exchange for an airline ticket what they are doing is tranferring ownership of a seat on an airplane to you.  It is important to understand that, at this point in the transaction, United Airlines ultimately determines the market.  They may be reacting to conditions of supply and demand present at the moment of purchase...but, in the end, they own the seat and they get to decide if the $X$ you are willing to pay meets their minimum willingness to accept.  
 * Implicit in UA's profit maximizing strategy is the possibility that they will 'overbook' the flight.
 * In the case that they overbook, they agree to 'buyback' the seat that they ceased to be owners of when they took your money.  Here it is important to note that, at this point, you get to (should get to) determine the market.
-* On flight 3411 United found themselves in the position of having to buyback some seats on their aircraft.  They reportedly started at $400 and found no takers.  
-* I don't know what people paid for their seats on UA flight 3411 but [comparable tickets can be found on Kayak](https://www.kayak.com/flights/SDF-CHI/2017-05-24/2017-05-26) for around $300.  So, what United Airlines was faced with on Sunday, April 9, was a market that had changed.  They probably sold a bunch of seats on that flight for $300 bucks then found out what the rest of us deal with every time we try to buy a Big Mac in an airport or a beer at a baseball game: markets aren't static.
-* United reportedly upped the ante to $800 bucks and still found no takers.  At this point, the point that irks me more than probably anything else in this story, they stopped bidding.  
-* In plain language, United Airlines didn't think they should have to pay more than $800 for a seat on that plane.  
+* On flight 3411 United found themselves in the position of having to buyback some seats on their aircraft.  They reportedly started at 400 clams and found no takers.    
+* I don't know what people paid for their seats on UA flight 3411 but [comparable tickets can be found on Kayak](https://www.kayak.com/flights/SDF-CHI/2017-05-24/2017-05-26) for around 300.  So, what United Airlines was faced with on Sunday, April 9, was a market that had changed.  They probably sold a bunch of seats on that flight for $300 bucks then found out what the rest of us deal with every time we try to buy a Big Mac in an airport or a beer at a baseball game: markets aren't static.
+* United reportedly upped the ante to 800 bucks and still found no takers.  At this point, the point that irks me more than probably anything else in this story, they stopped bidding.  
+* In plain language, United Airlines didn't think they should have to pay more than 800 for a seat on that plane.  
 
 In equally plain language: THAT'S BULLSHIT! Here is a short list of people who are routinely called socialists, communists, and lib snowflakes for making the exact same claim that United Airlines implicitly made when they refused to pay more than 800 large to buyback a seat they needed (i.e. "the price is more than I am willing to/able to pay, but the good is something I need really bad so somebody needs to do something!"):
 
@@ -72,7 +74,7 @@ In equally plain language: THAT'S BULLSHIT! Here is a short list of people who a
 * College students protesting the high cost of tuition, and rapid rates of increase in tuition, at universities across the U.S.
 * Affordable housing advocates who want to live in expensive zip codes without paying market rates.
 
-I know this last bit is touch off-topic but felt compelled to include it because I've seen a number of media outlets (mostly the kooky right wing press) talking about how, "Well sure, United handled the situation poorly but...they had every right to remove passengers from the plane because they offered fair compensation and nobody accepted." 
+I know this last bit is touch off-topic but felt compelled to include it because I've seen a number of media outlets (mostly the kooky right wing press) talking about how, "Well sure, United handled the situation poorly but...they had every right to remove passengers from the plane because they offered fair compensation according to their contract of carriage and nobody accepted." 
 
 Again I say BULLSHIT!  The people making these claims are often the people who delight in defending markets when markets are pricing marginalize people out of important things like prescription drugs...but God forbid market forces cut into corporate profits!  
 
@@ -139,9 +141,14 @@ What we DON'T do is offer the concession stand guy a 10-spot for the 12 dollar b
 
 For anyone interested in a shallow dive into some of the ways economists have extended classical micro-economic theory to address complex choice occassions here are some suggestions:
 
-[Simonson and Tversky, 1992, *Choice in Context*](http://search.proquest.com/docview/1297379782?pq-origsite=gscholar).  
+[Simonson and Tversky, 1992, *Choice in Context*](http://search.proquest.com/docview/1297379782?pq-origsite=gscholar).  Whether is is beers at a ballpark or seats on airplane, context matters.  If I prefer Coke to Pepsi it is tempting to think that when faced with a choice between a 12 oz can of Pepsi for 1 dollar and a 60 oz bottle of Coke for 5 dollars, I should prefer the Coke because they are the same unit price.  But it's pretty easy to imagine some circumstances under which I would chose the Pepsi (presumably because I just don't want 60 oz of soda period).  Context matters.  
 
-[Richard Thaler, 1985, *Mental Accounting and Consumer Choice*](http://pubsonline.informs.org/doi/abs/10.1287/mksc.4.3.199).  Richard Thaler, Amos Tversky and Daniel Kahneman, are 3 pretty big names in modern micro-economics.  They've all made substantial contributions to the integration of behavioral psychology into economic models of choice.   
+[Richard Thaler, 1985, *Mental Accounting and Consumer Choice*](http://pubsonline.informs.org/doi/abs/10.1287/mksc.4.3.199).  Richard Thaler, Amos Tversky and Daniel Kahneman, are 3 pretty big names in modern micro-economics.  They've all made substantial contributions to the integration of behavioral psychology into economic models of choice.  You could probably Google-Scholar any of those names and read the first thing that comes up and find yourself into something pretty interesting.  I like this paper because I think it relates pretty directly to how an individual in possession of airplane seat might price that good for a buyback auction.  From Thaler:
+
+*Consider the following anecdotes:
+1. Mr. and Mrs. L and Mr. and Mrs. H went on a fishing trip in the northwest and caught some salmon.  They packed the fish and sent it home on an airline, but the fish were lost in transit.  They received 300 from the airline.  The couples take the money, go out to dinner and spent 225.  They had never spent that much at a restaurant before...*
+
+*All organizations, from General Motors down to single person households, have explicit and/or implicit accounting systems.  The account systems often influence decisions in unexpected ways.*
 
 [Stigler and Becker, 1977, *De Gustibus Non Disputandum Est*](http://www.jstor.org/stable/pdf/1807222.pdf).  I like this paper because it's a little bit of a defence of classical microeconomic theory.  The theory of [Bounded Rationality](https://en.wikipedia.org/wiki/Bounded_rationality) has certainly revolutionized how we think about complicated choice processes but, in my opinion, the recent explosion of behavioral psychology/experimental economics has led some people to underestimate the power of classical micro-economic theory.  Here Stigler and Becker demonstrate how phenomenon (persistent drug use/addiction, susceptibility to advertising) once thought to violate important assumptions of micro-economic models can actually be explained quite robustly using the generalized calculus of utility maximizing behavior.  
 
@@ -153,7 +160,7 @@ For anyone interested in a shallow dive into some of the ways economists have ex
 
 # Point #2: This isn't an isolated incident
 
-I don't have a ton of meat to offer here but I do want to throw out a few examples of other firms/industries that have successfully conned us into creating, or lobbied hard for, systems where they get all the rewards of a market but are insulted from the adverse market conditions
+I don't have a ton of meat to offer here but I do want to throw out a few examples of other firms/industries that have successfully conned us into creating, or lobbied hard for, systems where they get all the rewards of a market but are insulted from the adverse market conditions:
 
 ## 'Too Big to Fail' Financial Institutions.  
 
