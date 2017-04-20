@@ -52,7 +52,7 @@ At the nub of what happened is this: United Airlines was perfectly happy to part
 
 Individuals get a lot of shit from the 'free-marketeers' for wanting special treatment or wanting the market to make allowances for their special circumstances. But what would happen if I tried to do what United Airlines did?
 
-I'm sure there are lots of example that would be relevant here but allow me to start with the one that popped into my head when I first thought about this: Nobody wanted to get off that plane for $800 bucks.  When UA oversold that flight, in my mind, they endowed people with a right.  They sold a service.  They're own practices and precedent dictated that, when such things occur, UA is obligated to buy back that right.  The friction here came from the fact that when UA went to buyback some of the rights they sold, they found that the market had changed dramatically from the market under which they sold the original rights.  Shit happens.  If I sell my house for 800,000 and then find out that the Real Estate market is so hot that I can't buy a comparable house for 800,000 I don't have the right to go into the house I just sold to some other people and kick them out because they refuse to accept my offer to buy my house back for 800,000.
+I'm sure there are lots of example that would be relevant here but allow me to start with the one that popped into my head when I first thought about this: Nobody wanted to get off that plane for 800 bucks.  When UA oversold that flight, in my mind, they endowed people with a right.  They sold a service.  They're own practices and precedent dictated that, when such things occur, UA is obligated to buy back that right.  The friction here came from the fact that when UA went to buyback some of the rights they sold, they found that the market had changed dramatically from the market under which they sold the original rights.  Shit happens.  If I sell my house for 800,000 and then find out that the Real Estate market is so hot that I can't buy a comparable house for 800,000 I don't have the right to go into the house I just sold to some other people and kick them out because they refuse to accept my offer to buy my house back for 800,000.
 
 ## The Play-by-Play
 
@@ -68,7 +68,7 @@ Let's review in somewhat pedantic terms what happened on [UA flight 3411](https:
 * United reportedly upped the ante to $800 bucks and still found no takers.  At this point, the point that irks me more than probably anything else in this story, they stopped bidding.  
 * In plain language, United Airlines didn't think they should have to pay more than $800 for a seat on that plane.  
 
-In equally plain language: THAT'S BULLSHIT! Here is a short list of people who are routinely called socialists, communists, and lib snowflakes for making the exact same claim that United Airlines implicitly made when they refused to pay more than $800 to buyback a seat they needed (i.e. "the price is more than I am willing to/able to pay, but the good is something I need really bad so somebody needs to do something!"):
+In equally plain language: THAT'S BULLSHIT! Here is a short list of people who are routinely called socialists, communists, and lib snowflakes for making the exact same claim that United Airlines implicitly made when they refused to pay more than 800 large to buyback a seat they needed (i.e. "the price is more than I am willing to/able to pay, but the good is something I need really bad so somebody needs to do something!"):
 
 * Bernie Sanders supporters who believe affordable health care is a right
 * College students protesting the high cost of tuition, and rapid rates of increase in tuition, at universities across the U.S.
@@ -89,7 +89,7 @@ And now they are getting royally FUCKED and I'm loving it!
 
 ### Tangent #1: rational preferences
 
-I've seen a few media outlets suggest that ticketed passengers in UA flight 3411 were acting 'irrationally' by not accepting $800 cash money and an offer to take a different flight.  This line of reasoning seems to be based on the fact that some passengers probably paid less than $400 for their tickets...so the buyback offer was more than 2 times the face value of some peoples' tickets.  
+I've seen a few media outlets suggest that ticketed passengers in UA flight 3411 were acting 'irrationally' by not accepting 800 bucks cash money and an offer to take a different flight.  This line of reasoning seems to be based on the fact that some passengers probably paid less than 400 for their tickets...so the buyback offer was more than 2 times the face value of some peoples' tickets.  
 
 That's irrelevant.  I'm gonna have to be the jargon police here: rationality, as it relates to preferences, only requires completeness and transitivity.  The most exhaustive discussion you are likely to find on the axioms of choice viz-a-viz preference relations is in [Mas-Collel, Whinston, and Green](http://www.hawkinqian.com/uploads/media/2014/09/Microeconomic_Theory.pdf), a book that every economist I know hated...but is actually pretty sweet when the pressure of an impending qualifying exam is removed from the environment.  
 
@@ -111,7 +111,7 @@ Completeness simply means that I am capable of forming a binary preference relat
 
 is a complete and transitive set of preferences.
 
-Putting this into the terms of our airline example: no passengers were willing to give up their seat for $400 dollars.  This means all passengers preferred travel from Chicago to Louisville on flight 3411 on April 9th, to $400 dollars.  Since the price was upped to $800 bucks without any takers, this means that all passengers also preferred travel from Chicago to Louisville on flight 3411 on April 9th to $800 dollars.  Rationality has nothing to do with the price paid for the ticket.  As long as: 
+Putting this into the terms of our airline example: no passengers were willing to give up their seat for 400 dollars.  This means all passengers preferred travel from Chicago to Louisville on flight 3411 on April 9th, to 400 dollars.  Since the price was upped to 800 bucks without any takers, this means that all passengers also preferred travel from Chicago to Louisville on flight 3411 on April 9th to 800 dollars.  Rationality has nothing to do with the price paid for the ticket.  As long as: 
 
 1. none of those passengers who turned down $400 and $800 would have accepted $600 then preferences were transitive, and
 2. as long as, theoretically, those passengers were capable of saying 'yes' or 'no' to buyback amounts between the low offer of $400 and the high offer of $800, then preferences were complete.
@@ -127,7 +127,7 @@ As a bonus here allow me to also recommend [Paul Samuelson's Foundations of Econ
 
 The answer is both interesting and pretty mundane.  In the simplest, most complete terms, a 16 oz Sierra Nevada at AT&T Park in San Francisco costs roughly double what 16 oz of Sierra Nevada purchased at the Safeway right outside the ballpark would because people at the ballpark are willing to pay more.  
 
-While it's true that there is limited competition inside the ballpark, not even monopolists like to lose money.  Bud Light costs $0.50/oz and Sierra Nevada costs $0.75/oz at AT&T Park for this simple reason that people will pay that much to drink beer and watch a Giant's game.
+While it's true that there is limited competition inside the ballpark, not even monopolists like to lose money.  Bud Light costs 50 cents per oz and Sierra Nevada costs 75 cents per oz at AT&T Park for this simple reason that people will pay that much to drink beer and watch a Giant's game.
 
 There is some interesting mental calculus that goes on to arrive at those valuations.  For example, for me, beer and live baseball are so complementary that my willingness to pay for live baseball without beer is pretty close to 0.  Stated another way, the cost of beer is 'baked in' to the ticket price for me.  If the price of the ticket compromises my ability to purchase two beers of a quality no less than Sierra Nevada, than I won't purchase the ticket.
 
@@ -137,7 +137,7 @@ A. don't buy beer then complain about how much beer costs at the ballpark
 B. buy Bud Light instead of Sierra Nevada then complain about how much beer costs at the ball park
 C. buy Sierra Nevada then complain about how much beer costs at the ballpark.
 
-What we DON'T do is offer the concession stand guy $10 for the $12 beer then punch him in the face and start a riot when he says no.  
+What we DON'T do is offer the concession stand guy a 10-spot for the 12 dollar beer then punch him in the face and start a riot when he says no.  
 
 For anyone interested in a shallow dive into some of the ways economists have extended classical micro-economic theory to address complex choice occassions here are some suggestions:
 
