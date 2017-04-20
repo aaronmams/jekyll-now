@@ -146,8 +146,8 @@ For anyone interested in a shallow dive into some of the ways economists have ex
 
 [Richard Thaler, 1985, *Mental Accounting and Consumer Choice*](http://pubsonline.informs.org/doi/abs/10.1287/mksc.4.3.199).  Richard Thaler, Amos Tversky and Daniel Kahneman, are 3 pretty big names in modern micro-economics.  They've all made substantial contributions to the integration of behavioral psychology into economic models of choice.  You could probably Google-Scholar any of those names and read the first thing that comes up and find yourself into something pretty interesting.  I like this paper because I think it relates pretty directly to how an individual in possession of airplane seat might price that good for a buyback auction.  From Thaler:
 
-*Consider the following anecdotes:
-1. Mr. and Mrs. L and Mr. and Mrs. H went on a fishing trip in the northwest and caught some salmon.  They packed the fish and sent it home on an airline, but the fish were lost in transit.  They received 300 from the airline.  The couples take the money, go out to dinner and spent 225.  They had never spent that much at a restaurant before...*
+*Consider the following anecdotes:*
+*1. Mr. and Mrs. L and Mr. and Mrs. H went on a fishing trip in the northwest and caught some salmon.  They packed the fish and sent it home on an airline, but the fish were lost in transit.  They received 300 from the airline.  The couples take the money, go out to dinner and spent 225.  They had never spent that much at a restaurant before...*
 
 *All organizations, from General Motors down to single person households, have explicit and/or implicit accounting systems.  The account systems often influence decisions in unexpected ways.*
 
