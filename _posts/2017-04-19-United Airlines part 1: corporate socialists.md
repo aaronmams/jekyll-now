@@ -93,6 +93,8 @@ I've seen a few media outlets suggest that ticketed passengers in UA flight 3411
 
 That's irrelevant.  I'm gonna have to be the jargon police here: rationality, as it relates to preferences, only requires completeness and transitivity.  The most exhaustive discussion you are likely to find on the axioms of choice viz-a-viz preference relations is in [Mas-Collel, Whinston, and Green](http://www.hawkinqian.com/uploads/media/2014/09/Microeconomic_Theory.pdf), a book that every economist I know hated...but is actually pretty sweet when the pressure of an impending qualifying exam is removed from the environment.  
 
+For those that enjoy the compact, efficient language of mathematics I also highly recommend [Paul Samuelson's *Foundations of Economic Analysis*](http://www.hup.harvard.edu/catalog.php?isbn=9780674313033), Chapters 1-3.
+
 Transitivity means that:
 
 Suppose I'm asked to form a preference relation between three beers Green Flash West Coast IPA, El Segundo Brewing Mayberry IPA, and Knee Deep Brewing Citra Pale Ale.  
@@ -113,23 +115,22 @@ is a complete and transitive set of preferences.
 
 Putting this into the terms of our airline example: no passengers were willing to give up their seat for 400 dollars.  This means all passengers preferred travel from Chicago to Louisville on flight 3411 on April 9th, to 400 dollars.  Since the price was upped to 800 bucks without any takers, this means that all passengers also preferred travel from Chicago to Louisville on flight 3411 on April 9th to 800 dollars.  Rationality has nothing to do with the price paid for the ticket.  As long as: 
 
-1. none of those passengers who turned down $400 and $800 would have accepted $600 then preferences were transitive, and
-2. as long as, theoretically, those passengers were capable of saying 'yes' or 'no' to buyback amounts between the low offer of $400 and the high offer of $800, then preferences were complete.
+1. none of those passengers who turned down 400 and 800 would have accepted 600 then preferences were transitive, and
+2. as long as, theoretically, those passengers were capable of saying 'yes' or 'no' to buyback amounts between the low offer of 400 and the high offer of 800, then preferences were complete.
 
 As long as preferences were complete and transitive, they were rational.
 
-This is important because, to me at least, one of the great strengths of an economic approach to understanding human behavior is that economists don't like to make normative judgements about people's preferences.  Whether someone preferes brussels sprouts to strawberries or beets to blueberries is of absolutely no consequence to me: as long as they act on those preferences consistently then they are a completely rational economic actor, making it possible for me to mathematically represent their behavior. 
-
-As a bonus here allow me to also recommend [Paul Samuelson's Foundations of Economic Analysis](https://www.amazon.com/Foundations-Economic-Analysis-Paul-Samuelson/dp/0689701772).  
-
+This is important because, to me at least, one of the great strengths of an economic approach to understanding human behavior is that economists don't like to make normative judgements about people's preferences.  Whether someone preferes brussels sprouts to strawberries or beets to blueberries is of absolutely no consequence to me: as long as they act on those preferences in some kind of predictable manner then they are a completely rational economic actor, making it possible for me to mathematically represent their behavior. 
 
 ### Tangent #2: Why do beers cost so much at the ballpark?
 
 The answer is both interesting and pretty mundane.  In the simplest, most complete terms, a 16 oz Sierra Nevada at AT&T Park in San Francisco costs roughly double what 16 oz of Sierra Nevada purchased at the Safeway right outside the ballpark would because people at the ballpark are willing to pay more.  
 
-While it's true that there is limited competition inside the ballpark, not even monopolists like to lose money.  Bud Light costs 50 cents per oz and Sierra Nevada costs 75 cents per oz at AT&T Park for this simple reason that people will pay that much to drink beer and watch a Giant's game.
+While it's true that there is limited competition inside the ballpark, not even monopolists like to lose money.  Bud Light costs 50 cents per oz and Sierra Nevada costs 75 cents per oz at AT&T Park for this simple reason that people will pay that much to drink beer and watch a Giant's game....that's the mundane part.
 
-There is some interesting mental calculus that goes on to arrive at those valuations.  For example, for me, beer and live baseball are so complementary that my willingness to pay for live baseball without beer is pretty close to 0.  Stated another way, the cost of beer is 'baked in' to the ticket price for me.  If the price of the ticket compromises my ability to purchase two beers of a quality no less than Sierra Nevada, than I won't purchase the ticket.
+Here's the interesting part:
+
+There is some interesting mental calculus that goes on in order to arrive at the different valuations people can have for the same good in different context.  For example, for me, beer and live baseball are so complementary that my willingness to pay for live baseball without beer is pretty close to 0.  Stated another way, the cost of beer is 'baked in' to the ticket price for me.  If the price of the ticket compromises my ability to purchase two beers of a quality no less than Sierra Nevada, than I won't purchase the ticket.
 
 Now, lemme take a second and tie this back to the United Airlines case: when you are at the ballpark you have selected into a group of people that, on average and in that setting, have a higher willingness to pay for beer than they would in another setting.  Vendors at the ballpark know that about you and charge you accordingly for beer.  United Airlines, when they oversold their last flight of the day from Chicago to Louisville, put themselves in a position where it was worth a lot to them to get one of those seats back.  The individuals on that plane knew they were holding a good that, at that moment and to the prospective buyer, was worth a lot...and they priced the good accordingly.  When the ballpark does that to us, we complain to our friends and the other people in line then we:
 
