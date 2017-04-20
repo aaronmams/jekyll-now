@@ -28,7 +28,7 @@ I don't know if I can add any value to this saturated conversation but I'm going
 
 ## Establishing some important facts
 
-1. Fact #1: Facing a full flight and the need to free up a couple seats for a flight crew that was needed in Louisville that night, United Airlines began offering monetary incentives for passengers to give up their seat and take a different flight.  After finding no takers on their offer at \$400, they upped their bid to $800 then, inexplicably, stopped.
+1. Fact #1: Facing a full flight and the need to free up a couple seats for a flight crew that was needed in Louisville that night, United Airlines began offering monetary incentives for passengers to give up their seat and take a different flight.  After finding no takers on their offer at \$400, they upped their bid to \$800 then, inexplicably, stopped.
 
 2. Fact #2: I'm not a lawyer but, as I understand it, they are actually legally allowed to 'select' people for removal and compensate them up to (but no more than mind you) 3 times the face value of the ticket.
 
