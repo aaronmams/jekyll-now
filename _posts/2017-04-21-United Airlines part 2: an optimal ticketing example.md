@@ -1,3 +1,9 @@
+My [last post on airline overbooking](https://aaronmams.github.io/United-Airlines-part-1-corporate-socialists/) was kind of a semi-structured rant.  I'd like to believe a few people read it because I think, even when I'm ranting I'm still capable of making a few interesting points.  But I'm guessing there's a good chance a lot of you opened that post, saw it was just a long rant, and moved on.  I ain't mad at 'cha.  I might have done the same thing.
+
+This post might have more universal appeal.  Here I'm going to present my first-cut, really simple version of the airline optimal ticketing problem.  As I discussed in my last post, airlines know how many seats they have on any given plane and they generally have some idea of how likely it is that all ticketed passengers will show up.  Overbooking (selling more tickets than you have seats) is a pretty straightforward way for airlines to maximize expected profits given the uncertainty surrounding how many people will show up for a given flight.  
+
+In this post I'm going to propose some ad-hoc but sensible parameter values and experiment with different levels of payoffs and uncertainties that affect the number of tickets an airline should sell in order to maximize expected profits. 
+
 ## An analytical model of overbooking
 
 Let's start with a really simple model of optimal ticketing.  Let's establish the conceptual facts first:
@@ -120,7 +126,7 @@ Why is overbooking such an attractive strategy with these parameters?  Well, one
 
 To see why this is, think about flipping a coin.  Instead of a fair coin that has a 50/50 shot of coming up heads, assume the probability of a coin flip producing 'Heads' is 0.98.  Now ask: *if we flipped this coin 30 times what is the probability that we would get 30 heads in a row?*
 
-$$p(flip 1 = H & flip 2 = H...& flip 30 = H)=p(flip 1 = H)*p(flip 2 = H)*...*p(flip 30 = H)$$
+p(flip 1 = H AND flip 2 = H...AND flip 30 = H)=p(flip 1 = H)p(flip 2 = H)...p(flip 30 = H)
 
 Based on our probability of any flip coming up heads of 0.98 the probability of 30 heads in a row is:
 
@@ -128,7 +134,7 @@ $$0.98*0.98*0.98...*0.98=0.98^{30}=0.545$$
 
 ### What is the empty seat cost is REALLY low?
 
-In the last example we found that with a probability that each individual will show up for his/her flight of 0.98 and an empty seat cost of $\frac{1/2}{ticket price}$ the only way it is optimal to not overbook is if the overbooking penalty is astronomically high (like between 10 and 15 times the ticket price).
+In the last example we found that with a probability that each individual will show up for his/her flight of 0.98 and an empty seat cost of $\frac{1}{2}ticket price$ the only way it is optimal to not overbook is if the overbooking penalty is astronomically high (like between 10 and 15 times the ticket price).
 
 Now I want to do a different sensitivity analysis and ask, *if the empty seat cost is really low, is it ever optimal to not overbook based on a passenger 'show-up' probability of 0.98?*
 
@@ -156,8 +162,11 @@ I thought it might be interesting to look at what probabilities we would need in
 For this I used a decent sized list of probabilities that varied by only small amounts.  The reason for this is that very small changes in the individual 'arrival probability' can produce pretty large changes in 'full flight' probability.  Just to illustrate this point a little more, here is a short list of how the arrival probability maps to odds of having a full flight:
 
 $$p=0.98, p^{30} = 0.5454$$
+
 $$p=0.985, p^{30} = 0.635$$
+
 $$p=0.99, p^{30} = 0.739$$
+
 $$p=0.995, p^{30} = 0.86$$
 
 ```R
@@ -218,4 +227,5 @@ This analysis could be made considerably more rigorous with a few tweaks:
 * airlines also don't know exactly how many seats they can sell on any flight.  They do (probably) have some idea of the elasticity of demand for tickets on a particular flight with respect to price.  That is, they have some idea of how responsive demand.  To make this example really cool we could build in some uncertainty on the part of the airline regarding how many tickets they can for a flight at a certain price.  
 * An enterprising young economist could also probably set up a cool simulation experiment by making the overbooking penalty uncertain.  Specifically, I think it might be cool to let the overbooking penalty have some fat tails so that it was low on average but had some non-zero probabilities of extreme penalties.  It might be interesting to see how that impacts the airlines expected profit maximization problem.
 
-Even as an overly simplistic toy problem I think what I have provided here has some value.  I was just thinking this morning that I can't even remember being on a flight where there wasn't some call for volunteers to give up a seat at the gate.  Meaning, my priors were that overbooking was a really, really common strategy.  I think my example here shows why: the probability of each individuals showing up for a flight they have a ticket for has to be really close to 1 (like 0.995, 0.997) in order for overbooking to be suboptimal.  
+Even as an overly simplistic toy problem I think what I have provided here has some value.  I was just thinking this morning that I can't even remember being on a flight where there wasn't some call for volunteers to give up a seat at the gate.  Meaning, my priors were that overbooking was a really, really common strategy.  I think my example here shows why: the probability of each individuals showing up for a flight they have a ticket for has to be really close to 1 (like 0.995, 0.997) in order for overbooking to be suboptimal....and there are just too many scenarios that can lead to a passenger with a ticket not showing up for the flight they paid for (I would guess that the leading cause of missed flights is people with connecting flights whose initial flight gets delayed for some reason).
+
