@@ -33,11 +33,11 @@ The airline's profit from selling $n$ seats is composed of three main parts:
 
 The profit from selling $n$ tickets is:
 
-$$\pi(n) = nt, if k=s$$
+$$\pi(n) = nt$$ if $$k=s$$
 
-$$\pi(n) = nt - (k-n)*penalty, if k>s$$
+$$\pi(n) = nt - (k-n)*penalty$$ if $$k > s$$
 
-$$\pi(n) = nt - (s-k)*c, if k<s$$
+$$\pi(n) = nt - (s-k)*c$$ if $$k < s$$
 
 We can model the probability of all $n$ ticketed passengers showing up for a flight as a binomial distribution.  This approach essentially treats every individual as his/her own independent experiment and says that if the probability of a success (showing up for the flight) on any one trial is $p$, then the probability that we will get $k$ successes in $n$ trials is:
 
@@ -147,9 +147,7 @@ ggplot(z,aes(x=n,y=EV,color=factor(empty_seat_cost))) + geom_line() + geom_point
 
 ```
 
-
-INSERT PLOT HERE
-
+![overbooking 2](\images\overbooking2.png)
 
 ## What if we vary the probabilities?
 
@@ -203,7 +201,7 @@ ggplot(prob.filter, aes(x=empty_seat_cost, bribe)) + geom_tile(aes(fill = p),
 ```
 
 
-INSERT TILE PLOT HERE
+![overbooking 3](\images\overbooking3.png)
 
 Here are a couple of quick observations on the tile plot:
 
