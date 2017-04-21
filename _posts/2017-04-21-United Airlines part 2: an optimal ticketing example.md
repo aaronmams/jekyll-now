@@ -138,7 +138,7 @@ Based on our probability of any flip coming up heads of 0.98 the probability of 
 
 $$0.98*0.98*0.98...*0.98=0.98^{30}=0.545$$
 
-### What is the empty seat cost is REALLY low?
+### What if the empty seat cost is REALLY low?
 
 In the last example we found that with a probability that each individual will show up for his/her flight of 0.98 and an empty seat cost of $\frac{1}{2}ticket price$ the only way it is optimal to not overbook is if the overbooking penalty is astronomically high (like between 10 and 15 times the ticket price).
 
