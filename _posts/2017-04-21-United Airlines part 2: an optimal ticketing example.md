@@ -32,21 +32,21 @@ $$\pi(n) = nt, if k=s$$
 $$\pi(n) = nt - (k-n)*penalty, if k>s$$
 $$\pi(n) = nt - (s-k)*c, if k<s$$
 
-We can model the probability of all $n$ ticketed passengers showing up for a flight as a binomial distribution.  This approach essentially treats every individual as his/her own independent experiment and says that if the probability of a success ('showing up for the flight') on any one trial is $p$, then the probability that we will get $k$ successes in $n$ trials is:
+We can model the probability of all $n$ ticketed passengers showing up for a flight as a binomial distribution.  This approach essentially treats every individual as his/her own independent experiment and says that if the probability of a success (showing up for the flight) on any one trial is $p$, then the probability that we will get $k$ successes in $n$ trials is:
 
 $$p(x=k) = \frac{n!}{k!(n-k)!}p^{k}(1-p)^{n-k}$$
 
 We can use this to solve the optimal overbooking problem by observing that expected profit for the airline is the profit under each passenger scenario (k people show up for a flight where n tickets were sold) weighted by the probability of each scenario.
 
-A little more concrete: let's assume we have 30 seats on an airplane.  The expected value of selling 31 seats is:
+A little more concrete: let us assume we have 30 seats on an airplane.  The expected value of selling 31 seats is:
 
 $$p(1 out 31 people show up)*\pi(1) + p(2 out of 31 people show up)*\pi(2) + ... + p(30 out of 31 people show up)*\pi(30) + p(31 people show up)*\pi(31)$$
 
 In this case $\pi(x)$ is the profit realized by the airline if $x$ people show-up for the flight.  
 
-Now, the last piece we need for this example is the probability of success on any one trial. In our computational exercise we will experiment with the probability, but for now let's fix it at 0.98.  Then the expected value of selling 31 seats for a flight that has 30 seats is:
+Now, the last piece we need for this example is the probability of success on any one trial. In our computational exercise we will experiment with the probability, but for now let us fix it at 0.98.  Then the expected value of selling 31 seats for a flight that has 30 seats is:
 
-$$\sum_{k=1}^{k=31}=\frac{31!}{k!(31-k)!}0.98^{k}0.02^{31-k}\pi(k)$$
+$$\sum_{k=1}^{k-31}=\frac{31!}{k!(31-k)!}0.98^{k}0.02^{31-k}\pi(k)$$
 
 
 ## When don't you overbook?
@@ -107,7 +107,7 @@ ggplot(z,aes(x=n,y=EV,color=factor(bribe))) + geom_line() + geom_point() +
 
 ```
 
-INSERT PLOT HERE
+![overbooking 1](images\overbooking1.png)
 
 As you can see, with these made up parameters, it is only optimal to sell exactly 30 tickets for a plane with 30 seats if the overbooking penalty is between 10X and 15X the ticket price.  
 
