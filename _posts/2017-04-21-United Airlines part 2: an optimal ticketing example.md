@@ -4,6 +4,12 @@ This post might have more universal appeal.  Here I'm going to present my first-
 
 In this post I'm going to propose some ad-hoc but sensible parameter values and experiment with different levels of payoffs and uncertainties that affect the number of tickets an airline should sell in order to maximize expected profits. 
 
+## Nomenclature
+
+* I'm generally going to refer to the probability that an individual shows up for a flight on which that individual has purchased a ticket as the 'arrival probability'
+* I'll referring to the cost that airline pays to compensate a travel who gets bumped from a flight due to overbooking as the 'bribe' or 'penalty'
+* I don't think I've been as consistent as I could have been in labeling the cost the airline incurs due to empty seats.  You'll see this below as the 'empty seat cost' but I might use some other terms as well.
+
 ## An analytical model of overbooking
 
 Let's start with a really simple model of optimal ticketing.  Let's establish the conceptual facts first:
