@@ -1,6 +1,6 @@
-This is going to be a pretty remedial post about using Facebook's Graph API with Python.  At this point I've only figured out how to do some pretty basic shit....enough to share but probably not enough to be really cool.
+This is going to be a pretty remedial post about using Facebook's Graph API with Python.  At this point I've only figured out how to do some pretty basic shit....enough to share but probably not enough to be really cool.  I'm planning on posting a follow-up this week where I'll focus on shoving the dictionary and list output you'll see here into pandas dataframes. 
 
-Towards the end I'm going to highlight a couple issues I have on my to-do list.  If anyone can suggest resolutions to these open issues that would be money.
+Towards the end of this post I'm going to highlight a couple issues I have on my to-do list.  If anyone can suggest resolutions to these open issues that would be money.
 
 # Motivation
 
