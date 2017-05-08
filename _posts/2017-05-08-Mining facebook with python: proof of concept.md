@@ -6,7 +6,7 @@ Towards the end I'm going to highlight a couple issues I have on my to-do list. 
 
 I have a couple of long-game type use cases in my head for this:
 
-1. I'm a volunteer assistant coach for the UC Santa Cruz Men's Soccer Team and I help manage a brand page I created for them.  I would love to be able to access meta data from that page in python to do some analytics like *what type of content from our pages gets shared the most*
+1. I'm a volunteer assistant coach for the [UC Santa Cruz Men's Soccer Team](https://www.facebook.com/UCSCMensSoccer/) and I help manage a brand page I created for them.  I would love to be able to access meta data from that page in python to do some analytics like *what type of content from our pages gets shared the most*
 
 2. similar to my motivations for wanting to [scraping Twitter data](https://aaronmams.github.io/Sentiment-Analysis-1-Twitter-Scraping-with-Python/), I think scraping Facebook Data could produce some interesting insights I could use in my regular people job as a natural resource economist.  Examples:
 
@@ -179,6 +179,11 @@ for post in posts['data']:
     likecount = getlikecount(post,graph) 
     print likecount
 
+21
+1
+2
+13
+17
 ```
 
 
@@ -215,7 +220,24 @@ while True:
         # loop and end the script.
         break
 
-
+017-05-06T19:34:25+0000
+2017-05-06T02:38:02+0000
+2017-05-03T01:29:05+0000
+2017-05-07T18:33:22+0000
+2017-05-07T00:00:21+0000
+2017-05-06T19:34:25+0000
+2017-05-06T02:38:02+0000
+2017-05-03T01:29:05+0000
+2017-05-07T18:33:22+0000
+2017-05-07T00:00:21+0000
+2017-05-06T19:34:25+0000
+2017-05-06T02:38:02+0000
+2017-05-03T01:29:05+0000
+2017-05-07T18:33:22+0000
+2017-05-07T00:00:21+0000
+2017-05-06T19:34:25+0000
+2017-05-06T02:38:02+0000
+2017-05-03T01:29:05+0000
 #----------------------------------------------------
 
 ```
