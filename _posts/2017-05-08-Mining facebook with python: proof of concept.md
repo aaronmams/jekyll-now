@@ -44,6 +44,11 @@ I'll readily admit to not (yet) fully understanding the management of access tok
 ### Example 1: pull a recent post and see what data is available
 
 ```python
+
+#import the facebook module
+import facebook
+import requests
+
 # get a single post from my wall and try to extract some info
 import json
 posts = graph.get_connections('me','posts',limit=1)
@@ -262,7 +267,9 @@ I tried to use the get_connection() method to pull a list of my friends but I co
 
 ```python
 
-#graph = facebook.GraphAPI(access_token=tok, version=’2.8')
+tok = 'EAACEdEose0cBAG9Luo7lYGmcOaftnhdbH0gr62DbIBK9HCPhsYcOncGS7ZCrEK41XppkaPRwX8JyPT5jkSK0wF7vW7uUx1i2QwuikVEfGhFxJgF4PkXKJUAHSPKVvbu7ZCf6z4M92yS8hI95pDSaZBowFyqHVNhJFGaygIQJc7rTeAAVg8ZA'
+
+graph = facebook.GraphAPI(tok)
 my_friends = graph.get_connections(id='me', connection_name='friends')
 print (my_friends)
 
