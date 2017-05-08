@@ -147,7 +147,7 @@ Out[82]:
  u'with_tags': {u'data': [{u'id': u'10211477818840687',
     u'name': u'Heather Visco-Mamula'}]}}
 ```
-
+ Wow! there's a lot of stuff there.  In the next couple of examples I'll illustrate how to extract some of this info.  Also, as I said before, I'll try to do a follow-up this week focusing on how to make all this info usable.
 
 ### Example 2: count number of likes for my posts
 
