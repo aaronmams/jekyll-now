@@ -200,7 +200,7 @@ for post in posts['data']:
 
 ### Example 3: get the timeline of my posts
 
-This example comes directly from [a sample script in the facebook sdk git hub repository](* https://github.com/mobolic/facebook-sdk/blob/master/examples/get_posts.py)...with a tiny modification to display the timeline of my posts instead of Bill Gates'.
+This example comes directly from [a sample script in the facebook sdk git hub repository](https://github.com/mobolic/facebook-sdk/blob/master/examples/get_posts.py)...with a tiny modification to display the timeline of my posts instead of Bill Gates'.
 
 
 ```python
