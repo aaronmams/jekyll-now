@@ -49,6 +49,12 @@ I'll readily admit to not (yet) fully understanding the management of access tok
 import facebook
 import requests
 
+#use the access token to connect to the graph API
+tok = 'EAACEdEose0cBAG9Luo7lYGmcOaftnhdbH0gr62DbIBK9HCPhsYcOncGS7ZCrEK41XppkaPRwX8JyPT5jkSK0wF7vW7uUx1i2QwuikVEfGhFxJgF4PkXKJUAHSPKVvbu7ZCf6z4M92yS8hI95pDSaZBowFyqHVNhJFGaygIQJc7rTeAAVg8ZA'
+
+graph = facebook.GraphAPI(tok)
+
+
 # get a single post from my wall and try to extract some info
 import json
 posts = graph.get_connections('me','posts',limit=1)
