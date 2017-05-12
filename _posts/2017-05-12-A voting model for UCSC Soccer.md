@@ -14,16 +14,16 @@ $$ p_{i}(yes)=p_{i}(vote)p_{i}(yes|vote) $$
 
 Here:
 
-$p_{i}(yes|vote)$ is the probability that student $i$ votes 'yes' if student $i$ shows up to vote.
+$p_{i}(yes|vote)$ is the probability that student $i$ votes "yes" if student $i$ shows up to vote.
 
-$p_{i}(yes)$ probability that student $i$ votes 'yes'.
+$p_{i}(yes)$ probability that student $i$ votes "yes".
 
 $p_{i}(vote)$ is the probability that student $i$ shows up to vote.
 
 
-This problem can be framed like a 'coin toss' expiriment.  That is, if any individual student has a $p(vote)$ probability of voting and a $p(yes|vote)$ probability of voting 'yes' conditional on voting, what are the values of $p(vote)$ and $p(yes)$ that lead to the referendum passing. 
+This problem can be framed like a coin toss expiriment.  That is, if any individual student has a $p(vote)$ probability of voting and a $p(yes|vote)$ probability of voting "yes" conditional on voting, what are the values of $p(vote)$ and $p(yes)$ that lead to the referendum passing. 
 
-The expected total number of successes in $N$ independent trials if each trial has a $p$ probability of success is, $Np$.  In this case, in order to get a 'yes' vote, we actually need two successes (we need vote='yes' and vote yes = 'yes').  This is expressed similarly for the binominal distribution...assuming for the moment that all students have the same probability of voting and the same probability of voting yes:
+The expected total number of successes in $N$ independent trials if each trial has a $p$ probability of success is, $Np$.  In this case, in order to get a yes vote, we actually need two successes (we need vote=yes and vote yes = yes).  This is expressed similarly for the binominal distribution...assuming for the moment that all students have the same probability of voting and the same probability of voting yes:
 
 $E(yes)=N*p(vote)*p(yes)$
 
