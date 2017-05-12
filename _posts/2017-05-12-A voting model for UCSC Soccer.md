@@ -476,6 +476,6 @@ ggplot(scen1,aes(x=pB,y=totalyes,group=pB,color='red')) + geom_boxplot()  +
 
 Here, I've kept the size of the hard yes group the same at 680 student but I've decreased the size of the hard no group.  The assumption in this model is that lean no population from the last simulation stays the same (meaning that all the simulated students that I took out of the hard no group went into the toss-up group).
 
-![five type model 2](/images/fivetypemodel_2)
+![five type model 2](/images/fivetypemodel_2.png)
 
 If my players' optomism is warranted and the hard no group really is smaller than I think, then the referendum could conceivably pass with as few as 55% of the students in the lean yes group.
