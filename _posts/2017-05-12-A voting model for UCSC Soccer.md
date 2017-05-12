@@ -199,20 +199,19 @@ It is worth noting that, in this case I fixed the ratio of hard yes voters to ha
 
 An extension of the 3-type model is a 5-type model with the following types:
 
-1. certain no - students who are almost certain to vote and almost certain to vote no
-2. certain yes - students who are almost certain to vote and almost certain to vote yes
-3. lean no - voters who are likely to vote and are leaning toward no
-4. lean yes - voters who are likely to vote and leaning toward yes
-5. toss-up - true undecideds
+1. certain yes - students who are almost certain to vote and almost certain to vote yes
+2. lean yes - voters who are likely to vote and leaning toward yes
+3. toss-up - true undecideds
+4. lean no - voters who are likely to vote and leaning toward no
+5. certain no - voters almost certain to vote and almost certain to vote no
 
 The simulation I will conduct with this model will proceed by making assumptions about the number of people in each group and exploring the vote probabilities and vote yes probabilities that lead to referendum wins.
-
 
 I like this model because it retains a lot of the simplisity of the 3-Type Model but with a bit more added realism.  It also allows us to empirically explore what I deem to be one of the more realistic real-world strategy for increasing the odds that the referendum passes: voter outreach.
 
 The following simulation is based on a couple assumptions that are ad-hoc but not unrealistic:
 
-1.  Assume that the strongly in favor group and the strongly opposed groups are pretty calcified.  Meaning that, at this point, there is not much that can be done to change the numbers or composition of either group.
+1. Assume that the strongly in favor group and the strongly opposed groups are pretty calcified.  Meaning that, at this point, there is not much that can be done to change the numbers or composition of either group.
 2. Assume that individuals in the undecided group can be converted to 'lean yes' voters with some outreach.
 
 ### Simulations
@@ -256,7 +255,7 @@ For each individual $i$ we generate a $[0,1]$ value indicating whether the indiv
 
 $p(success)=pyes_{i}$
 
-**Step 5**
+**Step 5: The voter outreach step**
  
 Draw a random sample of students with size equal to the assumed number of 'athlete contacts' (call this parameter $ncom$) by sampling the vector [1:17000] $ncom$ times without replacement. Generate a random [0,1] vector by sampling the binomial distribution with probability of success equal the conversion probability (call the conversion probability parameter $pcon$).  This [0,1] vector indicates whether the student who has been contacted by the athlete changes his or her type or not.  If the value equals 1, then update the students type and draw a new $pvote$ and $pyes$ for that student based on the new type.
  
@@ -427,3 +426,8 @@ ggplot(scen1,aes(x=pB,y=totalyes,group=pB,color='red')) + geom_boxplot()  +
 #================================================================
 
 ```
+
+![plot three](/images/fivetypemodel_1.png)
+
+
+
