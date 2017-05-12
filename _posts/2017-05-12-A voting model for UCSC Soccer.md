@@ -82,7 +82,7 @@ If $pC.vote = 0.4$ and 5 out every 10 members of Group C on average vote 'yes', 
 
 The expected number of votes from groups A, B, and C are calculated as:
 
-$$E(vote_{A}) = (17000)(0.03)(0.95)$$ 
+$$ E(vote_{A}) = (17000)(0.03)(0.95) $$ 
 
 $$ E(vote_{B}) = (17000)(0.03)(0.95) $$  
 
@@ -96,7 +96,7 @@ $E(yes_{B}) = E(vote_{B})*0.98$ probability type B votes 'yes' given that they v
 
 $E(yes_{C}) = E(vote_{C})*0.5$ probability type C votes 'yes' given that they vote
 
-With these parameters the percent of 'yes' votes is:
+With these parameters the percent of yes votes is:
 
 $\frac{E(yes_{A})+E(yes_{B})+E(yes_{C})}{E(vote_{A})+E(vote_{B})+E(vote_{C})} = 0.5$
 
@@ -104,9 +104,13 @@ And total expected voter turnout is:
 
 $\frac{E(vote_{A})+E(vote_{B})+E(vote_{C})}{17000}=0.433$
 
-In this example, because the high probability 'yes' voters are equal to the high probability 'no' voters in number and in likelihood of voting, they essentially cancel each other out.  This means the final result is driven by the propensity of Group C to vote 'yes.' 
+In this example, because the high probability yes voters are equal to the high probability no voters in number and in likelihood of voting, they essentially cancel each other out.  This means the final result is driven by the propensity of Group C to vote yes. 
 
-The final count of 'yes' votes as a proportion of total votes is linear in the parameter $p(yes_{C}|vote_{C})$ as is illustrated below:
+The final count of yes votes as a proportion of total votes is linear in the parameter 
+
+$$ p(yes_{C}|vote_{C}) $$ 
+
+as is illustrated below:
 
 ```R
 
