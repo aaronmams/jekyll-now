@@ -14,14 +14,16 @@ $$ p_{i}(yes)=p_{i}(vote)p_{i}(yes|vote) $$
 
 Here:
 
-$p_{i}(yes|vote)$ is the probability that student $i$ votes "yes" if student $i$ shows up to vote.
+$$p_{i}(yes|vote)$$
+
+is the probability that student $i$ votes "yes" if student $i$ shows up to vote.
 
 $p_{i}(yes)$ probability that student $i$ votes yes.
 
 $p_{i}(vote)$ is the probability that student $i$ shows up to vote.
 
 
-This problem can be framed like a coin toss expiriment.  Each student can be thought of as two flips of the coin: the first flip determines whether the student votes or not and the second flip decided whether the student votes yes.  In this case $p(vote)$ and $p(yes|vote)$ define the odds of these two occurances.
+This problem can be framed like a coin toss expiriment.  Each student can be thought of as two flips of the coin: the first flip determines whether the student votes or not and the second flip decided whether the student votes yes.  In this case the probability of voting and probability of voting yes conditional on voting define the odds of these two occurances.
 
 The expected total number of successes in $N$ independent trials if each trial has a $p$ probability of success is, $Np$.  In this case, in order to get a yes vote, we actually need two successes (we need vote=yes and vote yes = yes).  This is expressed similarly for the binominal distribution...assuming for the moment that all students have the same probability of voting and the same probability of voting yes:
 
