@@ -10,7 +10,7 @@ The rules of the elections stipulate that, in order for the athletics referendum
 
 We start by observing that the probability that any individual student votes 'yes' on the referendum is the product of the probability that the student votes by the probability that the student votes 'yes' conditional on voting:
 
-$$p_{i}(yes)=p_{i}(vote)p_{i}(yes|vote)$$
+$$ p_{i}(yes)=p_{i}(vote)p_{i}(yes|vote) $$
 
 Here:
 
