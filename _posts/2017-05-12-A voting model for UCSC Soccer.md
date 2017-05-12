@@ -14,6 +14,7 @@ $$ p_{i}(yes)=p_{i}(vote)p_{i}(yes|vote) $$
 
 Here:
 
+* $p_{i}(yes|vote)$
 * $p_{i}(yes)$ probability that student $i$ votes 'yes'.
 * $p_{i}(vote)$ is the probability that student $i$ shows up to vote.
 * $p_{i}(yes|vote)$ is the probability that student $i$ votes yes conditional on student $i$ showing up to vote.
