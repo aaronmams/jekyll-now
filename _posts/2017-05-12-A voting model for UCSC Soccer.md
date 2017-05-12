@@ -278,11 +278,11 @@ Assumptions:
 
 Parameters:
 
-1. $pvote \sim UNIF(0.9,1)$ and $pyes~UNIF(0.95,1)$ for type A
-2. $pvote \sim UNIF(0.5,0.5)$ and $pyes~UNIF(0.6,0.8)$ for type B
-3. $pvote \sim UNIF(0.2,0.3)$ and $pyes~UNIF(0.2,0.8)$ for type C
-4. $pvote \sim UNIF(0.5,0.5)$ and $pyes~UNIF(0.3,0.5)$ for type D
-5. $pvote \sim UNIF(0.9,1)$ and $pyes~UNIF(0,0.05)$ for type E
+1. $pvote \sim UNIF(0.9,1)$ and $pyes \sim UNIF(0.95,1)$ for type A
+2. $pvote \sim UNIF(0.5,0.5)$ and $pyes \sim UNIF(0.6,0.8)$ for type B
+3. $pvote \sim UNIF(0.2,0.3)$ and $pyes \sim UNIF(0.2,0.8)$ for type C
+4. $pvote \sim UNIF(0.5,0.5)$ and $pyes \sim UNIF(0.3,0.5)$ for type D
+5. $pvote \sim UNIF(0.9,1)$ and $pyes \sim UNIF(0,0.05)$ for type E
 6. conversion rate = 0.5
 7. number of contacts = 900
 8. percent of student population in each type is $[0.04,pB,pC,0.05,0.02]$
@@ -429,5 +429,30 @@ ggplot(scen1,aes(x=pB,y=totalyes,group=pB,color='red')) + geom_boxplot()  +
 
 ![plot three](/images/fivetypemodel_1.png)
 
+From these results the core conclusions remain pretty unchanged: 
 
+* if the hard yes group is about twice as big as the hard no group
+* and if the hard yes group is about 600-700 students
+* and if the lean yes group has a 50% chance of showing up and a 60-80% of voting yes if they do show up
 
+then we need around 60% of the UCSC campus in the lean yes category.
+
+### Example 2: Fewer hard no students
+
+When I ran my ad-hoc parameters by some of my players at training this morning a overwhelming sentiment emerged that the hard no group is probably smaller than I'm imagining.  Most of my players seem to think that the hard yes group is more like 4 times as large as the hard no group...rather than 2 times as large.
+
+Though this might be overly optomistic, I'll run it just for illustrative purposes.
+
+```R
+scen1 <- data.frame(rbindlist(lapply(c(rep(0.5,50),rep(0.55,50),rep(0.6,50),rep(0.65,50)),outreach.fn,
+                                     conversion.rate=0.5,ncom=900,pA=0.04,pD=0.05,pE=0.01)))
+ggplot(scen1,aes(x=pB,y=totalyes,group=pB,color='red')) + geom_boxplot()  +
+  guides(colour=FALSE) + xlab("Type B population percent") + ylab('Percent voting YES')
+
+```
+
+Here, I've kept the size of the hard yes group the same at 680 student but I've decreased the size of the hard no group.  The assumption in this model is that lean no population from the last simulation stays the same (meaning that all the simulated students that I took out of the hard no group went into the toss-up group).
+
+![five type model 2](/images/fivetypemodel_2)
+
+If my players' optomism is warranted and the hard no group really is smaller than I think, then the referendum could conceivably pass with as few as 55% of the students in the lean yes group.
