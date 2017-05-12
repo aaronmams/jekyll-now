@@ -193,6 +193,8 @@ ggplot(scen3,aes(x=popA,y=yespct,color='red')) + geom_bar(stat='identity') +
 
 ![second plot](/images/threetypemodel_2.png)
 
+It is worth noting that, in this case I fixed the ratio of hard yes voters to hard no voters at 4:1 because I didn't think it was feasible to consider scenarios where the number of hard yes voters would exceed 10 times the number of student athletes.  Since there are around 300 NCAA athletes on campus any population for Type A over 3,000 I consider pretty suspect.
+
 ## Follow up 1: The 5-Type Model
 
 An extension of the 3-type model is a 5-type model with the following types:
