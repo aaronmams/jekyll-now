@@ -156,7 +156,7 @@ ggplot(scen1,aes(x=pC,y=yespct)) + geom_line() + geom_point() +
 
 ```
 
-[first plot](/images/threetypemodel_1.png)
+![first plot](/images/threetypemodel_1.png)
 
 The graph above is trivial but not uninformative.  One way to look at is this:
 
