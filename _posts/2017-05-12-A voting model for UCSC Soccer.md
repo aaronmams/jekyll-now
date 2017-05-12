@@ -82,9 +82,11 @@ If $pC.vote = 0.4$ and 5 out every 10 members of Group C on average vote 'yes', 
 
 The expected number of votes is calculated as:
 
-$E(vote_{A}) = 17000*0.03*0.95$ expected number of voters from group A
+$E(vote_{A}) = (17000)(0.03)(0.95)$ expected number of voters from group A
 
-$E(vote_{B}) = 17000*0.03*0.95$ expected number of voters from group B
+$E(vote_{A}) = (17000)(0.03)(0.95)$ expected number of voters from group A
+
+$E(vote_{B}) = (17000)(0.03)(0.95)$ expected number of voters from group B
 
 $E(vote_{C}) = 17000*0.94*0.4$ expected number of voters from group C
 
