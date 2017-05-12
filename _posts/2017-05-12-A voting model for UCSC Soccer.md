@@ -80,15 +80,13 @@ We observe that in the 2016 Campus Elections at UCSC voter turn-out was approxim
 
 If $pC.vote = 0.4$ and 5 out every 10 members of Group C on average vote 'yes', how would the athletics referendum turn out?
 
-The expected number of votes is calculated as:
+The expected number of votes from groups A, B, and C are calculated as:
 
-$E(vote_{A}) = (17000)(0.03)(0.95)$ expected number of voters from group A
+$$E(vote_{A}) = (17000)(0.03)(0.95)$$ 
 
-$E(vote_{A}) = (17000)(0.03)(0.95)$ expected number of voters from group A
+$$ E(vote_{B}) = (17000)(0.03)(0.95) $$  
 
-$E(vote_{B}) = (17000)(0.03)(0.95)$ expected number of voters from group B
-
-$E(vote_{C}) = 17000*0.94*0.4$ expected number of voters from group C
+$$ E(vote_{C}) = (170000)(0.94)(0.4) $$ 
 
 The expected number of 'yes' votes is:
 
