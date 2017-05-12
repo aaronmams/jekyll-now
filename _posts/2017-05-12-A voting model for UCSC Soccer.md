@@ -110,43 +110,26 @@ The final count of yes votes as a proportion of total votes is linear in the par
 
 $$ p(yes_{C}|vote_{C}) $$ 
 
-as is illustrated below:
+as is illustrated below.  Note that in the plot below I make a few minor modifications:
+
+1. I assume that the number of Type A voters are the high likelihood yes voters
+2. I assume that Type A voters are 4% of the campus population
+3. I assume that Type B voters are only 2% of the campus population
 
 ```R
 
-#probability that somebody of type A will vote
-pA.vote <- 0.95
-#probability that somebody of type B will vote
-pB.vote <- 0.95
-#probability that somebody of type C will vote
-pC.vote <- 0.5
-
-#probability that somebody of type A votes yes condition on that person voting
-pA <- 0.02
-#probability that somebody of type B votes yes conditional on that person voting
-pB <- 0.98
-#probability that somebody of type C votes yes conditional on that person voting
-pC <- 0.5
-
-#campus population
-camp.pop <- 17000
-
-#population of type A
-popA <- 0.03*camp.pop
-#population of type B
-popB <- 0.03*camp.pop
-#population of type C
-popC <- .94*camp.pop
-
 #===============================================================================
 #===============================================================================
 #===============================================================================
-# what parameters do we need to win 'on average'
+simple.fn <- function(ratio,pA,pB,pC,popA,pA.vote,pB.vote,pC.vote){
 
-simple.fn <- function(pA,pB,pC,popA,popB,popC,pA.vote,pB.vote,pC.vote){
+popB <- ratio*popA
+popC <- 17000-(popA+popB)
+
 turnoutA <- popA*pA.vote
 turnoutB <- popB*pB.vote
 turnoutC <- popC*pC.vote
+
 yesA <- turnoutA*pA
 yesB <- turnoutB*pB
 yesC <- turnoutC*pC
@@ -162,22 +145,18 @@ return(data.frame(pA=pA,pB=pB,pC=pC,
                   yespct=yespct,turnout=turnout,win=win))
 }
 
-
-#===============================================================================
-#===============================================================================
-#===============================================================================
-
 #apply this function over different values of gen pop pct yes
-scenario1 <- data.frame(rbindlist(lapply(c(0.4,0.5,0.6,0.7,0.8),simple.fn,pA=pA,pB=pB,
-       pA.vote=pA.vote,pB.vote=pB.vote,pC.vote,
-       popA=popA,popB=popB,popC=popC)))
+scen1 <- data.frame(rbindlist(lapply(c(seq(from=0.5,to=0.7,by=0.025)),simple.fn,pA=0.98,pB=0.02,
+       pA.vote=0.95,pB.vote=0.95,pC.vote=.39,
+       popA=0.04*17000,ratio=0.5)))
 
 ggplot(scen1,aes(x=pC,y=yespct)) + geom_line() + geom_point() + 
   geom_hline(yintercept=0.66,color='red') + theme_bw() +
   xlab('Type C p(yes)') + ylab('Total YES percent')
+
 ```
 
-
+[first plot](/images/threetypemodel_1.png)
 
 The graph above is trivial but not uninformative.  One way to look at is this:
 
