@@ -4,6 +4,26 @@ This will not be a post on the roughly 12 billion reasons why the University can
 
 This will instead be a post highlighting what I do best: mediocre statistical analysis, coupled with some R code and a bunch of ad-hoc assumptions to try and 'get an empirical feel' for something...In this case, that something is whether or not our athletics referendum will pass next week.
 
+# Assurance 1
+
+I talk a lot in this post about probabilities and probability models but rest assured I'm not actually doing anything complicated.  What I have here is actually simple possibly to the point of being trivial or sloppy.
+
+# Admission 1
+
+Related to Assurance 1, there is a lot of pretend randomness in these models I cooked up.  I wanted to set this up using a sort of probability framework so I could couch it 'simulating hypothetical elections' under different circumstances.  I'll freely admit that what I have here is kind of overkill since, with the parameters I deem reasonable, results are pretty much driven by average voting propensities of whatever the largest group is.
+
+I might spend a little more time thinking about how to either simplify this presentation or make it complicated enough that some volatility in simulated results is introduced.
+
+# Advice for Readers
+
+Here is my, *how to interpret* this pitch: I didn't set this up because I thought I knew exactly how to estimate or forecast the probability that our Athletics Referendum will pass or fail.  I set it up as a way to systematically examine some of the effects of different assumptions about 
+
+1. the underlying make up of the UCSC campus (how many students do we think will definitely vote for the referendum, how many do we think will definitely vote against it, how many are undecided and could possibly be convinced to vote in favor?)
+2. the probabilities associated with each student type (for students who are likely to vote in favor is it like 9 out of 10 these will vote yes? or is it more like 6 out of 10? for students that are undecided, do we think 5 out of 10 of these will vote for it? what if we were able to get 6 or 7 out 10 of the undecided voters).
+
+If you think my assuptions don't paint an accurate picture of the UCSC campus, I've posted my code here so you can just change the parameters you don't like and run it your way.  Or just tell me what you think the parameter values should be and I'll run some new simulations.
+
+
 ## A Basic Referendum Model
 
 The rules of the elections stipulate that, in order for the athletics referendum to pass, the number of 'yes' votes needs to meet or exceed 66% of the voters AND at least 25% of the student population needs to vote.
