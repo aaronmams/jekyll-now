@@ -90,14 +90,14 @@ To start, we assume that there are three types of students:
 
 Let's begin by labeling the three groups A, B, C such that:
 
-* A is the group with a high probability of voting and a high probability of voting 'no' on the referendum
-* B is the group with a high probability of voting and a high probability of voting 'yes' on the referendum
+* A is the group with a high probability of voting and a high probability of voting 'yes' on the referendum
+* B is the group with a high probability of voting and a high probability of voting 'no' on the referendum
 * C is the group of students that is not super motivated to vote and has a highly variable probability of voting 'yes' if they do show up to vote.
 
 To make things a little more concrete assume that:
 
-* Group A represents 3% of the total student body (roughly 500 students) and this group has a 95% chance of showing up to vote and only a 2% chance of voting 'yes'
-* Group B represents 3% of the total student body (roughly 500 students), has a 95% chance of showing up to vote and a 98% of voting 'yes'.  We can think of this group as the athletes + athletes' close friends
+* Group A represents 3% of the total student body (roughly 500 students) and this group has a 95% chance of showing up to vote and only a 98% chance of voting 'yes'.  We can think of this group as the athletes + athletes' close friends
+* Group B represents 3% of the total student body (roughly 500 students), has a 95% chance of showing up to vote and a 2% of voting 'yes'. 
 * Group C is the remainder (94% of the student body ~16,000), has probability of $pC.vote$ of showing up to vote and a 50% chance of voting 'yes' if they do show up
 
 We observe that in the 2016 Campus Elections at UCSC voter turn-out was approximately 40%.  Assuming that Groups A and B have a very strong probability (on average) of showing up to vote, a vote probability for Group C that would be consistent with 40% total voter turn-out would be 0.4. 
@@ -114,9 +114,9 @@ $$ E(vote_{C}) = (170000)(0.94)(0.4) $$
 
 The expected number of 'yes' votes is:
 
-$E(yes_{A}) = E(vote_{A})*0.02$ probability type A votes 'yes' given that they vote
+$E(yes_{A}) = E(vote_{A})*0.98$ probability type A votes 'yes' given that they vote
 
-$E(yes_{B}) = E(vote_{B})*0.98$ probability type B votes 'yes' given that they vote
+$E(yes_{B}) = E(vote_{B})*0.02$ probability type B votes 'yes' given that they vote
 
 $E(yes_{C}) = E(vote_{C})*0.5$ probability type C votes 'yes' given that they vote
 
@@ -136,9 +136,8 @@ $$ p(yes_{C}|vote_{C}) $$
 
 as is illustrated below.  Note that in the plot below I make a few minor modifications:
 
-1. I assume that the number of Type A voters are the high likelihood yes voters
-2. I assume that Type A voters are 4% of the campus population
-3. I assume that Type B voters are only 2% of the campus population
+1. I assume that Type A voters are 4% of the campus population
+2. I assume that Type B voters are only 2% of the campus population
 
 ```R
 
