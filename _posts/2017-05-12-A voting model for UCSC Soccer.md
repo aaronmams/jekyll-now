@@ -433,7 +433,7 @@ return(data.frame(ncom=ncom,turnout=turnout,totalyes=totalyes,
 #####################################################################################
 
 #================================================================
-#A Best Case Scenario
+#An Optomistic Scenario
 
 # assume that the A group is twice as large as the E group
 # assume that the 'lean no' group has a 50/50 chance of voting
