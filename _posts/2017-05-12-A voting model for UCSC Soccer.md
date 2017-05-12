@@ -163,12 +163,35 @@ The graph above is trivial but not uninformative.  One way to look at is this:
 Even if you believe that 
 
 1. there are twice as many people strongly in favor of the referendum as there are people strongly opposed to the referendum, AND
-2. the majority of the 17,000 students are neither strongly opposed nor strongly in favor, AND
-3. among students who are neither strongly opposed nor strongly in favor about 5 out of every 10 will vote in favor, THEN
-4. The referendum likely will not pass
+2. the majority of the 17,000 students are neither strongly opposed nor strongly in favor, Then
+3. the referendum only passes if we can get 7 in 10 votes from the general population.
+
+Basically, if the hard yes population is small relative the overall population, then it doesn't really matter how big the hard yes population is relative to the hard no population...we still need 66% of the student to vote yes in order to pass the referendum.
 
 ### Impact of increasing the size of the 'hard yes' group
 
+Obviously if we can increase the size of the hard yes group we can succeed with fewer yes votes from the general campus population.  This is again trivial but again informative to think about how much expansion of the hard yes group would overcome something like a 50/50 propensity to vote yes among the at-large campus population.
+
+In this case I make the following modifications to the 3-Type Model:
+
+1. I fix the probability of voting yes among the Type C voters at 50%
+2. I fix the probability of showing up to vote at 75% for the Type A and Type B voters and set it at 20% for the Type C voters in order to get final results consistent with the historically observed 40% voter turnout.
+3. I fix the ratio of Type A (the hard yes group) to Type B (hard no group) at 4:1.  
+
+```R
+#fix the ratio at 2:1 and fix the indifferent group at 50/50 and see how big the 
+# hard yes group needs to get
+scen3 <- data.frame(rbindlist(lapply(c(0.05*17000,0.1*17000,0.15*17000,
+                                       0.2*17000,0.25*17000,0.3*17000),ratio=0.25,
+                                     simple.fn,pA=0.98,pB=0.02,pC=0.5,
+                                     pA.vote=0.75,pB.vote=0.75,pC.vote=.2)))
+ggplot(scen3,aes(x=popA,y=yespct,color='red')) + geom_bar(stat='identity') + 
+  theme_bw() + geom_hline(yintercept=0.66,color='black') + guides(color=FALSE) +
+  ylab('Total YES percent') + xlab('Population of Type A students')
+
+```
+
+![second plot](/images/threetypemodel_2.png)
 
 ## Follow up 1: The 5-Type Model
 
