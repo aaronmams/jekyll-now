@@ -1,4 +1,4 @@
-In addition to my duties as a government data monkey, I'm a reasonably serious soccer coach.  I have been assisting with the NCAA Division III Men's Soccer Program at UC Santa Cruz for about 7 years. This year is an important and stressful year for our program because the University is considering cutting NCAA athletics on the UCSC campus.  Next week the athletics program will have a referendum measure in the UCSC Campus Election.  The students are being asked to vote in favor of increasing student fees in order to continue funding NCAA Athletics.  
+In addition to my duties as a government data monkey, I'm a reasonably serious soccer coach.  I have been assisting with the NCAA Division III Men's Soccer Program at UC Santa Cruz for about 7 years. This year is an important and stressful year for our program because the University is considering cutting NCAA athletics on the UCSC campus.  Next week the athletics program will have a referendum measure in the UCSC Campus Elections.  The students are being asked to vote in favor of increasing student fees in order to continue funding NCAA Athletics.  
 
 This will not be a post on the roughly 12 billion reasons why the University can and should fund athletics without increasing student fees (for that you'll have to wait for my upcoming post: 'That's Bullshit: Why UCSC's Chancellor is a Clown').  This also will not be a post on the roughly 6 billion reasons why (even though they shouldn't have to) UCSC student should vote in favor of keeping NCAA Athletics.
 
@@ -10,9 +10,13 @@ I talk a lot in this post about probabilities and probability models but rest as
 
 # Admission 1
 
-Related to Assurance 1, there is a lot of pretend randomness in these models I cooked up.  I wanted to set this up using a sort of probability framework so I could couch it 'simulating hypothetical elections' under different circumstances.  I'll freely admit that what I have here is kind of overkill since, with the parameters I deem reasonable, results are pretty much driven by average voting propensities of whatever the largest group is.
+Related to Assurance 1, there is a lot of pretend randomness in these models I cooked up.  I wanted to set this up using a sort of probability framework so I could couch it as 'simulating hypothetical elections' under different circumstances.  I'll freely admit that what I have here is kind of overkill since, with the parameters I deem reasonable, results are pretty much driven by average voting propensities of whatever the largest group is.
 
 I might spend a little more time thinking about how to either simplify this presentation or make it complicated enough that some volatility in simulated results is introduced.
+
+# Admission 2
+
+Voter turnout is an important hurdle in the Campus Elections.  Referendum measure can only pass if they get two-thirds of the vote and if at least one-quarter of the total student body shows up to vote.  I built this criteria into the models below but it actually turns out to be rather unimportant.  Historically, voter turnout in UCSC Campus Elections has hovered around 40% so 25% is not a particularly high bar.  Like I said, the voter turnout criteria is baked-in to my models but I don't talk it much since it turns out not to be too important.
 
 # Advice for Readers
 
