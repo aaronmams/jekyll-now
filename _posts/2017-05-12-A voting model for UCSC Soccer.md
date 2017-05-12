@@ -15,8 +15,8 @@ $$ p_{i}(yes)=p_{i}(vote)p_{i}(yes|vote) $$
 Here:
 
 * $p_{i}(yes)$ probability that student $i$ votes 'yes'.
-* $p_{i}(vote)$ is the probability that student $i$ shows up to vote
-* $p_{i}(yes|vote)$ probability that student $i$ votes 'yes' conditional on student $i$ showing up to vote
+* $p_{i}(vote)$ is the probability that student $i$ shows up to vote.
+* $p_{i}(yes|vote)$ is the probability that student $i$ votes yes conditional on student $i$ showing up to vote.
 
 This problem can be framed like a 'coin toss' expiriment.  That is, if any individual student has a $p(vote)$ probability of voting and a $p(yes|voting)$ probability of voting 'yes' conditional on voting, what are the values of $p(vote)$ and $p(yes)$ that lead to the referendum passing. 
 
