@@ -1,5 +1,5 @@
 
-Assume there is a town that is totally not a fictionalized version of a real life application.  The town is considering building a dog park and funding the construction of the dog park through a ballot measure that would raise taxes by [insert uncontroversial number here].  If at least 25% of the town's population votes for the ballot measure and at least $\frac{2}{3}$ of the voters approve the measure, it passes.
+Suppose there is a town that is totally not a fictionalized version of a real life scenario.  The town is considering building a dog park and funding the construction of the dog park through a ballot measure that would raise taxes by [insert uncontroversial number here].  If at least 25% of the town's population votes for the ballot measure and at least $\frac{2}{3}$ of the voters approve the measure, it passes.
 
 1. There are 17,000 people in the town
 2. There are 300 dog owners who will be directly impacted and who are assumed to strongly support the ballot measure.
@@ -25,7 +25,7 @@ Voter turnout is an important hurdle in the set-up I have proposed.  The Ballot 
 Here is my, *how to interpret* this pitch: I didn't set this up because I thought I knew exactly how to estimate or forecast the probability of a ballot measure passing or failing.  I set it up as a way to systematically examine some of the effects of different assumptions about: 
 
 1. the underlying make up of the town population (how many do we think will definitely vote for the dog park, how many do we think will definitely vote against it, how many are undecided and could possibly be convinced to vote in favor?)
-2. the probabilities associated with each voter type (for residents who are likely to vote in favor is it like 9 out of 10 these will vote yes? or is it more like 6 out of 10? for students that are undecided, do we think 5 out of 10 of these will vote for it? what if we were able to get 6 or 7 out 10 of the undecided voters).
+2. the probabilities associated with each voter type (for residents who are likely to vote in favor is it like 9 out of 10 these will vote yes? or is it more like 6 out of 10? for residents that are undecided, do we think 5 out of 10 of these will vote for it? what if we were able to get 6 or 7 out 10 of the undecided voters).
 
 If you think my assuptions don't paint an accurate picture of the town population viz-a-viz their feelings toward the proposed dog-park, I've posted my code here so you can just change the parameters you don't like and run it your way.  Or just tell me what you think the parameter values should be and I'll run some new simulations.
 
@@ -42,7 +42,7 @@ Here:
 
 $$p_{i}(yes|vote)$$
 
-is the probability that resident $i$ votes "yes" if student $i$ shows up to vote.
+is the probability that resident $i$ votes "yes" if resident $i$ shows up to vote.
 
 $p_{i}(yes)$ probability that resident $i$ votes yes.
 
@@ -51,7 +51,7 @@ $p_{i}(vote)$ is the probability that resident $i$ shows up to vote.
 
 This problem can be framed like a coin toss experiment.  Each resident can be thought of as two flips of the coin: the first flip determines whether the resident votes or not and the second flip decided whether the resident votes yes.  In this case the probability of voting and probability of voting yes conditional on voting define the odds of these two occurances.
 
-The expected total number of successes in $N$ independent trials if each trial has a $p$ probability of success is, $Np$.  In this case, in order to get a yes vote, we actually need two successes (we need vote=yes and vote yes = yes).  This is expressed similarly for the binominal distribution...assuming for the moment that all students have the same probability of voting and the same probability of voting yes:
+The expected total number of successes in $N$ independent trials if each trial has a $p$ probability of success is, $Np$.  In this case, in order to get a yes vote, we actually need two successes (we need vote=yes and vote yes = yes).  This is expressed similarly for the binominal distribution...assuming for the moment that all residents have the same probability of voting and the same probability of voting yes:
 
 $$ E(yes)=N*p(vote)p(yes) $$
 
@@ -212,7 +212,7 @@ scen3 <- data.frame(rbindlist(lapply(c(0.05*17000,0.1*17000,0.15*17000,
                                      pA.vote=0.75,pB.vote=0.75,pC.vote=.2)))
 ggplot(scen3,aes(x=popA,y=yespct,color='red')) + geom_bar(stat='identity') + 
   theme_bw() + geom_hline(yintercept=0.66,color='black') + guides(color=FALSE) +
-  ylab('Total YES percent') + xlab('Population of Type A students')
+  ylab('Total YES percent') + xlab('Population of Type A residents')
 
 ```
 
@@ -245,7 +245,7 @@ The 5-Type Model proceeds in the following steps:
 
 **Step 1**
 
-Every individual in the town population is randomly assigned a type: 'A','B','C','D','E', corresponding to 'hard yes', 'lean yes','indifferent','lean no','hard no.'  This is accomplished by sampling from the vector $[A,B,C,D,E]$ 17,000 times with replacement.  I use sampling weights to ensure that the resulting distribution of types in the student population follows some assumed parameters:
+Every individual in the town population is randomly assigned a type: 'A','B','C','D','E', corresponding to 'hard yes', 'lean yes','indifferent','lean no','hard no.'  This is accomplished by sampling from the vector $[A,B,C,D,E]$ 17,000 times with replacement.  I use sampling weights to ensure that the resulting distribution of types in the resident population follows some assumed parameters:
 
 $p=[pA,pB,pC,pD,pE]$ are the population percentages for each type
 
@@ -310,7 +310,7 @@ Parameters:
 5. $pvote \sim UNIF(0.9,1)$ and $pyes \sim UNIF(0,0.05)$ for type E
 6. conversion rate = 0.5
 7. number of contacts = 900
-8. percent of student population in each type is $[0.04,pB,pC,0.05,0.02]$
+8. percent of resident population in each type is $[0.04,pB,pC,0.05,0.02]$
 9. We vary $pB$ between 0.55 and 0.65 and assume that $pC=1-(pA+pB+pD+pE)$.
 
 Preview of Results:
@@ -611,4 +611,47 @@ ggplot(z,aes(x=factor(ncom),y=totalyes,fill=factor(conversion.rate))) + geom_box
 
 In this case, if each dog owner only contacts about 20 people there is a very low probability of the dog park ballet measure passing (even with an 80% conversion rate for non-dog owning contacts.  Interestingly, even in the neighborhood of 30 contacts per dog-owner, there exists decent chances for success only at very high conversion rates.  
 
-One thing I would take from this if I were a dog owner is the importance of contacting as many town residents as possible in order to get as many people as possible into the "lean yes" group.
+One thing I would take from this if I were a dog owner is the importance of contacting as many town residents as possible in order to get as many people as possible into the "lean yes" group.  Think about it this way: 
+
+if all the dog owners got together and formed an agreement that they would each get 20 town residents into the "lean yes" category, how many people would each resident have to talk to in order to get those 20 "lean yes" residents?
+
+This, again, is simple to express analytically but still informative:
+
+* according to the lobbying model a resident can only be converted to "lean yes" if they are in the "indifferent" category.  Recall that "lean no" voters can be converted to "indifferent" and "hard yes" and "hard no" can't be changed.  
+* The starting parameters dictate that 4% of the town population is "hard yes", 40% is "lean yes", 5% is "lean no", and 2% is "hard no."
+* This leaves 49% of the population in the "indifferent" category.
+
+For any contact between dog-owner $i$ and town resident $j$, the odds of $i$ converting $j$ to the "lean yes" category is:
+
+$$p(j in indifferent)p(convert)$$
+
+For illustrative purposes, peg the conversion probability at something very high like 80%, then
+
+$$p(j converts)=p(j in indifferent)p(convert|type)$$
+
+which is
+
+$$p(j converts)=(0.49)(0.8)=0.392$$
+
+We can again leverage the binomial distribution. Consider the event:
+
+*dog owner $i$ converts town resident $j$ to "lean yes"*
+
+to be a success.  How many trials, on average, need to be performed in order to get 20 successes if the probability of a success on any one trial is 0.392?  The expected number of successes in $n$ trials with success probability of $p$ is
+
+$$E(count) = np$$
+
+If we want $E(count)=20$ then we need:
+
+$$20=n0.392$$
+
+or
+
+$$\frac{20}{0.392}=n$$
+
+or 
+
+$$n=51.02$$
+
+
+
