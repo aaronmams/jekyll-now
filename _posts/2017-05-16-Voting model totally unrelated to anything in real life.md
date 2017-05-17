@@ -1,7 +1,7 @@
 
 # Set Up
 
-Assume there is a town that is totally not a fictionalized version of UC Santa Cruz.  The town is considering building a dog park and funding the construction of the dog park through a ballot measure that would raise taxes by [insert uncontroversial number here].  If at least 25% of the town's population votes for the ballot measure and at least $\frac{2}{3}$rds of the voters approve the measure, it passes.
+Assume there is a town that is totally not a fictionalized version of UC Santa Cruz.  The town is considering building a dog park and funding the construction of the dog park through a ballot measure that would raise taxes by [insert uncontroversial number here].  If at least 25% of the town's population votes for the ballot measure and at least $\frac{2}{3}$ of the voters approve the measure, it passes.
 
 1. There are 17,000 people in the town
 2. There are 300 dog owners who will be directly impacted and who are assumed to strongly support the ballot measure.
