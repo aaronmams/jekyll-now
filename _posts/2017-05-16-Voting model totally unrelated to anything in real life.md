@@ -682,6 +682,6 @@ ggplot(com5,aes(x=convert.per.owner,y=totalyes)) + geom_point(shape=1) + geom_hl
 
 ```
 
-![convert plot](/images/convert1.png)
+![convert plot](/images/conversion1.png)
 
 The thing to note from the plot above is that, althought each dog-owner would have to reach out to about 50 people in order to get 20 converted "lean yes" voters per dog-owner, the dog owners don't actually need 20 converts each in order to get the dog park.  With the assumed type-specific probabilities I have specified here, the dog-owners really only need about 12 to 13 converts each in order to get simulated election results where the dog park passes 70 - 80% of the time.  And by the time we get to 14 converts per dog-owner, simulated election results come out in favor of the dog park pretty much every time.   
