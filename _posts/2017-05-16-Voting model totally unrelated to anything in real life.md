@@ -623,15 +623,15 @@ This, again, is simple to express analytically but still informative:
 
 For any contact between dog-owner $i$ and town resident $j$, the odds of $i$ converting $j$ to the "lean yes" category is:
 
-$$p(j in indifferent)p(convert)$$
+$$p_{j}(\in indifferent)p(convert|type)$$
 
 For illustrative purposes, peg the conversion probability at something very high like 80%, then
 
-$$p(j converts)=p(j in indifferent)p(convert|type)$$
+$$p_{j}(converts)=p_{j}(\in indifferent)p(convert|type)$$
 
 which is
 
-$$p(j converts)=(0.49)(0.8)=0.392$$
+$$p_{j}(converts)=(0.49)(0.8)=0.392$$
 
 We can again leverage the binomial distribution. Consider the event:
 
