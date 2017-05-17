@@ -653,5 +653,35 @@ or
 
 $$n=51.02$$
 
+Translating this into aggregate terms, this would be consistent with a value of 15,000 for the parameter $ncom$ in our model (300 dog-owners each contacting 50 people, or approximately 15,000 total resident contacts)
 
+### How many converts do we need
 
+In the example above, I showed that if the goal is to get 20 additional "lean yes" town residents (meaning in addition to the 40% of the town population that starts in the "lean yes" category) per dog owner, that each dog owner would have to contact around 50 people (assuming a conversion rate of 0.8).  A follow up question here:
+
+how many "lean yes" converts do we need in order to pass the ballot measure?  The answer here is embedded in what I have presented above, I just want to take a second to put it into sharper focus.   
+
+We can again do this analytically...but it's way more fun to do it numerically (that's what computer are for right?)
+
+The plot below shows the final vote tally as a function of the number of town residents converted to the "lean yes" group.  We also normalize this population by the number of dog owners to show the number of contacts per dog owner that are consistent with the dog park ballot measure passing, conditional on assumed values for all other parameters...just to be concrete:
+
+* the iniitial population is 4% "hard yes", 40% "lean yes", 49% "indifferent", 5% "lean no", and 2% "hard no"
+* the conversion rate for dog-owner/townsperson contacts is set at 75%
+* the "lean yes" group has between 60-80% change of voting and a 60-80% chance of voting yes
+* the indifferent group has a 20% of voting and anywhere from a 20-80% of voting yes if they vote
+* the "lean no" group has a 60-80% change of voting and a 60-80% chance of voting no if they vote
+
+```R
+# how many 'lean yes' people do we need in the final population to start getting a win
+com <- runif(1000,6000,12000)
+com5 <- data.frame(rbindlist(lapply(com,outreach.fn,
+                                    conversion.rate=0.75,pA=0.04,pB=0.4,pD=0.05,pE=0.02)))
+com5$convert.per.owner <- (com5$nB-6800)/300
+ggplot(com5,aes(x=convert.per.owner,y=totalyes)) + geom_point(shape=1) + geom_hline(yintercept=0.66) + 
+  geom_smooth(method="lm") + theme_bw()
+
+```
+
+![convert plot](/images/convert1.png)
+
+The thing to note from the plot above is that, althought each dog-owner would have to reach out to about 50 people in order to get 20 converted "lean yes" voters per dog-owner, the dog owners don't actually need 20 converts each in order to get the dog park.  With the assumed type-specific probabilities I have specified here, the dog-owners really only need about 12 to 13 converts each in order to get simulated election results where the dog park passes 70 - 80% of the time.  And by the time we get to 14 converts per dog-owner, simulated election results come out in favor of the dog park pretty much every time.   
