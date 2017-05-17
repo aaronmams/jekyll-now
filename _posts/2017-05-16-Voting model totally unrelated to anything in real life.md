@@ -503,7 +503,7 @@ The key question here is:
 * the initial "lean yes" group is 40% of the town population, and
 * the initial "lean no" group is 5% of the town population
 
-how many total contacts to the dog-owners need to make and what conversion rates do they need in order to get the dog park passed?
+how many total contacts do the dog-owners need to make and what conversion rates do they need in order to get the dog park passed?
 
 ```R
 outreach.fn <- function(ncom,conversion.rate,pA,pB,pD,pE){
@@ -610,3 +610,7 @@ ggplot(z,aes(x=factor(ncom),y=totalyes,fill=factor(conversion.rate))) + geom_box
 ```
 
 ![outreach1](/images/outreach1.png)
+
+In this case, if each dog owner only contacts about 20 people there is a very low probability of the dog park ballet measure passing (even with an 80% conversion rate for non-dog owning contacts.  Interestingly, even in the neighborhood of 30 contacts per dog-owner, there exists decent chances for success only at very high conversion rates.  
+
+One thing I would take from this if I were a dog owner is the importance of contacting as many town residents as possible in order to get as many people as possible into the "lean yes" group.
