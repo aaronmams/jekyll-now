@@ -157,12 +157,24 @@ What I can’t see is what they expected to get for this money.  Is 50 household
 To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers are great but these numbers lack context.  They’re just arbitrary numbers. 
 
 
+## Implications of imprecision: The Santa Cruz ADU program
+
+|                    | 2015 | 2010  |
+|--------------------|------|-------|
+| 1 unit detached    |      | 65494 |
+| 1 unit attached    |      | 9351  |
+| 2 units            |      | 3917  |
+| 3-4 units          |      | 5665  |
+| 5-9 units          |      | 4154  |
+| 10-19 units        |      | 2837  |
+| more than 20 units |      | 5698  |
+| mobile homes       |      | 6707  |
+| boats, RV, other   |      | 179   |
 
 
+![r plot](/images/Rplot.png)
 
-2. Mythology:
-The claim that lack of affordable housing is linked to homelessness
-The claim that small businesses and merchants can’t attract and retain qualified workers because of the high cost of housing 
+
 
 ## what does the supply and demand schedule look like?
 
@@ -175,6 +187,10 @@ To know this we have to know what we want the price of housing to be.  Then if w
 # Implications of imprecision
 
 My pet issue: ADUs.  
+
+# Mythology:
+The claim that lack of affordable housing is linked to homelessness
+The claim that small businesses and merchants can’t attract and retain qualified workers because of the high cost of housing 
 
 
 # A Final Rant
