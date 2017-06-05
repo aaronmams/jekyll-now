@@ -159,21 +159,40 @@ To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers ar
 
 ## Implications of imprecision: The Santa Cruz ADU program
 
+So now let me be a little more specific about what I mean by responsible stewardship of public money.  For this example I'm going to pick on a policy that have become basically a default setting for city and regional planners: encouraging construction of Accessory Dwelling Units (ADUs).
+
+In Santa Cruz we have an ADU program that currently waives around $13,000 in city permitting fees for people who agree to rent their ADU as 'affordable housing' (as defined by HUD: ~850/month for very-low income households and around 900/month for low income households).  County planners are considering expanding this program by using money from the discretionary budget to incentive lenders to extend credit on extremely favorable terms to individuals wishing to develop an ADU and rent it at affordable rates.  
+
+This is a great example of where we really need some precise understanding of what the 'crisis' is and when/how we will know the 'crisis' is over.  Incentivizing ADU development is basically a stock recommendation of all city and regional planners these days primarily (I believe) because:
+
+1. there is very low political cost - everybody loves it because it
+
+I'm not as opposed to ADU programs in general as people probably think.  I am skeptical of their efficacy for the following reasons:
+
+1. It's really easy for me to see exactly how homeowners benefit and by exactly how much
+2. Low income residents probably do benefit from incentivizing the addition of smaller housing units made available at below market rents.  However, the exact magnitude and extent of those benefits is at worst uncertain and at best poorly articulated.
+
+Items 1 and 2 together basically mean that we are spending public money on a program that bestows certain and quantifiable benefits on a group of relatively wealthy people while providing uncertain and ill-defined benefits to group it is really supposed to be serving.    
+
+One thing that particularly irritates me about subsidizing ADU development is that the people pushing for it do not generally display a deep understanding of the dyanmics of local real estate markets.  
+
+Here is little taste of what I would like to see become a bigger part of our discussion on affordable housing.  According to the 2010 and 2015 Deciennial Census supply and demand conditions in Santa Cruz County looked something like this. 
+
 | Unit Type          | 2015   | 2010   |
 |--------------------|--------|--------|
-| 1 unit detached    | 67990  | 65494  |
-| 1 unit attached    | 8238   | 9351   |
-| 2 units            | 3339   | 3917   |
-| 3-4 units          | 6482   | 5665   |
-| 5-9 units          | 3769   | 4154   |
-| 10-19 units        | 3142   | 2837   |
-| more than 20 units | 5704   | 5698   |
-| mobile homes       | 6099   | 6707   |
+| 1 unit detached    | 67,990  | 65,494  |
+| 1 unit attached    | 8,238   | 9,351   |
+| 2 units            | 3,339   | 3,917   |
+| 3-4 units          | 6,482   | 5,665   |
+| 5-9 units          | 3,769   | 4,154   |
+| 10-19 units        | 3,142   | 2,837   |
+| more than 20 units | 5,704   | 5,698   |
+| mobile homes       | 6,099   | 6,707   |
 | boats, RV, other   | 271    | 179    |
-| Total              | 105034 | 104002 |
+| Total              | 105,034 | 104,002 |
 |                    |        |        |
-| Median Rent        | 1441   | 1226   |
-| Owner Occupied     | 54628  | 55878  |
+| Median Rent        | 1,441   | 1,226   |
+| Owner Occupied     | 54,628  | 55,878  |
 | Owner Vacancy Rate | 1.3%   | 1.6%   |
 
 
@@ -193,8 +212,22 @@ Using the same math for 2010 we get:
 
 $Rental_units = 104,002 - \frac{55,878}{0.994} = 47,787$
 
+Things do get a little complicated here because the 2010 observation of 47,787 rental units and median rent of $1,226 and 2015 observation of 50,242 rental units at a median rent of $1,446 are probably on two different demand curves (it seems likely to me that population growth and income growth probably resulted in a new demand schedule in 2015 at each price point on the 2010 demand curve).  Because we are likely dealing with 2 different demand curves we can't use price and quantity changes to infer the slope of the demand curve which complicates things.  But let's just do what I do on this blog all the time: pick some sensible number and proceed with it (we can alway do sensativity analysis later).
+
+Let's suppose that demand for rental units in Santa Cruz is relatively inelastic such that a $100 change in median rent results in only 50 fewer rental units being demanded.
+
+If we assume that the slope of the demand curves remains constant (i.e. we are dealing with radial expansions of the demand curve), then one very basic thing we could do is assume an expansion of the demand curve over the next 5 years that is proportional to the expansion observed from 2010 - 2015.  In that case, we would have the following demand and supply schedules in the rental market:
 
 ![r plot](/images/Rplot.png)
+
+
+This clearly is not the most rigorous analysis we could conjure up but it does at least tell us one important thing: 
+
+* if we really believe that the Rent is Just Too Damn High
+* and we want to cap rent by 2020 to 2015 levels
+* and we think my assumed slope of the rental market demand curves is reasonable
+
+then if we want to deflate rent using only market supply manipulations, we would have to supply around 60,797 rental units to the market in order to get rent stablized at median levels of around $1,441.
 
 
 
