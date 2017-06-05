@@ -159,9 +159,9 @@ To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers ar
 
 ## Implications of imprecision: The Santa Cruz ADU program
 
-So now let me be a little more specific about what I mean by responsible stewardship of public money.  For this example I'm going to pick on a policy that have become basically a default setting for city and regional planners: encouraging construction of Accessory Dwelling Units (ADUs).
+So now let me be a little more specific about what I mean by responsible stewardship of public money.  For this example I'm going to pick on a policy that has become basically a default setting for city and regional planners: encouraging construction of Accessory Dwelling Units (ADUs).
 
-In Santa Cruz we have an ADU program that currently waives around $13,000 in city permitting fees for people who agree to rent their ADU as 'affordable housing' (as defined by HUD: ~850/month for very-low income households and around 900/month for low income households).  County planners are considering expanding this program by using money from the discretionary budget to incentive lenders to extend credit on extremely favorable terms to individuals wishing to develop an ADU and rent it at affordable rates.  
+In Santa Cruz we have an [ADU program that currently offers to waive around $13,000](http://cityofsantacruz.com/departments/planning-and-community-development/programs/accessory-dwelling-unit-development-program) in city permitting fees for people who agree to rent their ADU as 'affordable housing' (as defined by HUD: ~850/month for very-low income households and around 900/month for low income households).  County planners are considering expanding this program by using money from the discretionary budget to incentive lenders to extend credit on extremely favorable terms to individuals wishing to develop an ADU and rent it at affordable rates.  
 
 This is a great example of where we really need some precise understanding of what the 'crisis' is and when/how we will know the 'crisis' is over.  Incentivizing ADU development is basically a stock recommendation of all city and regional planners these days primarily (I believe) because:
 
@@ -172,7 +172,13 @@ I'm not as opposed to ADU programs in general as people probably think.  I am sk
 1. It's really easy for me to see exactly how homeowners benefit and by exactly how much
 2. Low income residents probably do benefit from incentivizing the addition of smaller housing units made available at below market rents.  However, the exact magnitude and extent of those benefits is at worst uncertain and at best poorly articulated.
 
-Items 1 and 2 together basically mean that we are spending public money on a program that bestows certain and quantifiable benefits on a group of relatively wealthy people while providing uncertain and ill-defined benefits to group it is really supposed to be serving.    
+Items 1 and 2 together basically mean that we are spending public money on a program that bestows certain and quantifiable benefits on a group of relatively wealthy people while providing uncertain and ill-defined benefits to the group it is really supposed to be serving.    
+### ADUs by the numbers
+
+1. How many ADUs do we want?
+2. What, if any impact, would adding ADUs to the rental stock have on median rents?
+3. What if, instead of waiving the permitting fee in exchange for offering the unit as 'affordable housing' we doubled the permitting fee and used the proceeds to increase the number of Section 8 vouchers?
+4. Affordable ADUs have an obvious benefit for seniors and single low income individuals.  Presumably they have some residual benefits for low income families since they (maybe) reduce the total number of people in the 'renter' pool thereby putting some downward pressure on rents.  Do we have any idea/estimate how many low income families on average can benefit from the addition of one ADU? An idea/estimate of the magnitude of benefit accruing to low income households from ADU construction?
 
 One thing that particularly irritates me about subsidizing ADU development is that the people pushing for it do not generally display a deep understanding of the dyanmics of local real estate markets.  
 
