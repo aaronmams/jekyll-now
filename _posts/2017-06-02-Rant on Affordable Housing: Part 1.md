@@ -159,17 +159,39 @@ To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers ar
 
 ## Implications of imprecision: The Santa Cruz ADU program
 
-|                    | 2015 | 2010  |
-|--------------------|------|-------|
-| 1 unit detached    |      | 65494 |
-| 1 unit attached    |      | 9351  |
-| 2 units            |      | 3917  |
-| 3-4 units          |      | 5665  |
-| 5-9 units          |      | 4154  |
-| 10-19 units        |      | 2837  |
-| more than 20 units |      | 5698  |
-| mobile homes       |      | 6707  |
-| boats, RV, other   |      | 179   |
+| Unit Type          | 2015   | 2010   |
+|--------------------|--------|--------|
+| 1 unit detached    | 67990  | 65494  |
+| 1 unit attached    | 8238   | 9351   |
+| 2 units            | 3339   | 3917   |
+| 3-4 units          | 6482   | 5665   |
+| 5-9 units          | 3769   | 4154   |
+| 10-19 units        | 3142   | 2837   |
+| more than 20 units | 5704   | 5698   |
+| mobile homes       | 6099   | 6707   |
+| boats, RV, other   | 271    | 179    |
+| Total              | 105034 | 104002 |
+|                    |        |        |
+| Median Rent        | 1441   | 1226   |
+| Owner Occupied     | 54628  | 55878  |
+| Owner Vacancy Rate | 1.3%   | 1.6%   |
+
+
+A little algebra here can get us a few more interesting numbers.  We can ballpark the rental supply like this:
+
+Total Owner Occupied Units = Total Owner Units X (1 - Owner Vacancy Rate)
+
+Total Potential Rental Units = Total Housing Stock - Total Owner Units.
+
+For 2015 we get:
+
+$54,628 = 0.997(Owned_Units)$ 
+$Owned_units = 54,628/0.997 = 54792$
+$Rental_units = 105034 - 54792 = 50,242$
+
+Using the same math for 2010 we get:
+
+$Rental_units = 104,002 - \frac{55,878}{0.994} = 47,787$
 
 
 ![r plot](/images/Rplot.png)
