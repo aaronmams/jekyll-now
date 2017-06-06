@@ -47,7 +47,7 @@ Based on my extensive reading of reports to the County Board of Supervisors, att
 
 [The City of Santa Cruz 2016-2017 Action Plan](http://www.cityofsantacruz.com/home/showdocument?id=53604).  A document by the Santa Cruz Housing and Community Development Division and The Santa Cruz Economic Development Department. 
 
-These documents when read together give a very detailed overview of the County’s current strategy for increased provision of affordable housing.  They are unamimous in their recognition that we (Santa Cruz County) are indeed in the throws of a ‘housing crisis’.  These documents are extensive, they are delightfully data driven in a way that municipal governance document generally are not, and they reflect a deep commitment on the part of the community and city and regional governments to address the issue of availability of affordable housing.
+These documents when read together give a very detailed overview of the County’s current strategy for increased provision of affordable housing.  They are unamimous in their recognition that we (Santa Cruz County) are indeed in the throws of a ‘housing crisis’.  These documents are extensive, they are delightfully data driven in a way that municipal governance document generally are not, and they reflect a deep commitment on the part of the community and city and regional governments to address the issue of availability of affordable housing. [HAZAH](http://www.urbandictionary.com/define.php?term=hazah), [Good On-Ya](http://www.urbandictionary.com/define.php?term=good%20on%20ya).
 
 However, a thorough reading of them reveals that nowhere in any of the planning/strategy/action documents does the city/county/whoever actually state the conditions under which we will deescalate from housing ‘crisis’ (presumbly to run-of-the-mill ‘housing problem’, ‘housing crunch’, or some other thing less scary than ‘crisis’).  I find this very problematic.  Let me offer an example:
 
@@ -65,9 +65,11 @@ Goal 5: Promote Equal Opportunity and Production of Special Needs Housing Units
 
 Goal 6: Promote energy efficiency in existing and new residential structures
 
-It is worth point out that none of these are actually goals in the sense of being specific, measurable aims.  These are actions.  “Ensure land is available to accommodate an increased range of housing choices, particularly for multi-family units and smaller-sized units” is not a goal.  It is not defined in such as way as to ever know if you’ve accomplished it or not.  
+It is worth point out that none of these are actually goals in the sense of being specific, measurable aims.  These are actions.  “Ensure land is available to accommodate an increased range of housing choices, particularly for multi-family units and smaller-sized units” is not a goal, it is a recommendation.  It is not defined in such as way as to ever know if you’ve accomplished it or not.  
 
-Everyone seems to agree that we are in an affordable housing ‘crisis’.  I’m not debating whether we are or we aren’t.  What I am saying is this: currently in Santa Cruz we have an extensive, well documented, and generally well-reasoned strategy for addressing the housing ‘crisis’.  There are multiple agencies working across multiple juristictions to develop specific actions to decrease housing insecurity for low income, special needs, and other vulnerable populations.  What we don’t have is a way of knowing when/if this combination of strategies, policies, and actions has worked.  That is,
+Everyone seems to agree that we are in an affordable housing ‘crisis’.  I’m not debating whether we are or we aren’t.  What I am saying is this: currently in Santa Cruz we have an extensive, well documented, and generally well-reasoned strategy for addressing the housing ‘crisis’.  There are multiple agencies working across multiple juristictions to develop specific actions to decrease housing insecurity for low income, special needs, and other vulnerable populations.  
+
+What we don’t have is a way of knowing when/if this combination of strategies, policies, and actions has worked.  That is,
 
 If we are in a ‘housing crisis’ when will we know that the crisis has been abolished?    
 
@@ -86,12 +88,12 @@ Here it is worth noting that the median salaries for cops (65k USD) and elementa
 
 ### Example 2: Everybody
 
-Example 1 was consistent with a pretty conservative definition of affordable housing.  It basically said, as long as cops and nurses can get housing then we’re all good.  One the opposite end of the spectrum we go ultra liberal and say that we won’t consider Santa Cruz County affordable until every single person who wants to live here can find housing that fits their budget and lifestyle.  This goal would be both specific and measurable since meeting this goal would necessarily mean observing exactly 0 growth in rental rates and 0 growth in home prices.
+Example 1 was consistent with a pretty conservative definition of affordable housing.  It basically said, as long as cops and nurses can get housing then we’re all good.  On the opposite end of the spectrum we could go ultra liberal and say that we won’t consider Santa Cruz County affordable until every single person who wants to live here can find housing that fits their budget and lifestyle.  This goal would be both specific and measurable since meeting this goal would necessarily mean observing exactly 0 growth in rental rates and 0 growth in home prices.
 
-This is a patently ridiculous definition but it serves as a good juxtoposition to Example 1.  If we are going to say that we are in a housing crisis because rent is too high, then we need to know what rent SHOULD BE in order for us to declare that we are no longer in a crisis.  People often don’t like to frame the issue in these terms because:
+This is a patently ridiculous definition but it serves as a good juxtoposition to Example 1.  If we are going to say that we are in a housing crisis because [rent is too damn high](https://www.youtube.com/watch?v=79KzZ0YqLvo), then we need to know what rent SHOULD BE in order for us to declare that we are no longer in a crisis.  People often don’t like to frame the issue in these terms because:
 
 For good reasons there are some negative connotations associated with meddling in real estate markets in order to manipulate prices, and
-As soon as somebody commits to a number (say we determine that achieving median rent of $1300/mo means we are no longer in a ‘crisis’) some stakeholder will immediately get pissed that his/her economic circumstances aren’t covered by the new definition of affordable.
+as soon as somebody commits to a number (say we determine that achieving median rent of $1300/mo means we are no longer in a ‘crisis’) some stakeholder will immediately get pissed that his/her economic circumstances aren’t covered by the new definition of affordable.
 
 In order to avoid the complications that come with taking about hard numbers, people often like to define ‘affordable’ using anecdotes about people who can’t find adequate housing.
 
@@ -108,6 +110,7 @@ But if median home price of 12 X median household income is ‘crisis’ and med
 
 Quick Aside Here: Yes, I know HUD and others have defined what ‘affordable housing’ means.  It’s an income based formula that defines rental rates that are within reach of above moderate, moderate, low, and very low income households.  I’m not talking about defining what ‘affordable housing’ is.  I’m talking about how we know when we’ve provided enough of it.  If we are in a ‘crisis’ now because X number of resident in our county can’t find affordable housing how much do we need to reduce X by in order to get out of ‘crisis’ mode? 
 
+One reason we might not want an affordable housing policy that is exclusively based on the ratio of median rent to median income is that the easiest way to get median rent to be a digestable fraction of median income is to kick all the poor people out of the county.  If every low income resident of Santa Cruz County moved to Seaside (23 miles away in Monterey County) our median income would go up, ratio of housing units to bodies would go up which would put downward pressure on rents and, Voila! The median rent:median income balance would improve dramatically.   
 
 ### Example 4: Section 8 Waiting List Decrease
 
@@ -128,6 +131,8 @@ In simple terms, I think precision matters for two reasons:
 
 1. Responsible stewardship of public money, and
 2. Related to responsible stewardship, when problems aren’t precisely defined mythology is allowed to propogate and eventually becomes accepted wisdom.
+
+## Responsible use of public money: estimating relative impact
 
 The biggest reason that it matters to me is that Santa Cruz County has at least $35 million of public money invested in various programs that address affordable housing need.  I have no reason to believe that this public money is being irresponsibly spent.  However, in the absence of specific, measurable goals for eliminating our affordable housing crisis it’s hard for me to see how we can even begin to evaluate whether the current strategy is the best way to spend tens of millions of dollars.
 
@@ -158,106 +163,37 @@ What I can’t see is what they expected to get for this money.  Is 50 household
 
 To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers are great but these numbers lack context.  They’re just arbitrary numbers. 
 
+## Responsible use of public money: evaluating alternatives
 
-## Implications of imprecision: The Santa Cruz ADU program
+Let's go back to my list of 4 possible examples of how to define the affordable housing crisis and think about the appropriate way to address Example 1 vs. Example 4.
 
-So now let me be a little more specific about what I mean by responsible stewardship of public money.  For this example I'm going to pick on a policy that has become basically a default setting for city and regional planners: encouraging construction of Accessory Dwelling Units (ADUs).
+I would argue that if **Example 1: Cops and Nurses** strikes you as a good way to think about affordable housing then a possible solution might not be supply-side (adjusting the stock) related at all.  If we really want cops and firemen and nurses to be homeowners in our communities we could think about setting up a home-purchase program for them (we could also just give them a raise but then they might take thier extra income, buy a cheap house in the next county over and our plan to have them living in the community would be defeated).  Santa Cruz county currently has around 50,000 homeowners and a property tax rate of about 1.3%.  If we increased everybody's property tax around 100 bucks we'd have 500,000/year fund that could be used for downpayment assistance or some other incentive for cops, nurses, and firefighters to purchase houses with.
 
-In Santa Cruz we have an [ADU program that currently offers to waive around $13,000](http://cityofsantacruz.com/departments/planning-and-community-development/programs/accessory-dwelling-unit-development-program) in city permitting fees for people who agree to rent their ADU as 'affordable housing' (as defined by HUD: ~850/month for very-low income households and around 900/month for low income households).  [The City of Santa Cruz, through partnership with a local Credit Union,](http://www.cityofsantacruz.com/Home/ShowDocument?id=3700) also offers special financial up to $100,000 for prospective ADU builders.
+If **Example 4: Section 8 Waiting List Decrease** is more consistent with your notion of our affordable housing problem then a supply-side strategy might be the only one that makes sense.
 
-This is a great example of where we really need some precise understanding of what the 'crisis' is and when/how we will know the 'crisis' is over.  Incentivizing ADU development is basically a stock recommendation of all city and regional planners these days primarily (I believe) because:
+To be clear, the two things aren't mutually exclusive.  A good comprehensive housing policy might want to consider both goals of 
 
-1. there is very low political cost - everybody loves it because it
+* increasing homeownership rates among cops, nurses, and firefighters to 30% by 2035, and
+* cutting the Section 8 voucher waiting list in half by 2020
 
-I'm not as opposed to ADU programs in general as people probably think.  I am skeptical of their efficacy for the following reasons:
+which is exactly my point.  If we articulate these two clear goals, then we can start talking about the best actions (in terms of bang-for-the-buck) to pursue these goals.  If we just start talking about 'creative solutions' and 'thinking outside the box' before we have clear goals in mind, then it becomes almost impossible to evaluate any two competing uses of public money. 
 
-1. It's really easy for me to see exactly how homeowners benefit and by exactly how much
-2. Low income residents probably do benefit from incentivizing the addition of smaller housing units made available at below market rents.  However, the exact magnitude and extent of those benefits is at worst uncertain and at best poorly articulated.
+# Summary
 
-Items 1 and 2 together basically mean that we are spending public money on a program that bestows certain and quantifiable benefits on a group of relatively wealthy people while providing uncertain and ill-defined benefits to the group it is really supposed to be serving.    
-### ADUs by the numbers
+Discussion about affordable housing needs to be an honest discussion about tradeoffs.  Everything has opporunity cost and most actions have some winners and some losers.  Having winners and losers to public policy doesn't mean we can't make policy or strategy.  
 
-1. How many ADUs do we want?
-2. What, if any impact, would adding ADUs to the rental stock have on median rents?
-3. What if, instead of waiving the permitting fee in exchange for offering the unit as 'affordable housing' we doubled the permitting fee and used the proceeds to increase the number of Section 8 vouchers?
-4. Affordable ADUs have an obvious benefit for seniors and single low income individuals.  Presumably they have some residual benefits for low income families since they (maybe) reduce the total number of people in the 'renter' pool thereby putting some downward pressure on rents.  Do we have any idea/estimate how many low income families on average can benefit from the addition of one ADU? An idea/estimate of the magnitude of benefit accruing to low income households from ADU construction?
+First, increasing the supply of affordable housing necessarily incentivizes in-migration of low income individuals.  Where people choose to live is heavily influenced by labor mobility, the geophraphy of jobs, and access to transportation.  But it's also influenced by relative housing costs.  If Santa Cruz County becomes more expensive relative to the neighboring counties of Santa Clara and Monterey we will see out-migration of people at the lower quartiles of the income distribution.  And if Santa Cruz County becomes less expensive relative to neighboring counties we expect some in-migration of low income people.  
 
-**Question 1: How Many ADUs Do We Want?**
+Increasing affordable housing stock and adding low income residents puts downward pressure on existing housing values.  Again, that's not a reason not to do it.  But we shouldn't pretend that everybody wins.  I value diversity and I'd rather live in a community with a mix of blue collar, grey collar, and white collar families but I'm not going to pretend that building such a community has 0 costs.  If we're not willing to articulate how much affordable housing we want to provide then there is no way to judge what we will be required to give up in order to provide it.  If we're not honest with members of our community about the magnitude of tradeoffs implicit in our housing policy, then we're not offering everybody the opportunity to make informed choice.  
 
-If we refer back to the Association of Monterey Bay Area Governments' [Regional Housing Needs Allocation](http://ambag.org/sites/default/files/documents/RHNP%202014-2023_Final_revised.pdf) we can see that Santa Cruz County is estimated to need 1,314 housing units in order to keep up projected growth.  And if we refer to the [Housing Element Table 4.7.1](http://www.sccoplanning.com/Portals/2/County/Planning/housing/2015%20Housing%20Element.pdf) we can see that county planners are forecasting 280 additional ADUs between now and 2023.  
+Second, there is a necessary tension between increased development and preservation of greenbelt, coastal access, and other public goods.  You can't have more of both.  To their great credit the city and county of Santa Cruz have embraced principals of smart growth and have invested considerable time and effort in growth strategies that minimize impacts to natural resources and amenity values.  However, the basic question, *How many total people can Santa Cruz County support?* still needs to be answered.  I realize questions of this flavor are unpopular because answering them necessarily means there are some people or groups of people for whom the answer means, "you don't get to live here, sorry."  
 
-The RHNA is an estimate of how many housing units we need in order to keep up with forecasted growth.  In other words, if we are in a housing 'crisis' now and we follow the recommendations of the RHNA we will ensure that the 'crisis' doesn't get any worse between now and 2023.  If 280 ADUs puts us on a path to being no less crisis-y in 2023 than we are now, how many more units do we need to add if we want to be out of 'crisis' entirely by 2023? 
+I've been over the Housing Elements, Economic Vitality Report, Regional Housing Needs Allocation, and Santa Cruz Action Plan backwards and forwards multiple times.  The words 'urban infill' and 'densification' are all over every one of those documents.  But even after scrutanizing each one of them, you know what I still don't know?  Suppose we infill every square inch of Santa Cruz, how many people does that mean we house? AND:
 
+* how does that number compare to projected growth?
+* how does it compare to the number currently on the Section 8 voucher waitlist?
 
-**Question 2: How Do Local Real Estate Markets Respond to Supply?**
-
-One thing that particularly irritates me about subsidizing ADU development is that I can't find, in any analysis anywhere, a good overview of local real estate dynamics.  
-
-Here is little taste of what I would like to see become a bigger part of our discussion on affordable housing.  According to the 2010 and 2015 Deciennial Census supply and demand conditions in Santa Cruz County looked something like this. 
-
-| Unit Type          | 2015   | 2010   |
-|--------------------|--------|--------|
-| 1 unit detached    | 67,990  | 65,494  |
-| 1 unit attached    | 8,238   | 9,351   |
-| 2 units            | 3,339   | 3,917   |
-| 3-4 units          | 6,482   | 5,665   |
-| 5-9 units          | 3,769   | 4,154   |
-| 10-19 units        | 3,142   | 2,837   |
-| more than 20 units | 5,704   | 5,698   |
-| mobile homes       | 6,099   | 6,707   |
-| boats, RV, other   | 271    | 179    |
-| Total              | 105,034 | 104,002 |
-|                    |        |        |
-| Median Rent        | 1,441   | 1,226   |
-| Owner Occupied     | 54,628  | 55,878  |
-| Owner Vacancy Rate | 1.3%   | 1.6%   |
-
-
-A little algebra here can get us a few more interesting numbers.  We can ballpark the rental supply like this:
-
-Total Owner Occupied Units = Total Owner Units X (1 - Owner Vacancy Rate)
-
-Total Potential Rental Units = Total Housing Stock - Total Owner Units.
-
-For 2015 we get:
-
-$54,628 = 0.997(Owned_Units)$ 
-$Owned_units = 54,628/0.997 = 54792$
-$Rental_units = 105034 - 54792 = 50,242$
-
-Using the same math for 2010 we get:
-
-$Rental_units = 104,002 - \frac{55,878}{0.994} = 47,787$
-
-Things do get a little complicated here because the 2010 observation of 47,787 rental units and median rent of $1,226 and 2015 observation of 50,242 rental units at a median rent of $1,446 are probably on two different demand curves (it seems likely to me that population growth and income growth probably resulted in a new demand schedule in 2015 at each price point on the 2010 demand curve).  Because we are likely dealing with 2 different demand curves we can't use price and quantity changes to infer the slope of the demand curve which complicates things.  But let's just do what I do on this blog all the time: pick some sensible number and proceed with it (we can alway do sensativity analysis later).
-
-Let's suppose that demand for rental units in Santa Cruz is relatively inelastic such that a $100 change in median rent results in only 50 fewer rental units being demanded.
-
-If we assume that the slope of the demand curves remains constant (i.e. we are dealing with radial expansions of the demand curve), then one very basic thing we could do is assume an expansion of the demand curve over the next 5 years that is proportional to the expansion observed from 2010 - 2015.  In that case, we would have the following demand and supply schedules in the rental market:
-
-![r plot](/images/Rplot.png)
-
-
-This clearly is not the most rigorous analysis we could conjure up but it does at least tell us one important thing: 
-
-* if we really believe that the [Rent is Just Too Damn High](https://www.youtube.com/watch?v=79KzZ0YqLvo)
-* and we want to cap rent by 2020 to 2015 levels
-* and we think my assumed slope of the rental market demand curves is reasonable
-
-then if we want to deflate rent using only market supply manipulations, we would have to supply around 60,797 rental units to the market in order to get rent stablized at median levels of around $1,441.
-
-** Question 3: What's a Feasible Alternative to Subsidizing ADUs?**
-
-The language of alternatives is largely absent from our housign policy discussions in Santa Cruz.  Our city and regional planners have embraced an "All of the Above" approach for dealing with the affordable housing 'crisis.'  If you ask somebody, "is it better to build another homeless shelter or add 300 more rental units through ADU development?" you will most likely get told, "it's not an either or situation."  You will then probably get lectured about how 
-
-This is of course nonsense.  Obviously we need to address the underlying root causes of housing insecurity, pursue efficiencies and synergies whereever we can.  But public money isn't some bottomless well.  We can't just throw money at every idea some horn-rimmed glass wearing MCP dreams up and hope for the best.  
-
-Maybe subsidizing ADUs is the most efficient use of affordable housing dollars.  ADUs get developed on existing properties so they check all the right planning boxes (urban infill, densification, etc).  But if you never put them next to something else and ask, "dollar for dollar what's the better deal?" then you can't really know.
-
-
-# Mythology:
-The claim that lack of affordable housing is linked to homelessness
-The claim that small businesses and merchants can’t attract and retain qualified workers because of the high cost of housing 
+If we infill like a motherfucker, will our 'housing crisis' be over?
 
 
 # A Final Rant
