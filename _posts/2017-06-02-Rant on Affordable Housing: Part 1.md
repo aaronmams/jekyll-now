@@ -8,7 +8,7 @@ Here in Santa Cruz County, depending on who you talk to, we either have an affor
 The claim that I will base this and future posts on is the following: I don't think anyone has a really well-developed idea of what defines our housing 'crisis.' To be clear, everybody can offer you some definition:
 
 * people with good jobs can't find housing
-* peopel who have lived here their whole lives are being 'priced out' of their homes
+* people who have lived here their whole lives are being 'priced out' of their homes
 * median home price/rental rate is too big a fraction of median income
 
 These are certainly symptoms of a problem...but they aren't particularly strong metrics upon which to base public policy strategies that might address our problem/shortage/crisis. 
@@ -102,7 +102,7 @@ Affordable housing policy is all about who should be able to afford to live wher
 
 These metrics were mentioned above but they deserve a more focused treatment.  From what I have observed the affordable housing ‘crisis’ in Santa Cruz County is often described using these metrics: The median home price (~$850,000) is about 12 times the median household income ($65k/yr) and the median family rent ($2,154) is about 40% of median monthly household income.  People in Santa Cruz generally have no qualms about telling you that median home price of $850k is ‘crazy’, ‘insane’, or ‘ridiculous’. 
 
-But if median home price of 12 X median household income is ‘crisis’ and median home price of 3 X is affordable, where is line between ‘unaffordable’ and ‘crisis?’ When does unaffordable become a full blown ‘crisis’? 4 times median household income? 5 times median household income? 8 times?
+But if median home price of 12 X median household income is ‘crisis’ and median home price of 3 X (or less) gross annual income is affordable, where is line between ‘unaffordable’ and ‘crisis?’ When does unaffordable become a full blown ‘crisis’? 4 times median household income? 5 times median household income? 8 times?
 
 Quick Aside Here: Yes, I know HUD and others have defined what ‘affordable housing’ means.  It’s an income based formula that defines rental rates that are within reach of above moderate, moderate, low, and very low income households.  I’m not talking about defining what ‘affordable housing’ is.  I’m talking about how we know when we’ve provided enough of it.  If we are in a ‘crisis’ now because X number of resident in our county can’t find affordable housing how much do we need to reduce X by in order to get out of ‘crisis’ mode? 
 
@@ -179,6 +179,13 @@ Items 1 and 2 together basically mean that we are spending public money on a pro
 2. What, if any impact, would adding ADUs to the rental stock have on median rents?
 3. What if, instead of waiving the permitting fee in exchange for offering the unit as 'affordable housing' we doubled the permitting fee and used the proceeds to increase the number of Section 8 vouchers?
 4. Affordable ADUs have an obvious benefit for seniors and single low income individuals.  Presumably they have some residual benefits for low income families since they (maybe) reduce the total number of people in the 'renter' pool thereby putting some downward pressure on rents.  Do we have any idea/estimate how many low income families on average can benefit from the addition of one ADU? An idea/estimate of the magnitude of benefit accruing to low income households from ADU construction?
+
+**Question 1: How Many ADUs Do We Want?**
+
+If we refer back to the Association of Monterey Bay Area Governments' [Regional Housing Needs Allocation](http://ambag.org/sites/default/files/documents/RHNP%202014-2023_Final_revised.pdf) we can see that Santa Cruz County is estimated to need 1,314 housing units in order to keep up projected growth.  And if we refer to the [Housing Element Table 4.7.1](http://www.sccoplanning.com/Portals/2/County/Planning/housing/2015%20Housing%20Element.pdf) we can see that county planners are forecasting 280 additional ADUs between now and 2023.  
+
+The RHNA is an estimate of how many housing units we need in order to keep up with forecasted growth.  If we 
+
 
 One thing that particularly irritates me about subsidizing ADU development is that the people pushing for it do not generally display a deep understanding of the dyanmics of local real estate markets.  
 
