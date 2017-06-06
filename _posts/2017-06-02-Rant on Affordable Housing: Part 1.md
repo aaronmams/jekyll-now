@@ -41,9 +41,11 @@ Claim 1: The current discussion about the affordable housing ‘crisis’ in San
 
 Based on my extensive reading of reports to the County Board of Supervisors, attendance at various public forums (including the mayor’s recent State of the City gathering), and participation in the Monterey Bay Regional Economic Partnership Planning Committee I have determined that 3 documents appear central to the current discussion of affordable housing in Santa Cruz:
 
-The 2015 Santa Cruz County Housing Element. (http://www.sccoplanning.com/Portals/2/County/Planning/housing/2015%20Housing%20Element.pdf)
-The 2014 Santa Cruz County Economic Vitality Report (http://sccoplanning.com/Portals/2/County/Planning/economicdev/economic%20vitiality%20study.pdf)
-The City of Santa Cruz 2016-2017 Action Plan.  A document by the Santa Cruz Housing and Community Development Division and The Santa Cruz Economic Development Department: http://www.cityofsantacruz.com/home/showdocument?id=53604
+[The 2015 Santa Cruz County Housing Element](http://www.sccoplanning.com/Portals/2/County/Planning/housing/2015%20Housing%20Element.pdf)
+
+[The 2014 Santa Cruz County Economic Vitality Report](http://sccoplanning.com/Portals/2/County/Planning/economicdev/economic%20vitiality%20study.pdf)
+
+[The City of Santa Cruz 2016-2017 Action Plan](http://www.cityofsantacruz.com/home/showdocument?id=53604).  A document by the Santa Cruz Housing and Community Development Division and The Santa Cruz Economic Development Department. 
 
 These documents when read together give a very detailed overview of the County’s current strategy for increased provision of affordable housing.  They are unamimous in their recognition that we (Santa Cruz County) are indeed in the throws of a ‘housing crisis’.  These documents are extensive, they are delightfully data driven in a way that municipal governance document generally are not, and they reflect a deep commitment on the part of the community and city and regional governments to address the issue of availability of affordable housing.
 
@@ -80,7 +82,7 @@ Achieve a median monthly rent that is no more than 30% of the median monthly pay
  
 In the interest of developing a real success metric here we probably want to go even a step further and say, “Achieve a 30% homeownership rate across the preferred professions by 2020”..or 2025...or 2035, whatever.
  
-Here it is worth noting that the median salaries for cops ($65k) and elementary school teachers ($62k) in Santa Cruz County are already consistent with the above 30% rule (65k/yr is about $5416/month which is about 3.01 times the median rent of about $1800/mo).  The homeownership metric might be a little harder nut to crack.
+Here it is worth noting that the median salaries for cops (65k USD) and elementary school teachers (62k USD) in Santa Cruz County are already consistent with the above 30% rule (65k/yr is about 5,416/month which is about 3.01 times the median rent of about 1,800/mo).  The homeownership metric might be a little harder nut to crack.
 
 ### Example 2: Everybody
 
@@ -100,7 +102,7 @@ Affordable housing policy is all about who should be able to afford to live wher
 
 ### Example 3: Median Income/Median Rent Ratio
 
-These metrics were mentioned above but they deserve a more focused treatment.  From what I have observed the affordable housing ‘crisis’ in Santa Cruz County is often described using these metrics: The median home price (~$850,000) is about 12 times the median household income ($65k/yr) and the median family rent ($2,154) is about 40% of median monthly household income.  People in Santa Cruz generally have no qualms about telling you that median home price of $850k is ‘crazy’, ‘insane’, or ‘ridiculous’. 
+These metrics were mentioned above but they deserve a more focused treatment.  From what I have observed the affordable housing ‘crisis’ in Santa Cruz County is often described using these metrics: The median home price (~850,000) is about 12 times the median household income (65k/yr) and the median family rent (2,154) is about 40% of median monthly household income.  People in Santa Cruz generally have no qualms about telling you that median home price of 850k is ‘crazy’, ‘insane’, or ‘ridiculous’. 
 
 But if median home price of 12 X median household income is ‘crisis’ and median home price of 3 X (or less) gross annual income is affordable, where is line between ‘unaffordable’ and ‘crisis?’ When does unaffordable become a full blown ‘crisis’? 4 times median household income? 5 times median household income? 8 times?
 
@@ -131,7 +133,7 @@ The biggest reason that it matters to me is that Santa Cruz County has at least 
 
 The city and county of Santa Cruz have allocated public money to lots of different projects, under lots of different authorizations, with different (but complimentary objectives).  To their great credit they have a system for reporting progress on many of these various strategies/actions/projects which can be viewed here: 
 
-http://www.cityofsantacruz.com/home/showdocument?id=53604
+[http://www.cityofsantacruz.com/home/showdocument?id=53604](http://www.cityofsantacruz.com/home/showdocument?id=53604)
 
 You can refer specifically to page 21, Table AP 23 to see the total amount of public monies allocated to the goal of ‘increasing and preserving affordable housing.’ Progress is reported by several ‘Goal Outcome Indicators’ for example:
 
@@ -161,7 +163,7 @@ To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers ar
 
 So now let me be a little more specific about what I mean by responsible stewardship of public money.  For this example I'm going to pick on a policy that has become basically a default setting for city and regional planners: encouraging construction of Accessory Dwelling Units (ADUs).
 
-In Santa Cruz we have an [ADU program that currently offers to waive around $13,000](http://cityofsantacruz.com/departments/planning-and-community-development/programs/accessory-dwelling-unit-development-program) in city permitting fees for people who agree to rent their ADU as 'affordable housing' (as defined by HUD: ~850/month for very-low income households and around 900/month for low income households).  County planners are considering expanding this program by using money from the discretionary budget to incentive lenders to extend credit on extremely favorable terms to individuals wishing to develop an ADU and rent it at affordable rates.  
+In Santa Cruz we have an [ADU program that currently offers to waive around $13,000](http://cityofsantacruz.com/departments/planning-and-community-development/programs/accessory-dwelling-unit-development-program) in city permitting fees for people who agree to rent their ADU as 'affordable housing' (as defined by HUD: ~850/month for very-low income households and around 900/month for low income households).  [The City of Santa Cruz, through partnership with a local Credit Union,](http://www.cityofsantacruz.com/Home/ShowDocument?id=3700) also offers special financial up to $100,000 for prospective ADU builders.
 
 This is a great example of where we really need some precise understanding of what the 'crisis' is and when/how we will know the 'crisis' is over.  Incentivizing ADU development is basically a stock recommendation of all city and regional planners these days primarily (I believe) because:
 
@@ -184,10 +186,12 @@ Items 1 and 2 together basically mean that we are spending public money on a pro
 
 If we refer back to the Association of Monterey Bay Area Governments' [Regional Housing Needs Allocation](http://ambag.org/sites/default/files/documents/RHNP%202014-2023_Final_revised.pdf) we can see that Santa Cruz County is estimated to need 1,314 housing units in order to keep up projected growth.  And if we refer to the [Housing Element Table 4.7.1](http://www.sccoplanning.com/Portals/2/County/Planning/housing/2015%20Housing%20Element.pdf) we can see that county planners are forecasting 280 additional ADUs between now and 2023.  
 
-The RHNA is an estimate of how many housing units we need in order to keep up with forecasted growth.  If we 
+The RHNA is an estimate of how many housing units we need in order to keep up with forecasted growth.  In other words, if we are in a housing 'crisis' now and we follow the recommendations of the RHNA we will ensure that the 'crisis' doesn't get any worse between now and 2023.  If 280 ADUs puts us on a path to being no less crisis-y in 2023 than we are now, how many more units do we need to add if we want to be out of 'crisis' entirely by 2023? 
 
 
-One thing that particularly irritates me about subsidizing ADU development is that the people pushing for it do not generally display a deep understanding of the dyanmics of local real estate markets.  
+**Question 2: How Do Local Real Estate Markets Respond to Supply?**
+
+One thing that particularly irritates me about subsidizing ADU development is that I can't find, in any analysis anywhere, a good overview of local real estate dynamics.  
 
 Here is little taste of what I would like to see become a bigger part of our discussion on affordable housing.  According to the 2010 and 2015 Deciennial Census supply and demand conditions in Santa Cruz County looked something like this. 
 
@@ -236,25 +240,20 @@ If we assume that the slope of the demand curves remains constant (i.e. we are d
 
 This clearly is not the most rigorous analysis we could conjure up but it does at least tell us one important thing: 
 
-* if we really believe that the Rent is Just Too Damn High
+* if we really believe that the [Rent is Just Too Damn High](https://www.youtube.com/watch?v=79KzZ0YqLvo)
 * and we want to cap rent by 2020 to 2015 levels
 * and we think my assumed slope of the rental market demand curves is reasonable
 
 then if we want to deflate rent using only market supply manipulations, we would have to supply around 60,797 rental units to the market in order to get rent stablized at median levels of around $1,441.
 
+** Question 3: What's a Feasible Alternative to Subsidizing ADUs?**
 
+The language of alternatives is largely absent from our housign policy discussions in Santa Cruz.  Our city and regional planners have embraced an "All of the Above" approach for dealing with the affordable housing 'crisis.'  If you ask somebody, "is it better to build another homeless shelter or add 300 more rental units through ADU development?" you will most likely get told, "it's not an either or situation."  You will then probably get lectured about how 
 
-## what does the supply and demand schedule look like?
+This is of course nonsense.  Obviously we need to address the underlying root causes of housing insecurity, pursue efficiencies and synergies whereever we can.  But public money isn't some bottomless well.  We can't just throw money at every idea some horn-rimmed glass wearing MCP dreams up and hope for the best.  
 
-If we want to know what kind of bang we can expect for our buck on any project we have to have some idea what the supply/demand schedule looks like.
+Maybe subsidizing ADUs is the most efficient use of affordable housing dollars.  ADUs get developed on existing properties so they check all the right planning boxes (urban infill, densification, etc).  But if you never put them next to something else and ask, "dollar for dollar what's the better deal?" then you can't really know.
 
-## how many units do we need to add to get the median price down
-To know this we have to know what we want the price of housing to be.  Then if we know the demand schedule we at least know how much we have to build in order to get market prices that aren’t ‘crazy.’ 
-
-
-# Implications of imprecision
-
-My pet issue: ADUs.  
 
 # Mythology:
 The claim that lack of affordable housing is linked to homelessness
