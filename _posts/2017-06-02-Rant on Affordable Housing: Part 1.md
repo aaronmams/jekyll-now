@@ -15,11 +15,11 @@ These are certainly symptoms of a problem...but they aren't particularly strong 
 
 # Resources
 
-Although I will cite them throughout the following discussion when they are relevant here are the main documents I will be drawing from:
+Although I will cite them throughout the following discussion when they are relevant, here are the main documents I will be drawing from:
 
 [The 2015 Santa Cruz County Housing Element](http://www.sccoplanning.com/Portals/2/County/Planning/housing/2015%20Housing%20Element.pdf)
 
-The Housing Element was specifically referenced [in our mayor’s, “State of the City” address](http://www.santacruzsentinel.com/government-and-politics/20170523/state-of-santa-cruz-city-address-highlights-housing-crisis) 
+The Housing Element was specifically referenced [in our mayor’s, “State of the City” address](http://www.santacruzsentinel.com/government-and-politics/20170523/state-of-santa-cruz-city-address-highlights-housing-crisis). 
 
 The Housing Element draws in a few important places from:
 
@@ -27,11 +27,11 @@ The Housing Element draws in a few important places from:
 
 and
 
-[Regional Growth Forecasts made by the Association of Monterey Bay Area Governments](http://ambag.org/sites/default/files/documents/FINAL%20Adopted%20Forecast%20and%20Documentation.pdf)
+[Regional Growth Forecasts made by the Association of Monterey Bay Area Governments](http://ambag.org/sites/default/files/documents/FINAL%20Adopted%20Forecast%20and%20Documentation.pdf).
 
 [The City of Santa Cruz 2016-2017 Action Plan](http://www.cityofsantacruz.com/home/showdocument?id=53604).  A document by the Santa Cruz Housing and Community Development Division and The Santa Cruz Economic Development Department.
 
-A UCSC led research project called [No Place Like Home](http://www.noplacelikehomeucsc.org/en/the-issues/)
+A UCSC led research project called [No Place Like Home](http://www.noplacelikehomeucsc.org/en/the-issues/).
 
 Yes, these are long.  Yes, I read all of them.  No, you don’t need to read them.  That’s what I’m here for. 
 
@@ -45,7 +45,7 @@ Based on my extensive reading of reports to the County Board of Supervisors, att
 
 [The 2014 Santa Cruz County Economic Vitality Report](http://sccoplanning.com/Portals/2/County/Planning/economicdev/economic%20vitiality%20study.pdf)
 
-[The City of Santa Cruz 2016-2017 Action Plan](http://www.cityofsantacruz.com/home/showdocument?id=53604).  A document by the Santa Cruz Housing and Community Development Division and The Santa Cruz Economic Development Department. 
+[The City of Santa Cruz 2016-2017 Action Plan](http://www.cityofsantacruz.com/home/showdocument?id=53604).  
 
 These documents when read together give a very detailed overview of the County’s current strategy for increased provision of affordable housing.  They are unamimous in their recognition that we (Santa Cruz County) are indeed in the throws of a ‘housing crisis’.  These documents are extensive, they are delightfully data driven in a way that municipal governance document generally are not, and they reflect a deep commitment on the part of the community and city and regional governments to address the issue of availability of affordable housing. [HAZAH](http://www.urbandictionary.com/define.php?term=hazah), [Good On-Ya](http://www.urbandictionary.com/define.php?term=good%20on%20ya).
 
