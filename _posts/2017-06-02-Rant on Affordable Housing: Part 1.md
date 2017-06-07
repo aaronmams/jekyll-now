@@ -47,7 +47,7 @@ Based on my extensive reading of reports to the County Board of Supervisors, att
 
 [The City of Santa Cruz 2016-2017 Action Plan](http://www.cityofsantacruz.com/home/showdocument?id=53604).  
 
-These documents when read together give a very detailed overview of the County’s current strategy for increased provision of affordable housing.  They are unamimous in their recognition that we (Santa Cruz County) are indeed in the throws of a ‘housing crisis’.  These documents are extensive, they are delightfully data driven in a way that municipal governance document generally are not, and they reflect a deep commitment on the part of the community and city and regional governments to address the issue of availability of affordable housing. [HAZAH](http://www.urbandictionary.com/define.php?term=hazah), [Good On-Ya](http://www.urbandictionary.com/define.php?term=good%20on%20ya).
+These documents when read together give a very detailed overview of the County’s current strategy for increased provision of affordable housing.  They are unamimous in their recognition that we (Santa Cruz County) are indeed in the throws of a ‘housing crisis’.  These documents are extensive, they are delightfully data driven in a way that municipal governance documents generally are not, and they reflect a deep commitment on the part of the community and city and regional governments to address the issue of availability of affordable housing. [HAZAH](http://www.urbandictionary.com/define.php?term=hazah), [Good On-Ya](http://www.urbandictionary.com/define.php?term=good%20on%20ya).
 
 However, a thorough reading of them reveals that nowhere in any of the planning/strategy/action documents does the city/county/whoever actually state the conditions under which we will deescalate from housing ‘crisis’ (presumbly to run-of-the-mill ‘housing problem’, ‘housing crunch’, or some other thing less scary than ‘crisis’).  I find this very problematic.  Let me offer an example:
 
@@ -65,7 +65,7 @@ Goal 5: Promote Equal Opportunity and Production of Special Needs Housing Units
 
 Goal 6: Promote energy efficiency in existing and new residential structures
 
-It is worth point out that none of these are actually goals in the sense of being specific, measurable aims.  These are actions.  “Ensure land is available to accommodate an increased range of housing choices, particularly for multi-family units and smaller-sized units” is not a goal, it is a recommendation.  It is not defined in such as way as to ever know if you’ve accomplished it or not.  
+It is worth pointing out that none of these are actually goals in the sense of being specific, measurable aims.  These are actions.  “Ensure land is available to accommodate an increased range of housing choices, particularly for multi-family units and smaller-sized units” is not a goal, it is a recommendation.  It is not defined in such as way as to ever know if you’ve accomplished it or not.  
 
 Everyone seems to agree that we are in an affordable housing ‘crisis’.  I’m not debating whether we are or we aren’t.  What I am saying is this: currently in Santa Cruz we have an extensive, well documented, and generally well-reasoned strategy for addressing the housing ‘crisis’.  There are multiple agencies working across multiple juristictions to develop specific actions to decrease housing insecurity for low income, special needs, and other vulnerable populations.  
 
@@ -99,7 +99,7 @@ In order to avoid the complications that come with taking about hard numbers, pe
 
 We might all generally agree that Example 1 is too rigid.  Most of us probably have some vague sense that other ‘good jobs’ (bank teller, car mechanic, etc) should also be able to afford to live in Santa Cruz.  And we probably all agree that Example 2 is too vague. We can’t have a housing policy that literally says that anyone on earth who wants to live in Santa Cruz should be able to.  So in the middle is where the real action is.
 
-Affordable housing policy is all about who should be able to afford to live where.  Nobody wants to frame the issue that way because it’s pretty dickish….but it’s the only way that will ever lead to a definition of the problem which allows us to derive the conditions under which we determine that the problem has been solved.
+Affordable housing policy is all about who **should** be able to afford to live where.  Nobody wants to frame the issue that way because it’s pretty dickish….but it’s the only way that will ever lead to a definition of the problem which allows us to derive the conditions under which we determine that the problem has been solved.
  
 
 ### Example 3: Median Income/Median Rent Ratio
@@ -108,9 +108,18 @@ These metrics were mentioned above but they deserve a more focused treatment.  F
 
 But if median home price of 12 X median household income is ‘crisis’ and median home price of 3 X (or less) gross annual income is affordable, where is line between ‘unaffordable’ and ‘crisis?’ When does unaffordable become a full blown ‘crisis’? 4 times median household income? 5 times median household income? 8 times?
 
-Quick Aside Here: Yes, I know HUD and others have defined what ‘affordable housing’ means.  It’s an income based formula that defines rental rates that are within reach of above moderate, moderate, low, and very low income households.  I’m not talking about defining what ‘affordable housing’ is.  I’m talking about how we know when we’ve provided enough of it.  If we are in a ‘crisis’ now because X number of resident in our county can’t find affordable housing how much do we need to reduce X by in order to get out of ‘crisis’ mode? 
+Quick Aside Here: Yes, I know HUD and others have defined what ‘affordable housing’ means.  It’s an income based formula that defines rental rates that are within reach of above moderate, moderate, low, and very low income households.  The household income levels for Santa Cruz can be found [here](https://www.hacosantacruz.org/pdf/Pymt%20Std,%20Util%20Allow,%20Inc%20Limits/Inc%20limits%20SC%20fed%20program.pdf).  To get the 'affordable' rent for these groups divide the gross annual income by 12 and take 30% of that number. I’m not talking about defining what ‘affordable housing’ is.  I’m talking about how we know when we’ve provided enough of it.  If we are in a ‘crisis’ now because X number of resident in our county can’t find affordable housing how much do we need to reduce X by in order to get out of ‘crisis’ mode? 
 
-One reason we might not want an affordable housing policy that is exclusively based on the ratio of median rent to median income is that the easiest way to get median rent to be a digestable fraction of median income is to kick all the poor people out of the county.  If every low income resident of Santa Cruz County moved to Seaside (23 miles away in Monterey County) our median income would go up, ratio of housing units to bodies would go up which would put downward pressure on rents and, Voila! The median rent:median income balance would improve dramatically.   
+One reason we might not want an affordable housing policy that is exclusively based on the ratio of median rent to median income is that the easiest way to get median rent to be a digestable fraction of median income is to kick all the poor people out of the county.  If every low income resident of Santa Cruz County moved to Seaside (23 miles away in Monterey County) our median income would go up, ratio of housing units to bodies would go up which would put downward pressure on rents and, Voila! The median rent:median income balance would improve dramatically.  
+
+I agree that this would be a pretty shitty way of doing things, so maybe median rent to median income isn't the only metric we want to use.  But, in my experience, too many people have gone all the way to the other end of the spectrum and said, "Well it's a complicated problem with many facets. We want to provide housing that:
+
+* retains socio-economic diversity
+* is consistent with sustainable land-use and preservation of amenity values
+* encourages use of public transportation
+* etc, etc.
+
+That's all well and good and those are great guiding principals but somebody has to translate them into actual housing units that we want to supply to low income households.  Just because the problem is complicated doesn't absolve planners of the responsibility of proposing specific goals.  Just because the choices are hard doesn't mean they aren't choices.  Just because one metric is over simplified doesn't mean the problem can't be quantified.
 
 ### Example 4: Section 8 Waiting List Decrease
 
@@ -124,6 +133,22 @@ Reduce the Section 8 Housing Voucher Wait List by 2,500 people.
 
 We could, of course make the goal to supply all 5,000 households currently on the Section 8 waiting list with affordable housing.  But again, eliminating affordable housing need altogether seems like a pretty high bar just to move out of ‘crisis.’  What magnitude of reduction in the Section 8 waiting list would be consistent with just a regular old ‘affordable housing problem’ as opposed to a ‘crisis.’
 
+### Example 5: The Regional Housing Needs Assessment
+
+Here I'm just going to launch a quick preemptive stike against those who might say that our housing needs have been quantified because we have a [Regional Housing Needs Allocation Plan](http://ambag.org/sites/default/files/documents/RHNP%202014-2023_Final_revised.pdf) that does set specific targets for the number of additional housing units Monterey and Santa Cruz County should supply by 2023.
+
+It is true that the RHNA set income specific housing targets, which are the number of units we need to add in each income category by 2023.  If you refer to page 15 of the RHNA you will see the following recommendations for Santa Cruz County:
+
+| Geography         | Total Allocation | Very Low Income | Low Income | Moderate Income | Above Moderate |
+|-------------------|------------------|-----------------|------------|-----------------|----------------|
+| Santa Cruz County | 3,044            | 734             | 480        | 554             | 1,276          |
+| Capitola          | 143              | 34              | 23         | 26              | 60             |
+| Santa Cruz        | 747              | 180             | 118        | 136             | 313            |
+| Scotts Valley     | 140              | 34              | 22         | 26              | 58             |
+| Watsonville       | 700              | 169             | 110        | 127             | 294            |
+
+
+However a thorough read of the RHNA makes it clear that these recommendations are what is needed in order to keep pace with projected population and employment growth.  That is, if we are in an 'affordable housing crisis' now, meeting these targets will ensure that our crisis doesn't deepen by 2023...but they are not recommendations for improving the state of our affordable housing affairs.  Stated a different way, meeting these targets exactly will ensure that we have the same level of 'affordable housing crisis' in 2023 that we have today.  
 
 #  Why Does it Matter
 
@@ -132,9 +157,11 @@ In simple terms, I think precision matters for two reasons:
 1. Responsible stewardship of public money, and
 2. Related to responsible stewardship, when problems aren’t precisely defined mythology is allowed to propogate and eventually becomes accepted wisdom.
 
+The first of these I will discuss here.  Item 2 will be picked up in my next post.
+
 ## Responsible use of public money: estimating relative impact
 
-The biggest reason that it matters to me is that Santa Cruz County has at least $35 million of public money invested in various programs that address affordable housing need.  I have no reason to believe that this public money is being irresponsibly spent.  However, in the absence of specific, measurable goals for eliminating our affordable housing crisis it’s hard for me to see how we can even begin to evaluate whether the current strategy is the best way to spend tens of millions of dollars.
+The biggest reason that it matters to me is that Santa Cruz County has at least 35 million USD of public money invested in various programs that address affordable housing need.  I have no reason to believe that this public money is being irresponsibly spent.  However, in the absence of specific, measurable goals for eliminating our affordable housing crisis it’s hard for me to see how we can even begin to evaluate whether the current strategy is the best way to spend tens of millions of dollars.
 
 The city and county of Santa Cruz have allocated public money to lots of different projects, under lots of different authorizations, with different (but complimentary objectives).  To their great credit they have a system for reporting progress on many of these various strategies/actions/projects which can be viewed here: 
 
@@ -142,18 +169,18 @@ The city and county of Santa Cruz have allocated public money to lots of differe
 
 You can refer specifically to page 21, Table AP 23 to see the total amount of public monies allocated to the goal of ‘increasing and preserving affordable housing.’ Progress is reported by several ‘Goal Outcome Indicators’ for example:
 
-Homeowner housing added
-Rental units constructed
-Tennant-based rental assistance/rapid rehousing 
-Homelessness prevention
+* Homeowner housing added
+* Rental units constructed
+* Tennant-based rental assistance/rapid rehousing 
+* Homelessness prevention
 
 While I applaud the city for quantifying their progress, what I find missing from this is any discussion of what kind of impact they EXPECTED from money allocated to these initiatives.  For instance, I can use this table to see that the needs addressed were:
 
 *Preserve existing rental housing and increase the amount and affordability of rental housing for the City’s lowest income renters.*
 
-And I can see that a total of $4.8 million was spent from different program pots ($125k from the Community Development Block Grant Program, $125K from HUDs HOME program, $1.3 million from tax exempt bond from the general fund, $2 million from Low Income Housing Tax Credits).
+And I can see that a total of 4.8 million was spent from different program pots (125k from the Community Development Block Grant Program, 125K from HUD's HOME program, 1.3 million from tax exempt bond from the general fund, 2 million from Low Income Housing Tax Credits).
 
-And I can see that for this $4.8 million there were:
+And I can see that for this 4.8 million there were:
 
 * 50 household housing units constructed under the ‘rental units constructed’ metric,
 * 30 households assisted under the ‘tennent-based rental assistance/rapid rehousing’ metric
@@ -161,7 +188,7 @@ And I can see that for this $4.8 million there were:
 
 What I can’t see is what they expected to get for this money.  Is 50 household housing units a lot or a little? How big a dent in the ‘housing crisis’ do they think the addition of 50 low income rental units makes?  
 
-To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers are great but these numbers lack context.  They’re just arbitrary numbers. 
+To be clear, I’m not saying it didn’t make a dent.  I’m saying, numbers are great but these numbers lack context.  They’re just arbitrary numbers.  Without knowing how many units we were hoping to get for the money, it's hard to know if the 4.8 million spent on this line item would have been better allocated to a different goal or would have been better spent on a different mix of projects. 
 
 ## Responsible use of public money: evaluating alternatives
 
@@ -180,6 +207,8 @@ which is exactly my point.  If we articulate these two clear goals, then we can 
 
 # Summary
 
+## Wrapping Up
+
 Discussion about affordable housing needs to be an honest discussion about tradeoffs.  Everything has opporunity cost and most actions have some winners and some losers.  Having winners and losers to public policy doesn't mean we can't make policy or strategy.  
 
 First, increasing the supply of affordable housing necessarily incentivizes in-migration of low income individuals.  Where people choose to live is heavily influenced by labor mobility, the geophraphy of jobs, and access to transportation.  But it's also influenced by relative housing costs.  If Santa Cruz County becomes more expensive relative to the neighboring counties of Santa Clara and Monterey we will see out-migration of people at the lower quartiles of the income distribution.  And if Santa Cruz County becomes less expensive relative to neighboring counties we expect some in-migration of low income people.  
@@ -194,9 +223,24 @@ I've been over the Housing Elements, Economic Vitality Report, Regional Housing 
 * how does it compare to the number currently on the Section 8 voucher waitlist?
 
 If we infill like a motherfucker, will our 'housing crisis' be over?
+ 
+## Looking Forward
 
+The 'War on Drugs' that we have be waging for the past 30 years is another example of a high profile public policy problem that is incredibly ill-defined.  To fight this war people have leveraged the language of 'crisis' to argue that we don't have time to 'be academic about things.' 'We have to take swift action on all fronts', we've been told.  We need an 'all of the above' strategy.
 
-# A Final Rant
+The problem with 'all of the above' strategies is that if you never articulate which parts of the strategy are supposed to attach which parts of the problem and evaluate what size impact you expect, you never know if you need to change things that aren't working.  When you pursue 'all of the above' without clear goals for each part of the strategy then the only recommendation for improvement you'll ever get is 'spend more money.'
+
+In our War on Drugs we've:
+
+* drastically increased spending on Border Patrol Resources
+* militarized local police forces and supplied them with military grade weaponry
+* used covert operations to facilitate 'Regime Change'
+
+And the only thing we know for sure that we've done is incarcerate an astronomical number of African-American males.
+
+The language of crisis can be pretty powerful in getting one's point across. It needs to be deployed responsibly.
+
+# Appendix: A Final Rant
  
 Sociologists at the Center for Labor Studies at UCSC have been engaged in long-running research project called No Place Like Home: Affordable Housing in Crisis in Santa Cruz: http://www.noplacelikehomeucsc.org/en/.  Much like the city, county, and regional planning/action documents I’ve cited here, this appears to be the work of very well intentioned professionals.  It also, unfortunately, provides a great illustration of the seedy underbelly of the soft social sciences.  
 
