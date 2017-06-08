@@ -170,13 +170,6 @@ Let's say that without the subsidy we expect the number of permits to fall by ha
 2 Command-and-Control    25               25 325000
 ```
 
-| Policy              | Units | Affordable       | Gov         |
-|                     |       |     Units        | Rev         |
-|---------------------|-------|------------------|-------------|
-| Subsidy             | 50    | 40               | 0           |
-| Command and         |       |                  |             |
-| Control             | 25    | 25               | 325,000     |
-
 Under the subsidy we get more total units and more affordable units.  Under Command-and-Control we get half the number of units and 15 fewer affordable units but 100% of units are offered as affordable housing and we get the 13,000 USD permitting fee on each unit, which raises 325,000 USD of public money.
  
 The 325,000 is the real kicker because under Command-and-Control we get 15 fewer units but we get cash.  That means we could take those 15 people that would have been offered affordable housing under the subsidy program and offer them 21,666 cash money instead.  
@@ -219,5 +212,32 @@ So to recap a bit:
 3. Existing homeowners (a relatively wealthy group by definition in Santa Cruz) benefit from ADU subsidy programs directly, financially, and in ways that are certain and quantifiable.
 
 4.  Low income families (or anyone else that needs more than 640 sq. ft. of space) *may* benefit to the extent that adding to the existing rental stock (affordable or otherwise) puts downward pressure on rental rates.   
+
+
+# Summary
+
+I can wrap this one up pretty quickly:
+
+ADU development as policy choice has some nice theoretical benefits:
+
+* takes advantage of existing developed land (encourages densification)
+* provides diversity and increases choice in the rental market (most commercial rental units are larger than the 400 - 600 sq. ft that is standard among ADUs)
+* increases overall supply of rental units which can help stablize rents in areas of rapid rent inflation
+
+Many of the theoretical benefits actually address housing issues unique and specific to Santa Cruz
+
+* existing home values are high for a variety of reasons but amenity value (Santa Cruz has a lot of green belt, scenic land, and coastal access) is a big contributor.  ADU development can add to the rental supply without additional land development that might erode amenity values of existing properties.
+* Santa Cruz is a small city with a large public university.  Over 5,000 graduate students compete with permanent residents for housing.  It is possible that even increasing market rate ADU supply can help low income families by taking some of these (relatively affluent, mostly single) bidders out of the market for larger rentals.
+
+ADU development strategies are also kind of a 'path of least resistence' type strategy.  They are politically popular because they give money to homeowners and don't take anything really obvious away from other groups...so they look like a Pareto Improving policy.
+
+In theory and concept subsidizing ADU development seems like a strategy that might warrant a prominent place in our Housing Plan.  However, ADU subsidies cost money.  There are real financial and opportunity costs (foregone municipal revenues).  Evaluating just how much public money we should be devoting to a subsidized ADU program is where we need to put an ADU subsidy next to something else and ask, "how does it stack up empirically?"
+
+My research suggests this is not being done.  This post obviously does not provide a thorough evaluation of ADU subsidies in Santa Cruz but I think it poses a few straightforward questions that could be used to structure a more thorough evaluation.
+
+Finally, before you say, "If it's so straightforward, why don't you do a thorough analysis then?" recognize that Santa Cruz County has a habit of employing a rather slick looking consulting outfit called BAE Urban Economics (who despite have 'Economics' in the name appears to have 0 economists on staff).  Surely some of the 200-300/hour of our public money getting funneled their way for Economic Vitality Studies and Economic Trends Reports could buy us a decent Housing Policy Analysis.  If not, I'd be happy to do it for half of whatever BAE is charging.
+
+
+
 
 
