@@ -164,11 +164,11 @@ $$rent=\frac{(0.8)(AMI)}{12}*0.3$$
 
 Let's say that without the subsidy we expect the number of permits to fall by half.
 
-`R
+```R
               Program Units Affordable_Units GovRev
 1             Subsidy    50               40      0
 2 Command-and-Control    25               25 325000
-`
+```
 
 | Policy              | Units | Affordable       | Gov         |
 |                     |       |     Units        | Rev         |
