@@ -108,7 +108,7 @@ Using the same math for 2010 we get:
 
 $RentalUnits = 104,002 - \frac{55,878}{0.994} = 47,787$
 
-Things do get a little complicated here because the 2010 observation of 47,787 rental units and median rent of $1,226 and 2015 observation of 50,242 rental units at a median rent of $1,446 are probably on two different demand curves (it seems likely to me that population growth and income growth probably resulted in a new demand schedule in 2015 at each price point on the 2010 demand curve).  Because we are likely dealing with 2 different demand curves we can't use price and quantity changes to infer the slope of the demand curve which complicates things.  But let's just do what I do on this blog all the time: pick some sensible number and proceed with it (we can alway do sensativity analysis later).
+Things do get a little complicated here because the 2010 observation of 47,787 rental units and median rent of 1,226 and 2015 observation of 50,242 rental units at a median rent of 1,446 are probably on two different demand curves (it seems likely to me that population growth and income growth probably resulted in a new demand schedule in 2015 at each price point on the 2010 demand curve).  Because we are likely dealing with 2 different demand curves we can't use price and quantity changes to infer the slope of the demand curve which complicates things.  But let's just do what I do on this blog all the time: pick some sensible number and proceed with it (we can alway do sensativity analysis later).
 
 Let's suppose that demand for rental units in Santa Cruz is relatively inelastic such that a $100 change in median rent results in only 50 fewer rental units being demanded.
 
