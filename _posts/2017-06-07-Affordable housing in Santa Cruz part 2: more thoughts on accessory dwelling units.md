@@ -30,7 +30,7 @@ In Santa Cruz we have an [ADU program that currently offers to waive around $13,
 This is a great example of where we really need some precise understanding of what the 'crisis' is and when/how we will know the 'crisis' is over.  Incentivizing ADU development is basically a stock recommendation of all city and regional planners these days primarily (I believe) because: there is very low political cost - everybody loves it because it looks like a win-win-win-win
 
 * homeowners that want to develop an ADU get a little handout
-* NIMBY homeowners that don't get barely visible ADUs instead of a low-income housing project nearby
+* NIMBY homeowners that get barely visible ADUs instead of a low-income housing project nearby
 * low-income renters are stoked to have any new supply on the market
 * land conservationists are stoked to see supply come on line without new land getting developed
 
