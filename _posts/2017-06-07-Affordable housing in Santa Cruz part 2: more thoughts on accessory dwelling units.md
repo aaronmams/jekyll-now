@@ -127,7 +127,7 @@ then if we want to deflate rent using only market supply manipulations, we would
 
 **Question 3: What's a Feasible Alternative to Subsidizing ADUs?**
 
-The language of alternatives is largely absent from our housign policy discussions in Santa Cruz.  Our city and regional planners have embraced an "All of the Above" approach for dealing with the affordable housing 'crisis.'  If you ask somebody, "is it better to build another homeless shelter or add 300 more rental units through ADU development?" you will most likely get told, "it's not an either or situation."  You will then probably get lectured about the need for integrated solutions that offer a range of housing options for respect the distribution of income and age within the county.
+The language of alternatives is largely absent from our housign policy discussions in Santa Cruz.  Our city and regional planners have embraced an "All of the Above" approach for dealing with the affordable housing 'crisis.'  If you ask somebody, "is it better to build another homeless shelter or add 300 more rental units through ADU development?" you will most likely get told, "it's not an either or situation."  You will then probably get lectured about the need for integrated solutions that offer a range of housing options respecting the distribution of income and age within the county.
 
 This is of course nonsense.  Obviously we need to address the underlying root causes of housing insecurity and pursue efficiencies and synergies whereever we can.  But public money isn't some bottomless well.  We can't just throw money at every idea some horn-rimmed glass wearing MCP dreams up and hope for the best.  
 
