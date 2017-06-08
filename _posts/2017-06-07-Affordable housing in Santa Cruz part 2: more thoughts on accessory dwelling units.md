@@ -5,6 +5,8 @@ In my last post I was trying to make the point that a lot of specific policy rec
 
 In this post I'm primarily interested in talking about how we should evaluate proposals to spend public money on subsidizing Accessory Dwelling Units.
 
+And for purposes of clarity for the uninitiated, Accessory Dwelling Units are basically small additions to existing houses (often times turning a garage or shed into a studio apartment) usually for the purposes of renting out.  Also sometimes called 'Granny Flats' or 'Mother-in-Law' units as, in addition to renting and ADU out, a homeowner might develop one in order to care for an aging parent.
+
 # Intro
 
 In my experience two undesirable things happen when we pose policy questions in the flowery prose of consultants rather than the precise (often dry, boring) language of scientists.
