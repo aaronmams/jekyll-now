@@ -7,6 +7,18 @@ In this post I'm primarily interested in talking about how we should evaluate pr
 
 And for purposes of clarity for the uninitiated, Accessory Dwelling Units are basically small additions to existing houses (often times turning a garage or shed into a studio apartment) usually for the purposes of renting out.  Also sometimes called 'Granny Flats' or 'Mother-in-Law' units as, in addition to renting and ADU out, a homeowner might develop one in order to care for an aging parent.
 
+# Executive Summary and Roadmap
+
+I have some lingering questions about the policy of subsidizing development of Accessory Dwelling Units (ADUs) as a strategy for provision of affordable housing.  I am very familiar with the conceptual advantages of ADUs for incentivizing densification in areas like Santa Cruz where geographic and regulatory restrictions on land development constrain the housing stock. As a matter of public policy, I'm not yet convinced that the benefits and costs of ADU subsidies have been evaluated in a rigorous enough fashion to know whether they constitute a responsible use of public money.
+
+Although I will not be providing that thorough benefit-cost analysis here, I will be posing a few questions about ADUs that I think need to be asked an answered in order to understand their performance as a mechanism for helping deal with our 'housing crisis.'
+
+Here are a few issues I won't touch on that probably warrant some deep thought sometime soon:
+
+* ADUs might be a sensible strategy for dealing with the growth of our local UC (University of California Santa Cruz) since there are around 5,000 graduate students mostly living off campus. This number is likely to increase in the future and the number of undergraduates living off campus has also been increasing.
+* Do ADUs subsidies encourage purchasing 'more house' than is prudent on the expectation of rental income? Does this expose local markets to elevated default risk?
+* Relatedly, an often cited adverse impact of rising property values is long-time residents getting 'priced out' of their neighborhoods.  As an economist I don't usually associate willing sellers in a market with adverse impacts but, since the sociologists do, it is worth recognizing that ADU subsidies or amnesty for unpermitted ADUs could help long-time residents stay in their homes. 
+
 # Intro
 
 In my experience two undesirable things happen when we pose policy questions in the flowery prose of consultants rather than the precise (often dry, boring) language of scientists.
