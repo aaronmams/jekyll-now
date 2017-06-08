@@ -162,11 +162,12 @@ $$rent=\frac{(0.8)(AMI)}{12}*0.3$$
 
 Let's say that without the subsidy we expect the number of permits to fall by half.
 
-| Policy              | Units | Affordable Units | Gov Revenue |
+| Policy              | Units | Affordable       | Gov         |
+|                     |       |     Units        | Rev         |
 |---------------------|-------|------------------|-------------|
 | Subsidy             | 50    | 40               | 0           |
-| Command and Control | 25    | 25               | 325,000     |
-
+| Command and         |       |                  |             |
+| Control             | 25    | 25               | 325,000     |
 
 Under the subsidy we get more total units and more affordable units.  Under Command-and-Control we get half the number of units and 15 fewer affordable units but 100% of units are offered as affordable housing and we get the 13,000 USD permitting fee on each unit, which raises 325,000 USD of public money.
  
