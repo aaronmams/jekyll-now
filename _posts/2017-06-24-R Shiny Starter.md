@@ -108,7 +108,7 @@ I really like the option to run the app in an interactive viewer pane inside R S
 
 1. make sure the file containing your shiny code is saved in a file called "app.R".  As long as the file has that exact name, R Studio will recognize it as a Shiny app and will give you options for how to display it.
 
-2. in the image below notice that R Studio has recognized the code as a Shiny app and provided an options bar at the top right portion of the scripting window.
+2. in the image below notice that R Studio has recognized the code as a Shiny app and provided an options bar at the top right portion of the scripting window.  That options bar will allow to chose whether to run the app in an R Studio viewer pane, publish it to an R Shiny Server, or run it in a local browser window.
 
 ![shinyapp1](/images/shinyapp2.png)
 
