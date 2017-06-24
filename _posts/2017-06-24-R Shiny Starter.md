@@ -1,6 +1,3 @@
-
-
-
 My overarching goal for this simple proof-of-concept app is to have a process that:
 
 1. allows a user to select from different models, model classes, or modeling assumptions available for analysis of a time-series 
@@ -40,24 +37,12 @@ ui <- fluidPage(
   )
 )
 
-#  ui = fluidPage(
-#    fluidRow(
-#      column(1,
-#            dataTableOutput('table')
-#     )
-#   )
-# )
-
 server <- function(input, output) {
  
   trips <- reactive({
     df.monthly %>% filter(year >= input$startyr) %>% select(date,ntrips,month,year)
   })
-   
-#  selectedData <- reactive({
-#    df.monthly %>% filter(year >= input$startyr) %>% select(date,ntrips,month,year) 
-#  })
-  
+     
 
   pred <- reactive({
     fitted(KFS(fitSSM(SSModel(xts(trips()$ntrips,order.by=trips()$date) ~ 
@@ -78,7 +63,6 @@ server <- function(input, output) {
   
   plotdf <- reactive({
     if(input$model=='State Space Model'){
-    #data.frame(date=trips()$date,ntrips=trips()$ntrips,yhat=pred(),yhatnaive=150,yhat_lm=lmod())
       data.frame(
         rbind(
           data.frame(date=trips()$date,ntrips=trips()$ntrips,model='observed'),
@@ -86,7 +70,6 @@ server <- function(input, output) {
         )
       )
       }else{
-      #data.frame(date=trips()$date,ntrips=trips()$ntrips,yhat=pred(),yhatnaive=150,yhat_lm=lmod())
        data.frame(
          rbind(
            data.frame(date=trips()$date,ntrips=trips()$ntrips,model='observed'),
@@ -95,14 +78,9 @@ server <- function(input, output) {
        )
       }
     
-#    if(input$model=='Linear Model'){
-#      data.frame(selectedData(),yhat=pred(),yhatnaive=150,yhat_lm=lmod())
-#    }
     
     })
   
-#    output$table <- renderDataTable(gam())
-
     output$plot1 <- renderPlot({
       ggplot(plotdf(),aes(x=date,y=ntrips,color=model)) + geom_line() + 
                    theme_bw() + scale_color_manual(values=c('blue','black'))
@@ -120,3 +98,19 @@ shinyApp(ui = ui, server = server)
 Here's a static image of what it looks like when I run it in an R Studio Viewer Pane:
 
 ![shinyimage](/images/shinyapp.png)
+
+## Try it out
+If you run my code above (provided you have the 'Shiny' library installed and you get the gf_monthly.RDA file off of my github repo) the app will pop up in either a local browser tab or inside R Studio (depending on how you configure things).  
+
+You can toggle between model types (currently your only options are 'State Space Model' and 'Linear Model') and set a few different starting years that can define the range of the data you want to display.
+
+I really like the option to run the app in an interactive viewer pane inside R Studio so I'll take a quick second and show you how to do that:
+
+1. make sure the file containing your shiny code is saved in a file called "app.R".  As long as the file has that exact name, R Studio will recognize it as a Shiny app and will give you options for how to display it.
+
+2. in the image below notice that R Studio has recognized the code as a Shiny app and provided an options bar at the top right portion of the scripting window.
+
+![shinyapp1](/images/shinyapp2.png)
+
+
+
