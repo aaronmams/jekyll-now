@@ -12,7 +12,7 @@ What I have accomplished so far is just a very simple starting point.  The curre
 
 3. outputs a plot of the original data and the in sample predictions of the chosen model.  For the Kalman Filter the in-sample predictions are based on the smoothed state estimates.  For the linear model the in-sample predictions are just the fitted values given by the linear predictor:
 
-$$y = X' \beta$$
+$$\hat{y} = X' \hat{\beta}$$
 
 Here's my app:
 
