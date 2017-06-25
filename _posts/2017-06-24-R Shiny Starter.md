@@ -1,3 +1,13 @@
+
+The [Shiny](https://shiny.rstudio.com/tutorial/) package for R provides a really easy and cool way to make interactive apps. I've seen a lot of really cool sophisticated data analytics apps built with Shiny.  There are a lot of cool examples that you can check out in the app gallery [here](https://shiny.rstudio.com/gallery/).  Another set of Shiny apps I recommend checking out are bundled in a project called the [Fisheries Economics Explorer](https://dataexplorer.northwestscience.fisheries.noaa.gov/fisheye/).   
+
+## Pre-reqs
+
+1. get data file called gf_monthly.RDA from my github repository
+2. make sure you have the 'shiny' package installed and loaded in R
+
+## Game plan
+
 My overarching goal for this simple proof-of-concept app is to have a process that:
 
 1. allows a user to select from different models, model classes, or modeling assumptions available for analysis of a time-series 
@@ -13,6 +23,14 @@ What I have accomplished so far is just a very simple starting point.  The curre
 3. outputs a plot of the original data and the in sample predictions of the chosen model.  For the Kalman Filter the in-sample predictions are based on the smoothed state estimates.  For the linear model the in-sample predictions are just the fitted values given by the linear predictor:
 
 $$\hat{y} = X' \hat{\beta}$$
+
+What I would like to add to this starter app is:
+
+1. Add more models to choose from
+
+2. Add more output options....basically more diagnotics (error checking) and final outputs (out-of-sample forecasts)
+
+3. Move the code to a webserver so the app can be accessed by anyone inside a web browser.  It looks like [somebody is maintaining an io site](https://www.shinyapps.io/) similar to github.io for this purpose but I haven't looked at it in any depth.
 
 Here's my app:
 
@@ -112,5 +130,9 @@ I really like the option to run the app in an interactive viewer pane inside R S
 
 ![shinyapp1](/images/shinyapp2.png)
 
+## Motivation
 
 
+## A little backstory
+
+Several months ago I met a guy named Arvind who showed me some very cool interactive data displays that he was using to communicate model results to his data science team and higher-level decision makers at his company.  I don't remember much detail about the models or even the modeling context but I understood the main point to be that there were models generating forecasts of some sort.  
