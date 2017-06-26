@@ -140,25 +140,23 @@ In oversimplified terms this tension arises because decision makers (politicians
 
 I don't want to get into a whole thing about uncertainty. It's a super interesting topic but also very complex topic.  I do want to mention that any empirical analysis generally has to include a coherant strategy for dealing with uncertainty.  In statistical analysis uncertainty can arise in the following forms:
 
-* we have errors that can arise because our ability to precisely and accurately measure things
+* we have errors that can arise because our inability to precisely and accurately measure things
 * we have errors that can arise because statistical randomness makes it difficult/impossible to know how well a sample of data represents a bigger population
 * we can have errors in parameter estimation that can arise because of the stochastic nature of the data.
 
-In addition to these types of scientific uncertainty, analysts face another type of uncertainty associated with our inability to observe the decision makers' preferences:
+In addition to these types of scientific uncertainty, analysts face another type of uncertainty associated with our inability to observe the decision makers' preferences.
 
-1. public policy options often have distributional consequences.  If we think about a really simple way to think about a proposed increase in the minimum wage, we might assume that:
+**Example 1**
+Public policy options often have distributional consequences.  If we think about a really simple way to break down a proposed increase in the minimum wage, we might assume that:
 
 * people who hire minimum wage works will be incentivized to substitute capital for labor (hire more computers and fewer workers)
 * minimum wage workers will decrease in number but each worker will take home more money
 * consumers may higher prices for some things.
 
-In this case the impact will be moved by the magnitudes of these three effects.  Even if the magnitudes are such that the overall project produces substantial total benefits (when evaluated across all impacted parties), policies makers might have different preference and risk tolerances for impacts to specific groups.  In this case, it will be important to characterize (possible under a few scenarios) who wins, who loses, how much the winners win, how much the losers lose.  
+In this case the overall impact of the policy will be moved by the magnitudes of these three effects.  Even if the magnitudes are such that the overall project produces substantial total benefits (when evaluated across all impacted parties), policies makers might have different preference and risk tolerances for impacts to specific groups.  In this case, it will be important to characterize (possibly under a few scenarios) who wins, who loses, how much the winners win, how much the losers lose.  This is exactly the type of thing that I think R Shiny interactive applications could be really good for....instead of giving the decision maker a 100 page report detailing the model, assumptions, estimation strategy, total estimated benefits, and expected distributions of benefits and costs across different parties, we could give them a web application that allows them to interact with the key features of the analysis and visualize how these feature change whatever outputs the decision makers care most about.  
 
-2. financial analysis generally involves matching expected outcomes with the risk tolerance of the decision maker.  It's pretty easy to imagine 3 portfolio options that have: 1. high risk with potential for high return, 2. medium risk with mid-level return, and 3. low risk with consistent but modest return.
+**Example 2**
+Financial analysis generally involves matching expected outcomes with the risk tolerance of the decision maker.  It's pretty easy to imagine 3 portfolio options that have: 1. high risk with potential for high return, 2. medium risk with mid-level return, and 3. low risk with consistent but modest return.
 
 From what I've seen of R Shiny so far, I think it could be a really useful tool for helping analysts convey the range of options and possible consequences of each option to decision makers.  In my experience, decision makers don't really want to see hundreds of pages of sensativity analysis and scenario analysis.  They want analysis that can be distilled down to something digestable.  In contrast, analyst who have undertaken a careful analysis that is influenced by different types of uncertainty and affected by modeling assumptions, want people to understand the nuance of their analysis before running off to apply it.  I think the interactive nature of R Shiny apps could really help establish the middle ground between these two end.
 
-
-## A little backstory
-
-Several months ago I met a guy named Arvind who showed me some very cool interactive data displays that he was using to communicate model results to his data science team and higher-level decision makers at his company.  I don't remember much detail about the models or even the modeling context but I understood the main point to be that there were models generating forecasts of some sort.  
