@@ -1,5 +1,5 @@
 
-I [built my first R Shiny app](https://aaronmams.shinyapps.io/firstapp/).  It's laughably simple, in this case, I think the simplicity will make for a good first blog post on R Shiny.
+I [built my first R Shiny app](https://aaronmams.shinyapps.io/firstapp/).  It's laughably simple but, in this case, I think the simplicity will make for a good first blog post on R Shiny.
 
 The [Shiny](https://shiny.rstudio.com/tutorial/) package for R provides a really easy and cool way to make interactive apps. I've seen a lot of really cool sophisticated data analytics apps built with Shiny.  There are a lot of cool examples that you can check out in the app gallery [here](https://shiny.rstudio.com/gallery/).  Another set of Shiny apps I recommend checking out are bundled in a project called the [Fisheries Economics Explorer](https://dataexplorer.northwestscience.fisheries.noaa.gov/fisheye/).   
 
