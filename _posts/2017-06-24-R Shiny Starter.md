@@ -1,4 +1,6 @@
 
+I [built my first R Shiny app](https://aaronmams.shinyapps.io/firstapp/).  It's laughably simple, in this case, I think the simplicity will make for a good first blog post on R Shiny.
+
 The [Shiny](https://shiny.rstudio.com/tutorial/) package for R provides a really easy and cool way to make interactive apps. I've seen a lot of really cool sophisticated data analytics apps built with Shiny.  There are a lot of cool examples that you can check out in the app gallery [here](https://shiny.rstudio.com/gallery/).  Another set of Shiny apps I recommend checking out are bundled in a project called the [Fisheries Economics Explorer](https://dataexplorer.northwestscience.fisheries.noaa.gov/fisheye/).   
 
 ## Pre-reqs
@@ -30,12 +32,11 @@ What I would like to add to this starter app is:
 
 2. Add more output options....basically more diagnotics (error checking) and final outputs (out-of-sample forecasts)
 
-3. Move the code to a webserver so the app can be accessed by anyone inside a web browser.  It looks like [somebody is maintaining an io site](https://www.shinyapps.io/) similar to github.io for this purpose but I haven't looked at it in any depth.
 
 Here's my app:
 
 ```R
-df.monthly <- readRDS("/Users/aaronmamula/Documents/R projects/ShinyApps/firstapp/gf_monthly.RDA")
+df.monthly <- readRDS("gf_monthly.RDA")
 df.monthly <- tbl_df(df.monthly) %>% filter(year<2016) %>%
                mutate(date=as.Date(paste(df.monthly$year,"-",df.monthly$month,"-","01",sep=""),
                                    format="%Y-%m-%d"))
@@ -118,7 +119,8 @@ Here's a static image of what it looks like when I run it in an R Studio Viewer 
 ![shinyimage](/images/shinyapp.png)
 
 ## Try it out
-If you run my code above (provided you have the 'Shiny' library installed and you get the gf_monthly.RDA file off of my github repo) the app will pop up in either a local browser tab or inside R Studio (depending on how you configure things).  
+
+You can mess around with my app on the web [here](https://aaronmams.shinyapps.io/firstapp/).  In addition to web interaction, you can run my code (provided you have the 'Shiny' library installed and you get the gf_monthly.RDA file off of my github repo) in R Studio and the app will pop up in either a local browser tab or inside R Studio (depending on how you configure things).  
 
 You can toggle between model types (currently your only options are 'State Space Model' and 'Linear Model') and set a few different starting years that can define the range of the data you want to display.
 
@@ -131,6 +133,30 @@ I really like the option to run the app in an interactive viewer pane inside R S
 ![shinyapp1](/images/shinyapp2.png)
 
 ## Motivation
+
+I really like the idea of using interactive apps to help communicate uncertainty.  An important function of my job is providing science advice to policy and decision makers (what I loosely call 'decision support').  Whether its scientists providing analysis to help legislators make informed choices about public policy options or data scientists providing analysis to upper level managers in support of some business question, we all face a fundamental tension between providing useable advice and being honest and transparent about the limitations of our analysis.   
+
+In oversimplified terms this tension arises because decision makers (politicians, policy makers, business managers, executive) want clear guidance on how to proceed on important issues.  Analysts want to provide clear guidance but also want high level decision makers to understand the pros and cons of the options available to them and take some ownership over the ultimate decision.
+
+I don't want to get into a whole thing about uncertainty. It's a super interesting topic but also very complex topic.  I do want to mention that any empirical analysis generally has to include a coherant strategy for dealing with uncertainty.  In statistical analysis uncertainty can arise in the following forms:
+
+* we have errors that can arise because our ability to precisely and accurately measure things
+* we have errors that can arise because statistical randomness makes it difficult/impossible to know how well a sample of data represents a bigger population
+* we can have errors in parameter estimation that can arise because of the stochastic nature of the data.
+
+In addition to these types of scientific uncertainty, analysts face another type of uncertainty associated with our inability to observe the decision makers' preferences:
+
+1. public policy options often have distributional consequences.  If we think about a really simple way to think about a proposed increase in the minimum wage, we might assume that:
+
+* people who hire minimum wage works will be incentivized to substitute capital for labor (hire more computers and fewer workers)
+* minimum wage workers will decrease in number but each worker will take home more money
+* consumers may higher prices for some things.
+
+In this case the impact will be moved by the magnitudes of these three effects.  Even if the magnitudes are such that the overall project produces substantial total benefits (when evaluated across all impacted parties), policies makers might have different preference and risk tolerances for impacts to specific groups.  In this case, it will be important to characterize (possible under a few scenarios) who wins, who loses, how much the winners win, how much the losers lose.  
+
+2. financial analysis generally involves matching expected outcomes with the risk tolerance of the decision maker.  It's pretty easy to imagine 3 portfolio options that have: 1. high risk with potential for high return, 2. medium risk with mid-level return, and 3. low risk with consistent but modest return.
+
+From what I've seen of R Shiny so far, I think it could be a really useful tool for helping analysts convey the range of options and possible consequences of each option to decision makers.  In my experience, decision makers don't really want to see hundreds of pages of sensativity analysis and scenario analysis.  They want analysis that can be distilled down to something digestable.  In contrast, analyst who have undertaken a careful analysis that is influenced by different types of uncertainty and affected by modeling assumptions, want people to understand the nuance of their analysis before running off to apply it.  I think the interactive nature of R Shiny apps could really help establish the middle ground between these two end.
 
 
 ## A little backstory
