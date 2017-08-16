@@ -1,5 +1,7 @@
 There have been a lot of words written on the subject of our national tragedy in Charlottesville, VA lately...most of them by people much more eloquent and precise than me.  Here's my take on how this tragedy reflects on our society.  Spoiler alert: it's not good.
 
+[nazis](/images/nazis.jpg)
+
 # Some Bad News
 
 If you are not already a raging pessimist then I have some bad news for you regarding Charlottesville: however bad you think this situation is, it's probably much worse.  
