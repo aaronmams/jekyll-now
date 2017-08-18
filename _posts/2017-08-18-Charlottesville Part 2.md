@@ -76,7 +76,7 @@ In 2016 he constructed this false choice using economic themes: globalization, t
 
 In 2020 he won't have that economic lever to lean on.  He's going to have to find another way to convince these people that only he can protect their existence.  The following 5 points paint what I think is a rather bleak reality.
 
-1. We already know the Trump strategists are familiar with the pander to downtrodden white people tactic from the way they deployed it in 2016.
+1. We already know the Trump strategists are familiar with the *pander to downtrodden white people* tactic from the way they deployed it in 2016.
 
 2. It would only take some small tweaks to the 2016 strategy to make this workable for 2020.  For instance, instead of, "look at all the jobs I created for you," he can say, "the only reason I haven't stopped the flood of cheap Chinese steel, or started building bridges, or revived American manufacturing is because of the militant black/immigrant/muslim thugs."
 
