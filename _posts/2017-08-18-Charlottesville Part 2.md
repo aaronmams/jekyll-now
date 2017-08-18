@@ -12,7 +12,7 @@ I know that's not a really sunny opener so I hope you'll indulge more of my pess
 
 My thesis here is that the white uprising in Charlottesville was bad.  The near universal condemnation of these assholes was promising...but things in this country could get much worse before they get better.  
 
-The reason I think this is that I think The Angry Tangerine is running out of options. I think he knows he's running out of options, and a full blown race-war is starting to look like his last best chip.  I know that sounds crazy but here me out.
+The reason I think this is that I think The Angry Tangerine is running out of options. I think he knows he's running out of options, and a full blown race-war is starting to look like his last best chip.  I know that sounds crazy but hear me out.
 
 # Out of Options
 
