@@ -46,7 +46,7 @@ Smart people are pretty good about spotting a false choice.  It's the dumb ones 
 
 Removing monuments to confederate generals who fought for slavery isn't an extreme position.  It's pretty fucking middle ground.  And right now there are people who fancy themselves good people who are thinking:
 
-I don't like White Supremacists and I think those monuments should probably go but I also don't like all these liberals protesting them all the time, they should get jobs.
+*I don't like White Supremacists and I think those monuments should probably go but I also don't like all these liberals protesting them all the time, they should get jobs.*
 
 These people fancy themselves in the middle, reasonable.  What happens when Trump keeps selling them on the idea that removing confederate monuments isn't middle ground, it's an extreme left position:
 
