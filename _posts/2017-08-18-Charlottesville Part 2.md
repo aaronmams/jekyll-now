@@ -33,6 +33,7 @@ Here's the thing, the number of groups supporting him is shrinking like a dick i
 I'm obviously not saying that inciting a race-war is what I would advise.  I'm saying that Trump is at a cross-roads and he's going to have to choose a path. He can either
 
 A. Try to broaden his appeal, or
+
 B. Try to calcify and energy his white male base
 
 He can't do both.  His response to Charlottesville has guaranteed that.  He only has 2 choices: 
