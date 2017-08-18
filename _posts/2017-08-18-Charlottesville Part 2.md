@@ -80,13 +80,13 @@ In 2020 he won't have that economic lever to lean on.  He's going to have to fin
 
 2. It would only take some small tweaks to the 2016 strategy to make this workable for 2020.  For instance, instead of, "look at all the jobs I created for you," he can say, "the only reason I haven't stopped the flood of cheap Chinese steel, or started building bridges, or revived American manufacturing is because of the militant black/immigrant/muslim thugs."
 
-3. The other small tweak would just be to replace "jobs" with "stuff".  He can tell them, "just look at Black Lives Matter.  they're a hate group.  the 'fake news' media won't tell you that but I will.  they're a hate group and they're coming for your stuff.
+3. The other small tweak would just be to replace "jobs" with "stuff".  He can tell them, "just look at Black Lives Matter.  They're a hate group.  The 'fake news' media won't tell you that but I will.  They're a hate group and they're coming for your stuff.
 
 4. I suspect he knows this and realizes it might be his only hope.
 
 5. Even if he's not successful in defeating his primary challenge, he'd only need to convince a few thousand more people that the "alt-left" is coming for them for us to have some seriously violent shit on our hands.  
 
-This strategy won't work in the sense that it won't be enough to win him the nomination.  But he doesn't need to win in order for our lives to get notably worse very soon.  I'm pretty sure he'll eventually get booted out of his seat but, like a sloppy drunk getting kicked of a dive bar, he can break a lot of shit on his way out.
+My call is that his strategy won't work in the sense that it won't be enough to win him the nomination.  But he doesn't need to win in order for our lives to get notably worse very soon.  I'm pretty sure he'll eventually get booted out of his seat but, like a sloppy drunk getting kicked of a dive bar, he can break a lot of shit on his way out.
 
 
 # A 2-Way Street
