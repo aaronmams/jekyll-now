@@ -30,7 +30,7 @@ Once you've moved to "there's blame on both sides," you're sitting squarely wher
 
 # How stoked should we be that people are maybe rethinking thier decision to back Cheeto Jesus?
 
-I agree that there are plenty of people who chose Trump because they thought Hillary was worse and are now regretting that.  I don't these were latent racists or horrible people...But let's think for a second about how the Trump campaign forced that choice on people.  Hillary is not an extremist:
+I agree that there are plenty of people who chose Trump because they thought Hillary was worse and are now regretting that.  I don't think these were latent racists or horrible people...But let's think for a second about how the Trump campaign forced that choice on people.  Hillary is not an extremist:
 
 * she doesn't favor a $15 minimum wage
 * she favored lower corporate taxes
