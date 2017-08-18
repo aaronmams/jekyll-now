@@ -4,7 +4,7 @@ I wrote a pretty depressing post about the Charlottesville debacle on Tuesday.  
 
 *I'm starting to feel suffocated and feeling like, shit we gotta get out of here.*
 
-I was pretty bummed out that I couldn't find something positive and uplifting to say.  After thinking about it for a while, I realized that was because I can see an awful of likely scenarios where, in the immediate future, racial/ethnic tensions in this county get a lot worse before they get better.
+I was pretty bummed out that I couldn't find something positive and uplifting to say.  After thinking about it for a while, I realized that was because I can see an awful lot of likely scenarios where, in the immediate future, racial/ethnic tensions in this county get a lot worse before they get better.
 
 I know that's not a really sunny opener so I hope you'll indulge more of my pessimism.  
 
