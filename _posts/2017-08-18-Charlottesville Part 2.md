@@ -93,7 +93,7 @@ My call is that his strategy won't work in the sense that it won't be enough to 
 
 As terrifying as it is to think about our president trying to incite a race-war, there is a reciprocal side to this that is equally terrifying.
 
-I know this is basically impossible for any decent human but try to look at this from the perspective of one of the White Nationalist fringe groups.  They know that this is the best hand they will be delt for a long, long time.  They have been (rightfully) maligned and mocked by people of all ideologies for decades.  Looking forward, post-Trump, they can't be seeing anything promising for them on the political landscape.  But right now, right this second,  they have a guy in the White House who clearly thinks they're not all that bad.  They have to know this will never happen again in their lifetimes.  
+I know this is basically impossible for any decent human but try to look at this from the perspective of one of the White Nationalist fringe groups.  They know that this is the best hand they will be delt for a long, long time.  They have been (rightfully) maligned and mocked by people of all ideologies for decades.  Looking forward, post-Trump, they can't be seeing anything promising for them on the political horizon.  But right now, right this second,  they have a guy in the White House who clearly thinks they're not all that bad.  They almost certainly know that this will never happen again in their lifetimes.  
 
 The leadership of these groups has to be looking around the landscape and thinking, "this is our time.  We will probably never have a better opportunity than right now to get our platform into the national discussion."
 
