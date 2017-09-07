@@ -95,3 +95,25 @@ grid.arrange(cp.plot, manemp.plot, manwage.plot, ncol=1)
 ```
 
 ![three plots](/images/three plots.png)
+
+
+# Discussion
+
+If you're sitting there thinking, *this seems like a complicated issue, there's probably more to the relationship between corporate taxation and employment and wages then can be exhaustively examined in a few plots showing correlations over time*, I don't blame you.  And you're probably right.  This probably is a complex issue.  It probably does warrant a deeper dive than just appropriating some plots from the St. Louis Fed's macroeconomic database.
+
+But if you were inclined to think, *Yeah man, cut corporate taxes, give them more money and they'll hire more people.  Easy peesy lemon squeezy* then you probably need to have come-to-Jesus with some basic facts about our economy:
+
+Between 2000 and 2016,
+
+* Corporate profits grew at an average rate of 7.8% per year
+* Real wages in manufacturing grew at an average rate of less than 1% per year
+* Employment in manufacturing declined at an average rate of 2% per year
+
+# Final Words
+
+This is not meant to be the end of this discussion.  These are just plots that are pretty easy to make, pretty easy to digest and pretty clearly demonstrate the need for some skepticizm regarding the benefit to 'working class Americans' of cutting the corporate tax rate.
+
+If you think I'm wrong and you're still convinced that cutting the corporate tax rate will be amazing for working class Americans just give me a convincing answer to the following question:
+
+If you're so sure that corporations are going to respond to a tax cut by hiring more workers and pay everybody like it's Christmas then why didn't they do that with any of thier windfall profits over the last 16 years?
+
