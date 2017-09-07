@@ -101,7 +101,11 @@ grid.arrange(cp.plot, manemp.plot, manwage.plot, ncol=1)
 
 If you're sitting there thinking, *this seems like a complicated issue, there's probably more to the relationship between corporate taxation and employment and wages then can be exhaustively examined in a few plots showing correlations over time*, I don't blame you.  And you're probably right.  This probably is a complex issue.  It probably does warrant a deeper dive than just appropriating some plots from the St. Louis Fed's macroeconomic database.
 
-But if you were inclined to think, *Yeah man, cut corporate taxes, give them more money and they'll hire more people.  Easy peesy lemon squeezy* then you probably need to have come-to-Jesus with some basic facts about our economy:
+But if you were inclined to think, 
+
+*Yeah man, cut corporate taxes, give them more money and they'll hire more people.  Easy peesy lemon squeezy* 
+
+then you probably need to have a come-to-Jesus with some basic facts about our economy:
 
 Between 2000 and 2016,
 
