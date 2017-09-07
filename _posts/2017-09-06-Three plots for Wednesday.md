@@ -94,4 +94,4 @@ grid.arrange(cp.plot, manemp.plot, manwage.plot, ncol=1)
 
 ```
 
-![three plots](/images/threeplots.png)
+![three plots](/images/three plots.png)
