@@ -72,7 +72,7 @@ manemp.plot <- ggplot(subset(manemp,year>1960),aes(x=year,y=manemp)) + geom_line
 
 
 #-------------------------------------------------------
-#corporate profits
+#corporate profits after tax
 
 getSymbols("CP",src='FRED')
 cp <- tbl_df(data.frame(date=index(CP),cp=CP)) %>%
