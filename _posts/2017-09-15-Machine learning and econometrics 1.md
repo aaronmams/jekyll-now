@@ -86,7 +86,7 @@ The projection of any observation, $x_{i}$ onto a line in the direction $v$ is,
 $$v^{t}x_{i}$$.
 
 Note that the vector $v$ is $[v_{1},v_{2}]$.  It's helpful for me to think of these as weights rather than coefficients.  After projecting each point to the line defined by $v$ 
-we can label the mean projected values of each class as $\mu_{1}$ and $\mu_{2}.
+we can label the mean projected values of each class as $\mu_{1}$ and $\mu_{2}$.
 
 A measure of separation between classes is give by the distance between the means of the projected data
 
@@ -98,7 +98,7 @@ $$z_{i}=v^{t}x_{i}$$
 
 then
 
-$$s_{i}=\sum_{i\inC_{1}}(z_{i}-\mu_{i})^{2}$$
+$$s_{i}=\sum_{i \in C_{1}}(z_{i}-\mu_{i})^{2}$$
 
 Fisher's linear discriminant projects to a line in the direction $v$ which maximizes the normalized distance between groups:
 
