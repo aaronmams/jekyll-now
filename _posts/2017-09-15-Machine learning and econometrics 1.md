@@ -1,4 +1,6 @@
 
+Full disclosure: I'm not 100% confident that my assessment of [Linear Discriminant Analysis](https://en.wikipedia.org/wiki/Linear_discriminant_analysis) relative to [Logistic Regression](https://en.wikipedia.org/wiki/Logistic_regression) is totally accurate.  I've been thinking pretty hard about this for the past couple days so I'm reasonably confident that I've not said anything rediculous here...but if strongly disagree with characterization of LDA estimated coefficients relative to Logit coefficient estimates I'd love for you to drop some knowledge on me.  
+
 # Introduction
 
 I have a post locked-and-loaded where I conducted my first experiment with [Python's sci-kit learn module](http://scikit-learn.org/stable/).  This module makes it embarrassingly easy to run pretty much any flavor of machine learning model with pretty minimal code.  I used the wrappers from this module to run a suite of classification algorithms
@@ -236,7 +238,9 @@ For more traditional data mining problems, like correctly classifying an Iris ba
 
 But for something like credit risk it seems kind of important to me to try and understand what factors drive default risk...so asking,
 
-"what is the change in the expected probability of default resulting from a hypothetical one unit change in age or annual income," seems to me to be a pretty obvious thing to care about.
+*what is the change in the expected probability of default resulting from a hypothetical one unit change in age or annual income*
+
+seems to me to be a pretty obvious thing to care about
 
 ```R
 margins(logit, at = list(int_rate = mean(cs$int_rate,na.rm=T), 
@@ -257,5 +261,33 @@ margins(logit, at = list(int_rate = mean(cs$int_rate,na.rm=T),
                      D_pur_renewable=0,
                      D_pur_edu=0))
 
+Average marginal effects at specified values
+glm(formula = paid ~ int_rate + dti + annual_inc + delinq_2yrs +     D_pur_credit + D_pur_smallbiz + D_pur_other + D_pur_wedding +     D_pur_debt + D_pur_homeimp + D_pur_majorpurch + D_pur_medical +     D_pur_moving + D_pur_vacation + D_pur_house + D_pur_renewable +     D_pur_edu, family = "binomial", data = cs_train)
 
+ at(int_rate) at(dti) at(delinq_2yrs) at(annual_inc) at(D_pur_credit) at(D_pur_smallbiz) at(D_pur_other)
+       0.1217   13.38          0.1524          6.914                0                  0               0
+ at(D_pur_wedding) at(D_pur_debt) at(D_pur_homeimp) at(D_pur_majorpurch) at(D_pur_medical) at(D_pur_moving)
+                 0              1                 0                    0                 0                0
+ at(D_pur_vacation) at(D_pur_house) at(D_pur_renewable) at(D_pur_edu) int_rate       dti annual_inc delinq_2yrs
+                  0               0                   0             0   -1.759 -0.001166   0.005143    0.008198
+ D_pur_credit D_pur_smallbiz D_pur_other D_pur_wedding D_pur_debt D_pur_homeimp D_pur_majorpurch D_pur_medical
+     0.007241        -0.1104    -0.04714      0.009687   -0.02306       -0.0313         -0.00198      -0.05297
+ D_pur_moving D_pur_vacation D_pur_house D_pur_renewable D_pur_edu
+     -0.04153       -0.02458     -0.0459        -0.08728  -0.07451
 ```
+Here I get a marginal effect for the covariate age that, when evaluated at a representative data point, suggests that each additional year of age maps to around a 1% decrease in the predicted probability of defaulting on a loan.
+
+One thing to note here is that the 
+
+*margins()* 
+
+function from the **margins** package allows you to supply the values of independent variables where you want to evaluate the marginal effects.  I choose mean values for all continuous variables and the mode of the variable for 'purpose' in order to construct what I call a representative observation.
+
+
+# Summary
+
+This was kind of a really long-winded way to say that:
+
+1. If you just want to be able to classify different kinds of flowers based on observed physical characteristics, plenty of algorithms will do the trick.  In particular, a logit approach is probably just as good as an LDA approach and vice versa....but
+
+2. if you want to predict something like credit risk and you actually care about the incremental effect of one of your explanatory variables (like what effect an additional 10,000 in annual income would have on default risk) then you probably want to favor somethign like a logit model where the estimated parameters have a natural interpretation that jives with what your interested in.
