@@ -195,6 +195,8 @@ cs_val <- cs_val %>% mutate(yhat=logit.pred,
 
 ```
 
+We can see that about 85% of the observations in the out-of-sample data were correctly predicted.
+
 ## LDA
 
 A 'black box' for linear discriminant analysis is available in the *MASS* package.  The functions are pretty straightforward:
@@ -219,6 +221,8 @@ cs_val <- cs_val %>% mutate(lda.pred=lda.pred, lda.correct=as.numeric(lda.pred==
 0.8409
 
 ```
+
+Here we see that LDA also correctly predicts the outcome of about 85% of our out-of-sample data.
 
 # Marginal Effects
 
