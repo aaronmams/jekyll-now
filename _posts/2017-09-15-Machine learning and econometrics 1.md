@@ -62,7 +62,7 @@ We can get the maximum likelihood estimates of $\beta_{1}, \beta_{2}$ and use th
 
 $$P(y=1)=\frac{e^{x'\beta}}{1+e^{x'\beta}}$$
 
-$$\frac{dY}{dx_{1}}=\frac{e^{x'\beta}}{1+e^{x'\beta}}\beta_{1}
+$$\frac{dY}{dx_{1}}=\frac{e^{x'\beta}}{1+e^{x'\beta}}\beta_{1}$$
 
 As a quick technical point, the marginal effect of a particular variable in the logit model depends on the value of other variables.  In practice (if all variables are continuous) it is pretty common to set all covariate values to their means and estimate the marginal effect at the means.  If there are categorical/dummy variables in the model there are some tweaks but they aren't particularly onerous. 
 
@@ -83,7 +83,7 @@ For a 2 class model like the credit risk example above we have:
 
 The projection of any observation, $x_{i}$ onto a line in the direction $v$ is,
 
-$$v^{t}x_{i}$.
+$$v^{t}x_{i}$$.
 
 Note that the vector $v$ is $[v_{1},v_{2}]$.  It's helpful for me to think of these as weights rather than coefficients.  After projecting each point to the line defined by $v$ 
 we can label the mean projected values of each class as $\mu_{1}$ and $\mu_{2}.
