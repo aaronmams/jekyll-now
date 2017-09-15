@@ -129,7 +129,7 @@ The response variable is whether or not the individual defaulted on the loan.  I
 
 # Training 
 
-I have 42,542 observations in my data set so I'm going to randomly select 8,508 (20%) observations to be my 'validation' set.  The other 80% of the data is going to be used for model fitting.
+I have 42,506 complete observations in my data set so I'm going to randomly select 8,501 (20%) observations to be my 'validation' set.  The other 80% of the data is going to be used for model fitting.
 
 ```R
 # the data I use comes from here:
