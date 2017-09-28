@@ -12,6 +12,8 @@ Anyway, for those who are familiar with the techniques and models, I thought thi
 * LR - Logistic Regressin
 * SVM - Support Vector Machines
 
+I wrote a little bit about logistic regression and linear discriminant analysis last week.  If I get some time later this week I'll try to write some more in-depth shit about the other classifiers on this list...for now here's the general idea of what these animals are:
+
 ## KNN
 
 [K nearest neighbor classifiers](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) are pretty much what they sound like: for any data set with outcomes in two classes $Y_{i} \in [0,1]$ and inputs  $x=[x_{i1},x_{i2},...x_{in}]$ the KNN algorithm predicts that observation $j$ will belong to the same class as it's K-nearest neighbors.  
