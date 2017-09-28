@@ -185,7 +185,7 @@ ax.set_xticklabels(names)
 plt.show()
 ```
 
-![boxplot]('images/algocompare.png')
+![boxplot](images/algocompare.png)
 
 Since K-Nearest Neighbors was the best classifier on the training set we run that one over the validation set and get the out-of-sample predictions.  
 
