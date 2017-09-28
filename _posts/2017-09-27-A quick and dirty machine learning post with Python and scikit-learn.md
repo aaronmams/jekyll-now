@@ -5,12 +5,12 @@ Anyway, for those who are familiar with the techniques and models, I thought thi
 
 # The Classifiers
 
-KNN - K nearest neighbor classifier
-CART - classification and regression tree
-NB - Gaussian Naive Bayes classifier
-LDA - Linear Discriminant Analysis
-LR - Logistic Regressin
-SVM - Support Vector Machines
+* KNN - K nearest neighbor classifier
+* CART - classification and regression tree
+* NB - Gaussian Naive Bayes classifier
+* LDA - Linear Discriminant Analysis
+* LR - Logistic Regressin
+* SVM - Support Vector Machines
 
 ## KNN
 
