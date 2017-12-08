@@ -9,7 +9,7 @@ It will come as no surprise to people here that I think the concept of determini
 
 ![clinton debt](/images/clinton_debt.png)
 
-Disclaimer GW Bush may have imposed upon us policies that lead to massive unemployment and Clinton may indeed have blow up our budget.  They *MAY* have...but the charts above certainly don't conclusively demonstrate either of those points (despite the fact that there do appear to have been changes in unemployment and the national debt *AROUND* the timing of those two administrations.)
+Disclaimer GW Bush may have imposed upon us policies that lead to massive unemployment and Clinton may indeed have blow up our budget.  They *MAY* have...but the charts above certainly don't conclusively demonstrate either of those points. There do appear to have been changes in unemployment and the national debt *AROUND* the timing of those two administrations.  But we take a deep breath and try to get away from our own cognitive biases it's pretty easy to see that our national unemployment rate was ticking up well before W took office...AND our national debt was certainly in the midst of a pretty solid expansion when Clinton took office.
 
 I had a thought the other day that the proper way to demonstrate whether one can actually infer intervention effects on a time-series from just looking at the series isn't to look at when the intervention occurred and what happened to the data ex-post...it's to look at some unlabeled data and ask whether one can identify the effect they think occurred if it's not immediately clear where on the chart the intervention took place.  
 
