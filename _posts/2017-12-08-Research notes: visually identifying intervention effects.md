@@ -48,6 +48,14 @@ What I've cooked up here is kind of trivial but sort of fun.
 
 Here I have simulated three time series with purely stochastic properties.  I used Geometric Brownian Motion.  This has implications for the claim I've seen that Trump is great for the stock market because he's a business man and he's given investor's confidence in the future of the market....AND we know it's true because we can look at market indexes and see that they have been going up under the Trump administration.  Our domestic equities markets are generally considered to be one of the closest things we have to a pure random walk process.  Geometric Brownian Motion is a good way to capture this type of movement.
 
+The Equation for Geometric Brownian Motion is pretty straightforward. The process $S_{t}$ follows GBM if it satisfies:
+
+$$dS_{t}=\mu S_{t} dt + \sigma S_{t} dW_{t}$$
+
+where $W_{t}$ is a [Weiner Process](https://en.wikipedia.org/wiki/Wiener_process).
+
+GBM has drift (measured throught the constant $\mu$) and stochastic volatility so it's a decent approximation to the behavior of our stock market.
+
 The important thing to note here is that there is no break in the underlying data generating process - any movement in these time series that appears to be structural change or intervention effects is simply the result of a stochastic volatility inherent in Geometric Brownian Motion.
 
 This is pretty ad-hoc but here is what I did:
@@ -61,6 +69,7 @@ I repeated this process 3 times.  In each of the 3 runs of 5 simulations I found
 Here is the simple code I used to generate my GBM series:
 
 ```R
+library(sde)
 dates <- seq.Date(as.Date('2012-01-01'),as.Date('2017-12-05'),by="day")
 T <- 1
 n <- length(dates)
@@ -68,6 +77,14 @@ mu=0.4; sigma=0.3; P0=1;
 dt=T/n; t=seq(0,T,by=dt)
 
 x <- GBM(x=P0,r=mu,sigma=sigma,T=T,N=n)
+
+plot.df <- tbl_df(data.frame(dates=dates,p=x[1:length(dates)]))
+ggplot(plot.df,aes(x=dates,y=p)) + geom_line() +
+  geom_vline(xintercept=as.numeric(as.Date('2017-01-01')),linetype="dotted")  +
+  geom_vline(xintercept=as.numeric(as.Date('2016-11-08')),linetype="dotted")  +
+  theme_bw() + theme(axis.text.y=element_blank()) + 
+  xlab("") + ylab("")
+
 
 ```
 
@@ -121,7 +138,7 @@ my main claim is that if I tell you this is the unemployment rate and, based on 
 
 Ok, so we can probably all agree that we should stop listening the CNBC, CNN, MSNBC, or FOX News when some pundit on their network says 
 
-*QUANTITATIVE EASING BLEW INFLATION THROUGHT THE ROOF.  DON'T BELIEVE ME? LOOK AT THIS CHART! FUCKING LOOK AT IT!
+*QUANTITATIVE EASING BLEW INFLATION THROUGHT THE ROOF.  DON'T BELIEVE ME? LOOK AT THIS CHART! FUCKING LOOK AT IT!*
 
 But even if we accept my basic plea to be a little more rigorous in our thinking about intervention effects, we are still left with Gelman's famous [GARDEN OF FORKING PATHS](http://andrewgelman.com/2016/09/30/why-the-garden-of-forking-paths-criticism-of-p-values-is-not-like-a-famous-borscht-belt-comedy-bit/).
 
@@ -129,14 +146,25 @@ In digestable terms the *Garden of Forking Paths* says that if we test 100 diffe
 
 
 Q1. Does the series exhibit a break in Jan. 20, 2017?  
+
 A1. No.
+
 Q2. Well, does the series exhibit a break in Nov. 8, 2016?
+
 A2. No.
+
 Q3. It seems more likely that any positive effect would manifest itself AFTER Trump took office...so how 'bout a break in Feb, 2017?
+
 A3. No.
+
 Q4. March, 2017?
+
 A4. No.
+
 Q5. April 4th, 2017?
+
 A5. No.
+
 Q6. April 20, 2017?
+
 Q6. Yatzee!!
