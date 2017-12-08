@@ -168,3 +168,12 @@ A5. No.
 Q6. April 20, 2017?
 
 Q6. Yatzee!!
+
+# Appendix
+
+I'm going to go ahead a put a few things down here just in case people want them:
+
+The time-series on the national debt is here:
+
+https://fred.stlouisfed.org/series/GFDEGDQ188S
+
