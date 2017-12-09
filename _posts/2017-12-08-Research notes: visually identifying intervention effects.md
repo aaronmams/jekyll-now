@@ -130,7 +130,7 @@ My next example deals with another economic indicator.  I won't tell you which o
 
 OK, I won't keep you in suspense forever. It's the unemployment rate and here are the markers for the Bush and Clinton inaugurations.
 
-![clinton bush urate](/images/bush_clinton_urate.png)
+![clinton bush urate](/images/clinton_bush_urate.png)
 
 
 So did Bill Clinton's economic policies the unemployment rate to drop? Maybe. Did George Bush's economic policies cause the unemployment rate to go up? Maybe.  But we sure as shit can't tell just from looking at lines on a chart....and anyone who tells you otherwise is selling snake oil.
