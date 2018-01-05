@@ -48,6 +48,8 @@ Before delving into Python's *pipeline()* functionalities from the SciKitLearn l
 
 In the next couple subsections I'll comment on each of the 'pipes' in my pipeline briefly:
 
+![flowchart](/images/pipeline_flowchart.png]
+
 ## Problem Statement
 
 One can read about the boring, tedious nature of trying to infer the age of abalone from the number of rings on it's shell [here](http://archive.ics.uci.edu/ml/datasets/Abalone).  The basic problem is that aging abalone is labor intensive and it would be really cool if there were a way to 'learn' an abolone's age from some easily observable characteristics rather than spending an hour in a lab every time you want to age an abalone.
