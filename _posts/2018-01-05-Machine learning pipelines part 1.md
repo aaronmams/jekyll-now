@@ -48,7 +48,7 @@ Before delving into Python's *pipeline()* functionalities from the SciKitLearn l
 
 In the next couple subsections I'll comment on each of the 'pipes' in my pipeline briefly:
 
-![flowchart](/images/pipeline_flowchart.png]
+![flowchart](/images/pipeline_flowchart.png)
 
 ## Problem Statement
 
