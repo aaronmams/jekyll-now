@@ -136,7 +136,7 @@ ggplot(subset(top3,Title%in%c('Spider Man','The Big Lebowski')),
 
 ```
 
-![movie bar chart](/images/movie_bar.png)
+![movie bar chart](/images/word_count.png)
 
 Like I said not super informative.  One issue here is that the term frequency-inverse document frequency metric is a lot more powerful when you have a large corpus of words.  Note that, for Spider Man, there are lots of words with the same tf-idf...this is because there are lots of words that appear in the description of the movie Spider Man, and appear there more than once, and that don't appear in any other movie description.  If I had more movies (and hence more words) in my data, we could get a better sense of what words are truly unique to a movie or movie genre.
 
