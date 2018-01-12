@@ -53,7 +53,7 @@ What I want to do with these data in order to eventually use them to train a mac
 
 Python has kind of a neat way of doing this: with the function [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) in the scikit-learn module.  For now I'm going to stick to R and hopefully switch over to Python for next week's (planned) 3rd installment of Pipeline posts.
 
-[The R Package] tidytext(https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) has two functions that are supremely useful for what I want to do here:
+[The R Package tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html) has two functions that are supremely useful for what I want to do here:
 
 1. tidytext::unnest_tokens(), which splits a string of text into individual tokens.  A token can be defined a lot of ways but for now it's good enough to think of tokens as the individual words in a text string.
 
@@ -121,3 +121,5 @@ I found a really cool [Python movie data scraping example here](https://spandan-
 There is also a nice tutorial [on the use of R's tidytext here](https://www.tidytextmining.com/tfidf.html). 
 
 I also have a few blog posts where [I dealt with some text mining functionalities](https://aaronmams.github.io/Sentiment-Analysis-with-Python-3-just-another-example/), give those a look. 
+
+Also, I'm pulling movie data from [TMBD](https://www.themoviedb.org/).  You can go here if you want to verify that my data have been correctly input.
