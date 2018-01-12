@@ -114,6 +114,32 @@ Here we can see that we have successfully created an input matrix with 24 rows (
 
 I can't really print out a 24 X 692 data frame but just printing the first 3 rows and columns 26-36 we can see that this input data frame is just a collection of variables indicating whether certain words appeared in each movie's info.
 
+## Bonus plot
+
+As a final step let's just display some of the most important words for a couple movies.  This won't be all that informative but I don't know if I could live with myself if I pushed out a blog post with no plots.
+
+```R
+#--------------------------------------------------
+# as a final step let's just display the top 3 words 
+# in terms of tf-idf for each film
+
+
+top3 <- book_words %>% group_by(Title) %>% 
+        arrange(-tf_idf) %>% mutate(rank=row_number()) %>%
+        filter(rank<=10)
+
+ggplot(subset(top3,Title%in%c('Spider Man','The Big Lebowski')),
+       aes(x=word,y=tf_idf,fill=Title)) + geom_bar(stat='identity') +
+     facet_wrap(~Title) + coord_flip() + theme_bw() + guides(fill=FALSE)
+
+#-------------------------------------------------
+
+```
+
+![movie bar chart](/images/movie_bar.png)
+
+Like I said not super informative.  One issue here is that the term frequency-inverse document frequency metric is a lot more powerful when you have a large corpus of words.  Note that, for Spider Man, there are lots of words with the same tf-idf...this is because there are lots of words that appear in the description of the movie Spider Man, and appear there more than once, and that don't appear in any other movie description.  If I had more movies (and hence more words) in my data, we could get a better sense of what words are truly unique to a movie or movie genre.
+
 # Resources
 
 I found a really cool [Python movie data scraping example here](https://spandan-madan.github.io/DeepLearningProject/).  However, I use Anaconda Python I haven't quite sorted out how to get the TMBD API manager (tmdbsimple) loaded up on my instance of Python.  Still, you should check this out, it's way cool.
