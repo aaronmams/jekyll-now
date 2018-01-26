@@ -1,3 +1,6 @@
+
+![terminal](/images/terminal1.png)
+
 I'm fully aware of the fact that some of my posts contain actual insight while others are pretty much just me copy-pasting stuff from my computer.  This post probably falls under the latter category.  
 
 I try to leave a couple hours every Friday blocked off for sort of professional development time.  The blog is kind of a good way to force myself to actually claim this time.  I try to post once a week and the best way for me to do that is to just post about whatever I'm working on during my Friday professional development time.  Right now, I'm using this time mostly for fucking about in Python.  Maybe in the future I'll get back to commenting on some interesting papers, trying out novel methods, but for now you're getting a lot of remedial Python stuff cuz that's what I've been doing.
