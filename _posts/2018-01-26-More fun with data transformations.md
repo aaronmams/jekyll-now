@@ -117,7 +117,7 @@ The MultiLabelBinarizer transform this list of 1677 movies to a 1677 X 20 matrix
 Here is where the real fun is. In [my post 2 weeks ago](https://aaronmams.github.io/Data-Pipelines-2-data-transformations/) I did kind of a ghetto version of a count vectorizor.  Basically, I:
 
 1. took some movie overviews and tokenized them to create a 'bag of words' for a handful of movies
-2. calculated a term frequency-inverse distance frequency
+2. calculated a term frequency-inverse document frequency
 3. filtered the 'bag-of-words' for each movie to keep only the important words in the overview
 4. created a binary variable for each unique word in the combined 'bag-of-words' for all the movies where the row entry is 0 if the word represented by the column does not appear in the movie overview...and 1 otherwise.
 
@@ -149,12 +149,40 @@ for i in range(len(movies_with_overviews)):
     content.append(overview)
 
 print content[0]
+
+Fearing the actions of a god-like Super Hero left unchecked Gotham City’s own formidable forceful vigilante takes on Metropolis’s most revered modern-day savior while the world wrestles with what sort of hero it really needs And with Batman and Superman at war with one another a new threat quickly arises putting mankind in greater danger than it’s ever known before
+
 print len(content)
 
+Out[26]: 1677
 
 vectorize=CountVectorizer(max_df=0.95, min_df=0.005)
 X=vectorize.fit_transform(content)
 
+```
 
+If we look at the shape of the input matrix X we see:
 
+```python
+X.shape
+Out[24]: (1677, 1268)
+```
+So we've created a matrix with 1677 (the number of movies) X 1268 the number of 'features' (words).  It's important to note here that the CountVectorizer function actually selects the most 'important' words using the term frequency-inverse document frequency.  
+
+Recall from our last post that if we are looking to predict the genre of a movie from the frequency of words in the movie overview we probably don't want to include words like 'the', 'a', 'an'...words that are very likely to be in every movie overview. This is pretty cool.  Maybe R has a function that accomplishes this too but I haven't found it yet.  When I did this in R I basically set some arbitrary limits for tf-idf values and filtered by hand according to those values.
+
+Also, it's not super straight-forward to examine the elements in this input matrix.  That's because X is a sparse matrix with 1,268 columns.
+
+```python
+X[1]
+Out[27]: 
+<1x1268 sparse matrix of type '<type 'numpy.int64'>'
+	with 28 stored elements in Compressed Sparse Row format>
+
+```
+If you really want to see something to give you a flavor of what X looks like you could coerce one row to an array...but you still won't be able to see much.
+
+```python
+In[20]: print X[1,:].toarray()
+Out[20]: [[0 0 0 ..., 0 0 0]]
 ```
