@@ -2,9 +2,19 @@ I'm fully aware of the fact that some of my posts contain actual insight while o
 
 I try to leave a couple hours every Friday blocked off for sort of professional development time.  The blog is kind of a good way to force myself to actually claim this time.  I try to post once a week and the best way for me to do that is to just post about whatever I'm working on during my Friday professional development time.  Right now, I'm using this time mostly for fucking about in Python.  Maybe in the future I'll get back to commenting on some interesting papers, trying out novel methods, but for now you're getting a lot of remedial Python stuff cuz that's what I've been doing.
 
+# Overview
 [Last time](https://aaronmams.github.io/Machine-Learning-Pipelines-3-Data-streams/) I showed off a bunch of web-scraping in Python that was pretty much just me following along with [this tutorial](https://spandan-madan.github.io/DeepLearningProject/).
 
 Today's post is going to pick-up with some of the data we scraped last time and do some stuff with it. 
+
+Here is what I'm going to do:
+
+1. Use the [MultiLabelBinarizer](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html) to create a 'target' set.  This target set will be a collection of [1,0] variables that identify a movie based on the combination of genres that movies is assigned to.
+
+2. Use the [CountVectorizer](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html) function to transform a movie overview into a collection of [1,0] variables defining the presence/absence of words in the overview.
+
+
+# Getting Started
 
 Last time I pickled some data on movie overviews from The Movie Database.  I pickled these data so I wouldn't have to scrap them anew every time I want to close my project and come back to it.
 
@@ -77,6 +87,8 @@ Out[9]: [28, 12, 14]
 ```
 
 Note that we created a list of 1677 movies with overviews...then we extracted the 'genre' component for these movies which gave us a list of 1677 genres.
+
+# Form the Output (or Target) Set
 
 Now the fun starts.
 
