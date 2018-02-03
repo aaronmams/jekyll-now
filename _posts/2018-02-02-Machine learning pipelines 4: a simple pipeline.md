@@ -12,11 +12,11 @@ I have two things to report on today:
 
 I think I've provided some decent motivation for wanting to learn more about end-to-end data pipelines 
 
-[here](https://aaronmams.github.io/Machine-learning-pipelines-part-1/)
+[Machine Learning Pipelines Part 1](https://aaronmams.github.io/Machine-learning-pipelines-part-1/)
 
 and 
 
-[here](https://aaronmams.github.io/Data-Pipelines-2-data-transformations/)
+[Machine Learning Pipelines Part 2](https://aaronmams.github.io/Data-Pipelines-2-data-transformations/)
 
 I have also found the following resources pretty valuable in trying to use the pipeline() tool to set up my own data pipeline:
 
