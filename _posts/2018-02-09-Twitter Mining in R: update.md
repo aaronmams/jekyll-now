@@ -1,3 +1,5 @@
+![shinyapp]('/images/shinyapp.png')
+
 A while back I wrote a couple posts about mining Twitter data for sentiment analysis on environmental/conservation causes.  I have had occassion to revisit that work and found a pretty neat improvement over the TwittR package I was using before.
 
 [Here is my original post for reference](https://thesamuelsoncondition.com/2016/07/09/twitter-analytics-with-twitter/)
@@ -8,6 +10,16 @@ and
 
 Today's short post will illustrate the use of the [rtweet](https://cran.r-project.org/web/packages/rtweet/rtweet.pdf) package for harvesting Twitter Data.
 
+# Motivation
+
+My elevator pitch for why I think this type of stuff could be cool: I work for NOAA Fisheries.  We have a bunch of research and policy interests relating to environmental stewardship:
+
+* we are the primary agency in charge of regulating a large swatch of commercial fisheries
+* we have a regulatory responsibility to protect endangered species such as sea turtles, salmon and steelhead, and a bunch of marine mammals like whales and sea lions.
+* all the stuff we do is getting more complicated because of climate change
+* etc, etc.
+
+so I think it would be cool to know what types of things that we do really resonate with the public.  The current way of assessing attitudes and intrinsic values of environmental conservation is to survey people. Surveys costs millions of dollars and take years to do correctly.  Social media engagement is far from perfect in terms of being a tool or metric for assessing public sentiment around environmental issues....but it's cheap, data driven, and fun.
 
 # Overview
 
@@ -20,6 +32,22 @@ Today's short post will illustrate the use of the [rtweet](https://cran.r-projec
 The actual code I'm using is pretty compact but I'm going to walk through it in steps because there are some notably different behaviors between rtweet and TwittR.
 
 ### Step 1: Collect all the tweets from the different NOAA accounts
+
+As I stated above, NOAA has a lot of interests: 
+
+* we have branches that are very interested in cod populations in New England
+* we have branches that are really interested in agricultural water use in California (to the extent that this use makes it harder for salmon to survive)
+* we have branches that launch satellites
+* we have branches that are very interested in artisnal lobster fishing among marginalized populations in Southern Florida.
+
+Because of the varied branches and varied interest there are a lot of different NOAA-related Twitter Accounts.  For the time being I'm contraining my analysis to the following branches/offices/accounts
+
+1. The NOAA Office of Habitat Conservation (@NOAAHabitat)
+2. The NOAA Fisheries West Coast Regional Office (@NOAAFish_WCRO)
+3. NOAA Fisheries (@NOAAFisheries)
+4. The NOAA Research Account (@NOAAResearch)
+
+I'll probably widen this list considerably but it's a decent place to start.
 
 ```R
 require(twitteR)
