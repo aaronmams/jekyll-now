@@ -1,4 +1,4 @@
-![shinyapp]('/images/shinyapp.png')
+![shinyapp](/images/shinyapp.png)
 
 A while back I wrote a couple posts about mining Twitter data for sentiment analysis on environmental/conservation causes.  I have had occassion to revisit that work and found a pretty neat improvement over the TwittR package I was using before.
 
