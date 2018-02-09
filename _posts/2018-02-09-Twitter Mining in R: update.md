@@ -14,7 +14,7 @@ Today's short post will illustrate the use of the [rtweet](https://cran.r-projec
 
 My elevator pitch for why I think this type of stuff could be cool: I work for NOAA Fisheries.  We have a bunch of research and policy interests relating to environmental stewardship:
 
-* we are the primary agency in charge of regulating a large swatch of commercial fisheries
+* we are the primary agency in charge of regulating a large swath of commercial fisheries
 * we have a regulatory responsibility to protect endangered species such as sea turtles, salmon and steelhead, and a bunch of marine mammals like whales and sea lions.
 * all the stuff we do is getting more complicated because of climate change
 * etc, etc.
@@ -95,11 +95,13 @@ In the TwittR package one could do:
 ``R
 search_twitter('from:@NOAAHabitat')
 ``
+
 and this would return the most recent tweets from the account: @NOAAHabitat.  I couldn't find a similar method with the rtweet package...but I didn't look too hard because the method:
 
 ```R
 get_timeline('@NOAAHabitat,n=1000)
 ```
+
 will pull all of the most recent 1,000 tweets from @NOAAHabitat
 
 What I find exceptionally cool about the rtweet package is that when you use the *get_timeline()* function it returns the tweets in a dplyr data frame with a ton - A TON I tell you! - of meta-data on the tweet and user.
