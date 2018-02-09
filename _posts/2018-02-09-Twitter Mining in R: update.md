@@ -165,7 +165,7 @@ df <- df %>% mutate(mentions1=mentions) %>%
 New tweets come in frequently so we will probably want to refresh the data on individual tweets at pretty regular intervals.  Information on users however (user description, user location, follower) probably changes less frequently.  At the moment I'm choosing to update this info less frequently and save it in a separate table in a relational database so I don't end up repeating a lot of info as I would if I joined this user info with the tweet info in a flat file.
 
 
-```
+```R
 
 user.info <- lapply(users,function(x){
   user.info <- search_users(x) %>% 
@@ -193,7 +193,7 @@ I need to add some error handling into the data pull code.  For what I'm pulling
 
 ### Extension 3: Analyzing the data
 
-As a first step here I've aggregated retweets per hashtag for each of my NOAA twitter accounts.  I've built a super simple R Shiny app to display this data.  Next, I want to add some more metrics to this list:
+As a first step here I've aggregated retweets per hashtag for each of my NOAA twitter accounts.  I've built a super simple R Shiny app to display this data.  The image at the top of the page is a screen shot of this Shiny App.  I'll try to get the app up on the interwebs this weekend after I sexy it up a little. Next, I want to add some more metrics to this list:
 
 * most retweeted hashtags from tweets that @mention NOAA
 * follower count over time
