@@ -1,4 +1,4 @@
-![noaa_twitter](images/noaa_twitter.png)
+![noaa_twitter](/images/noaa_twitter.png)
 
 So I've just about beaten this Twitter mining thing to death but I've made a couple improvements that I think make another update worthwhile: 
 
