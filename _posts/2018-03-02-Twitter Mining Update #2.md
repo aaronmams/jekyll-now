@@ -12,7 +12,7 @@ I've established a link to Twitter's API using the *rtweet* package which I use 
 
 ## The Action
 
-The GitHub Repository with all the code for the end-to-end project is [here]('https://github.com/aaronmams/noaa-social-media).
+The GitHub Repository with all the code for the end-to-end project is [here](https://github.com/aaronmams/noaa-social-media).
 
 The interactive R Shiny App is [here](https://aaronmams.shinyapps.io/twitter-explorer/).
 
