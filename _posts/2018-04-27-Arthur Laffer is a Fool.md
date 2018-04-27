@@ -25,7 +25,7 @@ That is, it must be the case that:
 
 The authors offer, as evidence of point A, the fact that since 2007 California and New York have lost more than 2.2 million residents.  I don't dispute this fact...but saying that people left isn't the same as saying that people left BECAUSE state and local taxes were too high.  
 
-# Evaluating the evidence
+# Evaluating The Evidence
 
 As I alluded to in **The Claims** section, when thinking about migration out of a state, who stays and who leaves matters. From a state budgeting point-of-view we can think of the state as comprised of two types of people:
 
