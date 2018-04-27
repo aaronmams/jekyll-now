@@ -104,3 +104,8 @@ A caveat: Laffer (and a bunch of other kooky supply side zealots) were fabulousl
 I've made the case above that Arthur Laffer is talking out of his ass when it comes to tax flight and whether or not California should cut state and local taxes.  Now I want to take the discussion a step further and try to convince you that Arthur Laffer is, in general, a kook whose economic hallucinations should no longer be taken seriously.
 
  As a little bonus-ball here [Krugman has a decent little blurb](https://krugman.blogs.nytimes.com/2015/05/17/money-inflation-and-models/) on why QE did not cause large-scale currency debasement in the U.S.
+ 
+ 
+ [Justin Wolfers asks whether any of the supply-side kooks who crucified QE have been called to account for their zealotry](http://delong.typepad.com/sdj/2013/01/justin-wolfers-asks-whether-any-of-the-right-wing-worthies-who-put-their-names-to-this-tripe-26-months-ago-have-suffered-any.html)
+
+Not a super big fan of The Money Illusion but I did like [this post](http://www.themoneyillusion.com/an-open-letter-to-conservatives/) on why Quantitative Easing failed to produce the kind of catastrophic inflation many old-skool macro guys predicted.
