@@ -7,6 +7,17 @@ Arthur Laffer has a new piece of anti-tax propaganda out called [So Long, Califo
 A. Relatively high state and local taxes drive migration - people, on balance, leave high tax states and move to low tax states.
 B. Net migration is bad for state budgets.
 
+It is important to note that in order for Laffer's prescription
+
+*As far as we can see, the only way for blue states to prevent this coming fiscal bloodbath is to start taking tax competitiveness seriously—and to cut their tax rates in response. Progressives should do the math: A 13% tax rate generates zero revenue from someone who leaves the state for friendlier climes.*
+
+to be valuable/accurate/not stupid, both claims A and B must be simultaneously true.  
+
+That is, it must be the case that:
+
+1. People are leaving California BECAUSE of the high tax structure, and
+2. Rich people are leaving at higher rates than poor people
+
 # Evaluating the Claims
 
 The authors offer, as evidence of point A, the fact that since 2007 California and New York have lost more than 2.2 million residents.  I don't dispute this fact...but saying that people left isn't the same as saying that people left BECAUSE state and local taxes were too high.  
@@ -29,4 +40,15 @@ California did experience a notable decline in real household income from 2008 -
 ![ca income](/images/fredgraphCA.png)
 ![tx income](/images/fredgraphTX.png)
 
-# 
+# Summary
+
+## Evidence for tax flight
+
+| Evidence for tax flight | Evidence for no tax fligh |
+|-------------------------|---------------------------|
+| Arthur Laffer says so   | Young and Varner (2011) a rigorous cross-state difference-in-differences  |
+|                         |    study of migratory patterns.       |
+|                         | Young et al. (2016) a rigorous study of tax records of high income                         |
+|                         |   individuals in the U.S. over 13 years.|
+|                         | Median household income in California going up not down|
+
