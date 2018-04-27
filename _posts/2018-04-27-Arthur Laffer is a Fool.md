@@ -30,6 +30,7 @@ The authors offer, as evidence of point A, the fact that since 2007 California a
 As I alluded to in **The Claims** section, when thinking about migration out of a state, who stays and who leaves matters. From a state budgeting point-of-view we can think of the state as comprised of two types of people:
 
 i. those that pay more in taxes than they extract in services (relatively rich people)
+
 ii. those that use more services than they pay for in taxes (presumably, poorer people)
 
 If all 2.2 million people who left CA/NY from 2007 - present were the takers then we wouldn't expect the state to be at particularly high risk of financial collapse.  Here is probably where the entire discussion should end because Laffer doesn't really provide any evidence that the observed out-migration was dominated by rich people.  Absent that, there isn't a very compelling reason to believe that the observed historical out-migration, even if it does accelerate, will make California and New York in financially destitute. 
