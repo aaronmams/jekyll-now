@@ -67,4 +67,4 @@ A caveat: Laffer (and a bunch of other kooky supply side zealots) were fabulousl
 
 I've made the case above that Arthur Laffer is talking out of his ass when it comes to tax flight and whether or not California should cut state and local taxes.  Now I want to take the discussion a step further and try to convince you that Arthur Laffer is, in general, a kook whose economic hallucinations should no longer be taken seriously.
 
-   
+ As a little bonus-ball here [Krugman has a decent little blurb](https://krugman.blogs.nytimes.com/2015/05/17/money-inflation-and-models/) on why QE did not cause large-scale currency debasement in the U.S.
