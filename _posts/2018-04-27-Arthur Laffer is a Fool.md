@@ -39,7 +39,7 @@ So, technically, I could stop here...but I won't.  Even if we assume (absent any
 ## Do high taxes drive out-migration of rich people?
 
 ### Some academic evidence
-[Young and Varner, 2011[(http://web.stanford.edu.oca.ucsc.edu/~cy10/public/NTJ-millionaire-migration-state-taxation.pdf) find little to no outmigration of high income individuals in response to a 'millionaire's tax'.  
+[Young and Varner, 2011](http://web.stanford.edu.oca.ucsc.edu/~cy10/public/NTJ-millionaire-migration-state-taxation.pdf) find little to no outmigration of high income individuals in response to a 'millionaire's tax'.  
 
 In a follow-up analysis [Young, Varner, Lurie, and Prisinzano, 2016](http://journals.sagepub.com.oca.ucsc.edu/doi/pdf/10.1177/0003122416639625) find:
 
