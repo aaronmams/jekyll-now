@@ -40,9 +40,8 @@ California did experience a notable decline in real household income from 2008 -
 ![ca income](/images/fredgraphCA.png)
 ![tx income](/images/fredgraphTX.png)
 
-# Summary
+## Summary
 
-## Evidence for tax flight
 
 | Evidence for tax flight | Evidence for no tax flight |
 |-------------------------|---------------------------|
@@ -50,3 +49,22 @@ California did experience a notable decline in real household income from 2008 -
 |                         | Young et al. (2016) a rigorous 13 year study of millionaires' tax returns    |
 |                         | Median household income in California going up not down|
 
+Just to be clear, I'm not saying tax flight isn't a real thing.  I'm not claiming to have rigorously tested the tax flight hypothesis.  However, Arthur Laffer and the Wall Street Journal ARE claiming that:
+
+1. tax flight is real
+2. it's going to get worse
+3. California is going broke unless they lower state and local taxes
+
+And what's truly amazing (but I guess not really that amazing if you're familar with Art Laffer's particular brand of snake oil peddling) is that Laffer and the WSJ are making these dire economic prognotications in the complete absence of any reputable supporting empirical evidence for their position.
+
+# Now for something a little different
+
+A caveat: Laffer (and a bunch of other kooky supply side zealots) were fabulously wrong about the inflationary ramifications of the Fed's policy of Quantitative Easing.  In 2009 Laffer wrote a [screed in the Wall Street Journal](https://www.wsj.com/articles/SB124458888993599879) asserting that the Federal Reserve's policy of Quantitative Easing was sure precipitate price inflation that would "make the 70's look benign" and should be immediately discontinued.
+
+[To Laffer's credit he was reasonably open about being wrong](http://www.businessinsider.com/arthur-laffer-interview-2014-1)
+
+*Usually when you find the model this far off, you've probably got something wrong with the model, not that the world has changed," he said. "Inflation does not appear to be monetary base driven*
+
+I've made the case above that Arthur Laffer is talking out of his ass when it comes to tax flight and whether or not California should cut state and local taxes.  Now I want to take the discussion a step further and try to convince you that Arthur Laffer is, in general, a kook whose economic hallucinations should no longer be taken seriously.
+
+   
