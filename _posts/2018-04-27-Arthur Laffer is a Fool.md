@@ -99,7 +99,7 @@ And what's truly amazing (but I guess not really that amazing if you're familar 
 
 # A Bigger Point
 
-Laffer (and a bunch of other kooky supply side zealots) were fabulously wrong about the inflationary ramifications of the Fed's policy of Quantitative Easing.  In 2009 Laffer wrote a [screed in the Wall Street Journal](https://www.wsj.com/articles/SB124458888993599879) asserting that the Federal Reserve's policy of Quantitative Easing was sure precipitate price inflation that would "make the 70's look benign" and should be immediately discontinued.
+Laffer (and a bunch of other kooky supply side zealots) were fabulously wrong about the inflationary ramifications of the Fed's policy of Quantitative Easing.  In 2009 Laffer wrote a [screed in the Wall Street Journal](https://www.wsj.com/articles/SB124458888993599879) asserting that the Federal Reserve's policy of Quantitative Easing was sure to precipitate price inflation that would "make the 70's look benign" and should be immediately discontinued.
 
 [To Laffer's credit he was reasonably open about being wrong](http://www.businessinsider.com/arthur-laffer-interview-2014-1)
 
