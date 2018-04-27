@@ -44,11 +44,9 @@ California did experience a notable decline in real household income from 2008 -
 
 ## Evidence for tax flight
 
-| Evidence for tax flight | Evidence for no tax fligh |
+| Evidence for tax flight | Evidence for no tax flight |
 |-------------------------|---------------------------|
-| Arthur Laffer says so   | Young and Varner (2011) a rigorous cross-state difference-in-differences  |
-|                         |    study of migratory patterns.       |
-|                         | Young et al. (2016) a rigorous study of tax records of high income                         |
-|                         |   individuals in the U.S. over 13 years.|
+| Arthur Laffer says so   | Young and Varner (2011) a rigorous cross-state difference-in-differences study |
+|                         | Young et al. (2016) a rigorous 13 year study of millionaires' tax returns    |
 |                         | Median household income in California going up not down|
 
