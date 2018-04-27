@@ -5,6 +5,7 @@ Arthur Laffer has a new piece of anti-tax propaganda out called [So Long, Califo
 # The Claims
 
 A. Relatively high state and local taxes drive migration - people, on balance, leave high tax states and move to low tax states.
+
 B. Net migration is bad for state budgets.
 
 It is important to note that in order for Laffer's prescription
