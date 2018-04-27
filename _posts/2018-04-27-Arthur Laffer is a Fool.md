@@ -75,6 +75,8 @@ The thing is, they didn't.  Here is the incredibly circular chain of evidence as
 2.  In the 9th Edition of Rich State Poor State, they again say something like, "trust us, there is a well-known relationship between tax burden and migration.
 3.  In a really early edition, they cite, not a peer reviewed, scientific study linking tax burden to migration but an American Legislative Exchange Council report on taxation.  
 
+Surprisingly, I had not herd of the American Legislative Exchange Council until I read this Op-Ed.  Apparently, they are about as scientifically minded as the [Answers in Genesis Project](https://answersingenesis.org/).  I guess what I'm saying is, if some researchers had found, through careful study of available data, a causal link between local taxation and migration, it would definitely be published in the peer reviewed literature....not as part of some dubious white-paper series from a propoganda organization. 
+
 # Summary
 
 ## Evidence for tax flight
