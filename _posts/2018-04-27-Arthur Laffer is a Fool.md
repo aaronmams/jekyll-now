@@ -26,6 +26,7 @@ If high state and local taxes were causing large scale tax-flight among high ear
 
 California did experience a notable decline in real household income from 2008 - 2011 when the housing market crashed.  But from 2011 - 2016 median household income in California grew faster (3%/year) than Texas (2%/year).  Once again, if Laffer's assumptions are right and all the rich people left California because of high taxes and moved to Texas, then we should have seen California's median household income drop...and we should have seen Texas's median household income rise faster than high tax states.
 
-
+![ca income](/images/fredgraphCA.png)
+![tx income](/images/fredgraphTX.png)
 
 # 
