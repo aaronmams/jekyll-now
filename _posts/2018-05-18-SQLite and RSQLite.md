@@ -1,4 +1,8 @@
-Had occassion to setup an SQLite database the other day. I found it be a most enjoyable experience so I thought I'd share.  In this short post I'll:
+
+
+![Steps 1 and 2](/images/sqlite.png)
+
+I had occassion to setup an SQLite database the other day. I found it be a most enjoyable experience so I thought I'd share.  In this short post I'll:
 
 * use the Mac Terminal and sqlite shell to set up a local embedded database
 * use the RSQLite package to access database tables from R.
