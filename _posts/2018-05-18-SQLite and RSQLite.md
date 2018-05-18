@@ -94,4 +94,65 @@ summary(as.numeric(amt$donation_amount))
     
 ```
 
+## Bonus Ball
 
+Since I've got these data into a workspace now, let's join the donations data and projects data and do a couple first pass data summary tasks: 
+
+```R
+#-----------------------------------------------------------------------
+#summarise project donations and merge with projects data to see
+# how many projects got close to their goal
+
+donations <- dbGetQuery(con,'SELECT * FROM donations')
+names(donations) <- c('project_id','donation_id','donor_id','donation_included_optional_donation',
+                 'donation_amount','donor_cart_sequence')
+
+proj.donations <- test %>% group_by(project_id) %>% 
+                      summarise(ndonations=n_distinct(donation_id),
+                                ndonors=n_distinct(donor_id),
+                                total_donations=sum(as.numeric(donation_amount),na.rm=T),
+                                average_donation=mean(as.numeric(donation_amount),na.rm=T))
+
+project <- dbGetQuery(con,'SELECT "Project ID", "School ID", "Teacher ID", 
+                      "Teacher Project Posted Sequence", "Project Type", "Project Title", 
+                      "Project Grade Level Category", "Project Resource Category",
+                      "Project Cost", "Project Posted Date", "Project Current Status",
+                      "Project Fully Funded Date" FROM projects')
+
+names(project) <- c('project_id','school_id','teacher_id','teacher_project_posted_sequence',
+                    'project_type','project_title','project_grade_level_category',
+                    'project_resource_category','project_cost','project_posted_date',
+                    'project_current_status','project_fully_funded_date')
+
+project <- project %>% left_join(proj.donations,by=c('project_id'))
+#-------------------------------------------------------------------------
+
+```
+
+### How many projects in our data got no contributions?
+
+```R
+> nrow(project)
+[1] 1208651
+> nrow(project[is.na(project$ndonations),])
+[1] 309632
+```
+So about 300,000 projects in the database did not get any contributions
+
+### What is the distribution of project types for fully funded projects
+
+
+```R
+cat <- project %>% 
+          mutate(fully_funded=ifelse(project_current_status=='Fully Funded',1,0)) %>%
+           group_by(project_resource_category) %>% mutate(total_count=n()) %>%
+          group_by(project_resource_category,fully_funded)  %>% 
+           summarise(count=n(),total=max(total_count)) %>% 
+          mutate(funded.pct = count/total) %>%
+          filter(fully_funded==1)
+
+ggplot(cat,aes(x=project_resource_category,y=funded.pct)) + geom_bar(stat='identity') + 
+  coord_flip() + theme_bw() + xlab('category') +
+  ylab('fully funded as a proportion of total projects')
+```
+![funded proportion](/images/dc_histogram.png)
