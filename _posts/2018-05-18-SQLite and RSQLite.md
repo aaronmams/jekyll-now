@@ -15,14 +15,14 @@ I joined Kaggle's [Data Science for Good: Donors Choose](https://www.kaggle.com/
 
 This first pinch-point I encountered with this challenge was that the data were made available as as series of very large .csv files.  This was making even the elementary task of running summary stats and just 'getting a feel' for the data cumbersome and time consuming.  For instance:
 
-* one of the data files that contained info on donations to past project was about 500 MB and took about 4 minutes just to load into an R workspace using the read.csv() method. 
-* the data file with information about individual projects was 2.2 GB and took almost 10 minutes to bring into R using the read.csv() method.
+* one of the data files that contained info on donations (Donations.csv) to past project was about 500 MB and took about 4 minutes just to load into an R workspace using the read.csv() method. 
+* the data file with information about individual projects (Projects.csv) was 2.2 GB and took almost 10 minutes to bring into R using the read.csv() method.
 
 Note: [the data files are available for download here](https://www.kaggle.com/donorschoose/io/data)
 
 ## Solution
 
-Since I don't really need all 4 million observations in the Donations data or all 2 million observations in the Projects in order to 'get a feel' for the data, I shoved the data files into a relational database that I could query for smaller chunks of data.
+Since I don't really need all 4 million observations in the Donations.csv data or all 2 million observations in the Projects.csv file in order to 'get a feel' for the data, I shoved the data files into a relational database that I could query for smaller chunks of data.
 
 ## Execution
 
