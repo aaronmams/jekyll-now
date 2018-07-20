@@ -195,14 +195,17 @@ bayes <- bayes.mams(X=X,a.prior=1,b.prior=2)
 
 # Success rate in the underlying data:
 sum(X)/length(X)
+[1] 0.33
 
 # Expected value of the prior
 1/(1+2)
+[1] 0.3333333
 ```
 
 ```{r}
 # Expected value of the posterior distribution:
 bayes[[1]]
+[1] 0.3300971
 ```
 
 ```{r}
