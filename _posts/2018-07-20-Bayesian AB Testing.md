@@ -62,9 +62,6 @@ $\theta ~ Beta(a,b)=\frac{\theta^{a-1}(1-\theta)^{b-1}}{B(a,b)}$
 
 where $B(a,b)$ is the Beta function.
 
-
-
-
 # Some Bayesian Illustrations
 
 For our numerical example we stated that we belive $\theta$ to be around 0.3.  Let's look at a beta distribution centered around 0.3:
@@ -75,5 +72,203 @@ hist(rbeta(100,50,50))
 hist(rbeta(1000,0.3*1000,0.7*1000))
 ```
 The variance of the beta distribution is controlled by the size of the shape parameters a and b.
+
+![plot1](\images\Rplot.png)
+![plot1](\images\beta2.png)
+
+Since we used a conjugate prior there is an analytical way to express the posterior distribution of $\theta$:
+
+$P(\theta|X) \alpha P(X|\theta)P(\theta)$
+
+which is,
+
+$P(\theta|X) \alpha \Pi_{i}^{N}\theta^{x_{i}}(1-\theta)^{1-x_{i}}\theta^{a-1}(1-\theta)^{b-1}$
+
+[this post](https://zlatankr.github.io/posts/2017/04/07/bayesian-ab-testing) shows that this expression for the posterior is equivalent to a beta distribution with parameters $a'$ and $b'$ where
+
+$a'= a + \sum_{i}^{N} x_{i}$
+
+and
+
+$b' = b + N - \sum_{i}^{N}x_{i}$
+
+Let's go ahead and step through this process from start-to-finish:
+
+## Step 1: simulate some data
+
+Let's start by simulating some data
+
+```{r}
+X <- rbinom(100,1,0.3)
+X
+```
+
+## Step 2: propose a prior
+
+Suppose we belive the success rate is around 30% but we want a prior that is not too restrictive:
+
+```{r}
+library(bayesAB)
+plotBeta(5,15)
+```
+
+
+Let's see if we can find a prior that's not too restrictive but centered more around 0.3
+
+```{r}
+plotBeta(30,60)
+```
+
+### Step 3: estimate the posterior
+
+We showed above that with a beta prior and binomial likelihood we get a posterior distribution for this particular problem of:
+
+$P(\theta|X) = Beta(a',b')$
+
+with
+
+$a'= 30 + \sum_{i}^{100} x_{i}$
+
+and
+
+$b' = 60 + 100 - \sum_{i}^{100}x_{i}$
+
+For our case this leads to:
+```{r}
+a <- 30 + sum(X)
+a
+b <- 60 + 100 - sum(X)
+b
+```
+
+### Step 4: plot the posterior
+
+
+```{r}
+hist(rbeta(100,a,b))
+
+E_theta = a/(a+b)
+var_theta = (a*b)/(((a+b)^2)*(a+b+1))
+
+E_theta
+var_theta
+```
+
+
+### Step 5: Sensativity to priors
+
+First, let's wrap Steps 1 - 4 up into a function that we can call iteratively:
+
+```{r}
+bayes.mams <- function(X, a.prior,b.prior){
+
+  
+  a.prime <-   a.prior + sum(X)
+  b.prime <- b.prior + length(X) - sum(X)
+
+  E_theta = a.prime/(a.prime+b.prime)
+  var_theta = (a.prime*b.prime)/(((a.prime+b.prime)^2)*(a.prime+b.prime+1))
+  
+  return(list(E_theta,var_theta,rbeta(1000,a.prime,b.prime)))
+  
+}
+
+
+```
+
+Now let's use this function to compare the data to the bayesian predicted posterior under different choices of for the prior:
+
+```{r}
+X <- rbinom(100,1,0.3)
+bayes <- bayes.mams(X=X,a.prior=1,b.prior=2)
+
+# Success rate in the underlying data:
+sum(X)/length(X)
+
+# Expected value of the prior
+1/(1+2)
+```
+
+```{r}
+# Expected value of the posterior distribution:
+bayes[[1]]
+```
+
+```{r}
+#plot the prior and posterior for a really diffuse prior
+prior <- rbeta(1000,1,2)
+post <- bayes.mams(X=X,a.prior=1,b.prior=2)[[3]]
+plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,label='posterior')))
+ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
+```
+
+Now do the whole thing again but make the prior a little more informative:
+
+```{r}
+# Success rate in the underlying data:
+sum(X)/length(x)
+```
+
+```{r}
+# Expected value of the posterior distribution:
+bayes.mams(X=X,a.prior=300,b.prior=600)[[1]]
+```
+
+```{r}
+#plot the prior and posterior for a = 3, b=6
+prior <- rbeta(1000,300,600)
+post <- bayes.mams(X=X,a.prior=300,b.prior=600)[[3]]
+plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,label='posterior')))
+ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
+```
+
+
+## Extension to Explicit AB Testing
+
+To make the final jump from our last section to a traditional AB testing framework we just need to implement the steps above a few more times:
+
+Suppose we believe that page A has a success rate of 0.3 and an improvement (page B) will offer a success rate of 0.4.  We are going to test this on 1,000 visitors.
+
+
+```{r}
+X <- rbinom(100,1,0.3)
+sum(X)/length(X)
+Y <- rbinom(100,1,0.4)
+sum(Y)/length(Y)
+
+b1 <-bayes.mams(X=X,a.prior=1,b.prior=2)
+b2 <-bayes.mams(X=Y,a.prior=1,b.prior=2) 
+
+b1[[1]]
+b2[[1]]
+```
+
+```{r}
+plot.df <- rbind(data.frame(x=b1[[3]],label='A'),data.frame(x=b2[[3]],label='B'))
+ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
+```
+
+How many sample in B are under the A curve?
+
+```{r}
+sum(unlist(b2[[3]]) < max(unlist(b1[[3]])))/length(unlist(b2[[3]]))
+```
+
+We might interpret this as a 13-14% chance that the success rate for B is less than the success rate for A.  
+
+Now let's see if the [bayesAB](https://cran.r-project.org/web/packages/bayesAB/index.html) package in R gives us something similar:
+
+```{r}
+ab1 <- bayesTest(X, Y,
+                 priors = c('alpha' = 1, 'beta' = 2),
+                 n_samples = 1e5, distribution = 'bernoulli')
+
+print(ab1)
+
+```
+
+```{r}
+summary(ab1)
+```
 
 # Quick Look at the bayesAB package
