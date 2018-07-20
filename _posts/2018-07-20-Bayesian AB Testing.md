@@ -34,7 +34,7 @@ In our example of Bayesian AB testing the quantity of most intense interest is t
 
 Bayes Rule says:
 
-$P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)}$
+$$ P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)} $$ 
 
 1.  $P(\theta|X)$ is the prior probability of observing the parameter $\theta$ given the data, $X$.
 2.  $P(X|\theta)$ is the likelihood of observing the data sample $X$ given the parameter $\theta$.
