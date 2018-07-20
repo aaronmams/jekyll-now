@@ -36,7 +36,7 @@ Bayes Rule says:
 
 $$ P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)} $$ 
 
-1.  $P(\theta|X)$ is the prior probability of observing the parameter $\theta$ given the data, $X$.
+1.  $$P(\theta|X)$$ is the prior probability of observing the parameter $\theta$ given the data, $X$.
 2.  $P(X|\theta)$ is the likelihood of observing the data sample $X$ given the parameter $\theta$.
 3.  $P(X)$ is the marginal probability of observing the data sample $X$.
 
