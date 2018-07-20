@@ -216,20 +216,25 @@ plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
+![prior posterior](\images\prior_post.png)
+
 Now do the whole thing again but make the prior a little more informative:
 
 ```{r}
 # Success rate in the underlying data:
 sum(X)/length(x)
+[1] 0.33
 ```
 
 ```{r}
 # Expected value of the posterior distribution:
 bayes.mams(X=X,a.prior=300,b.prior=600)[[1]]
+[1] 0.333
+
 ```
 
 ```{r}
-#plot the prior and posterior for a = 3, b=6
+#plot the prior and posterior for a = 300, b=600
 prior <- rbeta(1000,300,600)
 post <- bayes.mams(X=X,a.prior=300,b.prior=600)[[3]]
 plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,label='posterior')))
