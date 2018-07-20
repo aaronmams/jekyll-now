@@ -241,6 +241,7 @@ plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
+![prior post](\images\prior_post_300_600.png)
 
 ## Extension to Explicit AB Testing
 
@@ -252,20 +253,30 @@ Suppose we believe that page A has a success rate of 0.3 and an improvement (pag
 ```{r}
 X <- rbinom(100,1,0.3)
 sum(X)/length(X)
+[1] 0.24
+
 Y <- rbinom(100,1,0.4)
 sum(Y)/length(Y)
+[1] 0.4
 
 b1 <-bayes.mams(X=X,a.prior=1,b.prior=2)
 b2 <-bayes.mams(X=Y,a.prior=1,b.prior=2) 
 
 b1[[1]]
+[1] 0.2427184
+
+
 b2[[1]]
+[1] 0.3980583
+
 ```
 
 ```{r}
 plot.df <- rbind(data.frame(x=b1[[3]],label='A'),data.frame(x=b2[[3]],label='B'))
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
+
+
 
 How many sample in B are under the A curve?
 
