@@ -111,7 +111,7 @@ Suppose we belive the success rate is around 30% but we want a prior that is not
 library(bayesAB)
 plotBeta(5,15)
 ```
-
+![beta3](\images\beta3.png)
 
 Let's see if we can find a prior that's not too restrictive but centered more around 0.3
 
@@ -119,7 +119,9 @@ Let's see if we can find a prior that's not too restrictive but centered more ar
 plotBeta(30,60)
 ```
 
-### Step 3: estimate the posterior
+![beta4](\images\beta4.png)
+
+## Step 3: estimate the posterior
 
 We showed above that with a beta prior and binomial likelihood we get a posterior distribution for this particular problem of:
 
@@ -134,14 +136,19 @@ and
 $b' = 60 + 100 - \sum_{i}^{100}x_{i}$
 
 For our case this leads to:
+
 ```{r}
 a <- 30 + sum(X)
-a
 b <- 60 + 100 - sum(X)
+
+a
+[1] 52
+
 b
+[1] 138
 ```
 
-### Step 4: plot the posterior
+## Step 4: plot the posterior
 
 
 ```{r}
@@ -152,8 +159,12 @@ var_theta = (a*b)/(((a+b)^2)*(a+b+1))
 
 E_theta
 var_theta
+
+[1] 0.2736842
+[1] 0.001040739
 ```
 
+![beta post](\images\beta_52_138.png)
 
 ### Step 5: Sensativity to priors
 
