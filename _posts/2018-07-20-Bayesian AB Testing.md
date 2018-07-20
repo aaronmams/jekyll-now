@@ -276,29 +276,19 @@ plot.df <- rbind(data.frame(x=b1[[3]],label='A'),data.frame(x=b2[[3]],label='B')
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
-
+![abplot](\images\ABplot.png)
 
 How many sample in B are under the A curve?
 
 ```{r}
 sum(unlist(b2[[3]]) < max(unlist(b1[[3]])))/length(unlist(b2[[3]]))
+[1] 0.207
 ```
 
-We might interpret this as a 13-14% chance that the success rate for B is less than the success rate for A.  
+We might interpret this as a 20ish% chance that the success rate for B is less than the success rate for A.  
 
-Now let's see if the [bayesAB](https://cran.r-project.org/web/packages/bayesAB/index.html) package in R gives us something similar:
-
-```{r}
-ab1 <- bayesTest(X, Y,
-                 priors = c('alpha' = 1, 'beta' = 2),
-                 n_samples = 1e5, distribution = 'bernoulli')
-
-print(ab1)
-
-```
-
-```{r}
-summary(ab1)
-```
 
 # Quick Look at the bayesAB package
+
+
+
