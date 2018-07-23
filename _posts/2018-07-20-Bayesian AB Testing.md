@@ -11,7 +11,7 @@ The nub of the problem is this:
 
 To fix ideas, the canonical problem we will consider here is this:
 
-* we have a webpage with a 'become a member' button, we think we have some idea what the current success rate (the proportion of visitors who become members) is.
+* we have a webpage with a 'become a member' button and we think we have some idea what the current success rate (the proportion of visitors who become members) is.
 * we are considering a new page design and want to know if the new design will increase the success rate
 
 # The Frequentist Way
@@ -67,6 +67,20 @@ The prior is a little more complicated but let's gloss over the complexity for n
 $$ \theta \sim Beta(a,b)=\frac{\theta^{a-1}(1-\theta)^{b-1}}{B(a,b)} $$
 
 where $B(a,b)$ is the Beta function.
+
+# Resources
+
+There are lots of pretty informative posts on the interwebs about Bayesian AB Testing.  I recommend the following:
+
+[this one](https://conversionxl.com/blog/bayesian-frequentist-ab-testing/) has some fun quotes about Bayesian and Frequentist Statistics in an AB Testing Context.
+
+[Frank Portman](http://fportman.com/blog/bayesab-a-new-r-package-for-bayesian-ab-testing/) is the author of an R Package to do Bayesian AB Testing.
+
+[This one is a bit long and round-about](https://www.machinegurning.com/rstats/bayes_r/) but does have some nice code chunk.
+
+[A quick guide to Thomson Sampling](https://zlatankr.github.io/posts/2017/04/07/bayesian-ab-testing)
+
+[Evan Miller](https://www.evanmiller.org/bayesian-ab-testing.html) has a pretty nice, compact post with most of the math you could ever want.
 
 # Some Bayesian Illustrations
 
