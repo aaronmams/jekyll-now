@@ -261,7 +261,6 @@ ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 
 ![step 5 2](\images\step5_2.png)
 
-![prior post](\images\prior_post_300_600.png)
 
 ## Extension to Explicit AB Testing
 
