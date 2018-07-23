@@ -54,17 +54,17 @@ The mechanics of Bayesian Stats are a little intimidating but the basic idea for
 
 Given the current success rate of 0.3 and a data sample of a few hundred people who were shown the first page, the prior distribution of success rate is:
 
-$P(\theta=0.3|X)=\frac{P(\theta = 0.3)P(X|\theta=0.3)}{P(X)}$
+$$P(\theta=0.3|X)=\frac{P(\theta = 0.3)P(X|\theta=0.3)}{P(X)}$$
 
 Let's start with the likelihood:
 
 Each individual either signs up or doesn't so the likelihood of the data is a Bernoulli distribution with success rate $\theta$:
 
-$P(X|\theta) = \Pi_{i}^{N}\theta^{x_{i}}(1-\theta)^{1-x_{i}}$
+$$P(X|\theta) = \Pi_{i}^{N}\theta^{x_{i}}(1-\theta)^{1-x_{i}}$$
 
 The prior is a little more complicated but let's gloss over the complexity for now and just accept that we want a conjugate prior for the binomial distribution and sources tell us that the conjugate distribution for the binomial is the Beta distribution.  So we will set our prior on $\theta$ to be,
 
-$\theta ~ Beta(a,b)=\frac{\theta^{a-1}(1-\theta)^{b-1}}{B(a,b)}$
+$$ \theta \sim Beta(a,b)=\frac{\theta^{a-1}(1-\theta)^{b-1}}{B(a,b)} $$
 
 where $B(a,b)$ is the Beta function.
 
@@ -72,7 +72,7 @@ where $B(a,b)$ is the Beta function.
 
 For our numerical example we stated that we belive $\theta$ to be around 0.3.  Let's look at a beta distribution centered around 0.3:
 
-```{R}
+```R
 hist(rbeta(100,5,5))
 hist(rbeta(100,50,50))
 hist(rbeta(1000,0.3*1000,0.7*1000))
@@ -96,7 +96,7 @@ $$a'= a + \sum_{i}^{N} x_{i}$$
 
 and
 
-$b' = b + N - \sum_{i}^{N}x_{i}$
+$$b' = b + N - \sum_{i}^{N}x_{i}$$
 
 Let's go ahead and step through this process from start-to-finish:
 
@@ -104,7 +104,7 @@ Let's go ahead and step through this process from start-to-finish:
 
 Let's start by simulating some data
 
-```{R}
+```R
 X <- rbinom(100,1,0.3)
 X
   [1] 0 0 0 1 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 0 0 1 1 0 1 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0
@@ -119,7 +119,7 @@ sum(X)
 
 Suppose we belive the success rate is around 30% but we want a prior that is not too restrictive:
 
-```{R}
+```R
 library(bayesAB)
 plotBeta(5,15)
 ```
@@ -127,7 +127,7 @@ plotBeta(5,15)
 
 Let's see if we can find a prior that's not too restrictive but centered more around 0.3
 
-```{R}
+```R
 plotBeta(30,60)
 ```
 
@@ -150,7 +150,7 @@ $b' = 60 + 100 - \sum_{i}^{100}x_{i}$
 
 For our case this leads to:
 
-```{R}
+```R
 a <- 30 + sum(X)
 b <- 60 + 100 - sum(X)
 
@@ -164,7 +164,7 @@ b
 ## Step 4: plot the posterior
 
 
-```{R}
+```R
 # 1,000 samples from the posterior distribution
 hist(rbeta(1000,a,b))
 
@@ -186,7 +186,7 @@ Let's take a moment to appreciate what happened here.  The initial prior on the 
 
 First, let's wrap Steps 1 - 4 up into a function that we can call iteratively:
 
-```{R}
+```R
 bayes.mams <- function(X, a.prior,b.prior){
 
   
@@ -205,7 +205,7 @@ bayes.mams <- function(X, a.prior,b.prior){
 
 Now let's use this function to compare the data to the bayesian predicted posterior under different choices of for the prior:
 
-```{R}
+```R
 X <- rbinom(100,1,0.3)
 bayes <- bayes.mams(X=X,a.prior=1,b.prior=2)
 
@@ -219,14 +219,14 @@ sum(X)/length(X)
 [1] 0.3333333
 ```
 
-```{R}
+```R
 # Expected value of the posterior distribution:
 bayes[[1]]
 
 [1] 0.2815534
 ```
 
-```{R}
+```R
 #plot the prior and posterior for a really diffuse prior
 prior <- rbeta(1000,1,2)
 post <- bayes.mams(X=X,a.prior=1,b.prior=2)[[3]]
@@ -238,13 +238,13 @@ ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 
 Now do the whole thing again but make the prior a little more informative:
 
-```{R}
+```R
 # Success rate in the underlying data:
 sum(X)/length(x)
 [1] 0.28
 ```
 
-```{R}
+```R
 # Expected value of the posterior distribution:
 post.tmp <- bayes.mams(X=X,a.prior=300,b.prior=600)
 post.tmp[[1]]
@@ -252,7 +252,7 @@ post.tmp[[1]]
 
 ```
 
-```{R}
+```R
 #plot the prior and posterior for a = 300, b=600
 prior <- rbeta(1000,300,600)
 plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post.tmp[[3]],label='posterior')))
@@ -270,7 +270,7 @@ To make the final jump from our last section to a traditional AB testing framewo
 Suppose we believe that page A has a success rate of 0.3 and an improvement (page B) will offer a success rate of 0.4.  We are going to test this on 1,000 visitors.
 
 
-```{R}
+```R
 X <- rbinom(1000,1,0.3)
 sum(X)/length(X)
 [1] 0.29
@@ -290,7 +290,7 @@ b2[[1]]
 
 ```
 
-```{R}
+```R
 plot.df <- rbind(data.frame(x=b1[[3]],label='A'),data.frame(x=b2[[3]],label='B'))
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
@@ -299,7 +299,7 @@ ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 
 How many sample in B are under the A curve?
 
-```{R}
+```R
 sum(unlist(b2[[3]]) < max(unlist(b1[[3]])))/length(unlist(b2[[3]]))
 [1] 0.0
 ```
@@ -311,7 +311,7 @@ We might interpret this as a 0% chance that the success rate for B is less than 
 
 Now let's see if the [bayesAB](https://cran.r-project.org/web/packages/bayesAB/index.html) package in R gives us something similar:
 
-```{R}
+```R
 ab1 <- bayesTest(X, Y,
                  priors = c('alpha' = 1, 'beta' = 2),
                  n_samples = 1e5, distribution = 'bernoulli')
@@ -348,7 +348,7 @@ Monte Carlo samples generated per posterior:
 
 ```
 
-```{R}
+```R
 summary(ab1)
 
 Quantiles of posteriors for A and B:
