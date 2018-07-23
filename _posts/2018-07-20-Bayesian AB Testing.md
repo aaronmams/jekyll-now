@@ -84,15 +84,15 @@ The variance of the beta distribution is controlled by the size of the shape par
 
 Since we used a conjugate prior there is an analytical way to express the posterior distribution of $\theta$:
 
-$P(\theta|X) \alpha P(X|\theta)P(\theta)$
+$$P(\theta|X) \alpha P(X|\theta)P(\theta)$$
 
 which is,
 
-$P(\theta|X) \alpha \Pi_{i}^{N}\theta^{x_{i}}(1-\theta)^{1-x_{i}}\theta^{a-1}(1-\theta)^{b-1}$
+$$P(\theta|X) \alpha \Pi_{i}^{N}\theta^{x_{i}}(1-\theta)^{1-x_{i}}\theta^{a-1}(1-\theta)^{b-1}$$
 
 [this post](https://zlatankr.github.io/posts/2017/04/07/bayesian-ab-testing) shows that this expression for the posterior is equivalent to a beta distribution with parameters $a'$ and $b'$ where
 
-$a'= a + \sum_{i}^{N} x_{i}$
+$$a'= a + \sum_{i}^{N} x_{i}$$
 
 and
 
