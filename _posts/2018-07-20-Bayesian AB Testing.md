@@ -234,29 +234,32 @@ plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
+![step 5 plot](\images\step5.png)
 
 Now do the whole thing again but make the prior a little more informative:
 
 ```{R}
 # Success rate in the underlying data:
 sum(X)/length(x)
-[1] 0.33
+[1] 0.28
 ```
 
 ```{R}
 # Expected value of the posterior distribution:
-bayes.mams(X=X,a.prior=300,b.prior=600)[[1]]
-[1] 0.333
+post.tmp <- bayes.mams(X=X,a.prior=300,b.prior=600)
+post.tmp[[1]]
+[1] 0.328
 
 ```
 
 ```{R}
 #plot the prior and posterior for a = 300, b=600
 prior <- rbeta(1000,300,600)
-post <- bayes.mams(X=X,a.prior=300,b.prior=600)[[3]]
-plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,label='posterior')))
+plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post.tmp[[3]],label='posterior')))
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
+
+![step 5 2](\images\step5_2.png)
 
 ![prior post](\images\prior_post_300_600.png)
 
@@ -268,23 +271,22 @@ Suppose we believe that page A has a success rate of 0.3 and an improvement (pag
 
 
 ```{R}
-X <- rbinom(100,1,0.3)
+X <- rbinom(1000,1,0.3)
 sum(X)/length(X)
-[1] 0.24
+[1] 0.29
 
-Y <- rbinom(100,1,0.4)
+Y <- rbinom(1000,1,0.4)
 sum(Y)/length(Y)
-[1] 0.4
+[1] 0.41
 
 b1 <-bayes.mams(X=X,a.prior=1,b.prior=2)
 b2 <-bayes.mams(X=Y,a.prior=1,b.prior=2) 
 
 b1[[1]]
-[1] 0.2427184
-
+[1] 0.2991
 
 b2[[1]]
-[1] 0.3980583
+[1] 0.41
 
 ```
 
