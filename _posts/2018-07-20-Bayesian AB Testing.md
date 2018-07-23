@@ -107,6 +107,12 @@ Let's start by simulating some data
 ```{R}
 X <- rbinom(100,1,0.3)
 X
+  [1] 0 0 0 1 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 0 0 1 1 0 1 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0
+ [49] 0 0 0 1 0 1 0 0 1 0 0 0 0 0 1 0 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 1 0 1 1 1 0 0 1 1 0 0 0 0 0 0 0 0
+ [97] 0 0 1 0
+ 
+sum(X)
+> 28
 ```
 
 ## Step 2: propose a prior
@@ -126,6 +132,7 @@ plotBeta(30,60)
 ```
 
 ![beta4](\images\beta4.png)
+
 
 ## Step 3: estimate the posterior
 
@@ -158,7 +165,8 @@ b
 
 
 ```{R}
-hist(rbeta(100,a,b))
+# 1,000 samples from the posterior distribution
+hist(rbeta(1000,a,b))
 
 E_theta = a/(a+b)
 var_theta = (a*b)/(((a+b)^2)*(a+b+1))
@@ -166,11 +174,9 @@ var_theta = (a*b)/(((a+b)^2)*(a+b+1))
 E_theta
 var_theta
 
-[1] 0.2736842
-[1] 0.001040739
+[1] 0.3052632
+[1] 0.001110354
 ```
-
-![beta post](\images\beta_52_138.png)
 
 ### Step 5: Sensativity to priors
 
