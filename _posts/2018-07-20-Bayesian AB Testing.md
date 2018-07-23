@@ -84,14 +84,14 @@ There are lots of pretty informative posts on the interwebs about Bayesian AB Te
 
 # Some Bayesian Illustrations
 
-For our numerical example we stated that we belive $\theta$ to be around 0.3.  Let's look at a beta distribution centered around 0.3:
+For our numerical example we stated that we belive $\theta$ to be around 0.3.  Let's look at a couple beta distributions:
 
 ```R
 hist(rbeta(100,5,5))
 hist(rbeta(100,50,50))
 hist(rbeta(1000,0.3*1000,0.7*1000))
 ```
-The variance of the beta distribution is controlled by the size of the shape parameters a and b.
+The variance of the beta distribution is controlled by the size of the shape parameters a and b.  The parameters a and b can be thought of as the number of successes and failures in a + b trials.  
 
 ![plot1](\images\Rplot.png)
 ![plot1](\images\beta2.png)
