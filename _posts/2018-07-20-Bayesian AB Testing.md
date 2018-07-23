@@ -72,7 +72,7 @@ where $B(a,b)$ is the Beta function.
 
 For our numerical example we stated that we belive $\theta$ to be around 0.3.  Let's look at a beta distribution centered around 0.3:
 
-```{r}
+```{R}
 hist(rbeta(100,5,5))
 hist(rbeta(100,50,50))
 hist(rbeta(1000,0.3*1000,0.7*1000))
@@ -104,7 +104,7 @@ Let's go ahead and step through this process from start-to-finish:
 
 Let's start by simulating some data
 
-```{r}
+```{R}
 X <- rbinom(100,1,0.3)
 X
 ```
@@ -113,7 +113,7 @@ X
 
 Suppose we belive the success rate is around 30% but we want a prior that is not too restrictive:
 
-```{r}
+```{R}
 library(bayesAB)
 plotBeta(5,15)
 ```
@@ -121,7 +121,7 @@ plotBeta(5,15)
 
 Let's see if we can find a prior that's not too restrictive but centered more around 0.3
 
-```{r}
+```{R}
 plotBeta(30,60)
 ```
 
@@ -143,7 +143,7 @@ $b' = 60 + 100 - \sum_{i}^{100}x_{i}$
 
 For our case this leads to:
 
-```{r}
+```{R}
 a <- 30 + sum(X)
 b <- 60 + 100 - sum(X)
 
@@ -157,7 +157,7 @@ b
 ## Step 4: plot the posterior
 
 
-```{r}
+```{R}
 hist(rbeta(100,a,b))
 
 E_theta = a/(a+b)
@@ -176,7 +176,7 @@ var_theta
 
 First, let's wrap Steps 1 - 4 up into a function that we can call iteratively:
 
-```{r}
+```{R}
 bayes.mams <- function(X, a.prior,b.prior){
 
   
@@ -195,7 +195,7 @@ bayes.mams <- function(X, a.prior,b.prior){
 
 Now let's use this function to compare the data to the bayesian predicted posterior under different choices of for the prior:
 
-```{r}
+```{R}
 X <- rbinom(100,1,0.3)
 bayes <- bayes.mams(X=X,a.prior=1,b.prior=2)
 
@@ -208,13 +208,13 @@ sum(X)/length(X)
 [1] 0.3333333
 ```
 
-```{r}
+```{R}
 # Expected value of the posterior distribution:
 bayes[[1]]
 [1] 0.3300971
 ```
 
-```{r}
+```{R}
 #plot the prior and posterior for a really diffuse prior
 prior <- rbeta(1000,1,2)
 post <- bayes.mams(X=X,a.prior=1,b.prior=2)[[3]]
@@ -226,20 +226,20 @@ ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 
 Now do the whole thing again but make the prior a little more informative:
 
-```{r}
+```{R}
 # Success rate in the underlying data:
 sum(X)/length(x)
 [1] 0.33
 ```
 
-```{r}
+```{R}
 # Expected value of the posterior distribution:
 bayes.mams(X=X,a.prior=300,b.prior=600)[[1]]
 [1] 0.333
 
 ```
 
-```{r}
+```{R}
 #plot the prior and posterior for a = 300, b=600
 prior <- rbeta(1000,300,600)
 post <- bayes.mams(X=X,a.prior=300,b.prior=600)[[3]]
@@ -256,7 +256,7 @@ To make the final jump from our last section to a traditional AB testing framewo
 Suppose we believe that page A has a success rate of 0.3 and an improvement (page B) will offer a success rate of 0.4.  We are going to test this on 1,000 visitors.
 
 
-```{r}
+```{R}
 X <- rbinom(100,1,0.3)
 sum(X)/length(X)
 [1] 0.24
@@ -277,7 +277,7 @@ b2[[1]]
 
 ```
 
-```{r}
+```{R}
 plot.df <- rbind(data.frame(x=b1[[3]],label='A'),data.frame(x=b2[[3]],label='B'))
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
@@ -286,7 +286,7 @@ ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 
 How many sample in B are under the A curve?
 
-```{r}
+```{R}
 sum(unlist(b2[[3]]) < max(unlist(b1[[3]])))/length(unlist(b2[[3]]))
 [1] 0.207
 ```
