@@ -36,7 +36,13 @@ Bayes Rule says:
 
 $$ P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)} $$ 
 
-$$ P(\theta|X) $$ is the prior probability of observing the parameter $\theta$ given the data, $X$.
+$$ P(\theta|X) $$ 
+
+is the prior probability of observing the parameter 
+
+$$ \theta $$ 
+
+given the data, $X$.
 
 $$ P(X|\theta) $$ is the likelihood of observing the data sample $X$ given the parameter $\theta$.
 
