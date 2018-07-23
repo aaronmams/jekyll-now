@@ -203,17 +203,16 @@ bayes.mams <- function(X, a.prior,b.prior){
 
 ```
 
-Now let's use this function to compare the data to the bayesian predicted posterior under different choices of for the prior:
+Now let's use this function to compare the data to the bayesian predicted posterior under a different choices of for the prior:
 
 ```R
-X <- rbinom(100,1,0.3)
 bayes <- bayes.mams(X=X,a.prior=1,b.prior=2)
 
 # Success rate in the underlying data:
 sum(X)/length(X)
 [1] 0.28
 
-# Expected value of the prior
+# Expected value of the prior distribution
 1/(1+2)
 
 [1] 0.3333333
@@ -225,6 +224,7 @@ bayes[[1]]
 
 [1] 0.2815534
 ```
+
 
 ```R
 #plot the prior and posterior for a really diffuse prior
@@ -258,6 +258,22 @@ prior <- rbeta(1000,300,600)
 plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post.tmp[[3]],label='posterior')))
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
+
+### Summary
+
+This seems to jive with my limited understanding of the Bayesian Machinery.  Originally, we started with a prior of
+
+$$ Beta(30,60) $$
+
+This prior produces an expected success rate of 0.33.  Our data sample produced a success rate of 0.28.  When the prior was informed by the data, the posterior expected success rate fell to 0.3.
+
+Next we tried a really flat prior,
+
+$$ Beta(1,2 $$
+
+which basically said, "eh, the success rate could be anything." When we combined this really diffuse prior with the data, the data sample dominated the calculation of the posterior and we got a posterior expected value for the success rate that was pretty much exactly what was observed in the data sample.
+
+Finally, we used a prior with even lower variance than either of the previous iterations.  In this case, the prior expected success rate of 0.33 was moved only a tiny bit by the data sample - posterior expected success rate was only 0.32 when we observed 28 successes in 100 trial...because the prior was relatively restrictive.
 
 ![step 5 2](\images\step5_2.png)
 
@@ -379,3 +395,7 @@ $Probability
 --------------------------------------------
 
 ```
+
+I'm sure the bayesAB package does a lot more cool stuff related to Bayesian AB Testing and maybe I'll take a deeper look a little later.  For now, it's enough for me to know that summary results appear to be somewhat consistent with my rudimentary understanding of how to do 'by hand.'  
+
+
