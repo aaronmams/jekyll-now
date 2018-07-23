@@ -295,19 +295,89 @@ plot.df <- rbind(data.frame(x=b1[[3]],label='A'),data.frame(x=b2[[3]],label='B')
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
-![abplot](\images\ABplot.png)
+![AB plot](\images\AB2.png)
 
 How many sample in B are under the A curve?
 
 ```{R}
 sum(unlist(b2[[3]]) < max(unlist(b1[[3]])))/length(unlist(b2[[3]]))
-[1] 0.207
+[1] 0.0
 ```
 
-We might interpret this as a 20ish% chance that the success rate for B is less than the success rate for A.  
+We might interpret this as a 0% chance that the success rate for B is less than the success rate for A.  
 
 
 # Quick Look at the bayesAB package
 
+Now let's see if the [bayesAB](https://cran.r-project.org/web/packages/bayesAB/index.html) package in R gives us something similar:
+
+```{R}
+ab1 <- bayesTest(X, Y,
+                 priors = c('alpha' = 1, 'beta' = 2),
+                 n_samples = 1e5, distribution = 'bernoulli')
+
+print(ab1)
+
+--------------------------------------------
+Distribution used: bernoulli 
+--------------------------------------------
+Using data with the following properties: 
+            A     B
+Min.    0.000 0.000
+1st Qu. 0.000 0.000
+Median  0.000 0.000
+Mean    0.299 0.411
+3rd Qu. 1.000 1.000
+Max.    1.000 1.000
+--------------------------------------------
+Conjugate Prior Distribution: Beta 
+Conjugate Prior Parameters: 
+$alpha
+[1] 1
+
+$beta
+[1] 2
+
+--------------------------------------------
+Calculated posteriors for the following parameters: 
+Probability 
+--------------------------------------------
+Monte Carlo samples generated per posterior: 
+[1] 1e+05
 
 
+```
+
+```{R}
+summary(ab1)
+
+Quantiles of posteriors for A and B:
+
+$Probability
+$Probability$A
+       0%       25%       50%       75%      100% 
+0.2334814 0.2893877 0.2990061 0.3088185 0.3655146 
+
+$Probability$B
+       0%       25%       50%       75%      100% 
+0.3488257 0.4001973 0.4105980 0.4211724 0.4887370 
+
+
+--------------------------------------------
+
+P(A > B) by (0)%: 
+
+$Probability
+[1] 0
+
+--------------------------------------------
+
+Credible Interval on (A - B) / B for interval length(s) (0.9) : 
+
+$Probability
+        5%        95% 
+-0.3418837 -0.1946334 
+
+--------------------------------------------
+
+```
