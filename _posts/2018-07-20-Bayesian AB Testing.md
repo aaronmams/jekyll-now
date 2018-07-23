@@ -138,15 +138,15 @@ plotBeta(30,60)
 
 We showed above that with a beta prior and binomial likelihood we get a posterior distribution for this particular problem of:
 
-$P(\theta|X) = Beta(a',b')$
+$$ P(\theta|X) = Beta(a',b') $$
 
 with
 
-$a'= 30 + \sum_{i}^{100} x_{i}$
+$$ a'= 30 + \sum_{i}^{100} x_{i} $$
 
 and
 
-$b' = 60 + 100 - \sum_{i}^{100}x_{i}$
+$$ b' = 60 + 100 - \sum_{i}^{100}x_{i} $$
 
 For our case this leads to:
 
