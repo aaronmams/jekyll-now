@@ -38,13 +38,11 @@ $$ P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)} $$
 
 $$ P(\theta|X) $$ 
 
-is the prior probability of observing the parameter 
+is the prior probability of observing the parameter $\theta$ given the data, $X$.
 
-$$ \theta $$ 
+$$ P(X|\theta) $$ 
 
-given the data, $X$.
-
-$$ P(X|\theta) $$ is the likelihood of observing the data sample $X$ given the parameter $\theta$.
+is the likelihood of observing the data sample $X$ given the parameter $\theta$.
 
 $$ P(X) $$ is the marginal probability of observing the data sample $X$.
 
