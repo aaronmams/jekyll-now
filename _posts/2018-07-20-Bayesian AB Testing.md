@@ -36,9 +36,11 @@ Bayes Rule says:
 
 $$ P(\theta|X)=\frac{P(X|\theta)P(\theta)}{P(X)} $$ 
 
-1.  $$P(\theta|X)$$ is the prior probability of observing the parameter $\theta$ given the data, $X$.
-2.  $P(X|\theta)$ is the likelihood of observing the data sample $X$ given the parameter $\theta$.
-3.  $P(X)$ is the marginal probability of observing the data sample $X$.
+$$ P(\theta|X) $$ is the prior probability of observing the parameter $\theta$ given the data, $X$.
+
+$$ P(X|\theta) $$ is the likelihood of observing the data sample $X$ given the parameter $\theta$.
+
+$$ P(X) $$ is the marginal probability of observing the data sample $X$.
 
 This can be leveraged for AB testing in the following way.  Suppose we belive the current success rate is 0.3.  We want to test whether some webpage improvements will get us a success rate of 0.4.  
 
