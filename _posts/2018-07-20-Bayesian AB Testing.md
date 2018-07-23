@@ -178,6 +178,10 @@ var_theta
 [1] 0.001110354
 ```
 
+![step 4 plot](\images\step4.png)
+
+Let's take a moment to appreciate what happened here.  The initial prior on the success rate was that it would be distributed Beta(30,60) which maps to 30 success in 90 trials...an expected success rate of 0.333.  From the data we observed 28 successes in 100 trials.  The parameters of our distribuiton for the success rate were adjusted down to match the data and our estimated posterior distribution around the success rate has an expected value fo 0.3.
+
 ### Step 5: Sensativity to priors
 
 First, let's wrap Steps 1 - 4 up into a function that we can call iteratively:
@@ -207,17 +211,19 @@ bayes <- bayes.mams(X=X,a.prior=1,b.prior=2)
 
 # Success rate in the underlying data:
 sum(X)/length(X)
-[1] 0.33
+[1] 0.28
 
 # Expected value of the prior
 1/(1+2)
+
 [1] 0.3333333
 ```
 
 ```{R}
 # Expected value of the posterior distribution:
 bayes[[1]]
-[1] 0.3300971
+
+[1] 0.2815534
 ```
 
 ```{R}
@@ -228,7 +234,6 @@ plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post,
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
-![prior posterior](\images\prior_post.png)
 
 Now do the whole thing again but make the prior a little more informative:
 
