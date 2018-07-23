@@ -259,8 +259,6 @@ plot.df <- data.frame(rbind(data.frame(x=prior,label='prior'),data.frame(x=post.
 ggplot(plot.df,aes(x=x,color=label)) + geom_density() + theme_bw()
 ```
 
-![step 5 2](\images\step5_2.png)
-
 
 ## Extension to Explicit AB Testing
 
