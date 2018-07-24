@@ -1,7 +1,7 @@
 so I had some fun messing around with a new [R package for doing AB Testing](https://cran.r-project.org/web/packages/bayesAB/index.html) in a Bayesian framework. Here's my report:
 
 # AB Testing
-AB testing appears to me to be yet another way that private sector folks have tried to rebrand basic statistics as something they invented.  Disclaimer: I'm no expert and the jargon of 'AB Testing' might have a long history in the scientific literature.  
+AB testing appears to me to be yet another way that people have tried to rebrand basic statistics.  As far as I can tell 'AB Testing' just means asking whether A is better than B.    
 
 The nub of the problem is this: 
 
