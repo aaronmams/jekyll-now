@@ -52,7 +52,7 @@ The data contain 146,028 observations on 2,053 distinct players, and 3,147 disti
 
 As I said, you have to download the data on your own (I can't/won't distribute it) but here is basically what it looks like:
 
-```R
+```r
 redcards <- read.csv('redcards.csv')
 
 > head(redcards)
