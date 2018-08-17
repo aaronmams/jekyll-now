@@ -228,7 +228,7 @@ From Table 8 we also see that the coefficient estimate on the *skin tone rating*
 
 ```R
 # first sample the data so we don't wait all day
-players <- sample(unique(redcards$playerShort),100)
+players <- sample(unique(redcards$playerShort),1000)
 
 logit.df <- logit.df %>% filter(playerShort %in% players)
 
@@ -280,6 +280,7 @@ I don't get the same coefficient estimate as Pope and Pope (not surprising since
 
 the estimated effect of skin tone on probability of getting a yellow card is negative and significant, suggesting no systematic racism among soccer referees.
 
+On the other hand, my estimate is an order of magnitude higher in absolute value...my estimate here and Pope and Pope's estimates aren't even close to being on the same scale...If were serious about replicating their results this would be a big problem.  Luckily, I'm just using the replication task as a way to familiarize myself with these data so I can initiate my own analysis at some point soon.
 
 # Final Words
 
