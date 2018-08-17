@@ -221,7 +221,7 @@ Spoiler alert: my logit application here doesn't actually address the research q
 
 The important thing to note here is that from Pope and Pope, Table 8, p.8 we see the following model estimated via logistic regression:
 
-$$ y_{i} = f(skin_tone, height, weight, age, club, position, league, referee)$$
+$$ y_{i} = f(skin tone, height, weight, age, club, position, league, referee)$$
 
 From Table 8 we also see that the coefficient estimate on the *skin tone rating* variable was -0.00118 with a standard error of 0.005, giving a significant p-value for the estimate. 
 
