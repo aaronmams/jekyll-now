@@ -304,3 +304,50 @@ Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	7540 obs. of  11 variables:
 In case I have not yet made this abundantly clear: this method is not perfect.  If you are able to execute my code, there is a high likelihood that your final data frame will differ slightly from mine.  This is partially because the SEC is really shitty and will probably time out at least few of your url requests even though there is data there to return AND partially because the GetIncome() function of finreportr is (in my experience) temperamental.
 
 ## Let's see what data we got
+
+First I'm just going to plot every company on the original list and mark whether or not our code retrieved data for the company for the years 2008 - 2018.
+
+```r
+#----------------------------------------------------------------------
+#count the number of entries for each company
+comp.count <- df %>% group_by(name,endyear) %>% filter(row_number()==1) %>%
+                 mutate(present=1)
+
+#merge this with a store/year data frame
+comp.year <- rbind(data.frame(stores,endyear=2009),
+data.frame(stores,endyear=2010),
+data.frame(stores,endyear=2011),
+data.frame(stores,endyear=2012),
+data.frame(stores,endyear=2013),
+data.frame(stores,endyear=2014),
+data.frame(stores,endyear=2015),
+data.frame(stores,endyear=2016),
+data.frame(stores,endyear=2017),
+data.frame(stores,endyear=2018))
+
+comp.year <- comp.year %>% left_join(comp.count,by=c('name','ticker','endyear')) %>%
+                mutate(present=ifelse(is.na(present),0,1))
+ggplot(comp.year,aes(x=name,y=endyear,shape=factor(present),color=factor(present))) + geom_point() + 
++   coord_flip() + theme(axis.text.x=element_text(size=6,colour='black')) + theme_bw() + xlab("") + ylab("") + scale_shape_manual(values =c(1,8)) + scale_color_manual(values =c('red','black'))
+```
+
+![company count](/images/company_count.png)
+
+Kind of a bummer! My routine did not pull data for very many of the 60-someodd publicly traded companies on my list.  At the risk of beating a long-dead horse: this sad success rate is a function of 
+
+1. the SEC warehouses data in a shitty unstandardized way and
+2. the finreportr package clearly isn't very robut to idiosyncracies across 10-K filings.
+
+There are a few spots where we might want to go back and fill in a couple blanks by hand.  For instance:
+
+1. Starbucks has data for 2009 - 2018 but is missing 2008.  I bet the 2008 data is there and we could probably grab it by just going to EDGAR directly.
+
+2.  Similarly, Dunkin Brands has data for almost every year except 2012...this suggests to me that maybe one of our requests just timed-out and we could fill that gap in by hand (if we really wanted to).
+
+3. Panera Break, Sonic, Yum Brands, and a few others also have the property that almost all the data is there but an odd year is missing.  I bet those could be filled in by hand.
+
+Another spoiler alert: I'm not going to fill those in by hand.  I would rather spend my time looking for a more stable solution that is just better at scraping the data.
+
+## Let's see what kind of metrics we have access to
+
+Here is
