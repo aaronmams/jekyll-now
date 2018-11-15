@@ -153,7 +153,7 @@ The error I get from the GetIncome() function in the finreportr library suggests
 GetIncome('BLMN',2014)
 Error in GetFinancial(income.descriptions, symbol, year) : 
   no XBRL-format filings detected
-``
+  ```
 
 However, looking at the document tree for the 10-K filing on 3/4/2013 it appears that there is indeed an XBRL Instance document in the index library
 
