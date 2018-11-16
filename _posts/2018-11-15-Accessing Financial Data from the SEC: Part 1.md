@@ -530,7 +530,7 @@ sales.metrics.full <- unique(c(unique(df$Metric)[grep("Revenue",unique(df$Metric
 
 In order to answer my main question of interest:
 
-"Are there companies doing well when everybody else is doing shitty or vice versa"
+"Are there companies doing well when everybody else is doing shitty or vice versa?"
 
 I would like to find some comparable companies reporting on the same revenue or sales metric and look at them side-by-side over time.  
 
