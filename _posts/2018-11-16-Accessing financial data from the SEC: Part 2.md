@@ -8,7 +8,54 @@ The solution I'll talk about here uses the following approach:
 3. Use functions in the [finstr](https://github.com/bergant/finstr) library to further parse data retreived into objects of class 'financial statement'
 
 
+## Prereqs
 
+We start with the same data frame we had last time which has a list of publicly traded restaurant groups that I want info for.  Also, not that I'm putting all necessary libraries in this code chunk.
+
+```r
+library(edgarWebR)
+library(XBRL)
+library(finstr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+
+stores <- data.frame(ticker=c('BJRI','BLMN','BUWR','BOBE','EAT','BUCA','BWLD','BKC', 'CPKI','CBO','CRW','TAST','CEC','CMG','CHUY','CKR','CBRL',                              'DRI','PLAY','DFRG','DENN','DIN','DPZ','DNKN','JOES.OB','BAGL',                              'LOCO','DAVE','FCCG.OB','FOGO','BAJA','HABT','KKD','LNY', 'LGNS','LUB','MSSR','MCD','MRT','NATH','NDLS','CHUX','PNRA','PFCB','PZZI','PBPB', 'RRGB','RICK','RUBO','RT','RUTH','SHAK','SWRG','SONC','SBUX','TXRH','SNS','THI','WEST','WING','YUM','ZOES'),
+ name=c("BJ's",
+ "Bloomin' Brands",
+ "Blue Water Restaurant Group",
+ "Bob Evans Farms, Inc",
+ "Brinker International, Inc", 
+ "Buca Inc", 
+ "Buffalo Wild Wings, Inc",
+ "Burger King Holdings",
+ "California Pizza Kitchen",
+ "Caribou Coffee Co",
+ "Carlson Restaurants Worldwide",
+ "Carrols Restaurant Group, Inc",
+ "CEC Entertainment, Inc","Chiptole Mexican Grill",
+ "Chuy's Holdings",
+ "CKE Restaurants, Inc",
+ "Cracker Barrel Old Country Store, Inc.",
+ 'Darden Restaurants, Inc',
+ "Dave & Busters Entertainment, Inc",
+ "Del Frisco's Restaurant Group",
+ "Denny's Corp",
+ "DineEquity, Inc",
+ "Domino's Pizza, Inc.",
+ "Dunkin Brands Group",
+ "Eat At Joe's Ltd","Einstein Noah Restaurant Group, Inc",
+  "El Pollo Loco","Famous Dave's of America, Inc","Fog Cutter Capital Group Inc","Fogo De Chao, Inc.",
+   "Fresh Enterprises Inc","Habit Restaurants Inc","Krispy Kreme Doughnuts, Inc","Landry's Restaurants, Inc",
+  "Logan's Roadhouse Inc","Luby's, Inc","McCormick & Schmick's Seafood Restaurants, Inc",
+  "McDonald's Corporation","Morton's Restaurant Group Inc","Nathan's Famous, Inc","Noodles & Co",
+  "O'Charley's Inc","Panera Bread Co","P.F. Chang's China Bistro, Inc","Pizza Inn, Inc","Potbelly Corp",
+  "Red Robin Gourmet Burgers, Inc","Rick's Cabaret International, Inc","Rubio's Restaurants Inc",
+  "Ruby Tuesday, Inc","Ruth's Hospitality Group, Inc","Shake Shack","Smith and Wollensky",
+ "Sonic Corp","Starbuck Corporation","Texas Roadhouse, Inc","The Steak and Shake Company",
+ "Tim Horton's, Inc", "Western Sizzlin Corporation","Wingstop Inc","Yum Brands","Zoe's Kitchen"))
+
+```
 
 ## Quick Walk Through
 
@@ -556,6 +603,29 @@ df.10k <- lapply(stores$ticker[1:3],get.fins)
 Sys.time() - t
 
 ```
+
+### Breakdown
+
+Let me recap the general strategy used here:
+
+1. For an particular company we get a list of all 10-K filings available prior to a specified date
+2. For each of those filing we look for the filings details which gives us the location of an .xml file
+3. Parse the .xml file
+4. Convert the parsed .xml to a financial statement object
+5. Save that statement to a list
+6. if the routine can't find an xml file or the url request gets timed out, we document the error and save that as a data frame.
+7. Repeat steps 2 - 6 for all 10-K filings in the list from Item 1.
+
+At the completion of Steps 1 - 7 we have a list.  That list is a list of lists.  The list has 3 elements:
+
+1. The ticker symbol - a character value
+
+2. A list of financial statements - this is itself a list where each list entry corresponds to a 10-K filing
+
+3. A list of errors - this is a list of data frames.  Each data frame in the list contains an error code and a url for which the main routine returned an error.
+
+After we attempt Steps 1 - 7 for each of the 62 companies in our original *stores* data frame we get a really big list...let's call it **L**.  **L** has 62 elements.  Each list element of **L** is itself a list...let's call these elements $$l_{i}$$.  Each $$l_{i}$$ has three elements.     
+
 
 
 
