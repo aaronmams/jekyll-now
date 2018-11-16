@@ -1,9 +1,37 @@
 
 
-Downloading financial statements from the SEC's EDGAR database programatically.
+This post is about downloading financial statements from the SEC's EDGAR database programatically.  The overarchign motivation is that I have a bunch of companies that I believe are fundamentally similar (in this case I'm dealing with 62 publicly traded restaurants/restaurant holding companies) and I want to be able to compare thier financials over time to determine the strongest players in the industry/space.
 
+## Quick background
 
-So far I have found 3 ways to do this and none of them is/are perfect...but they all get reasonably close to what I really want.
+Publicly traded companies are required by law to submit financial disclosures to the Securities and Exchange Commission.  There are tons of filing documents that companies file with the SEC:
+
+* SC 13G/A forms: statement of acquisition of beneficial ownership by individuals
+* S-8 POS: Securities to be offered to employees in employee benefit plans
+* 10-K: Annual financial report
+* 10-Q: Quarterly financial report
+* etc, etc, etc.
+
+For a dabbler like myself the most digestable info is contained in the 10-K filings.  This a filing that includes income statements, balance sheet info, and cash flow statement on an annual basis.
+
+What I'm really trying to do here, on a global level, is collect the information in the Income Statement portion of the 10-K filings for a bunch of companies, over a bunch of years.
+
+## A quick rant
+
+I used to get selected company financials from Quandl.  Quandl now charges around $1,200 per year per series for thier financial data so you can forget anything good I ever said about Quandl.  They suck all the dicks.
+
+Lots of financial services (Fidelity, Etrade, etc) will allow you to pull company 10-K filings and other financial disclosures...but you pretty much have to do it one request at a time.  A prohibitively expensive proposition for anyone looking to compare income, balance sheets, or cash flow statement across companies and through time.
+
+## Executive Summary
+
+So far I have found 3 ways to do this and none of them is/are perfect...but they all get reasonably close to what I really want.  There are two R libraries that offer pretty easy access to SEC filings and a few methods in Python.  This post is primarily about the [financial reporting in R: finreportr](https://cran.r-project.org/web/packages/finreportr/vignettes/finreportr.html) library.  I outline all methods I've tested below for completeness.
+
+1. [finreportr](https://cran.r-project.org/web/packages/finreportr/vignettes/finreportr.html)
+2. [finstr](https://github.com/bergant/finstr)
+
+The finstr solution that I'll be working with in my next post also relies on the R package [edgarWebR](https://cran.r-project.org/web/packages/edgarWebR/edgarWebR.pdf) to do some of the webcrawling to find the right .xml file to download and parse.
+
+I have also test a Python solution that I'll write-up for the 3rd post in this series.  Although there is a Python library called [secEDGAR](https://medium.com/@rahulrrixe/secedgar-crawler-3c28e53204fe), I honestly wouldn't bother with it.  If you're going the Python route it makes more sense to just write the EDGAR crawler yourself.
 
 # Set up
 
@@ -13,21 +41,31 @@ Here are the companies with ticker symbols and full names:
 
 ```r
 stores <- data.frame(ticker=c('BJRI','BLMN','BUWR','BOBE','EAT','BUCA','BWLD','BKC',
-                              'CPKI','CBO','CRW','TAST','CEC','CMG','CHUY','CKR','CBRL',                            'DRI','PLAY','DFRG','DENN','DIN','DPZ','DNKN','JOES.OB','BAGL',
-                              'LOCO','DAVE','FCCG.OB','FOGO','BAJA','HABT','KKD','LNY',                             'LGNS','LUB','MSSR','MCD','MRT','NATH','NDLS','CHUX','PNRA','PFCB','PZZI','PBPB',
- 'RRGB','RICK','RUBO','RT','RUTH','SHAK','SWRG','SONC','SBUX','TXRH','SNS','THI','WEST',
-                              'WING','YUM','ZOES'),
+'CPKI','CBO','CRW','TAST','CEC','CMG','CHUY','CKR','CBRL','DRI','PLAY','DFRG','DENN',
+'DIN','DPZ','DNKN','JOES.OB','BAGL','LOCO','DAVE','FCCG.OB','FOGO','BAJA','HABT','KKD','LNY', 'LGNS','LUB','MSSR','MCD','MRT','NATH','NDLS','CHUX','PNRA','PFCB','PZZI','PBPB','RRGB',
+'RICK','RUBO','RT','RUTH','SHAK','SWRG','SONC','SBUX','TXRH','SNS','THI','WEST','WING','YUM','ZOES'),
                      name=c("BJ's","Bloomin' Brands","Blue Water Restaurant Group","Bob Evans Farms, Inc", "Brinker International, Inc", "Buca Inc", "Buffalo Wild Wings, Inc", "Burger King Holdings","California Pizza Kitchen","Caribou Coffee Co","Carlson Restaurants Worldwide","Carrols Restaurant Group, Inc","CEC Entertainment, Inc","Chiptole Mexican Grill","Chuy's Holdings","CKE Restaurants, Inc","Cracker Barrel Old Country Store, Inc.",'Darden Restaurants, Inc', "Dave & Busters Entertainment, Inc","Del Frisco's Restaurant Group","Denny's Corp","DineEquity, Inc","Domino's Pizza, Inc.","Dunkin Brands Group","Eat At Joe's Ltd","Einstein Noah Restaurant Group, Inc","El Pollo Loco","Famous Dave's of America, Inc","Fog Cutter Capital Group Inc","Fogo De Chao, Inc.","Fresh Enterprises Inc","Habit Restaurants Inc","Krispy Kreme Doughnuts, Inc","Landry's Restaurants, Inc","Logan's Roadhouse Inc","Luby's, Inc","McCormick & Schmick's Seafood Restaurants, Inc","McDonald's Corporation","Morton's Restaurant Group Inc","Nathan's Famous, Inc","Noodles & Co","O'Charley's Inc","Panera Bread Co","P.F. Chang's China Bistro, Inc","Pizza Inn, Inc","Potbelly Corp","Red Robin Gourmet Burgers, Inc","Rick's Cabaret International, Inc","Rubio's Restaurants Inc","Ruby Tuesday, Inc","Ruth's Hospitality Group, Inc","Shake Shack","Smith and Wollensky","Sonic Corp","Starbuck Corporation","Texas Roadhouse, Inc","The Steak and Shake Company","Tim Horton's, Inc", "Western Sizzlin Corporation","Wingstop Inc","Yum Brands","Zoe's Kitchen"))
+
+```
+
+Here are all the libraries that I will use:
+
+```r
+library(dplyr)
+library(ggplot2)
+library(finreportr)
+library(data.table)
+library(ggthemes)
 
 ```
 
 # Step-by-Step
 
-The finreportr package does a pretty nice job of getting annual 10-K filings.  It's very easy to use and returns well formatted data.  It breaks down in some key areas which kinda sucks.  
+The [finreportr](https://cran.r-project.org/web/packages/finreportr/vignettes/finreportr.html) package does a pretty nice job of getting annual 10-K filings.  It's very easy to use and returns well formatted data.  It breaks down in some key areas which kinda sucks.  
 
 ## A good example:
 
-As an example let's look at the first company on my list, "BJ's Restaurants Inc (BJRI)".  With the finreportr package we just pop that ticker symbol into a wrapper function called GetIncome() and we're golden:
+As an example let's look at the first company on my list, "BJ's Restaurants Inc (BJRI)".  With the **finreportr** package we just pop that ticker symbol into a wrapper function called GetIncome() and we're golden:
 
 ```r
 inc <- GetIncome('BJRI',2012)
@@ -105,7 +143,7 @@ Next:
 
 The resulting table should show a value for "Revenues" of $620,943 for the period ending Jan. 03, 2012.  Notice that this matches the value in the first row of the data frame *inc* in the code block above.  Ok, I know that was a little tedious but at least we've verified that our code pulled out the same value that we would have gotten if we would have gone into the EDGAR database manually and looked for the BJ's Restaurants 10-K filing from Jan. of 2012.
 
-One final wrinkle to mention here before moving on: although the finreportr documentation mentions only having the capability of searching annual 10-K filings...it's clear that we got some quarterly filings returned:
+One final wrinkle to mention here before moving on: although the **finreportr** documentation mentions only having the capability of searching annual 10-K filings...it's clear that we got some quarterly filings returned:
 
 ```r
 inc <- tbl_df(inc) %>% group_by(startDate,endDate) %>% filter(row_number()==1)
@@ -137,7 +175,7 @@ Not a big deal but definitely something to keep in mind for our post processing 
 
 ## sometimes things go wrong
 
-My first attempt at looping through all 62 ticker symbols to get the Consolidated Income Statements was rejected with extreme prejudice as the GetIncome() function threw an error when trying to retrieve info for the "Bloomin' Brands" Company (BLMN).  After much troubleshooting, I'm convinced that the error is somewhere in the finreportr package.  
+My first attempt at looping through all 62 ticker symbols to get the Consolidated Income Statements was rejected with extreme prejudice as the GetIncome() function threw an error when trying to retrieve info for the "Bloomin' Brands" Company (BLMN).  After much troubleshooting, I'm convinced that the error is somewhere in the **finreportr** package.  
 
 Here is why:
 
@@ -350,9 +388,155 @@ Another spoiler alert: I'm not going to fill those in by hand.  I would rather s
 
 ## Let's see what kind of metrics we have access to
 
-Here is
+The data I pulled include over 500 distinct metrics pulled from the consolidate income statements 
 
-Here is another illustration of the difficulties posed by these data.  We use a regular expression search to find any and all metrics related to Revenue, Sales, Restaurant, or Food.  Then we look at instances where Buffalo Wild Wings and Wingstop (two ostensibly comparable purveyors of fine wings and mead) report data on the same revenue/sales category:
+```r
+
+> length(unique(df$Metric))
+[1] 507
+
+> unique(df$Metric)
+  [1] "Sales Revenue, Goods, Net"                                                                                                                                                                    
+  [2] "Cost of sales"                                                                                                                                                                                
+  [3] "Labor and benefits"                                                                                                                                                                           
+  [4] "Occupancy And Operating Costs"                                                                                                                                                                
+  [5] "General and administrative"                                                                                                                                                                   
+  [6] "Depreciation and amortization"                                                                                                                                                                
+  [7] "Restaurant opening"                                                                                                                                                                           
+  [8] "Loss on disposal of assets"                                                                                                                                                                   
+  [9] "Payments for Legal Settlements"                                                                                                                                                               
+ [10] "Costs and Expenses"                                                                                                                                                                           
+ [11] "Operating Income (Loss)"                                                                                                                                                                      
+ [12] "Interest income"                                                                                                                                                                              
+ [13] "Interest expense"                                                                                                                                                                             
+ [14] "Gain (Loss) on Investments"                                                                                                                                                                   
+ [15] "Other income, net"                                                                                                                                                                            
+ [16] "Nonoperating Income (Expense)"                                                                                                                                                                
+ [17] "Income (Loss) from Continuing Operations before Equity Method Investments, Income Taxes, Extraordinary Items, Noncontrolling Interest"                                                        
+ [18] "Income tax expense"                                                                                                                                                                           
+ [19] "Net Income (Loss) Attributable to Parent"                                                                                                                                                     
+ [20] "Earnings Per Share Basic"                                                                                                                                                                     
+ [21] "Diluted"                                                                                                                                                                                      
+ [22] "Weighted Average Number Of Shares Outstanding Basic"                                                                                                                                          
+ [23] "Weighted Average Number Of Diluted Shares Outstanding"                                                                                                                                        
+ [24] "Net Sales"                                                                                                                                                                                    
+ [25] "Operating wage and fringe benefit expenses"                                                                                                                                                   
+ [26] "Other operating expenses"                                                                                                                                                                     
+ [27] "Selling, general and administrative expenses"                                                                                                                                                 
+ [28] "Depreciation and amortization expense"                                                                                                                                                        
+ [29] "Operating Income"                       
+
+```
+
+There are 86 distinct metrics involving the terms "revenue","sales","food", and "restaurant":
+
+```r
+sales.metrics.full <- unique(c(unique(df$Metric)[grep("Revenue",unique(df$Metric))],
+                               unique(df$Metric)[grep("revenue",unique(df$Metric))],
+                               unique(df$Metric)[grep("sales",unique(df$Metric))],
+                               unique(df$Metric)[grep("Sales",unique(df$Metric))],
+                               unique(df$Metric)[grep("Restaurant",unique(df$Metric))],
+                               unique(df$Metric)[grep("restaurant",unique(df$Metric))],
+                               unique(df$Metric)[grep("food",unique(df$Metric))],
+                               unique(df$Metric)[grep("Food",unique(df$Metric))]))
+> sales.metrics.full
+ [1] "Sales Revenue, Goods, Net"                                                                                                 
+ [2] "Revenues"                                                                                                                  
+ [3] "Revenue, Net"                                                                                                              
+ [4] "Franchise And Property Revenues"                                                                                           
+ [5] "Sales Revenue, Net"                                                                                                        
+ [6] "Revenue"                                                                                                                   
+ [7] "Franchise Revenue"                                                                                                         
+ [8] "Food and Beverage Revenue"                                                                                                 
+ [9] "Financial Services Revenue"                                                                                                
+[10] "Cost of Revenue"                                                                                                           
+[11] "Operating Leases, Income Statement, Lease Revenue"                                                                         
+[12] "Other Revenue, Net"                                                                                                        
+[13] "Franchisor Revenue"                                                                                                        
+[14] "Contracts Revenue"                                                                                                         
+[15] "Vending Revenue"                                                                                                           
+[16] "Sales Revenue Services Net"                                                                                                
+[17] "Sales Revenue Goods Net"                                                                                                   
+[18] "Royalty Revenue"                                                                                                           
+[19] "Franchise Royalties and Fees and Other Revenues"                                                                           
+[20] "Alcoholic Beverages Revenue"                                                                                               
+[21] "Food and Merchandise Revenue"                                                                                              
+[22] "Sales Revenue, Services, Net"                                                                                              
+[23] "Other Revenues"                                                                                                            
+[24] "Other Sales Revenue Net"                                                                                                   
+[25] "Revenues, Total"                                                                                                           
+[26] "Licensed Store Revenue"                                                                                                    
+[27] "Revenue from Franchisor Owned Outlets"                                                                                     
+[28] "Sales Revenue Net"                                                                                                         
+[29] "us-gaap_Revenues"                                                                                                          
+[30] "Revenue From Franchise Royalties And Fees"                                                                                 
+[31] "Other Cost of Operating Revenue"                                                                                           
+[32] "Licensing and Other Revenue"                                                                                               
+[33] "Operating Leases Income Statement Lease Revenue"                                                                           
+[34] "Food And Beverage Revenue"                                                                                                 
+[35] "Franchise royalty revenues and fees"                                                                                       
+[36] "Total revenues"                                                                                                            
+[37] "Total revenue"                                                                                                             
+[38] "Franchise and license revenue"                                                                                             
+[39] "Costs of franchise and license revenue"                                                                                    
+[40] "Manufacturing and commissary revenues"                                                                                     
+[41] "Restaurant licensing revenues"                                                                                             
+[42] "Restaurant sales and operating revenue"                                                                                    
+[43] "Franchise revenue"                                                                                                         
+[44] "Lease revenue"                                                                                                             
+[45] "Net revenue"                                                                                                               
+[46] "Vending revenue"                                                                                                           
+[47] "Service revenues"                                                                                                          
+[48] "Franchise fee revenue"                                                                                                     
+[49] "Business segment revenues"                                                                                                 
+[50] "Cost of sales"                                                                                                             
+[51] "Restaurant sales"                                                                                                          
+[52] "Food and beverage sales"                                                                                                   
+[53] "Entertainment and merchandise sales"                                                                                       
+[54] "Company restaurant sales"                                                                                                  
+[55] "Restaurant sales, net"                                                                                                     
+[56] "Net Sales"                                                                                                                 
+[57] "Losses (Gains) on Sales of Assets and Asset Impairment Charges"                                                            
+[58] "Food and Beverage, Cost of Sales"                                                                                          
+[59] "Food And Beverage Cost Of Sales"                                                                                           
+[60] "Restaurant Sales"                                                                                                          
+[61] "Sales"                                                                                                                     
+[62] "Fresh Dough And Other Product Sales To Franchisees"                                                                        
+[63] "Fresh Dough And Other Product Cost Of Sales To Franchisees"                                                                
+[64] "Sales and marketing"                                                                                                       
+[65] "Gain Loss On Sales Of Assets And Asset Impairment Charges"                                                                 
+[66] "Sales of alcoholic beverages"                                                                                              
+[67] "Sales of food and merchandise"                                                                                             
+[68] "(Gain) loss on Sales of Assets and Asset Impairment Charges"                                                               
+[69] "Restaurant opening"                                                                                                        
+[70] "Restaurant Labor"                                                                                                          
+[71] "Restaurant Expenses"                                                                                                       
+[72] "Restaurant wages and related expenses (including stock-based compensation expense of $21, $51, $49 and $156, respectively)"
+[73] "Total Company Owned Restaurant Cost"                                                                                       
+[74] "Restaurant operating expenses"                                                                                             
+[75] "Company Owned Restaurant Expenses"                                                                                         
+[76] "Asset Disposals, Closure Costs and Restaurant Impairments"                                                                 
+[77] "Company Restaurant Expenses"                                                                                               
+[78] "Other restaurant operating expenses"                                                                                       
+[79] "Other restaurant operating costs"                                                                                          
+[80] "Cost of food and beverage (exclusive of items shown separately below)"                                                     
+[81] "Food, beverage and packaging"                                                                                              
+[82] "Food And Paper Costs"                                                                                                      
+[83] "Food and beverage costs"                                                                                                   
+[84] "Food and packaging"                                                                                                        
+[85] "Consumer Packaged Goods Foodservice Other"                                                                                 
+[86] "Food and merchandise sold"
+```
+
+In order to answer my main question of interest:
+
+"Are there companies doing well when everybody else is doing shitty or vice versa"
+
+I would like to find some comparable companies reporting on the same revenue or sales metric and look at them side-by-side over time.  
+
+Claim: This is unreasonably hard to do using the data I scraped from 10-K filings.
+
+Proof: We use a regular expression search to find any and all metrics related to Revenue, Sales, Restaurant, or Food.  Then we look at instances where Buffalo Wild Wings and Wingstop (two ostensibly comparable purveyors of fine wings and mead) report data on the same revenue/sales category:
 
 ```r
 
@@ -377,3 +561,8 @@ ggplot(wings,aes(x=ticker,y=endyear)) +
 ![wingrev](/images/wing_rev.png)
 
 Notice that 2013-2015 appears to be the only time period of overlap between Buffalo Wild Wings and Wingstop...and, of all the different ways the two companies report revenues, only the categories "Revenues, Net" and "Franchise Revenues" overlap.  
+
+# Summary
+
+The finreportr package is REALLY easy to use.  It is not very comprehensive and not very robust to formatting idiosyncracies from the SEC filings.  If you want to look at one company at a time, this will probably do an OK job for you...if you're looking for more than that than I suggest looking elsewhere.
+
