@@ -9,7 +9,7 @@ The solution I'll talk about here uses the following approach:
 
 ## General Approach
 
-Each 10-K filing in the SEC EDGAR database is affiliated by an index page.  This is the main url that houses key meta-data for a 10-K filing.  For example:
+Each 10-K filing in the SEC EDGAR database is affiliated with an index page.  This is the main url that houses key meta-data for a 10-K filing.  For example:
 
 [https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/0001193125-17-059914-index.htm](https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/0001193125-17-059914-index.htm)
 
@@ -18,9 +18,6 @@ Is the index url for the annual 10-K filed by BJ's Restaurant Group on 2/28/2017
 This index page displays the links to the individual documents in the filing.  For this approach we will be looking for the XBRL INSTANCE DOCUMENT for a 10-K filing.  Once we find the url for that XBRL INSTANCE DOCUMENT we use it to parse the associated .xml file.  At that point the data has been retreived.
 
 The final step in this approach uses the [finstr](https://github.com/bergant/finstr) library to organize the data into a structured format that can be read like a tabular financial statement.
-
-
-
 
 
 ## Prereqs
@@ -531,7 +528,7 @@ Classes ‘statement’ and 'data.frame':	2 obs. of  22 variables:
   ..$ terminal   : logi  FALSE FALSE FALSE TRUE FALSE TRUE ...
 ```
 
-## Batch Download
+## A check
 
 So I think I've demonstrated that this little pipeline can get some useful data for one company at a time.  Now the question (just as with our last post) is can I get ALL the data for ALL the years I want and ALL the companies I want?  The short answer is NO...but I can get kind of close.
 
@@ -614,7 +611,7 @@ return(list(ticker,stats.df,errors.df))
 
 
 t <- Sys.time()
-df.10k <- lapply(stores$ticker[1:3],get.fins)
+df.10k <- get.fins('BAGL')
 Sys.time() - t
 
 ```
@@ -640,6 +637,17 @@ At the completion of Steps 1 - 7 we have a list.  That list is a list of lists. 
 3. A list of errors - this is a list of data frames.  Each data frame in the list contains an error code and a url for which the main routine returned an error.
 
 After we attempt Steps 1 - 7 for each of the 62 companies in our original *stores* data frame we get a really big list...let's call it **L**.  **L** has 62 elements.  Each list element of **L** is itself a list...let's call these elements $$l_{i}$$.  Each $$l_{i}$$ has three elements.     
+
+Let's take a look:
+
+### Some results
+
+Let's just take a quick look to see if we got more info from this approach than from our [previous finreportr approach](https://aaronmams.github.io/Accessing-Financial-Data-from-the-SEC-Part-1/).
+
+## A final point
+
+Notice that I retained the list of all links to XBRL INSTANCE DOCUMENTS where the requests got timed out. With this list an enterprising data monkey could pretty easily just write a routine to iterate through this list and retry each url a couple hundred times...or until success.  This would probably require an overnight run but could potentially plug some of the data gaps.
+
 
 
 
