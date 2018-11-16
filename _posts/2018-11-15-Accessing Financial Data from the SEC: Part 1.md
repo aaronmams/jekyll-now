@@ -1,4 +1,4 @@
-
+![edgar1](/images/edgar_blmn_search.png)
 
 This post is about downloading financial statements from the SEC's EDGAR database programatically.  The overarching motivation is that I have a bunch of companies that I believe are fundamentally similar (in this case I'm dealing with 62 publicly traded restaurants/restaurant holding companies) and I want to be able to compare thier financials over time to determine the strongest players in the industry/space.
 
