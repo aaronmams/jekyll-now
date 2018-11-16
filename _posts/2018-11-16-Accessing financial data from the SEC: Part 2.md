@@ -1,11 +1,26 @@
 
-In Part 1 of this series I covered a ghetto web-crawling route used to pull information from 10-K financial disclosures from the SEC's EDGAR database.  That solution relied on the R package [finreportr](https://cran.r-project.org/web/packages/finreportr/index.html) which gets points for being very easy to use but loses points for being a little unpredicatable in terms of what data it actually returns you.
+In [Part 1](https://aaronmams.github.io/Accessing-Financial-Data-from-the-SEC-Part-1/) of this series I covered a ghetto web-crawling route used to pull information from 10-K financial disclosures from the SEC's EDGAR database.  That solution relied on the R package [finreportr](https://cran.r-project.org/web/packages/finreportr/index.html) which gets points for being very easy to use but loses points for being a little unpredicatable in terms of what data it actually returns you.
 
 The solution I'll talk about here uses the following approach:
 
 1. Use functions from the [edgarWebR](https://github.com/mwaldstein/edgarWebR) library to get details on available 10-K filings for a company.
 2. Use the [XBRL](https://cran.r-project.org/web/packages/XBRL/index.html) library to parse the .xml documents found in Step 1 above.
 3. Use functions in the [finstr](https://github.com/bergant/finstr) library to further parse data retreived into objects of class 'financial statement'
+
+## General Approach
+
+Each 10-K filing in the SEC EDGAR database is affiliated by an index page.  This is the main url that houses key meta-data for a 10-K filing.  For example:
+
+[https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/0001193125-17-059914-index.htm](https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/0001193125-17-059914-index.htm)
+
+Is the index url for the annual 10-K filed by BJ's Restaurant Group on 2/28/2017.
+
+This index page displays the links to the individual documents in the filing.  For this approach we will be looking for the XBRL INSTANCE DOCUMENT for a 10-K filing.  Once we find the url for that XBRL INSTANCE DOCUMENT we use it to parse the associated .xml file.  At that point the data has been retreived.
+
+The final step in this approach uses the [finstr](https://github.com/bergant/finstr) library to organize the data into a structured format that can be read like a tabular financial statement.
+
+
+
 
 
 ## Prereqs
