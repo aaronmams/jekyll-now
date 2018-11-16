@@ -216,7 +216,6 @@ data frame with 0 columns and 0 rows
 > 
 ```
 
-
 The filing details give us another big list of urls which give us the locations of the various documents attached to each 10-K filing.  Again, the output that we are most interested in in the "href" column:
 
 ```r
@@ -237,6 +236,325 @@ The filing details give us another big list of urls which give us the locations 
 [14] "https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/bjri-20170103_lab.xml"    
 [15] "https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/bjri-20170103_pre.xml"    
 > 
+```
+
+The document we ultimately want to feed into a parsing function is the XBRL INSTANCE DOCUMENT...most of the time this will be the 1st .xml file in the document list.  
+
+Since, the file we want is generally the first .xml file, I use a regular expression search to find all the .xml files and then look for the first one in the list.
+
+```r
+docs <- filing.details$documents$href
+xml.idx <- grep('.xml',docs)
+
+  idx.min <- min(xml.idx)
+  xml.file <- filing.details$documents$href[idx.min]
+  
+  > xml.file
+[1] "https://www.sec.gov/Archives/edgar/data/1013488/000119312517059914/bjri-20170103.xml"
+
+
+  xml.parsed <- try(xbrlDoAll(xml.file),TRUE)
+result <-  xbrl_get_statements(xml.parsed)
+
+class(result) 
+[1] "statements" "list"
+
+str(result)
+List of 3
+ $ StatementOfFinancialPositionClassified:Classes ‘statement’ and 'data.frame':	2 obs. of  29 variables:
+  ..$ contextId                            : chr [1:2] "eol_PE2044----1710-K0003_STD_0_20151229_0" "eol_PE2044----1710-K0003_STD_0_20170103_0"
+  ..$ startDate                            : chr [1:2] NA NA
+  ..$ endDate                              : chr [1:2] "2015-12-29" "2017-01-03"
+  ..$ decimals                             : num [1:2] -5 -5
+  ..$ Assets                               : num [1:2] 6.82e+08 7.09e+08
+  ..$ AssetsCurrent                        : num [1:2] 93003000 77073000
+  ..$ CashAndCashEquivalentsAtCarryingValue: num [1:2] 34604000 22761000
+  ..$ ReceivablesNetCurrent                : num [1:2] 25364000 14698000
+  ..$ FIFOInventoryAmount                  : num [1:2] 8893000 9907000
+  ..$ PrepaidExpenseAndOtherAssetsCurrent  : num [1:2] 7171000 11324000
+  ..$ DeferredTaxAssetsNetCurrent          : num [1:2] 16971000 18383000
+  ..$ PropertyPlantAndEquipmentNet         : num [1:2] 5.62e+08 6.01e+08
+  ..$ Goodwill                             : num [1:2] 4673000 4673000
+  ..$ OtherAssetsNoncurrent                : num [1:2] 22157000 25809000
+  ..$ LiabilitiesAndStockholdersEquity     : num [1:2] 6.82e+08 7.09e+08
+  ..$ Liabilities                          : num [1:2] 3.65e+08 4.34e+08
+  ..$ LiabilitiesCurrent                   : num [1:2] 1.17e+08 1.26e+08
+  ..$ AccountsPayableCurrent               : num [1:2] 33033000 31145000
+  ..$ AccruedLiabilitiesCurrent            : num [1:2] 83861000 94553000
+  ..$ DeferredTaxLiabilitiesNoncurrent     : num [1:2] 46669000 55154000
+  ..$ DeferredRentCreditNoncurrent         : num [1:2] 27627000 30424000
+  ..$ IncentiveFromLessor                  : num [1:2] 53837000 54119000
+  ..$ LongTermDebt                         : num [1:2] 1.00e+08 1.48e+08
+  ..$ OtherLiabilitiesNoncurrent           : num [1:2] 19655000 20587000
+  ..$ StockholdersEquity                   : num [1:2] 3.16e+08 2.75e+08
+  ..$ PreferredStockValue                  : num [1:2] 0 0
+  ..$ CommonStockValue                     : num [1:2] 7367000 NA
+  ..$ AdditionalPaidInCapitalCommonStock   : num [1:2] 63290000 66200000
+  ..$ RetainedEarningsAccumulatedDeficit   : num [1:2] 2.46e+08 2.09e+08
+  ..- attr(*, "role_id")= chr "StatementOfFinancialPositionClassified"
+  ..- attr(*, "relations")=Classes ‘xbrl_relations’ and 'data.frame':	23 obs. of  3 variables:
+  .. ..$ fromElementId: chr [1:23] "AssetsCurrent" "AssetsCurrent" "AssetsCurrent" "AssetsCurrent" ...
+  .. ..$ toElementId  : chr [1:23] "CashAndCashEquivalentsAtCarryingValue" "ReceivablesNetCurrent" "FIFOInventoryAmount" "PrepaidExpenseAndOtherAssetsCurrent" ...
+  .. ..$ order        : num [1:23] 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.1 ...
+  ..- attr(*, "elements")=Classes ‘elements’ and 'data.frame':	25 obs. of  8 variables:
+  .. ..$ elementId  : chr [1:25] "Assets" "AssetsCurrent" "CashAndCashEquivalentsAtCarryingValue" "ReceivablesNetCurrent" ...
+  .. ..$ parentId   : chr [1:25] NA "Assets" "AssetsCurrent" "AssetsCurrent" ...
+  .. ..$ order      : num [1:25] NA 1.06 1.01 1.02 1.03 1.04 1.05 1.07 1.08 1.09 ...
+  .. ..$ balance    : chr [1:25] "debit" "debit" "debit" "debit" ...
+  .. ..$ labelString: chr [1:25] "Assets" "Assets, Current" "Cash and Cash Equivalents, at Carrying Value" "Receivables, Net, Current" ...
+  .. ..$ level      : num [1:25] 1 2 3 3 3 3 3 2 2 2 ...
+  .. ..$ id         : chr [1:25] "01" "0101" "010101" "010102" ...
+  .. ..$ terminal   : logi [1:25] FALSE FALSE TRUE TRUE TRUE TRUE ...
+ $ StatementOfIncomeAlternative          :Classes ‘statement’ and 'data.frame':	2 obs. of  22 variables:
+  ..$ contextId                                                                                  : chr [1:2] "eol_PE2044----1710-K0003_STD_364_20141230_0" "eol_PE2044----1710-K0003_STD_371_20170103_0"
+  ..$ startDate                                                                                  : chr [1:2] "2014-01-01" "2015-12-30"
+  ..$ endDate                                                                                    : chr [1:2] "2014-12-30" "2017-01-03"
+  ..$ decimals                                                                                   : num [1:2] -5 -5
+  ..$ NetIncomeLoss                                                                              : num [1:2] 27397000 45557000
+  ..$ IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest: num [1:2] 36323000 61091000
+  ..$ OperatingIncomeLoss                                                                        : num [1:2] 35426000 61641000
+  ..$ SalesRevenueGoodsNet                                                                       : num [1:2] 8.46e+08 9.93e+08
+  ..$ CostsAndExpenses                                                                           : num [1:2] 8.10e+08 9.31e+08
+  ..$ CostOfGoodsSold                                                                            : num [1:2] 2.13e+08 2.51e+08
+  ..$ LaborAndRelatedExpense                                                                     : num [1:2] 2.99e+08 3.45e+08
+  ..$ bjri_OccupancyAndOperatingCosts                                                            : num [1:2] 1.82e+08 2.05e+08
+  ..$ GeneralAndAdministrativeExpense                                                            : num [1:2] 51558000 55373000
+  ..$ DepreciationDepletionAndAmortization                                                       : num [1:2] 55387000 64275000
+  ..$ PreOpeningCosts                                                                            : num [1:2] 4973000 6977000
+  ..$ GainLossOnSalesOfAssetsAndAssetImpairmentCharges                                           : num [1:2] -1963000 -2971000
+  ..$ GainLossOnContractTermination                                                              : num [1:2] NA NA
+  ..$ bjri_LegalAndOtherExpenses                                                                 : num [1:2] 2431000 402000
+  ..$ NonoperatingIncomeExpense                                                                  : num [1:2] 897000 -550000
+  ..$ InterestIncomeExpenseNet                                                                   : num [1:2] -238000 -1730000
+  ..$ OtherNonoperatingIncomeExpense                                                             : num [1:2] 1135000 1180000
+  ..$ IncomeTaxExpenseBenefit                                                                    : num [1:2] 8926000 15534000
+  ..- attr(*, "role_id")= chr "StatementOfIncomeAlternative"
+  ..- attr(*, "relations")=Classes ‘xbrl_relations’ and 'data.frame':	17 obs. of  3 variables:
+  .. ..$ fromElementId: chr [1:17] "OperatingIncomeLoss" "CostsAndExpenses" "CostsAndExpenses" "CostsAndExpenses" ...
+  .. ..$ toElementId  : chr [1:17] "SalesRevenueGoodsNet" "CostOfGoodsSold" "LaborAndRelatedExpense" "bjri_OccupancyAndOperatingCosts" ...
+  .. ..$ order        : num [1:17] 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.1 ...
+  ..- attr(*, "elements")=Classes ‘elements’ and 'data.frame':	18 obs. of  8 variables:
+  .. ..$ elementId  : chr [1:18] "NetIncomeLoss" "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest" "OperatingIncomeLoss" "SalesRevenueGoodsNet" ...
+  .. ..$ parentId   : chr [1:18] NA "NetIncomeLoss" "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest" "OperatingIncomeLoss" ...
+  .. ..$ order      : num [1:18] NA 1.16 1.12 1.01 1.11 1.02 1.03 1.04 1.05 1.06 ...
+  .. ..$ balance    : chr [1:18] "credit" "credit" "credit" "credit" ...
+  .. ..$ labelString: chr [1:18] "Net Income (Loss) Attributable to Parent" "Income (Loss) from Continuing Operations before Income Taxes, Noncontrolling Interest" "Operating Income (Loss)" "Sales Revenue, Goods, Net" ...
+  .. ..$ level      : num [1:18] 1 2 3 4 4 5 5 5 5 5 ...
+  .. ..$ id         : chr [1:18] "01" "0101" "010101" "01010101" ...
+  .. ..$ terminal   : logi [1:18] FALSE FALSE FALSE TRUE FALSE TRUE ...
+ $ StatementOfCashFlowsIndirect          :Classes ‘statement’ and 'data.frame':	3 obs. of  34 variables:
+  ..$ contextId                                                     : chr [1:3] "eol_PE2044----1710-K0003_STD_364_20141230_0" "eol_PE2044----1710-K0003_STD_364_20151229_0" "eol_PE2044----1710-K0003_STD_371_20170103_0"
+  ..$ startDate                                                     : chr [1:3] "2014-01-01" "2014-12-31" "2015-12-30"
+  ..$ endDate                                                       : chr [1:3] "2014-12-30" "2015-12-29" "2017-01-03"
+  ..$ decimals                                                      : num [1:3] -5 -5 -5
+  ..$ CashAndCashEquivalentsPeriodIncreaseDecrease                  : num [1:3] 7688000 3921000 -11843000
+  ..$ NetCashProvidedByUsedInOperatingActivitiesContinuingOperations: num [1:3] 1.00e+08 1.27e+08 1.38e+08
+  ..$ NetIncomeLoss                                                 : num [1:3] 27397000 45325000 45557000
+  ..$ DepreciationDepletionAndAmortization                          : num [1:3] 55387000 59417000 64275000
+  ..$ DeferredIncomeTaxesAndTaxCredits                              : num [1:3] 4416000 5319000 7073000
+  ..$ ShareBasedCompensation                                        : num [1:3] 4855000 5395000 5527000
+  ..$ GainLossOnSalesOfAssetsAndAssetImpairmentCharges              : num [1:3] -1963000 -2908000 -2971000
+  ..$ GainLossOnContractTermination                                 : num [1:3] NA 2910000 NA
+  ..$ IncreaseDecreaseInAccountsAndOtherReceivables                 : num [1:3] 5393000 994000 -9904000
+  ..$ IncreaseDecreaseInAccountsReceivableAndOtherOperatingAssets   : num [1:3] 627000 -426000 -762000
+  ..$ IncreaseDecreaseInInventories                                 : num [1:3] 577000 883000 1014000
+  ..$ IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets        : num [1:3] 1662000 -1477000 5065000
+  ..$ IncreaseDecreaseInOtherOperatingAssets                        : num [1:3] 2706000 3282000 5257000
+  ..$ IncreaseDecreaseInAccountsPayable                             : num [1:3] 842000 -1983000 542000
+  ..$ IncreaseDecreaseInAccruedLiabilities                          : num [1:3] 12179000 11274000 10692000
+  ..$ IncreaseDecreaseInDeferredCharges                             : num [1:3] -2532000 -2947000 -2797000
+  ..$ IncreaseDecreaseInDeferredRevenue                             : num [1:3] -248000 2753000 282000
+  ..$ IncreaseDecreaseInOtherOperatingLiabilities                   : num [1:3] 1682000 35000 -687000
+  ..$ NetCashProvidedByUsedInInvestingActivitiesContinuingOperations: num [1:3] -6.52e+07 -8.26e+07 -1.05e+08
+  ..$ PaymentsToAcquirePropertyPlantAndEquipment                    : num [1:3] 8.81e+07 8.61e+07 1.09e+08
+  ..$ ProceedsFromSaleOfProductiveAssets                            : num [1:3] 13143000 3478000 4511000
+  ..$ ProceedsFromSaleAndMaturityOfMarketableSecurities             : num [1:3] 1.9e+07 NA NA
+  ..$ PaymentsToAcquireMarketableSecurities                         : num [1:3] 9159000 NA NA
+  ..$ NetCashProvidedByUsedInFinancingActivitiesContinuingOperations: num [1:3] -27162000 -40711000 -45350000
+  ..$ ProceedsFromLinesOfCredit                                     : num [1:3] 1.25e+08 5.29e+08 1.18e+09
+  ..$ RepaymentsOfLinesOfCredit                                     : num [1:3] 6.70e+07 4.87e+08 1.13e+09
+  ..$ ExcessTaxBenefitFromShareBasedCompensationFinancingActivities : num [1:3] 3803000 4220000 333000
+  ..$ PaymentsRelatedToTaxWithholdingForShareBasedCompensation      : num [1:3] 445000 293000 323000
+  ..$ ProceedsFromStockOptionsExercised                             : num [1:3] 11480000 8411000 2126000
+  ..$ PaymentsForRepurchaseOfCommonStock                            : num [1:3] 1.00e+08 9.55e+07 9.50e+07
+  ..- attr(*, "role_id")= chr "StatementOfCashFlowsIndirect"
+  ..- attr(*, "relations")=Classes ‘xbrl_relations’ and 'data.frame':	29 obs. of  3 variables:
+  .. ..$ fromElementId: chr [1:29] "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" ...
+  .. ..$ toElementId  : chr [1:29] "NetIncomeLoss" "DepreciationDepletionAndAmortization" "DeferredIncomeTaxesAndTaxCredits" "ShareBasedCompensation" ...
+  .. ..$ order        : num [1:29] 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.1 ...
+  ..- attr(*, "elements")=Classes ‘elements’ and 'data.frame':	30 obs. of  8 variables:
+  .. ..$ elementId  : chr [1:30] "CashAndCashEquivalentsPeriodIncreaseDecrease" "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" "NetIncomeLoss" "DepreciationDepletionAndAmortization" ...
+  .. ..$ parentId   : chr [1:30] NA "CashAndCashEquivalentsPeriodIncreaseDecrease" "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations" ...
+  .. ..$ order      : num [1:30] NA 1.17 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 ...
+  .. ..$ balance    : chr [1:30] "debit" NA "credit" "debit" ...
+  .. ..$ labelString: chr [1:30] "Cash and Cash Equivalents, Period Increase (Decrease)" "Net Cash Provided by (Used in) Operating Activities, Continuing Operations" "Net Income (Loss) Attributable to Parent" "Depreciation, Depletion and Amortization" ...
+  .. ..$ level      : num [1:30] 1 2 3 3 3 3 3 3 3 3 ...
+  .. ..$ id         : chr [1:30] "01" "0101" "010101" "010102" ...
+  .. ..$ terminal   : logi [1:30] FALSE FALSE TRUE TRUE TRUE TRUE ...
+ - attr(*, "class")= chr [1:2] "statements" "list"
+```
+
+As you can see, the list object returned by xbrl_get_statement() has a lot of info.  We can simplify life a little bit by looking at one list element at at time
+
+```r
+result
+
+Financial statements repository
+                                             From         To Rows Columns
+StatementOfFinancialPositionClassified 2015-12-29 2017-01-03    2      29
+StatementOfIncomeAlternative           2014-12-30 2017-01-03    2      22
+StatementOfCashFlowsIndirect           2014-12-30 2017-01-03    3      34
+
+result$StatementofIncomeAlternative
+> result$StatementOfIncomeAlternative
+Financial statement: 2 observations from 2014-12-30 to 2017-01-03 
+ Element                                                  2017-01-03 2014-12-30
+ NetIncomeLoss =                                           455.57     273.97   
+ + IncomeLossFromContinuingOperationsBefore... =           610.91     363.23   
+   + OperatingIncomeLoss =                                 616.41     354.26   
+     + SalesRevenueGoodsNet                               9930.52    8455.69   
+     - CostsAndExpenses =                                 9314.11    8101.43   
+       + CostOfGoodsSold                                  2514.60    2129.79   
+       + LaborAndRelatedExpense                           3453.70    2987.03   
+       + bjri_OccupancyAndOperatingCosts                  2045.83    1821.49   
+       + GeneralAndAdministrativeExpense                   553.73     515.58   
+       + DepreciationDepletionAndAmortization              642.75     553.87   
+       + PreOpeningCosts                                    69.77      49.73   
+       - GainLossOnSalesOfAssetsAndAssetImpairmentCharges  -29.71     -19.63   
+       - GainLossOnContractTermination                         NA         NA   
+       + bjri_LegalAndOtherExpenses                          4.02      24.31   
+   + NonoperatingIncomeExpense =                            -5.50       8.97   
+     + InterestIncomeExpenseNet                            -17.30      -2.38   
+     + OtherNonoperatingIncomeExpense                       11.80      11.35   
+ - IncomeTaxExpenseBenefit                                 155.34      89.26   
+ 
+> str(result$StatementOfIncomeAlternative)
+
+Classes ‘statement’ and 'data.frame':	2 obs. of  22 variables:
+ $ contextId                                                                                  : chr  "eol_PE2044----1710-K0003_STD_364_20141230_0" "eol_PE2044----1710-K0003_STD_371_20170103_0"
+ $ startDate                                                                                  : chr  "2014-01-01" "2015-12-30"
+ $ endDate                                                                                    : chr  "2014-12-30" "2017-01-03"
+ $ decimals                                                                                   : num  -5 -5
+ $ NetIncomeLoss                                                                              : num  27397000 45557000
+ $ IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest: num  36323000 61091000
+ $ OperatingIncomeLoss                                                                        : num  35426000 61641000
+ $ SalesRevenueGoodsNet                                                                       : num  8.46e+08 9.93e+08
+ $ CostsAndExpenses                                                                           : num  8.10e+08 9.31e+08
+ $ CostOfGoodsSold                                                                            : num  2.13e+08 2.51e+08
+ $ LaborAndRelatedExpense                                                                     : num  2.99e+08 3.45e+08
+ $ bjri_OccupancyAndOperatingCosts                                                            : num  1.82e+08 2.05e+08
+ $ GeneralAndAdministrativeExpense                                                            : num  51558000 55373000
+ $ DepreciationDepletionAndAmortization                                                       : num  55387000 64275000
+ $ PreOpeningCosts                                                                            : num  4973000 6977000
+ $ GainLossOnSalesOfAssetsAndAssetImpairmentCharges                                           : num  -1963000 -2971000
+ $ GainLossOnContractTermination                                                              : num  NA NA
+ $ bjri_LegalAndOtherExpenses                                                                 : num  2431000 402000
+ $ NonoperatingIncomeExpense                                                                  : num  897000 -550000
+ $ InterestIncomeExpenseNet                                                                   : num  -238000 -1730000
+ $ OtherNonoperatingIncomeExpense                                                             : num  1135000 1180000
+ $ IncomeTaxExpenseBenefit                                                                    : num  8926000 15534000
+ - attr(*, "role_id")= chr "StatementOfIncomeAlternative"
+ - attr(*, "relations")=Classes ‘xbrl_relations’ and 'data.frame':	17 obs. of  3 variables:
+  ..$ fromElementId: chr  "OperatingIncomeLoss" "CostsAndExpenses" "CostsAndExpenses" "CostsAndExpenses" ...
+  ..$ toElementId  : chr  "SalesRevenueGoodsNet" "CostOfGoodsSold" "LaborAndRelatedExpense" "bjri_OccupancyAndOperatingCosts" ...
+  ..$ order        : num  1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.1 ...
+ - attr(*, "elements")=Classes ‘elements’ and 'data.frame':	18 obs. of  8 variables:
+  ..$ elementId  : chr  "NetIncomeLoss" "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest" "OperatingIncomeLoss" "SalesRevenueGoodsNet" ...
+  ..$ parentId   : chr  NA "NetIncomeLoss" "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest" "OperatingIncomeLoss" ...
+  ..$ order      : num  NA 1.16 1.12 1.01 1.11 1.02 1.03 1.04 1.05 1.06 ...
+  ..$ balance    : chr  "credit" "credit" "credit" "credit" ...
+  ..$ labelString: chr  "Net Income (Loss) Attributable to Parent" "Income (Loss) from Continuing Operations before Income Taxes, Noncontrolling Interest" "Operating Income (Loss)" "Sales Revenue, Goods, Net" ...
+  ..$ level      : num  1 2 3 4 4 5 5 5 5 5 ...
+  ..$ id         : chr  "01" "0101" "010101" "01010101" ...
+  ..$ terminal   : logi  FALSE FALSE FALSE TRUE FALSE TRUE ...
+```
+
+## Batch Download
+
+So I think I've demonstrated that this little pipeline can get some useful data for one company at a time.  Now the question (just as with our last post) is can I get ALL the data for ALL the years I want and ALL the companies I want?  The short answer is NO...but I can get kind of close.
+
+Before dropping the whole routine on you let me point out the 2 main places where the crawler can break down:
+
+
+1.  company_filings() - breakdowns here were pretty rare for me...but there were a few tickers that didn't exist.  
+2. .xml search - some 10-K filings did not have any .xml files in their document libraries.  In this case the routine breaks down because it is specifically looking for the XBRL INSTANCE DOCUMENT to parse.  If this doc doesn't exist, we're hosed.
+3. xbrlDoAll() - the most common reason for errors in this function call appear to me to be time out errors where - for whatever reason - the url request just couldn't be put through.
+
+In each of the three cases above I used some really basic error handling that you can see below.
+
+```r
+get.fins <- function(ticker){
+#---------------------------------------------------------------------------
+
+# get the list of available filings for the company of interest
+filing_list <- try(company_filings(as.character(ticker), ownership = FALSE, type = "10-K", before = "20180101",
+                               count = 40, page = 1),TRUE)
+
+if(isTRUE(class(filing_list)=='try-error')){
+  return(list(list(ticker),list("can't find company"),list("can't find company")))
+}else{
+
+#parse this listing to find only 10-K filings...e.g. not 10-K/A and 10-K405
+filing_list <- filing_list[filing_list$type=="10-K",]
+#-----------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+# loop through the index files to get info for each filing
+fin.statements <- list()
+for(i in 1:length(filing_list$href)){
+
+# the column 'href' in filing list has the file path to the index files we want
+filing.details <- filing_details(filing_list$href[i])
+
+#find the index of the first .xml file in the href list
+docs <- filing.details$documents$href
+xml.idx <- grep('.xml',docs)
+
+result <- NULL
+if(length(xml.idx)==0){
+  result <- data.frame(error='no xml file',index=filing_list$href[i])
+}else{
+  idx.min <- min(xml.idx)
+  xml.file <- filing.details$documents$href[idx.min]
+  xml.parsed <- try(xbrlDoAll(xml.file),TRUE)
+    if(isTRUE(class(xml.parsed)=='try-error')){
+      result <- data.frame(error='time-out',index=filing_list$href[i])
+    }else{
+      result <- xbrl_get_statements(xml.parsed)
+    }
+}
+
+fin.statements[[i]] <- result
+}
+
+errors.df <- list()
+stats.df <- list()
+k.err <- 0
+k.stat <- 0
+for(ilist in 1:length(fin.statements)){
+
+  if(class(fin.statements[[ilist]])[1]=='data.frame'){
+    k.err <- k.err + 1
+    errors.df[[k.err]]<- fin.statements[[ilist]]
+  }
+  
+  if(class(fin.statements[[ilist]])[1]=='statements'){
+    k.stat <- k.stat + 1
+    stats.df[[k.stat]] <- fin.statements[[ilist]]
+  }
+
+}
+
+return(list(ticker,stats.df,errors.df))
+}
+
+}
+
+
+t <- Sys.time()
+df.10k <- lapply(stores$ticker[1:3],get.fins)
+Sys.time() - t
+
 ```
 
 
