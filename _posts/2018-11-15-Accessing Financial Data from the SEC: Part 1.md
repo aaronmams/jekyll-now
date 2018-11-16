@@ -351,3 +351,29 @@ Another spoiler alert: I'm not going to fill those in by hand.  I would rather s
 ## Let's see what kind of metrics we have access to
 
 Here is
+
+Here is another illustration of the difficulties posed by these data.  We use a regular expression search to find any and all metrics related to Revenue, Sales, Restaurant, or Food.  Then we look at instances where Buffalo Wild Wings and Wingstop (two ostensibly comparable purveyors of fine wings and mead) report data on the same revenue/sales category:
+
+```r
+
+sales.metrics.full <- unique(c(unique(df$Metric)[grep("Revenue",unique(df$Metric))],
+                               unique(df$Metric)[grep("revenue",unique(df$Metric))],
+                               unique(df$Metric)[grep("sales",unique(df$Metric))],
+                               unique(df$Metric)[grep("Sales",unique(df$Metric))],
+                               unique(df$Metric)[grep("Restaurant",unique(df$Metric))],
+                               unique(df$Metric)[grep("restaurant",unique(df$Metric))],
+                               unique(df$Metric)[grep("food",unique(df$Metric))],
+                               unique(df$Metric)[grep("Food",unique(df$Metric))]))
+
+wings <- df %>% filter(ticker %in% c('WING','BWLD') & Metric %in% sales.metrics.full) 
+
+ggplot(wings,aes(x=ticker,y=endyear)) + 
+  geom_point(shape=8) + facet_wrap(~Metric) + 
+  theme_bw() + scale_y_continuous(breaks=c(2010,2012,2014,2016,2018)) + 
+   xlab("") + ylab("") 
+
+```
+
+![wingrev](/images/wing_rev.png)
+
+Notice that 2013-2015 appears to be the only time period of overlap between Buffalo Wild Wings and Wingstop...and, of all the different ways the two companies report revenues, only the categories "Revenues, Net" and "Franchise Revenues" overlap.  
