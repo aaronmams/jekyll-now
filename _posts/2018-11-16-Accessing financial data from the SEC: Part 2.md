@@ -7,7 +7,7 @@ The solution I'll talk about here uses the following approach:
 2. Use the [XBRL](https://cran.r-project.org/web/packages/XBRL/index.html) library to parse the .xml documents found in Step 1 above.
 3. Use functions in the [finstr](https://github.com/bergant/finstr) library to further parse data retreived into objects of class 'financial statement'
 
-## General Approach
+# General Approach
 
 Each 10-K filing in the SEC EDGAR database is affiliated with an index page.  This is the main url that houses key meta-data for a 10-K filing.  For example:
 
@@ -20,7 +20,7 @@ This index page displays the links to the individual documents in the filing.  F
 The final step in this approach uses the [finstr](https://github.com/bergant/finstr) library to organize the data into a structured format that can be read like a tabular financial statement.
 
 
-## Prereqs
+# Prereqs
 
 We start with the same data frame we had last time which has a list of publicly traded restaurant groups that I want info for.  Also, not that I'm putting all necessary libraries in this code chunk.
 
@@ -69,7 +69,7 @@ stores <- data.frame(ticker=c('BJRI','BLMN','BUWR','BOBE','EAT','BUCA','BWLD','B
 
 ```
 
-## Quick Walk Through
+# Quick Walk Through For A Single Company
 
 We start with a ticker symbol and we use the *filing_list()* function from the [edgarWebR](https://github.com/mwaldstein/edgarWebR) library to retreive meta-information for this filing:
 
@@ -528,9 +528,9 @@ Classes ‘statement’ and 'data.frame':	2 obs. of  22 variables:
   ..$ terminal   : logi  FALSE FALSE FALSE TRUE FALSE TRUE ...
 ```
 
-## A check
+# Try to Generalize 
 
-So I think I've demonstrated that this little pipeline can get some useful data for one company at a time.  Now the question (just as with our last post) is can I get ALL the data for ALL the years I want and ALL the companies I want?  The short answer is NO...but I can get kind of close.
+So I think I've demonstrated that this little pipeline can get some useful data for one company at a time.  Now the question (just as with our last post) is can I get ALL the data for ALL the years I want and ALL the companies I want?  The short answer is NO...but I can get kind of close.  I haven't worked out all the kinks of getting all 62 companies in a single swing with this new approach yet, but it does appear that the new approaches gets me a bit more information than the old one.
 
 Before dropping the whole routine on you let me point out the 2 main places where the crawler can break down:
 
@@ -540,6 +540,8 @@ Before dropping the whole routine on you let me point out the 2 main places wher
 3. xbrlDoAll() - the most common reason for errors in this function call appear to me to be time out errors where - for whatever reason - the url request just couldn't be put through.
 
 In each of the three cases above I used some really basic error handling that you can see below.
+
+## A function to get one company at a time
 
 ```r
 get.fins <- function(ticker){
@@ -608,17 +610,292 @@ return(list(ticker,stats.df,errors.df))
 }
 
 }
+```
+
+## A comparison
+
+Here's a couple comparisons between what we got for a few of the pricklier companies on my list using the edgarWebR/XBRL/finstr approach versus the approach from [last post](https://aaronmams.github.io/Accessing-Financial-Data-from-the-SEC-Part-1/) which relies on the finreportr package:
+
+```r
+library(finreportr)
+
+ticker <- 'BLMN'
+blmn <- get.fins('BLMN')
+
+> test
+[[1]]
+[1] "BLMN"
+
+[[2]]
+[[2]][[1]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2015-12-27 2016-12-25    2      38
+ConsolidatedStatementsOfCashFlows                        2014-12-28 2016-12-25    3      50
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2014-12-28 2016-12-25    3      29
+
+[[2]][[2]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2014-12-28 2015-12-27    2      39
+ConsolidatedStatementsOfCashFlows                        2013-12-31 2015-12-27    3      57
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2013-12-31 2015-12-27    3      32
+
+[[2]][[3]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2013-12-31 2014-12-28    2      41
+ConsolidatedStatementsOfCashFlows                        2012-12-31 2014-12-28    3      60
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2012-12-31 2014-12-28    3      31
+
+[[2]][[4]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2012-12-31 2013-12-31    2      40
+ConsolidatedStatementsOfCashFlows                        2011-12-31 2013-12-31    3      62
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2011-12-31 2013-12-31    3      31
+
+[[2]][[5]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2011-12-31 2012-12-31    2      40
+ConsolidatedStatementsOfCashFlows                        2010-12-31 2012-12-31    3      61
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2010-12-31 2012-12-31    3      29
 
 
-t <- Sys.time()
-df.10k <- get.fins('BAGL')
-Sys.time() - t
+[[3]]
+list()
+
+> blmn.inc <- blmn[[2]]
+> blmn.inc
+[[1]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2015-12-27 2016-12-25    2      38
+ConsolidatedStatementsOfCashFlows                        2014-12-28 2016-12-25    3      50
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2014-12-28 2016-12-25    3      29
+
+[[2]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2014-12-28 2015-12-27    2      39
+ConsolidatedStatementsOfCashFlows                        2013-12-31 2015-12-27    3      57
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2013-12-31 2015-12-27    3      32
+
+[[3]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2013-12-31 2014-12-28    2      41
+ConsolidatedStatementsOfCashFlows                        2012-12-31 2014-12-28    3      60
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2012-12-31 2014-12-28    3      31
+
+[[4]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2012-12-31 2013-12-31    2      40
+ConsolidatedStatementsOfCashFlows                        2011-12-31 2013-12-31    3      62
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2011-12-31 2013-12-31    3      31
+
+[[5]]
+Financial statements repository
+                                                               From         To Rows Columns
+ConsolidatedBalanceSheets                                2011-12-31 2012-12-31    2      40
+ConsolidatedStatementsOfCashFlows                        2010-12-31 2012-12-31    3      61
+ConsolidatedStatementsOfOperationsAndComprehensiveIncome 2010-12-31 2012-12-31    3      29
+
+> bmn.inc[[1]]$ConsolidatedStatementsOfOperationsAndComprehensiveIncome
+Financial statement: 3 observations from 2014-12-28 to 2016-12-25 
+ Element                                                          2016-12-25 2015-12-27 2014-12-28
+ NetIncomeLoss =                                                    417.48    1273.27     910.90  
+ - NetIncomeLossAttributableToNoncontrollingInterest                 45.99      42.33      48.36  
+ ComprehensiveIncomeNetOfTax =                                      779.71     405.02     569.66  
+ + ComprehensiveIncomeNetOfTaxIncludingPort... =                    859.79     315.68     618.02  
+   + ProfitLoss =                                                   463.47    1315.60     959.26  
+     + IncomeLossFromContinuingOperationsBefore... =                564.91    1708.54    1199.70  
+       + OperatingIncomeLoss =                                     1276.06    2309.25    1919.64  
+         + Revenues =                                             42523.12   43776.76   44427.11  
+           + SalesRevenueNet                                      42260.57   43499.21   44157.83  
+           + OtherSalesRevenueNet                                   262.55     277.55     269.28  
+         - CostsAndExpenses =                                     41247.06   41467.51   42507.47  
+           + CostOfGoodsAndServicesSold                           13548.53   14196.89   14353.59  
+           + CostOfGoodsSoldDirectLabor                           12112.50   12056.10   12189.61  
+           + OtherCostAndExpenseOperating                          9921.57   10067.72   10490.53  
+           + DepreciationDepletionAndAmortization                  1938.38    1903.99    1909.11  
+           + GeneralAndAdministrativeExpense                       2679.81    2876.14    3043.82  
+           + blmn_ProvisionforImpairedAssetsandRestaurantClosings  1046.27     366.67     520.81  
+       + blmn_GainLossonExtinguishmentandModificationofDebt        -269.98     -29.56    -110.92  
+       + OtherNonoperatingIncomeExpense                              16.09      -9.39     -12.44  
+       + InterestIncomeExpenseNonoperatingNet                      -457.26    -561.76    -596.58  
+     - IncomeTaxExpenseBenefit                                      101.44     392.94     240.44  
+   + OtherComprehensiveIncomeLossForeignCurre...                    370.75    -961.94    -317.31  
+   - OtherComprehensiveIncomeLossReclassifica...                    -38.07     -22.35       0.00  
+   + OtherComprehensiveIncomeUnrealizedGainLo...                    -12.50     -60.33     -23.93  
+ - ComprehensiveIncomeNetOfTaxAttributableT...                       80.08     -89.34      48.36  
+>
+
+# compare this to the finreportr output for 'BLMN'
+
+> GetIncome('BLMN',2015)
+Error in filter_impl(.data, quo) : Result must have length 1460, not 0
+> GetIncome('BLMN',2016)
+Error in filter_impl(.data, quo) : Result must have length 1925, not 0
+> GetIncome('BLMN',2014)
+Error in filter_impl(.data, quo) : Result must have length 1590, not 0
+> 
 
 ```
 
-### Breakdown
+So the edgarWebR/XBRL/finstr pipeline gave me statements for [Bloomin' Brands](https://www.sec.gov/cgi-bin/browse-edgar?CIK=blmn&owner=exclude&action=getcompany) from 2012-2016.  The finreportr approach gave me less than jack shit....so that's kinda cool.
 
-Let me recap the general strategy used here:
+Let's try another one. I'll try Dunkin Brands because the previous approach got almost all of thier data but was missing a rando year (2012).  Let's see what the new pipeline gives us:
+
+```r
+> dnkn.inc<- dnkn[[2]]
+> dnkn.inc
+[[1]]
+Financial statements repository
+                                                  From         To Rows Columns
+ConsolidatedBalanceSheets                   2015-12-26 2016-12-31    2      43
+ConsolidatedStatementsOfCashFlows           2014-12-27 2016-12-31    3      41
+ConsolidatedStatementsOfComprehensiveIncome 2014-12-27 2016-12-31    3      13
+ConsolidatedStatementsOfOperations          2014-12-27 2016-12-31    3      33
+
+[[2]]
+Financial statements repository
+                                                  From         To Rows Columns
+ConsolidatedBalanceSheets                   2014-12-27 2015-12-26    2      44
+ConsolidatedStatementsOfCashFlows           2013-12-28 2015-12-26    3      43
+ConsolidatedStatementsOfComprehensiveIncome 2013-12-28 2015-12-26    3      13
+ConsolidatedStatementsOfOperations          2013-12-28 2015-12-26    3      32
+
+[[3]]
+Financial statements repository
+                                                  From         To Rows Columns
+ConsolidatedBalanceSheets                   2013-12-28 2014-12-27    2      42
+ConsolidatedStatementsOfCashFlows           2012-12-29 2014-12-27    3      41
+ConsolidatedStatementsOfComprehensiveIncome 2012-12-29 2014-12-27    3      13
+ConsolidatedStatementsOfOperations          2012-12-29 2014-12-27    3      33
+
+[[4]]
+Financial statements repository
+                                                  From         To Rows Columns
+ConsolidatedBalanceSheets                   2012-12-29 2013-12-28    2      46
+ConsolidatedStatementsOfCashFlows           2011-12-31 2013-12-28    3      42
+ConsolidatedStatementsOfComprehensiveIncome 2011-12-31 2013-12-28    3      13
+ConsolidatedStatementsOfOperations          2011-12-31 2013-12-28    3      33
+
+[[5]]
+Financial statements repository
+                                                  From         To Rows Columns
+ConsolidatedBalanceSheets                   2011-12-31 2012-12-29    2      45
+ConsolidatedStatementsOfCashFlows           2010-12-25 2012-12-29    3      42
+ConsolidatedStatementsOfComprehensiveIncome 2010-12-25 2012-12-29    3      13
+ConsolidatedStatementsOfOperations          2010-12-25 2012-12-29    3      32
+
+[[6]]
+Financial statements repository
+                                                           From         To Rows Columns
+StatementConsolidatedBalanceSheets                   2010-12-25 2011-12-31    2      44
+StatementConsolidatedStatementsOfOperations          2011-12-31 2011-12-31    1      28
+StatementConsolidatedStatementsOfComprehensiveIncome 2009-12-26 2011-12-31    3       9
+StatementConsolidatedStatementsOfCashFlows           2009-12-26 2011-12-31    3      43
+
+
+```
+So I definitely got info for the years ending 2011, 2012, and 2013.  Let's double check to see if our tempermental finreportr packages gives us this same info if we call it again:
+
+```r
+dnkn2 <- GetIncome('DNKN',2013)
+dnkn2 <- tbl_df(dnkn2) %>% mutate(endDate=as.Date(endDate,format="%Y-%m-%d"),endyear=year(endDate)) %>%
+            filter(endyear==2012)
+            # A tibble: 54 x 6
+   Metric                                            Units Amount    startDate  endDate    endyear
+   <chr>                                             <chr> <chr>     <chr>      <date>       <int>
+ 1 Franchise Revenue                                 usd   418940000 2012-01-01 2012-12-29    2012
+ 2 Operating Leases, Income Statement, Lease Revenue usd   96816000  2012-01-01 2012-12-29    2012
+ 3 Sales Revenue, Goods, Net                         usd   94659000  2012-01-01 2012-12-29    2012
+ 4 Revenue from Franchisor Owned Outlets             usd   22922000  2012-01-01 2012-12-29    2012
+ 5 Other Revenue, Net                                usd   24844000  2012-01-01 2012-12-29    2012
+ 6 Revenues                                          usd   152372000 2012-01-01 2012-03-31    2012
+ 7 Revenues                                          usd   172387000 2012-04-01 2012-06-30    2012
+ 8 Revenues                                          usd   171719000 2012-07-01 2012-09-29    2012
+ 9 Revenues                                          usd   161703000 2012-09-30 2012-12-29    2012
+10 Revenues                                          usd   658181000 2012-01-01 2012-12-29    2012
+# ... with 44 more rows
+> 
+```
+
+Weird...when I tried grabbing Dunkin' Brands before, *finreportr::GetIncome()* gave me everything except 2012.  Maybe this has to do with how I called the functions - recall that I used *finreportr::GetIncome()* for 2012, 2016, and 2018. And since the function is supposed to return everything BEFORE the specified data I figured I would get everything available from roughly 2008 to now.  Maybe *finreportr::GetIncome()* is more tempermental with respect to the date input that I realize. Or maybe the 2012 request just timed-out when I ran the batch before.
+
+Ok, I'll do one more than wrap this thing up:  [Texas Roadhouse: TXRH](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001289460&type=10-K&dateb=20180101&owner=exclude&count=40).
+
+```r
+#use the handrolled functions to get filing data from TXRH
+txrh <- get.fins('TXRH')
+
+> txrh[[2]]
+[[1]]
+Financial statements repository
+                                                                    From         To Rows Columns
+StatementConsolidatedBalanceSheets                            2015-12-29 2016-12-27    2      40
+StatementConsolidatedStatementsOfIncomeAndComprehensiveIncome 2014-12-30 2016-12-27    3      28
+StatementConsolidatedStatementsOfCashFlows                    2014-12-30 2016-12-27    3      44
+
+[[2]]
+Financial statements repository
+                                                                 From         To Rows Columns
+StatementCondensedConsolidatedBalanceSheets                2014-12-30 2015-12-29    2      40
+StatementCondensedStatementsOfIncomeAndComprehensiveIncome 2013-12-31 2015-12-29    3      29
+StatementCondensedStatementsOfCashFlows                    2013-12-31 2015-12-29    3      47
+
+[[3]]
+Financial statements repository
+                                                                    From         To Rows Columns
+StatementConsolidatedBalanceSheets                            2013-12-31 2014-12-30    2      40
+StatementConsolidatedStatementsOfIncomeAndComprehensiveIncome 2012-12-25 2014-12-30    3      29
+StatementConsolidatedStatementsOfCashFlows                    2012-12-25 2014-12-30    3      47
+
+[[4]]
+Financial statements repository
+                                    From         To Rows Columns
+BalanceSheet                  2012-12-25 2013-12-31    2      40
+StatementOfIncome             2013-12-31 2013-12-31    1      27
+StatementOfStockholdersEquity       <NA>       <NA>    0      22
+CashFlows                     2013-12-31 2013-12-31    1      46
+
+[[5]]
+Financial statements repository
+                                    From         To Rows Columns
+BalanceSheet                  2011-12-27 2012-12-25    2      40
+StatementOfIncome             2010-12-28 2012-12-25    3      26
+StatementOfStockholdersEquity 2011-12-27 2012-12-25    2      22
+CashFlows                     2010-12-28 2012-12-25    3      44
+
+[[6]]
+Financial statements repository
+                                                               From         To Rows Columns
+StatementOfIncome                                        2009-12-29 2011-12-27    3      24
+StatementOfStockholdersEquityAndComprehensiveIncome      2011-12-27 2011-12-27    1      22
+CashFlows                                                2009-12-29 2011-12-27    3      43
+StatementOfStockholdersEquityAndComprehensiveIncomeCalc2 2009-12-29 2011-12-27    3       7
+BalanceSheets                                            2010-12-28 2011-12-27    2      40
+
+```
+
+We got 2009 - 2015 so that's a decent start.  What do we get with *finreportr::GetIncome()*?
+
+```r
+> txrh2 <- GetIncome('TXRH',2018)
+Error in filter_impl(.data, quo) : Result must have length 727, not 0
+```
+
+well, that stinks.
+
+I think I've got enough here to tell me that, moving forward, the edgarWebR/XBRL/finstr pipeline is the way to go.
+
+# A Recap
+
+So, like I said, I have not yet worked out all the kinks involved with iterating through my list of companies with a single swing yet, but the operational flow-chart for the edgardWebR/XBRL/finstr pipeline looks something like this:
 
 1. For an particular company we get a list of all 10-K filings available prior to a specified date
 2. For each of those filing we look for the filings details which gives us the location of an .xml file
@@ -628,7 +905,7 @@ Let me recap the general strategy used here:
 6. if the routine can't find an xml file or the url request gets timed out, we document the error and save that as a data frame.
 7. Repeat steps 2 - 6 for all 10-K filings in the list from Item 1.
 
-At the completion of Steps 1 - 7 we have a list.  That list is a list of lists.  The list has 3 elements:
+At the completion of Steps 1 - 7 we have a list. Call it $$L$$ for now.  That list is a list of lists.  Let's call these elements $$l_{i}$$.  Each $$l_{i}$$ has three elements:
 
 1. The ticker symbol - a character value
 
@@ -636,15 +913,8 @@ At the completion of Steps 1 - 7 we have a list.  That list is a list of lists. 
 
 3. A list of errors - this is a list of data frames.  Each data frame in the list contains an error code and a url for which the main routine returned an error.
 
-After we attempt Steps 1 - 7 for each of the 62 companies in our original *stores* data frame we get a really big list...let's call it **L**.  **L** has 62 elements.  Each list element of **L** is itself a list...let's call these elements $$l_{i}$$.  Each $$l_{i}$$ has three elements.     
 
-Let's take a look:
-
-### Some results
-
-Let's just take a quick look to see if we got more info from this approach than from our [previous finreportr approach](https://aaronmams.github.io/Accessing-Financial-Data-from-the-SEC-Part-1/).
-
-## A final point
+## A final note on time-out errors
 
 Notice that I retained the list of all links to XBRL INSTANCE DOCUMENTS where the requests got timed out. With this list an enterprising data monkey could pretty easily just write a routine to iterate through this list and retry each url a couple hundred times...or until success.  This would probably require an overnight run but could potentially plug some of the data gaps.
 
