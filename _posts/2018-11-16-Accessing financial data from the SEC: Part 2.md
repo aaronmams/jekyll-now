@@ -1,4 +1,6 @@
 
+![homer](/images/homer_donut.jpeg)
+
 In [Part 1](https://aaronmams.github.io/Accessing-Financial-Data-from-the-SEC-Part-1/) of this series I covered a ghetto web-crawling route used to pull information from 10-K financial disclosures from the SEC's EDGAR database.  That solution relied on the R package [finreportr](https://cran.r-project.org/web/packages/finreportr/index.html) which gets points for being very easy to use but loses points for being a little unpredicatable in terms of what data it actually returns you.
 
 The solution I'll talk about here uses the following approach:
@@ -18,6 +20,19 @@ Is the index url for the annual 10-K filed by BJ's Restaurant Group on 2/28/2017
 This index page displays the links to the individual documents in the filing.  For this approach we will be looking for the XBRL INSTANCE DOCUMENT for a 10-K filing.  Once we find the url for that XBRL INSTANCE DOCUMENT we use it to parse the associated .xml file.  At that point the data has been retreived.
 
 The final step in this approach uses the [finstr](https://github.com/bergant/finstr) library to organize the data into a structured format that can be read like a tabular financial statement.
+
+# Desert First
+
+A couple conclusion-y thoughts from my first two attempts at scraping SEC financial disclosures:
+
+1. [finreportr](https://cran.r-project.org/web/packages/finreportr/index.html) is kinda cool but the package developer is really unresponsive, which leads me to believe he is not interested in improving these functions...which leads me to believe that he has found a better way to webscrap the SEC for financial disclosures.  If the package developer isn't even using the package for it's intended purpose, I think that's a strong indication we should probably not mess with *finreportr*
+
+2. The SEC sucks and I believe they have no interest in making useful data available to the public.  If they did, they would have some manner of data standardization protocols in place and some manner of efficient distribution.  They have neither.  They suck.
+
+3. The solution I'll talk about today: a pipeline involving [edgarWebR](https://github.com/mwaldstein/edgarWebR), [XBRL](https://cran.r-project.org/web/packages/XBRL/index.html), and [finstr](https://github.com/bergant/finstr) is (in my limited experience) a little less tempermental than *finreportr* but still has some issues that aren't really it's fault but still limit the utility somewhat.  The key limitations are:
+
+* there has to be an XBRL INSTANCE DOCUMENT in the document library for the desired 10-K filing in order for this pipeline to work, and
+* sometimes the url requests get booted off and throw errors that can break looping routines.
 
 
 # Prereqs
