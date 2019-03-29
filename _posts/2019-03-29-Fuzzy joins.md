@@ -33,4 +33,14 @@ The trips data frame looks like this:
 
 ## Specifics
 
-I have made test files available in a randomly chosen GitHub Repo of mine.
+I have made test files available in a randomly chosen GitHub Repo of mine:
+
+[Rad Teaching Stuff](https://github.com/aaronmams/rad-teaching-stuff)
+
+There are two .csv files:
+
+1. pos_example.csv
+2. id_example.csv
+
+
+
