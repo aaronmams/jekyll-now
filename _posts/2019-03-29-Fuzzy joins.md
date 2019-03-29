@@ -42,5 +42,78 @@ There are two .csv files:
 1. pos_example.csv
 2. id_example.csv
 
+Download those two files and you should be ready to rock.
 
+## Exploration
+
+```
+ trips <- read.csv('id_example.csv')
+> head(events)
+  X trip_id          trip_start            trip_end individual
+1 1 1104834 2014-02-22 00:01:00 2014-02-24 23:59:00          1
+2 2 1104835 2014-02-27 00:01:00 2014-03-01 23:59:00          1
+3 3 1104836 2014-03-10 00:01:00 2014-03-12 23:59:00          1
+4 4 1104837 2014-04-01 00:01:00 2014-04-02 23:59:00          1
+5 5 1104838 2014-04-08 00:01:00 2014-04-10 23:59:00          1
+6 6 1104839 2014-04-15 00:01:00 2014-04-16 23:59:00          1
+> length(unique(events$trip_id))
+[1] 3211
+> length(unique(events$individual))
+[1] 100
+```
+
+So there are 3,211 unique trips taken by 100 unique individuals in these data.
+
+```
+events <- read.csv('pos_example.csv')
+head(events)
+  X      lat       lon                time individual
+1 1 43.97926 -124.4978 2014-06-25 16:21:12         52
+2 2 43.47957 -124.5821 2014-06-25 16:24:00         21
+3 3 37.78950 -122.5833 2014-06-26 08:18:00         70
+4 4 40.80707 -124.1632 2014-06-25 13:25:00         78
+5 5 43.34558 -124.3212 2014-06-25 13:54:00         30
+6 6 42.50400 -124.6720 2014-06-24 05:36:00         87
+
+nrow(events)
+[1] 239755
+
+```
+
+In the events data frame there are 239,755 unique events.
+
+Now, I want to join these data sets such that any event from the events data frame that occurs during a trip gets assigned to that trip_id.  I can (theoretically) do this with a fuzzy_inner_join() from the fuzzyjoin package.
+
+```
+library(dplyr)
+library(fuzzyjoin)
+library(data.table)
+
+trips$trip_start <- as.POSIXct(trips$trip_start,format="%Y-%m-%d %H:%M%S")
+trips$trip_end <- as.POSIXct(trips$trip_end,format="%Y-%m-%d %H:%M%S")
+events$time <- as.POSIXct(events$time,format="%Y-%m-%d %H:%M%S")
+
+t <- Sys.time()
+test <- fuzzy_inner_join(events,trips,
+                         by=c('individual'=='individual',
+                               'time'=='trip_start',
+                               'time'=='trip_end'),
+                         match_fun=list(`==`,`>=`,`<=`))
+
+Sys.time() - t
+
+```
+
+A faster and more feasible method for doing this join is a bit of a hack but it works pretty well:
+
+1. expand the trips data frame to include every hour of every day that the trip was active
+2. round the events data frame to the nearest hour
+3. join the two data frames.
+
+It may not be as elegant as the fuzzy_inner_join() but it works and gets me what I want...while the fuzzy_inner_join just chokes on the data.
+
+```
+
+
+```
 
