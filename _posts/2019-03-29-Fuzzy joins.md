@@ -130,11 +130,24 @@ tripExpand <- function(t){
                by='hour')
   data.table(individual=unique(trips$individual[trips$trip_id==t]),trip=t,hour=dateV)
 }
-trips.day <- rbindlist(lapply(tripsV,function(t)tripExpand(t)))
-
+t <- Sys.time()
+trips.hr <- rbindlist(lapply(tripsV,function(t)tripExpand(t)))
 events$hour <- round(events$time,units="hours")
+events <- merge(events,trips.hr,by=c('individual','hour'))
+Sys.time() - t
 
-events <- merge(events,trips.day,by=c('drvid','hour'))
+Time difference of 6.669531 secs
+> head(events)
+  individual                hour     X      lat       lon                time    trip
+1          1 2014-02-03 00:00:00 89101 46.16719 -123.9173 2014-02-02 23:32:06 1104833
+2          1 2014-02-03 01:00:00 95301 46.17176 -123.9130 2014-02-03 01:06:48 1104833
+3          1 2014-02-03 01:00:00 85314 46.16721 -123.9173 2014-02-03 00:32:07 1104833
+4          1 2014-02-03 02:00:00 87166 46.20375 -123.9320 2014-02-03 01:33:55 1104833
+5          1 2014-02-03 03:00:00 93021 46.27332 -124.1176 2014-02-03 03:11:57 1104833
+6          1 2014-02-03 03:00:00 87263 46.26094 -124.0332 2014-02-03 02:33:57 1104833
+> 
 
 ```
 This fast, elegant data.table solution came from [Andrew Royal on StackOverflow](https://stackoverflow.com/questions/55407040/i-want-to-understand-why-lapply-exhausts-memory-but-a-for-loop-doesnt/55409460?noredirect=1#comment97570957_55409460). 
+
+
