@@ -47,15 +47,18 @@ Download those two files and you should be ready to rock.
 ## Exploration
 
 ```r
- trips <- read.csv('id_example.csv')
-> head(events)
-  X trip_id          trip_start            trip_end individual
-1 1 1104834 2014-02-22 00:01:00 2014-02-24 23:59:00          1
-2 2 1104835 2014-02-27 00:01:00 2014-03-01 23:59:00          1
-3 3 1104836 2014-03-10 00:01:00 2014-03-12 23:59:00          1
-4 4 1104837 2014-04-01 00:01:00 2014-04-02 23:59:00          1
-5 5 1104838 2014-04-08 00:01:00 2014-04-10 23:59:00          1
-6 6 1104839 2014-04-15 00:01:00 2014-04-16 23:59:00          1
+library(dplyr)
+
+ trips <- tbl_df(read.csv('id_example.csv')) %>% select(trip_id,trip_start,trip_end,individual)
+> head(trips)
+  trip_id          trip_start            trip_end individual
+1 1104834 2014-02-22 00:01:00 2014-02-24 23:59:00          1
+2 1104835 2014-02-27 00:01:00 2014-03-01 23:59:00          1
+3 1104836 2014-03-10 00:01:00 2014-03-12 23:59:00          1
+4 1104837 2014-04-01 00:01:00 2014-04-02 23:59:00          1
+5 1104838 2014-04-08 00:01:00 2014-04-10 23:59:00          1
+6 1104839 2014-04-15 00:01:00 2014-04-16 23:59:00          1
+> 
 > length(unique(events$trip_id))
 [1] 3211
 > length(unique(events$individual))
@@ -65,15 +68,15 @@ Download those two files and you should be ready to rock.
 So there are 3,211 unique trips taken by 100 unique individuals in these data.
 
 ```r
-events <- read.csv('pos_example.csv')
+events <- tbl_df(read.csv('pos_example.csv')) %>% select(lat,lon,time,individual)
 head(events)
-  X      lat       lon                time individual
-1 1 43.97926 -124.4978 2014-06-25 16:21:12         52
-2 2 43.47957 -124.5821 2014-06-25 16:24:00         21
-3 3 37.78950 -122.5833 2014-06-26 08:18:00         70
-4 4 40.80707 -124.1632 2014-06-25 13:25:00         78
-5 5 43.34558 -124.3212 2014-06-25 13:54:00         30
-6 6 42.50400 -124.6720 2014-06-24 05:36:00         87
+  individual      lat       lon                time
+1         52 43.97926 -124.4978 2014-06-25 16:21:12
+2         21 43.47957 -124.5821 2014-06-25 16:24:00
+3         70 37.78950 -122.5833 2014-06-26 08:18:00
+4         78 40.80707 -124.1632 2014-06-25 13:25:00
+5         30 43.34558 -124.3212 2014-06-25 13:54:00
+6         87 42.50400 -124.6720 2014-06-24 05:36:00
 
 nrow(events)
 [1] 239755
