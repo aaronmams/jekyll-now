@@ -112,7 +112,7 @@ A faster and more feasible method for doing this join is a bit of a hack but it 
 
 It may not be as elegant as the fuzzy_inner_join() but it works and gets me what I want...while the fuzzy_inner_join just chokes on the data.
 
-```
+```r
 #Round trip start and trip end to nearest hour...
 # this is a hack but for the current purpose it's good enough
 # to match events to trips within 1 hour.
