@@ -89,9 +89,9 @@ library(dplyr)
 library(fuzzyjoin)
 library(data.table)
 
-trips$trip_start <- as.POSIXct(trips$trip_start,format="%Y-%m-%d %H:%M%S")
-trips$trip_end <- as.POSIXct(trips$trip_end,format="%Y-%m-%d %H:%M%S")
-events$time <- as.POSIXct(events$time,format="%Y-%m-%d %H:%M%S")
+trips$trip_start <- as.POSIXct(trips$trip_start,format="%Y-%m-%d %H:%M:%S")
+trips$trip_end <- as.POSIXct(trips$trip_end,format="%Y-%m-%d %H:%M:%S")
+events$time <- as.POSIXct(events$time,format="%Y-%m-%d %H:%M:%S")
 
 t <- Sys.time()
 test <- fuzzy_inner_join(events,trips,
