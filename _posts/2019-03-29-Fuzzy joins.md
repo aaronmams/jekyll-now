@@ -46,7 +46,7 @@ Download those two files and you should be ready to rock.
 
 ## Exploration
 
-```
+```{r}
  trips <- read.csv('id_example.csv')
 > head(events)
   X trip_id          trip_start            trip_end individual
