@@ -82,7 +82,7 @@ nrow(events)
 
 In the events data frame there are 239,755 unique events.
 
-Now, I want to join these data sets such that any event from the events data frame that occurs during a trip gets assigned to that trip_id.  I can (theoretically) do this with a fuzzy_inner_join() from the fuzzyjoin package.
+Now, I want to join these data sets such that any event from the events data frame that occurs during a trip gets assigned to that trip_id.  I can (theoretically) do this with a fuzzy_inner_join() from the [fuzzyjoin package](https://cran.r-project.org/web/packages/fuzzyjoin/fuzzyjoin.pdf).
 
 ```r
 library(dplyr)
@@ -103,6 +103,8 @@ test <- fuzzy_inner_join(events,trips,
 Sys.time() - t
 
 ```
+With these data of relatively modest size, the fuzzy join pretty much chokes itself to death. This one locked up my computer for about a half hour before deciding that it couldn't allocate enough memory to the process.
+
 
 A faster and more feasible method for doing this join is a bit of a hack but it works pretty well:
 
@@ -126,13 +128,13 @@ tripExpand <- function(t){
   dateV <- seq(trips$trip_start[trips$trip_id==t],
                trips$trip_end[trips$trip_id==t],
                by='hour')
-  data.table(individual=unique(trips$individual[trips$trip_id==t]),trip=t,day=dateV)
+  data.table(individual=unique(trips$individual[trips$trip_id==t]),trip=t,hour=dateV)
 }
 trips.day <- rbindlist(lapply(tripsV,function(t)tripExpand(t)))
 
 events$hour <- round(events$time,units="hours")
 
-events <- merge(events,trips.day,by=c('drvid','day'))
+events <- merge(events,trips.day,by=c('drvid','hour'))
 
 ```
 This fast, elegant data.table solution came from [Andrew Royal on StackOverflow](https://stackoverflow.com/questions/55407040/i-want-to-understand-why-lapply-exhausts-memory-but-a-for-loop-doesnt/55409460?noredirect=1#comment97570957_55409460). 
