@@ -46,7 +46,7 @@ Download those two files and you should be ready to rock.
 
 ## Exploration
 
-```{r}
+```r
  trips <- read.csv('id_example.csv')
 > head(events)
   X trip_id          trip_start            trip_end individual
@@ -64,7 +64,7 @@ Download those two files and you should be ready to rock.
 
 So there are 3,211 unique trips taken by 100 unique individuals in these data.
 
-```
+```r
 events <- read.csv('pos_example.csv')
 head(events)
   X      lat       lon                time individual
@@ -84,7 +84,7 @@ In the events data frame there are 239,755 unique events.
 
 Now, I want to join these data sets such that any event from the events data frame that occurs during a trip gets assigned to that trip_id.  I can (theoretically) do this with a fuzzy_inner_join() from the fuzzyjoin package.
 
-```
+```r
 library(dplyr)
 library(fuzzyjoin)
 library(data.table)
