@@ -95,9 +95,9 @@ events$time <- as.POSIXct(events$time,format="%Y-%m-%d %H:%M:%S")
 
 t <- Sys.time()
 test <- fuzzy_inner_join(events,trips,
-                         by=c('individual'=='individual',
-                               'time'=='trip_start',
-                               'time'=='trip_end'),
+                         by=c('individual'='individual',
+                               'time'='trip_start',
+                               'time'='trip_end'),
                          match_fun=list(`==`,`>=`,`<=`))
 
 Sys.time() - t
@@ -113,7 +113,26 @@ A faster and more feasible method for doing this join is a bit of a hack but it 
 It may not be as elegant as the fuzzy_inner_join() but it works and gets me what I want...while the fuzzy_inner_join just chokes on the data.
 
 ```
+#Round trip start and trip end to nearest hour...
+# this is a hack but for the current purpose it's good enough
+# to match events to trips within 1 hour.
+trips$trip_start <- round(trips$trip_start,units='hours')
+trips$trip_end <- round(trips$trip_end,units='hours')
 
+# write a function to expand the trips data frame to have an observation
+# for every hour between the start and end times of the trip
+tripsV <- unique(trips$trip_id)
+tripExpand <- function(t){
+  dateV <- seq(trips$trip_start[trips$trip_id==t],
+               trips$trip_end[trips$trip_id==t],
+               by='hour')
+  data.table(individual=unique(trips$individual[trips$trip_id==t]),trip=t,day=dateV)
+}
+trips.day <- rbindlist(lapply(tripsV,function(t)tripExpand(t)))
+
+events$hour <- round(events$time,units="hours")
+
+events <- merge(events,trips.day,by=c('drvid','day'))
 
 ```
-
+This fast, elegant data.table solution came from [Andrew Royal on StackOverflow](https://stackoverflow.com/questions/55407040/i-want-to-understand-why-lapply-exhausts-memory-but-a-for-loop-doesnt/55409460?noredirect=1#comment97570957_55409460). 
