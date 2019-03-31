@@ -104,7 +104,10 @@ test <- fuzzy_inner_join(events,trips,
                          match_fun=list(`==`,`>=`,`<=`))
 
 Sys.time() - t
+Error: vector memory exhausted (limit reached?)
+> 
 
+Time difference of 1.158129 hours
 ```
 With these data of relatively modest size, the fuzzy join pretty much chokes itself to death. This one locked up my computer for about a half hour before deciding that it couldn't allocate enough memory to the process.
 
