@@ -303,3 +303,74 @@ r <- GBMmat$table[2,2]/(GBMmat$table[2,2] + GBMmat$table[1,2])
 [1] 0.7472149
 
 ```
+
+# Recap
+
+Ok, there's a lot of stuff in this post.  The main thing I want to stress is that [caret has a method called train()](https://www.rdocumentation.org/packages/caret/versions/4.47/topics/train) that works with an almost endless array of machine learning models.  I find the syntax and functionality really appealing.  For a final example of why consider this:
+
+Suppose I want to fit an Artifical Neural Network model to some data to make predictions using the nnet library.  Per the documentation, the nnet() function fits an ANN with a single hidden layer.  The main hyperparameters that the user controls are:
+
+* size = the number of nodes in the hidden layer of the network
+* decay = a regularization parameter to avoid overfitting
+
+Suppose I want to do a 5 fold cross-validation using nnet() to determine the best network
+
+```r
+# suppose I have training data called train
+# suppose I have testing data called test
+# suppose the target variable is called y
+# suppose the input variables are x1, x2, x3
+
+netsize <- c(1:10)
+netdecay <- seq(from = 0.1, to=0.5, by=0.1)
+mod <- list()
+
+for(i in netsize){
+ for(j in netdecay){
+ tmpmod <- list()
+   for(k in unique(train$fold)){
+    NN <- nnet(y~x1+x2+x3,train,size=i,decay=j,lineout=F)
+    test$pred <- predict(NN,test,type='class')
+    p <- nrow(test[test$y=='foraging' & test$pred=='foraging'])/(nrow(test[test$y=='foraging' & test$pred=='foraging',])+ 
+                 nrow(test[test$y=='notforaging' & test$pred=='foraging']))
+    r <- nrow(test[test$y=='foraging' & test$pred=='foraging'])/(nrow(test[test$y=='foraging' & test$pred=='foraging',])+ 
+                 nrow(test[test$y=='foraging' & test$pred=='notforaging']))
+    f1 <- (2*p*r)/(p+r)
+    tmpmod[[k]] <- f1
+    }
+   mod[[i,j]] <- mean(unlist(tmpmod))
+   
+ }
+ }
+```
+Basically, I can manually loop through a bunch of hyperparameters, do a 5 fold CV on each unique combination, save all the performace metrics, then find the best one. Or I can do:
+
+```r
+#--------------------------------------------------------------------
+# set up control parameters for the neural network
+fitControl <- trainControl(method = "cv", 
+                           number = 5, 
+                           classProbs = TRUE, 
+                           summaryFunction = twoClassSummary)
+
+nnetGrid <-  expand.grid(size = seq(from = 1, to = 10, by = 1),
+                         decay = seq(from = 0.1, to = 0.5, by = 0.1))
+
+# pre process the data....only the continuous variables
+preProcValues <- preProcess(df.train, method = c("range"))
+trainTransformed <- predict(preProcValues, df.train)
+testTransformed <- predict(preProcValues, df.test)
+
+nnetFit <- train(y ~ ., 
+                 data = trainTransformed,
+                 method = "nnet",
+                 preProcess=c('range'),
+                 metric = "ROC",
+                 trControl = fitControl,
+                 tuneGrid = nnetGrid,
+                 verbose = FALSE)
+
+```
+
+It may or may not be fewer lines of code...but it's more readable and more elegant in my opinion. 
+
