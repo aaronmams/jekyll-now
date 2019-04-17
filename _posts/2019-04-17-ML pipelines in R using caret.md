@@ -9,17 +9,23 @@ I have a couple older posts on pipelines and, more specifically, Machine Learnin
 
 [Here is the first of python-based posts](https://aaronmams.github.io/Machine-Learning-Pipelines-3-Data-streams/) I wrote on data mining and machine learning pipelines.
 
+# RoadMap/Outline
+
 In this post I want to revisit the topic of Machine Learning Pipelines in R.  Specifically, I'm going to present some examples of training machine learning models using the [caret package](https://topepo.github.io/caret/index.html).
 
-*caret()* provides a cool wrapper method called *train()* that allows analysts to access models from a variety of different machine learning libraries.  
+*caret* provides a cool wrapper method called *train()* that allows analysts to access models from a variety of different machine learning libraries.  I'm finding *caret* to be interesting and useful for testing many different flavors of machine learners over a variety of different hyper-parameters.  The demo I have here is going to do 3 main things:
+
+1. use *caret* to do some data pre-processing
+2. use caret::train() to find the "best" Artificial Neural Network model for my data and the best Ensemble Tree-based model (specifically a Gradient Boosting Model) for my data.
+3. use caret::predict() to evaluate the best ANN relative to the best GBM
 
 # Key Observations
+
+In addition to just giving an example of how caret::train() works to train machine learners, I want to highlight a couple observations that I've made that might be helpful minutia for somebody out there:
 
 1. The *nnet()* method actually performs [one-hot-encoding](https://www.kaggle.com/dansbecker/using-categorical-data-with-one-hot-encoding) behind the scenes.  This isn't some revolutionary discovery...but it is something that hung me up for a few minutes, isn't really documented well, and, since I believe modelers should now what their models are doing mechanically as well as conceptually, it something I think people should know.
 
 2. Some data pre-processing can be done inside the call to the model training method *train()*, but I prefer doing pre-processing operations before the call to *train()* since this seems more transparent to me.
-
-3. 
 
 # Problem Set Up
 
@@ -55,7 +61,7 @@ Animals might move at very low speeds when resting or sleeping (two possible non
 
 ![speeds](/images/foraging-speed.png)
 
-We might also image that depth (we'll pretend these are marine predators) is a proxy for habitat and mayb the animals prefer to forage in certain types of habitat.  Length will help control for heterogeneity (maybe different sized animals forage at different speeds or prefer different habitat), hour-of-day could capture potential preferences for foraging at night versus during the day, etc. 
+We might also imagine that depth (we'll pretend these are marine predators) is a proxy for habitat and mayb the animals prefer to forage in certain types of habitat.  Length will help control for heterogeneity (maybe different sized animals forage at different speeds or prefer different habitat), hour-of-day could capture potential preferences for foraging at night versus during the day, etc. 
 
 
 ```r
@@ -87,11 +93,23 @@ I'm going to use the functionality in [caret](https://topepo.github.io/caret/ind
 
 # The Models:
 
-## Really simple:
+It is important to try and understand the models and how they work.  But there just isn't enough space in a single blog post to really get into Stochastic Gradient Boosting and Artificial Neural Networks.  Here's the best I can do for some over simplified descriptions right now, along with several resources which I recommend for deeper reading.
+
+Artificial Neural Networks are kind of fun to take about because they're easy to draw and therefore easy to explain on a conceptual level.  Most of the hard stuff with ANNs happens behind the scenes.  A 
 
 
-## A little harder
+[Here is a really cool set of slides on Ensemble Trees and Gradient Boosting](https://homes.cs.washington.edu/~tqchen/pdf/BoostedTree.pdf).  The idea behind Ensemble Methods in Machine Learning is that by combining the predictions of serveral "weak" learners we can get a really strong model.  When we talk Ensemble Methods applied to Tree-based models we are generally talking about a process where we:
 
+1. Grow a simple decision tree/regression tree/classification tree
+2. This tree gets some stuff right and gets some stuff wrong (has some error)
+3. Fit another tree to the error from 1.
+4. Rinse and repeat.
+
+Gradient Boosting Trees is an iterative process.  Each tree produces a prediction.  The overall prediction is an aggregation of the predictions of each of the trees in the Ensemble.
+
+[Here is another summary of Gradient Boosted Trees](http://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html) that I really like. 
+
+Gradient Boost refers to the algorithm used to fit new trees: at each step in the process there is a loss function and we want to choose a tree that reduces the loss (to minimize overall loss we move according to the gradient of the loss function).
 
 # CARET
 
@@ -142,7 +160,6 @@ testTransformed <- predict(preProcValues, df.test)
 t <- Sys.time()
 nnetFit <- train(y ~ ., 
                  data = trainTransformed,
-                 #data = df.train,
                  method = "nnet",
                  metric = "ROC",
                  trControl = fitControl,
@@ -151,7 +168,6 @@ nnetFit <- train(y ~ .,
 
 # tree-based methods generally don't need input scaling
 gbmFit <- train(y ~ ., 
-                #data = trainTransformed,
                 data = df.train,
                 method = "gbm",
                 metric = "ROC",
