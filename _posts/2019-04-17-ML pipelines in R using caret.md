@@ -281,6 +281,8 @@ Pre-processing:
 
 ###  One-hot Encoding
 
+[Read more about One-Hot Encoding Here](https://www.kaggle.com/dansbecker/using-categorical-data-with-one-hot-encoding).
+
 When I first starting running neural network models using train() I was pretty confused about why I was feeding it 5 input variables and it was coming back to me with 10 input models.  At first, I thought the train() function was doing it's own feature selection and maybe adding interaction terms and testing them on it's own.  
 
 While it seems that, [caret::train() does have feature selection methods](https://topepo.github.io/caret/feature-selection-overview.html), this is not what was happening in my case.  In my case, since lenght and hour-of-day are categorical factor variables, the *nnet()* method that is called by train converts the categorical variables to a set of dummy variables (one-hot encoding).  Since length has 5 levels, the first one is dropped and 4 dummy variables are created.  Hour-of-day has 4 levels so the first one is dropped and we have dummy variables for hour2, hour3, and hour4.
