@@ -93,13 +93,31 @@ I'm going to use the functionality in [caret](https://topepo.github.io/caret/ind
 
 # The Models:
 
+## ANNs
 It is important to try and understand the models and how they work.  But there just isn't enough space in a single blog post to really get into Stochastic Gradient Boosting and Artificial Neural Networks.  Here's the best I can do for some over simplified descriptions right now, along with several resources which I recommend for deeper reading.
 
 Artificial Neural Networks are kind of fun to take about because they're easy to draw and therefore easy to explain on a conceptual level.  Most of the hard stuff with ANNs happens behind the scenes.  Here is an illustration of a sample neural network applied to my problem of predicting foraging versus non-foraging behavior of animals.  It's a network with 10 inputs, 1 hidden layer, and 10 nodes in the hidden layer.
 
 ![neural-net](/images/net.png)
 
-In the illustration, B1 and B2 are bias layers (constant terms) that act sort of like intercept terms in a regression.
+The basic thing to understand about ANNs is that all of those lines connecting inputs to the various nodes in the hidden layer have a weight attached to them.  Likewise, all those lines connecting the nodes of the hidden layer to the output layer have a weight attached to them.  In the illustration above, B1 and B2 are bias layers (constant terms) that act sort of like intercept terms in a regression.
+
+In a neural network, for a given set of hyper-parameters, an optimization algorithm finds the combination of weights that best predicts the outcome variable.  There are potentially tons of hyper-parameters and modeling choices available for ANN models.  Some of these are pretty standard across different Machine Learning models:
+
+* what lose function to use
+* what learning rate to use (the learning rate generally controls the tradeoff between getting stuck in local optima and taking forever to converge)
+* what performance metric to use to decide on the 'best' model
+
+Some hyper-parameters are kind of specific to ANNs:
+
+* the number of nodes in the hidden layer
+* the number of hidden layers to use
+
+If you want a slightly more technical discussion of ANNs that still have lots of cool pictures:
+
+[Watch this 13 minute video!](https://www.youtube.com/watch?v=Ilg3gGewQ5U)
+
+## GBM
 
 [Here is a really cool set of slides on Ensemble Trees and Gradient Boosting](https://homes.cs.washington.edu/~tqchen/pdf/BoostedTree.pdf).  The idea behind Ensemble Methods in Machine Learning is that by combining the predictions of serveral "weak" learners we can get a really strong model.  When we talk Ensemble Methods applied to Tree-based models we are generally talking about a process where we:
 
