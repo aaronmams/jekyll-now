@@ -1,4 +1,6 @@
 
+![speeds](/images/foraging-speed.png)
+
 I have a GitHub Repo set up to accompany this post.  It's here:
 
 [https://github.com/aaronmams/rad-teaching-stuff/tree/master/caret-example](https://github.com/aaronmams/rad-teaching-stuff/tree/master/caret-example)
