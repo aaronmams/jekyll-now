@@ -1,5 +1,5 @@
 
-![speeds](/images/foraging-speed.png)
+![neural-net](/images/net.png)
 
 I have a GitHub Repo set up to accompany this post.  It's here:
 
