@@ -354,11 +354,11 @@ r <- GBMmat$table[2,2]/(GBMmat$table[2,2] + GBMmat$table[1,2])
 
 # Recap
 
-Ok, there's a lot of stuff in this post.  The main thing I want to stress is that [caret has a method called train()](https://www.rdocumentation.org/packages/caret/versions/4.47/topics/train) that works with an almost endless array of machine learning models.  I find the syntax and functionality really appealing.  For a final example of why consider this:
+Ok, there's a lot of stuff in this post.  The main thing I want to stress is that [caret has a method called train()](https://www.rdocumentation.org/packages/caret/versions/4.47/topics/train) that works with an almost endless array of machine learning models.  I find the syntax and functionality really appealing.  For a final example of why, consider this:
 
-Suppose I want to fit an Artifical Neural Network model to some data to make predictions using the nnet library.  Per the documentation, the nnet() function fits an ANN with a single hidden layer.  The main hyperparameters that the user controls are:
+Suppose I want to fit an Artifical Neural Network model to some data to make predictions using the nnet library.  Per the documentation, the nnet() function fits an ANN with a single hidden layer.  The main hyper-parameters that the user controls are:
 
-* size = the number of nodes in the hidden layer of the network
+* size = the number of nodes in the hidden layer of the network (just to be clear, if you want to also control the number of hidden layers, you need to use a different ANN library like [neuralnet](https://cran.r-project.org/web/packages/neuralnet/neuralnet.pdf))
 * decay = a regularization parameter to avoid overfitting
 
 Suppose I want to do a 5 fold cross-validation using nnet() to determine the best network
