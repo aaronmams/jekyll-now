@@ -60,7 +60,7 @@ Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	179726 obs. of  13 variables:
 
 I prefer not to get too far down a rabbit hole of ecological theory here since this is really just a toy problem to illustrate how to train largely atheoretic machine learners...but, in the interest of not being completely robotic, we could hypothsize that:
 
-Animals might move at very low speeds when resting or sleeping (two possible non-foraging behaviors) and move at much higher speeds when migrating (another possible non-foraging behavior).  The animals might move at sort of in-between speeds when foraging.  In our data, which may or may not be representative of any actual animal, this patter is apparent:
+Animals might move at very low speeds when resting or sleeping (two possible non-foraging behaviors) and move at much higher speeds when migrating (another possible non-foraging behavior).  The animals might move at sort of in-between speeds when foraging.  In our data, which may or may not be representative of any actual animal, this pattern is apparent:
 
 ![speeds](/images/foraging-speed.png)
 
@@ -99,7 +99,6 @@ My goal here it to be able to predict whether an animal is foraging or not given
 2. A Gradient Boosting Machine (GBM)
 
 I'm going to use the functionality in [caret](https://topepo.github.io/caret/index.html) to find the best ANN and the best GBM to predict the behavioral state of unlabeled observations.
-
 
 # The Models:
 
