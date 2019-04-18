@@ -95,8 +95,11 @@ I'm going to use the functionality in [caret](https://topepo.github.io/caret/ind
 
 It is important to try and understand the models and how they work.  But there just isn't enough space in a single blog post to really get into Stochastic Gradient Boosting and Artificial Neural Networks.  Here's the best I can do for some over simplified descriptions right now, along with several resources which I recommend for deeper reading.
 
-Artificial Neural Networks are kind of fun to take about because they're easy to draw and therefore easy to explain on a conceptual level.  Most of the hard stuff with ANNs happens behind the scenes.  A 
+Artificial Neural Networks are kind of fun to take about because they're easy to draw and therefore easy to explain on a conceptual level.  Most of the hard stuff with ANNs happens behind the scenes.  Here is an illustration of a sample neural network applied to my problem of predicting foraging versus non-foraging behavior of animals.  It's a network with 10 inputs, 1 hidden layer, and 10 nodes in the hidden layer.
 
+![neural-net](/images/net.png)
+
+In the illustration, B1 and B2 are bias layers (constant terms) that act sort of like intercept terms in a regression.
 
 [Here is a really cool set of slides on Ensemble Trees and Gradient Boosting](https://homes.cs.washington.edu/~tqchen/pdf/BoostedTree.pdf).  The idea behind Ensemble Methods in Machine Learning is that by combining the predictions of serveral "weak" learners we can get a really strong model.  When we talk Ensemble Methods applied to Tree-based models we are generally talking about a process where we:
 
