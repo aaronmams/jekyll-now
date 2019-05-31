@@ -14,6 +14,8 @@ Really, I've just been monkeying with separate environments for a couple days so
 
 ## What is an environment?
 
+[From the Research Cookbook](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/):
+
 *A named, isolated, working copy of Python that that maintains its own files, directories, and paths so that you can work with specific versions of libraries or Python itself without affecting other Python projects. Virtual environmets make it easy to cleanly separate different projects and avoid problems with different dependencies and version requiremetns across components.*
 
 ## Why do I/do I need one?
@@ -28,9 +30,9 @@ Really, I've just been monkeying with separate environments for a couple days so
 
 Maybe not.  I just had a hallway conversation with 2 colleagues:
 
-One was adament that you should create a virtual environment for every project [using a .yml file] then, upon project completion, delete the virtual environment because it can always be recreated with .yml file.  This way you don't clutter your system with packages and libraries that might be project specific and the virtual environment helps ensure reproducability of the work.
+One was adament that you should create a virtual environment for every project [using a .yml file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) then, upon project completion, delete the virtual environment because it can always be recreated with .yml file.  This way you don't clutter your system with packages and libraries that might be project specific and the virtual environment helps ensure reproducability of the work.
 
-The other felt that virtual environements are clunky, have a tendency to muck up your system with mulitple copies of the same library, and aren't really necessary unless your dealing with lots of versioning conflicts...which in this colleagues experience was kind of rare.  The individual prefers to create virtual environments sparingly and only in the small number of cases where a versioning conflict actually arises.
+The other felt that virtual environements are clunky, have a tendency to muck up your system with mulitple copies of the same library, and aren't really necessary unless your dealing with lots of versioning conflicts...which in this colleague's experience was kind of rare.  This individual prefers to create virtual environments sparingly and only in the small number of cases where a versioning conflict actually arise.
 
 I can't say I have a good sense of whether or not virtual environments will become part of my regular workflow...but I'm kinda glad I at least know what they are and how to create them.
 
