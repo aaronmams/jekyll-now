@@ -1,3 +1,7 @@
+
+![base-root](/images/base-root.png)
+
+
 A frined of mine was signing the prasises of Python virtual environments recently so I decided to try and figure out what he was talking about.  Turns out creating a virtual environment is pretty straightforward (as least in Anaconda) and super useful.
 
 # Some Resources:
