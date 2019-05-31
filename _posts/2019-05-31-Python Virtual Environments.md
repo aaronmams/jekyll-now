@@ -105,7 +105,9 @@ conda install pandas-profiling
 
 Since my ```py35``` environment is active, Anaconda will install this package in the ```py35``` environment but not the base(root) environment.  Here is one way we/I can verify this fact:
 
+![base-root](/images/base-root.png)
 
+![py35](/images/py35.png)
 
 
 
