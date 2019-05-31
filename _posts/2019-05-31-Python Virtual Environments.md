@@ -97,6 +97,16 @@ from sklearn.model_selection import train_test_split
 ```
 
 
+Right off the bat I'm pretty sure that I'll have to install the [pandas-profiling library](https://anaconda.org/conda-forge/pandas-profiling) to my environment.  This happens just the same way I would add a package to the base environment: Open the terminal/command line and,
+
+```bash
+conda install pandas-profiling
+```
+
+Since my ```py35``` environment is active, Anaconda will install this package in the ```py35``` environment but not the base(root) environment.  Here is one way we/I can verify this fact:
+
+
+
 
 
 
