@@ -40,9 +40,17 @@ I have a machine learning application that I'm working on with a colleague.  In 
 
 ## Create the environment
 
+[Per the Conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html), creating a virtual environment is rediculously easy.  Open the terminal (I prefer to open a command prompt from with the Anaconda Dashboard because - for a variety of Windows related reasons that I don't like - this is how I have to do things at work) and do:
 
+```python
+conda create --name py35  python=3.5
+```
 
+In this case, I'm create a virtual environment called *py35* that will use Python version 3.5.  Note that I have not yet declared any libraries to be included in this environment.
 
+[cond1](/images/conda1.png)
+
+[pyenv1](/images/pyenv1.png)
 
 
 
