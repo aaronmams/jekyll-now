@@ -127,6 +127,11 @@ Since my ```py35``` environment is active, Anaconda will install this package in
 7. repeat 4-6 until things work.
 
 
+# Looking forward
+
+I realize that I've covered only the most basic and pedestrian elements of create a Python virtual environment here.  Next week I'll try to follow up with some of the cooler elements of virtual environments (creating environments from and .yml file, exporting an environment to a colleague or collaborator).
+
+
 
 
 
