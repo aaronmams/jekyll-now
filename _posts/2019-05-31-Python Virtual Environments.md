@@ -46,11 +46,15 @@ I have a machine learning application that I'm working on with a colleague.  In 
 conda create --name py35  python=3.5
 ```
 
-In this case, I'm create a virtual environment called *py35* that will use Python version 3.5.  Note that I have not yet declared any libraries to be included in this environment.
+In this case, I'm creating a virtual environment called *py35* that will use Python version 3.5.  Note that I have not yet declared any libraries to be included in this environment.
 
-[cond1](/images/conda1.png)
+![cond1](/images/conda1.png)
 
-[pyenv1](/images/pyenv1.png)
+![pyenv1](/images/pyenv1.png)
+
+Also notice, that even though I have not specifically installed any packages/libraries in this environment, the environment is created with a BUNCH of stuff in it.  It seems that by default Python/Anaconda will create a new environment with all of the packages in the base environment.
+
+![conda2](/images/conda2.png) 
 
 
 
