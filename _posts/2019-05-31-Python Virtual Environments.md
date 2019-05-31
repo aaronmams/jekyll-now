@@ -48,16 +48,53 @@ conda create --name py35  python=3.5
 
 In this case, I'm creating a virtual environment called *py35* that will use Python version 3.5.  Note that I have not yet declared any libraries to be included in this environment.
 
+You'll also likely notice that I messed up the really simple command line inputs a few times before I got it right...I left them in the screen shot to add some authenticity to the blog.  Please don't let my shyte coding distract you.
+
 ![cond1](/images/conda1.png)
 
 ![pyenv1](/images/pyenv1.png)
 
 Also notice, that even though I have not specifically installed any packages/libraries in this environment, the environment is created with a BUNCH of stuff in it.  It seems that by default Python/Anaconda will create a new environment with all of the packages in the base environment.
 
-![conda2](/images/conda2.png) 
+![pyenv2](/images/pyenv2.png) 
 
 
+## Activate the environment
 
+Again, [Per the Conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) I can switch over to using my new environment with:
+
+```python
+conda activate py35
+```
+
+## Add some stuff to the environment
+
+Here is the header line from a Jupyter Notebook that my coauthor send me:
+
+```python
+import pandas as pd
+
+import pandas_profiling 
+
+import numpy as np
+
+from datetime import datetime
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import AdaBoostRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor
+from xgboost import XGBClassifier
+from sklearn import preprocessing
+from sklearn.metrics import confusion_matrix
+
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
+
+```
 
 
 
