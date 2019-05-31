@@ -5,6 +5,7 @@ A frined of mine was signing the prasises of Python virtual environments recentl
 * [https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
 *[Why you need Python environments and how to manage them with Conda](https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/)
 * [From the Anaconda repository](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+* [Why you need Python environments and how to manage them](https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/)
 
 # Answers to some simple questions
 
@@ -103,11 +104,24 @@ Right off the bat I'm pretty sure that I'll have to install the [pandas-profilin
 conda install pandas-profiling
 ```
 
-Since my ```py35``` environment is active, Anaconda will install this package in the ```py35``` environment but not the base(root) environment.  Here is one way we/I can verify this fact:
+Since my ```py35``` environment is active, Anaconda will install this package in the ```py35``` environment but not the base(root) environment.  Here is one way we/I can verify this fact: The screen shots below demonstrate that, in the Anaconda Dashboard, we can see which packages are included in each environment. Here you can see that ```pandas-profiling``` is not included in the base environment but is included in the ```py35``` environment.
 
 ![base-root](/images/base-root.png)
 
 ![py35](/images/py35.png)
+
+
+## More on installing packages in a virtual environment
+
+[According to the Conda repository](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html) one should add all necessary packages to an environment at once (presumably when the environment is created).  While this sounds perfectly reasonable to me, it also sounds like a practice I'm not likely to adopt any time soon.  At the moment the major utility I can see from working with virtual environments is having a separate work space available for projects where I need to be able to run or test other people's code.  In this case, at least in the short run, I'm probably more likely to follow the iterative process of:
+
+1. look at the code
+2. create a virtual environment
+3. identify any packages/libraries/versions that I know right away will need to be added and add them
+4. try to run the code
+5. get an error because my environment is missing a library
+6. add the library
+7. repeat 4-6 until things work.
 
 
 
