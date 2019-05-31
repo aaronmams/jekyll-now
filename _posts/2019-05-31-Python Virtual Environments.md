@@ -3,9 +3,10 @@ A frined of mine was signing the prasises of Python virtual environments recentl
 # Some Resources:
 
 * [https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
-*[Why you need Python environments and how to manage them with Conda](https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/)
+
+* [Why you need Python environments and how to manage them with Conda](https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/)
+
 * [From the Anaconda repository](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-* [Why you need Python environments and how to manage them](https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/)
 
 # Answers to some simple questions
 
