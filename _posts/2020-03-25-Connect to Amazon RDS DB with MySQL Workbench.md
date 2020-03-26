@@ -44,7 +44,13 @@ First, I go to my AWS Console and navigate to the RDS service.
 
 Note: you may have to a seach for 'RDS' in order to get to the right AWS service (there are lots of them).
 
-Next, 
+Next, you want 'create database'
+
+![create-db]('images/aws-rds-create-db.png')
+
+This next part is where you have a lot of choices to make. I am looking for the simplest possible path here so I chose a MySQL database and the free tier. Note: by choosing Amazon's "free tier" a lot of decisions get made automagically for you.
+
+![db-setup]('images/db-setup-1.png')
 
 
 
