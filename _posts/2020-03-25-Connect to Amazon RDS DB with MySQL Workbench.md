@@ -103,7 +103,7 @@ The way things are supposed to work from here is:
 2. add a new database connection (MySQL Workbench --> Database --> Connect to database)
 3. copy the database endpoint to the "Hostname" field, then enter the database username and password that you set up in Amazon RDS
 
-![mysqlworkbench1](/images/mysqlworkbench-connect.png)
+![mysqlworkbench1](/images/sqlworkbench-connect.png)
 
 And there you have it! Easy-peesy-lemon-squeezy, you're connected. If you're lucky. I wasn't. Here's the additional step that I had to conduct to get connected:
 
