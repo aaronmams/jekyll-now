@@ -100,7 +100,7 @@ Here, we need 1 critical piece of info from the Amazon AWS Console: the database
 The way things are supposed to work from here is:
 
 1. we fire up the MySQL Workbench
-2. add a new database connection (MySQL Workbench --> Database --> Connect to database
+2. add a new database connection (MySQL Workbench --> Database --> Connect to database)
 3. copy the database endpoint to the "Hostname" field, then enter the database username and password that you set up in Amazon RDS
 
 ![mysqlworkbench1](/images/mysqlworkbench-connect.png)
@@ -121,4 +121,4 @@ Once I edited the inbound rules for my security group, I was able to connect to 
 
 ![db-connection-good](/images/db-connection.png)
 
-
+Success!
