@@ -93,7 +93,16 @@ I didn't configure anything, just fired up the MySQL Workbench out-of-the-box.
 
 ### Step 2B: Connect MySQL Workbench to the RDS database
 
-Here, we need 1 critical piece of info from the Amazon AWS Console: the database endpoint. 
+Here, we need 1 critical piece of info from the Amazon AWS Console: the database endpoint. We can get this from the database page on our Amazon RDS dashboard:
 
+![db-endpoint](/images/db-endpoint.png)
+
+The way things are supposed to work from here is:
+
+1. we fire up the MySQL Workbench
+2. add a new database connection (MySQL Workbench --> Database --> Connect to database
+3. copy the database endpoint to the "Hostname" field, then enter the database username and password that you set up in Amazon RDS
+
+![mysqlworkbench1](/images/mysqlworkbench-connect.png)
 
 
