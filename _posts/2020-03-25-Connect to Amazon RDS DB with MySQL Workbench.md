@@ -105,4 +105,12 @@ The way things are supposed to work from here is:
 
 ![mysqlworkbench1](/images/mysqlworkbench-connect.png)
 
+And there you have it! Easy-peesy-lemon-squeezy, you're connected. If you're lucky. I wasn't. Here's the additional step that I had to conduct to get connected:
 
+### Step 2C: Edit Inbound Security Rules
+
+To do this I had to leave the Amazon RDS Console and navigate back to the AWS Console.
+
+![aws-home](/images/aws-home.png)
+
+Then I navigated to the VPC tab and 
