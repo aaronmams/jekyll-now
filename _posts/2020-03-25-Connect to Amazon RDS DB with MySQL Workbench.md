@@ -40,18 +40,35 @@ Note: I did end up having to make some adjustments to my "Security Group" which 
 
 First, I go to my AWS Console and navigate to the RDS service. 
 
-![aws-console]('/images/aws-rds-home.png')
+![aws-console](/images/aws-rds-home.png)
 
 Note: you may have to a seach for 'RDS' in order to get to the right AWS service (there are lots of them).
 
 Next, you want 'create database'
 
-![create-db]('images/aws-rds-create-db.png')
+![create-db](/images/aws-rds-create-db.png)
 
 This next part is where you have a lot of choices to make. I am looking for the simplest possible path here so I chose a MySQL database and the free tier. Note: by choosing Amazon's "free tier" a lot of decisions get made automagically for you.
 
-![db-setup]('images/db-setup-1.png')
+![db-setup](/images/db-setup-1.png)
 
+Here are the headers and choices I made for each in setting up my database:
 
+* Engine Type: MySQL
+* Version: whatever the default was
+* Templates: "free tier"
+* Settings:
+    - DB cluster identifier: "mams-test"...pretty sure this doesn't matter just pick a name for your instance
+    - Master user name: user
+    - Master password:  password
+* DB Instance Size: since I choose the "free tier" there was nothing to do here
+* Storage: I just accepted all the defaults
+* Availability and Durability: there was nothing for me to do here
+* Connectivity: accepted default
+    - Additional connectivity configuration: 
+        - Subnet group: accepted default
+        - Publicly accessible: "yes"
+        - VPC security group: "choose existing"
+* Database Authentication: password authentication
 
 
