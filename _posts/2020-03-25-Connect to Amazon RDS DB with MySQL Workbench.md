@@ -9,6 +9,10 @@ Well, I picked up a little side project and decided it would be fun to finally t
 
 The goal in this post is a simple proof-of-concept: get a relational database set up in Amazon's RDS Service and access that database from my laptop using some open source (off-the-shelf) database management software.
 
+## Caveat
+
+I'm a reasonably experienced consumer/user of databases. I have no meaningful experience in database engineering or systems architecture. I'm an analytics guy. My interest in databases is pretty limited to their ability to efficiently deliver me the data I want. This means there are A LOT of gaps in my knowledge. I know next to nothing about security, performance, indexing, and a host of other database topics that are probably really, really important.  
+
 ## Resources
 
 1. [Ryan Zhou's instructions](https://medium.com/@ryanzhou7/connecting-a-mysql-workbench-to-amazon-web-services-relational-database-service-36ae1f23d424). This post on Medium is Super Dope. You can probably skip my tutorial entirely and just follow this one.
