@@ -71,4 +71,8 @@ Here are the headers and choices I made for each in setting up my database:
         - VPC security group: "choose existing"
 * Database Authentication: password authentication
 
+After filling in these parameters, and with great hesitation, I hit "create database."
+
+Here is the resulting screen:
+
 
