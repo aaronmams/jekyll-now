@@ -113,4 +113,12 @@ To do this I had to leave the Amazon RDS Console and navigate back to the AWS Co
 
 ![aws-home](/images/aws-home.png)
 
-Then I navigated to the VPC tab and 
+Then I navigated to the VPC tab and went into Security Groups. Towards the bottom of the page there is a tab for "Inbound Rules." I clicked to edit my inbound rules to allow all traffic on all port ranges.
+
+![security-group](images/securitygroup-inbound-rules.png)
+
+Once I edited the inbound rules for my security group, I was able to connect to the cloud database through MySQL Workbench.
+
+![db-connection-good](/images/db-connection.png)
+
+
