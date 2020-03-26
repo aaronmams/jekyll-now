@@ -38,8 +38,13 @@ Note: I did end up having to make some adjustments to my "Security Group" which 
 
 ### Step 1B: Set up a test database
 
-From my AWS Console, I navigate to the RDS service. 
+First, I go to my AWS Console and navigate to the RDS service. 
 
+![aws-console]('/images/aws-rds-home.png')
+
+Note: you may have to a seach for 'RDS' in order to get to the right AWS service (there are lots of them).
+
+Next, 
 
 
 
