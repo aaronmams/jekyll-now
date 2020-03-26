@@ -75,4 +75,25 @@ After filling in these parameters, and with great hesitation, I hit "create data
 
 Here is the resulting screen:
 
+![db-complete](/images/db-complete.png)
+
+I assumed that the 'available' flag under status was a good sign. 
+
+## Step 2: Connect to the database 
+
+Here is where the rubber meets the road for me. I'm not a database engineer, I'm an analytics guy. I really only care about databases inasmuch as they are a useful piece of architecture that helps pipe data to my R or Python machines effectively. Generally speaking, what I care most about is being able to get data out of a database and into some analytics software.
+
+This is also the step that tripped me up and resulted in several hours of troubleshooting.
+
+### Step 2A: Get MySQL Workbench
+
+I already had this product installed but if you're playing along at home and don't already have the MySQL Workbench, just [go here](https://dev.mysql.com/downloads/workbench/) (or google "download MySQL Workbench). It's pretty painless...same as installing SQL Developer, TOAD, or any other SQL development environment.
+
+I didn't configure anything, just fired up the MySQL Workbench out-of-the-box.
+
+### Step 2B: Connect MySQL Workbench to the RDS database
+
+Here, we need 1 critical piece of info from the Amazon AWS Console: the database endpoint. 
+
+
 
