@@ -97,11 +97,11 @@ Here's a moderately interesting aside: when I created my VPC, AWS created a defa
 
 Here, you can see that my set-up has a route table (*mams-vpc-priv-rt*) with a local-only route, 
 
-![](/images/aws-routetable-priv.png)
+<img src="/images/aws-routetable-priv.png" width="400" height="200" />
 
 and default route table with a local route and a route to the internet gateway.
 
-![](/images/aws-routetable-default.png)
+<img src="/images/aws-routetable-default.png" width="400" height="200" />
 
 #### 1.3.1. Route Table Subnet Association
 
