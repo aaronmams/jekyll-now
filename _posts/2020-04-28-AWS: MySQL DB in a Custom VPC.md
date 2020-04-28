@@ -60,4 +60,56 @@ The steps here are the same as for creating the private subnet.
 
 The only difference between the public and private subnets will be the security features we assign to these subnets later.
 
-At this stage, it also deserves mention that I actually created 2 private subnets (mams-priv-sub-1b and mams-priv-sub-1c) because I'm going to be deploying my RDS database in two different Amazon Availability Zones (multi-availability zone configuration). This is not critical for the task at hand. 
+At this stage, it also deserves mention that I actually created 2 private subnets 
+
+* mams-priv-sub-1b 
+* mams-priv-sub-1c 
+
+This is because I'm going to be deploying my RDS database in two different Amazon Availability Zones (multi-availability zone configuration). This is not critical for the task at hand. 
+
+### 1.2. Internet Gateways
+
+For the public subnet we need an internet gateway so that the AWS resources like EC2 Instances deployed within the public subnet can get internet connectivity.
+
+From the VPC Dashboard left-rail navigation:
+
+* chose "Internet Gateways"
+* "Create Internet Gateway"
+
+#### 1.2.1. Attach Internet Gateway to VPC
+
+From the VPC Dashboard:
+
+* find "Internet Gateways" on the left-rail
+* click the radio button to the left of the internet gateway that you wish to attach to a VPC
+* Using the "Actions" button above the table select "Attach to VPC"
+
+### 1.3. Create Route Tables
+
+From the VPC Dashboard:
+
+* left-rail navigation, "Route Tables"
+* "Create Route Table"
+
+Here, I'm creating a route table for the private subnet so I'm giving it the descriptive name, *mams-vpc-priv-rt*.
+
+Here's a moderately interesting aside: when I created my VPC, AWS created a default Route Table for that VPC. Curious readers maybe wondering why then do I need a new route table when a default route table exists? Basically, it's because I created two subnets: one public and one private. Any AWS resources deployed inside the private subnet must not get public IPs or internet connectivity. So that default route table will get assigned to my public subnet while this new route table is going to get assigned to the private subnet.  
+
+Here, you can see that my set-up has a route table (*mams-vpc-priv-rt*) with a local-only route, 
+
+![](/images/aws-routetable-priv.png)
+
+and default route table with a local route and a route to the internet gateway.
+
+![](/images/aws-routetable-default.png)
+
+#### 1.3.1. Route Table Subnet Association
+
+There's one more step that I need to set up the route tables. I want my private subnets associated with the private (local only) route table and I want my public subnets associated with the public (internet connectivity) route table.
+
+From the Route Table Menu I select the route table that I want to edit then:
+
+* choose the "Subnet Associations" table
+* make sure that only the subnets I want associated with this route table are checked
+* save changes
+* repeat for the other route tables
