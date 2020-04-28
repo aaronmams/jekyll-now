@@ -1,21 +1,24 @@
 ![](/images/aws-cartoon.png)
 
-Here's something I've been working on that I thought was worth sharing. I set up a private relational database in Amazon's AWS/RDS then connected to it using a virtual ubuntu server set up in Amazon's EC2 service. In this case, the key to connecting the two was creating a virtual private cloud (VPC) where the two resources were spawned.   
+Here's something I've been working on that I thought was worth sharing. I set up a private relational database (a MySQL DB) in Amazon's AWS/RDS then connected to it using a virtual Ubuntu server set up in Amazon's EC2 service. In this case, the key to connecting the two was creating a virtual private cloud (VPC) where the two resources were spawned.   
 
-Here is a detailed summary of the steps: 
+This really, really long post is going to walk through how I did this.
 
-1. create a VPC
-1.1. create public and private subnets 
-3. set-up internet gateway
-4. set-up route table
-5. create security groups
-6. set up a private MySQL database in AWS/RDS inside the private subnets within the VPC
-7. set up a virtual server in an EC2 Instance in a public subnet within the VPC
-8. check to see if a MySQL client is installed on the EC2 instance and install one if necessary
-9. connect to the EC2 Instance via SSH protocol
-10. connect to the RDS database from the EC2 Instance
+Here is a summary of the steps: 
 
-the database is in a security group called 'mams-rds-db-sg' and the EC2 instance is in a security group called 'public-vm-sg'. In order to connect to the RDS from EC2 I had to edit the inbound rules for the 'mams-rds-db-sg' to accept MySQL connections from the 'public-vm-sg' security group.
+1. create a custom VPC
+    1.1. create public and private subnets 
+    1.2. set-up internet gateway
+    1.3. set-up route table
+    1.4. create security groups
+    1.5. create subnet groups
+2. set up a private MySQL database in AWS/RDS inside the private subnets within the VPC
+3. set up a virtual server in an EC2 Instance in a public subnet within the VPC
+4. connect to EC2 Instance from local workstation
+5. connect EC2 Instance to the RDS Database
+    5.1. check to see that MySQL Client is installed on EC2 server
+    5.2. connect to the EC2 Instance via SSH protocol
+
 
 # Big Picture
 
