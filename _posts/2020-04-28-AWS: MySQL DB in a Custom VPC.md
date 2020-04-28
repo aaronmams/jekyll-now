@@ -5,7 +5,7 @@ Here's something I've been working on that I thought was worth sharing. I set up
 Here is a detailed summary of the steps: 
 
 1. create a VPC
-2. create public and private subnets 
+1.1. create public and private subnets 
 3. set-up internet gateway
 4. set-up route table
 5. create security groups
