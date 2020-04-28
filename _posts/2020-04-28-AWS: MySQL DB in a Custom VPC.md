@@ -113,3 +113,57 @@ From the Route Table Menu I select the route table that I want to edit then:
 * make sure that only the subnets I want associated with this route table are checked
 * save changes
 * repeat for the other route tables
+
+### 1.4. Create Security Groups
+
+From the VPC Dashboard:
+
+* in the left-rail choose "Security Groups"
+* use the blue "Create Security Group" call-to-action to launch the security group wizard
+* give the new security group a name and description (mine is *mams-rds-db-sg*)
+
+Next, I'm going to create a security group for the soon-to-be-created EC2 Instance. Same drill as above:
+
+* from the VPC Dashboard find "Security Groups" in the left-rail
+* use the "Create Security Group" CTA to launch the security group wizard
+* I'm naming this security group *public-vm-sg*
+
+In my architecture, the MySQL Database in AWS/RDS (the *minty hippo* database) will reside in the *mams-rds-db-sg* and the EC2 Instance (still yet to be created) will reside in the *public-vm-sg* security group 
+
+
+#### 1.4.1. Edit Security Group Features
+
+Since I want my EC2 Instance to be able to communicate with my RDS database, I have to edit the inbound rules in the *mams-rds-db-sg*. Here, I'm setting an inbound rule for *mams-rds-db-sg* of type "MySQL/Aurora" to accept a MySQL connection from resources within the *public-vm-sg* security group. Again, this is because my EC2 Instance will be governed by the *public-vm-sg* security group and I want to connect my EC2 Instance to the MySQL database that is governed by the *mams-rds-db-sg* security group.
+
+To set an inbound rule for the *mams-rds-db-sg* navigate to the VPC Dashbord and find "Security Groups" on the left-rail nav:
+
+* In the top table, I select the security group I want to edit
+* Using "Inbound Rules" tab to view the inbound rules
+* Use "Edit Rules" to set a new inbound rule
+
+<img src="/images/aws-securitygroup-inboundrules.png" width="400" height="200" />
+
+### 1.5. Create Subnet Groups
+
+I promise this tutorial is rapidly approaching the part where I actually create the database...The last of the foundational steps here is creating the subnet group where the RDS database instance will live. 
+
+From the RDS Dashboard:
+
+<img src="/images/aws-rds-subnetgroup.png" width="400" height="200" />
+ 
+* find "subnet groups" in the left-rail navigation
+* above the table displaying existing subnet groups find the CTA button "create database subnet group
+* the table below shows the fields needed to create a new subnet group
+
+| field       | value                         |
+|-------------|-------------------------------|
+| name        | mams-rds-subnet-group         |
+| description | subnet group for rds instance |
+| VPC ID      | mams-vpc                      |
+
+
+#### 1.5.1. Assigning subnets within the subnet group
+
+The final step in creating the subnet groups is to assign subnets within the VPC to this subnet group. 
+
+This step is not difficult be does require a little attention. Within the *mams-vpc* VPC, I have 3 subnets defined. Two are private subnets and one is a public subnet. Because this is the subnet group in which I will ultimately provision my private Database Instance, I want to assign ONLY THE TWO PRIVATE SUBNETS to this subnet group.  
