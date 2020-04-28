@@ -272,3 +272,97 @@ Last login: Fri Apr 24 15:01:54 2020 from 67.180.160.152
 ubuntu@ip-192-168-2-247:~$ 
 
 ```
+EUREKA! I'm in.
+
+## 5. Connect the EC2 Instance to the RDS Database
+
+### 5.1. Make sure a MySQL Client is available
+
+In order to connect to the database, I will need to have a MySQL Client installed on the EC2 instance. I have already installed the MySQL client on my EC2 Instance, a fact I can verify by executing:
+
+```console
+ubuntu@ip-192-168-2-247:~$ whereis mysql
+mysql: /usr/bin/mysql /etc/mysql /usr/share/man/man1/mysql.1.gz
+ubuntu@ip-192-168-2-247:~$ 
+```
+If you need to install a MySQL Client on an Ubuntu server I recommend trying something like:
+
+```console
+ubuntu@ip-192-168-2-247:~$ sudo apt-get install mysql-client-5.7
+
+``` 
+
+### 5.2. Connect to the database
+
+In order to connect my EC2 Instance to my RDS database, I need the database endpoint. This is found by going to the AWS RDS Dashboard finding the database I want to connect to, and looking at the "Connectivity and Security" tab.
+
+<img src="/images/aws-rds-endpoint.png" width="400" height="200" />
+
+The general form of the connection string is:
+
+```console
+mysql -h database-endpoint -u username -p
+```
+After entering the database endpoint and username you will be prompted to enter the database password. Here's what it look like for me:
+
+```console
+ubuntu@ip-192-168-2-247:~$ mysql -h mams-california.c65i4tmttvql.us-west-1.rds.amazonaws.com -u ***** -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7475
+Server version: 5.7.26-log Source distribution
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+
+```
+
+Finally, I'll confirm that everything is as expected by showing the databases available to me through this connection. Then displaying the database tables inside the *minty hippo* database that I created when I initialized this database instance.
+
+Additionally, before I wrote this up I added a table called "USERS" to the mintyhippo database and I shoved a couple rows on data into this table just so there would be something to query here.
+
+```console
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| innodb             |
+| mintyhippo         |
+| mysql              |
+| performance_schema |
+| sys                |
+| tmp                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use mintyhippo;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_mintyhippo |
++----------------------+
+| USERS                |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from USERS;
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+```
