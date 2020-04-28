@@ -7,17 +7,17 @@ This really, really long post is going to walk through how I did this.
 Here is a summary of the steps: 
 
 1. create a custom VPC
-    1.1. create public and private subnets 
-    1.2. set-up internet gateway
-    1.3. set-up route table
-    1.4. create security groups
-    1.5. create subnet groups
+    1. create public and private subnets 
+    2. set-up internet gateway
+    3. set-up route table
+    4. create security groups
+    5. create subnet groups
 2. set up a private MySQL database in AWS/RDS inside the private subnets within the VPC
 3. set up a virtual server in an EC2 Instance in a public subnet within the VPC
 4. connect to EC2 Instance from local workstation
 5. connect EC2 Instance to the RDS Database
-    5.1. check to see that MySQL Client is installed on EC2 server
-    5.2. connect to the EC2 Instance via SSH protocol
+    1. check to see that MySQL Client is installed on EC2 server
+    2. connect to the EC2 Instance via SSH protocol
 
 
 # Big Picture
