@@ -15,7 +15,7 @@ Here is a detailed summary of the steps:
 
 the database is in a security group called 'mams-rds-db-sg' and the EC2 instance is in a security group called 'public-vm-sg'. In order to connect to the RDS from EC2 I had to edit the inbound rules for the 'mams-rds-db-sg' to accept MySQL connections from the 'public-vm-sg' security group.
 
-#Big Picture
+# Big Picture
 
 The most recent lesson I've been working though in my Amazon/AWS/RDS/EC2 skills challenge was focused on setting up a private database in RDS and connecting to it via an EC2 instance. 
 
