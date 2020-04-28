@@ -37,6 +37,27 @@ goal: create the 'mams-vpc' virtual private cloud.
 
 <img src="/images/aws-home.png" width="400" height="200" />
 
-![](/images/aws-create-vpc1.png)
+<img src="/images/aws-create-vpc1.png" width="400" height="200" />
 
 I named my VPC *mams-vpc* and assigned it the CIDR block 192.168.0.0/16. I don't claim any real knowledge of CIDR blocks or how to use them to set up a VPC. I used this block because some [rando on the internet](https://forums.aws.amazon.com/message.jspa?messageID=621473) said it's an ideal block to use for setting up VPCs in AWS.
+
+### 1.1. Create Subnets w/i the VPC
+
+The architecture I am using for this project is to have an RDS database deployed in a private subnet within a VPC and an EC2 Instance that will function as a public-facing webserver. 
+
+The next step is to create these subnets. From the VPC Dashboard within AWS:
+
+* look to the left-rail navigation and click "subnets"
+* "Create subnet"
+
+#### 1.1.1. Create the Private Subnet
+
+<img src="/images/aws-create-subnet.png" width="400" height="200" />
+
+#### 1.1.2. Create the Public Subnet
+
+The steps here are the same as for creating the private subnet. 
+
+The only difference between the public and private subnets will be the security features we assign to these subnets later.
+
+At this stage, it also deserves mention that I actually created 2 private subnets (mams-priv-sub-1b and mams-priv-sub-1c) because I'm going to be deploying my RDS database in two different Amazon Availability Zones (multi-availability zone configuration). This is not critical for the task at hand. 
