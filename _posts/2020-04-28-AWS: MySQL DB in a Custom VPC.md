@@ -1,3 +1,5 @@
+![](/images/aws-cartoon.png)
+
 Here's something I've been working on that I thought was worth sharing. I set up a private relational database in Amazon's AWS/RDS then connected to it using a virtual ubuntu server set up in Amazon's EC2 service. In this case, the key to connecting the two was creating a virtual private cloud (VPC) where the two resources were spawned.   
 
 Here is a detailed summary of the steps: 
