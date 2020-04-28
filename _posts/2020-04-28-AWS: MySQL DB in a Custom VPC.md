@@ -37,6 +37,6 @@ goal: create the 'mams-vpc' virtual private cloud.
 
 ![](/images/aws-home.png)
 
-![](/images/aws-create-vpc-1.png)
+![](/images/aws-create-vpc1.png)
 
 I named my VPC *mams-vpc* and assigned it the CIDR block 192.168.0.0/16. I don't claim any real knowledge of CIDR blocks or how to use them to set up a VPC. I used this block because some [rando on the internet](https://forums.aws.amazon.com/message.jspa?messageID=621473) said it's an ideal block to use for setting up VPCs in AWS.
