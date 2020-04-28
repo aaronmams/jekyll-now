@@ -167,3 +167,75 @@ From the RDS Dashboard:
 The final step in creating the subnet groups is to assign subnets within the VPC to this subnet group. 
 
 This step is not difficult be does require a little attention. Within the *mams-vpc* VPC, I have 3 subnets defined. Two are private subnets and one is a public subnet. Because this is the subnet group in which I will ultimately provision my private Database Instance, I want to assign ONLY THE TWO PRIVATE SUBNETS to this subnet group.  
+
+## 2. Launch an AWS/RDS Database in the Custom VPC
+
+So this is approximately where the fun stuff starts. I [provided some detail on provisioning an AWS/RDS MySQL Database Instance in this post](https://aaronmams.github.io/Connect-to-Amazon-RDS-DB-with-MySQL-Workbench/). 
+
+The current project follows these same steps with a couple important differences:
+
+| field               | value                 |
+|---------------------|-----------------------|
+| Multi-AZ Deployment | yes                   |
+| vpc                 | mams-vpc              |
+| subnet group        | mams-rds-subnet-group |
+| publicly accessible | no                    |
+| vpc security group  | mams-rds-db-sg        |
+|                     |                       |
+
+First, I set-up this database instance in a Multi Availability Zone configuration. Again, this has no material impact on the goal of this post (I have future project in mind that will require Multi-AZ configuration so I'm looking forward a little).
+
+Next, I launched the database instance in the custom VPC (*mams-vpc*) I just created, with the subnet group governing the private subnets, and within the security group I set-up for this custom VPC.
+
+## 3. Provision an AWS/EC2 Instance
+
+In this step I'm going to launch an EC2 Instance inside the custom VPC I created (*mams-vpc*) for the purpose of connecting to my RDS MySQL database.
+
+To do this I navigate to the EC2 Dashboard and look for the "launch instance" call-to-action.
+
+<img src="/images/aws-ec2-launch.png" width="400" height="200" />
+
+The next step is choose the Amazon Machine Image (AMI). I chose an Ubuntu 16.04 AMI.
+
+<img src="/images/aws-ec2-ami-select.png" width="400" height="200" />
+
+I had two reason for choosing this AMI but I fear neither of them is a very good generalizable reason for selecting one AMI over another. My reasons were:
+
+1. Ubuntu 16.04 was "free tier" eligible, and
+2. I wanted a Linux distribution and I have some very remedial experience with the Ubuntu Linux distribution.
+
+After choosing the AMI, here are the remaining set-up steps:
+
+### 3.1. EC2 Instance type
+
+I choose the "t2-micro" instance type as this is kind of a proof-of-concept so I don't need a ton of computing power.
+
+### 3.2. Configure EC2 Instance
+
+| field                 | value            |
+|-----------------------|------------------|
+| Network               | mams-vpc         |
+| Subnet                | mams-vpc-pub-sub |
+| Auto-assign Public IP | Enable           |
+
+
+### 3.3. Add Storage
+
+I accepted the default 8 GB of storage here and moved on pretty quickly.
+
+### 3.4. Add Tags
+
+Another short step. I named this EC2 Instance "public-vm-1" for no real good reason.
+
+### 3.5. Configure Security Group
+
+I attached my EC2 Instance to the "public-vm-sg" security group that I created above.
+
+### 3.6. Review and Launch EC2 Instance
+
+The noteworthy part of this process is the generation of the key pair. AWS uses [public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) to encrypt login info. Before launching my EC2 Instance, AWS generates a key pair for me. This key pair file must be downloaded a saved in order to connect to an EC2 Instance.
+
+After all that, I have an EC2 Instance up and running.
+
+<img src="/images/aws-ec2-final.png" width="400" height="200" />
+
