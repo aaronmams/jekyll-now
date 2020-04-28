@@ -233,9 +233,42 @@ I attached my EC2 Instance to the "public-vm-sg" security group that I created a
 
 ### 3.6. Review and Launch EC2 Instance
 
-The noteworthy part of this process is the generation of the key pair. AWS uses [public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) to encrypt login info. Before launching my EC2 Instance, AWS generates a key pair for me. This key pair file must be downloaded a saved in order to connect to an EC2 Instance.
+The noteworthy part of this process is the generation of the key pair. AWS uses [public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography) to encrypt login info. Before launching my EC2 Instance, AWS generates a key pair for me. This key pair file must be downloaded and saved in order to connect to an EC2 Instance.
 
 After all that, I have an EC2 Instance up and running.
 
 <img src="/images/aws-ec2-final.png" width="400" height="200" />
 
+## 4. Connect to the EC2 Instance
+
+On the EC2 Dashboard there a "Connect" button that provides details on how to connect to the EC2 Instance. 
+
+<img src="/images/aws-ec2-connect.png" width="400" height="200" />
+
+Using the example ssh command given above I can connect to my EC2 Ubuntu server through my Mac terminal. Note that I first navigate to my "Desktop" directory. That's because I stored my key pair file (mams-ec2.pem) on the Desktop.
+
+```console
+(base) aarons-MacBook-Air-2:~ aaronmamula$ cd ~/Desktop
+(base) aarons-MacBook-Air-2:Desktop aaronmamula$ ssh -i "mams-ec2.pem" ubuntu@ec2-54-153-106-13.us-west-1.compute.amazonaws.com
+Welcome to Ubuntu 16.04.6 LTS (GNU/Linux 4.4.0-1101-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Ubuntu 20.04 LTS is out, raising the bar on performance, security,
+   and optimisation for Intel, AMD, Nvidia, ARM64 and Z15 as well as
+   AWS, Azure and Google Cloud.
+
+     https://ubuntu.com/blog/ubuntu-20-04-lts-arrives
+
+
+15 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Fri Apr 24 15:01:54 2020 from 67.180.160.152
+ubuntu@ip-192-168-2-247:~$ 
+
+```
