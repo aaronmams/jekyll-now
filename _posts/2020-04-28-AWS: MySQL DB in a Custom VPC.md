@@ -35,9 +35,7 @@ goal: create the 'mams-vpc' virtual private cloud.
 * Use the left column to navigate to "Your VPCs"
 * Find the call-to-action for "Create VPC"
 
-<img src="/images/aws-home.png" width="200" height="200" />
-
-![](/images/aws-home.png){:height="50%" width="50%"}
+<img src="/images/aws-home.png" width="400" height="200" />
 
 ![](/images/aws-create-vpc1.png)
 
