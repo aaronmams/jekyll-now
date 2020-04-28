@@ -34,7 +34,7 @@ Now, I'll go through the steps I outlined above 1-by-1:
 
 ## 1. Create a Custom VPC
 
-goal: create the 'mams-vpc' virtual private cloud.
+goal: create the 'mams-vpc' virtual private cloud with public and private subnets. 
 
 * From the AWS Dashboard use the **Services** drop down and search for "VPC". 
 * Use the left column to navigate to "Your VPCs"
