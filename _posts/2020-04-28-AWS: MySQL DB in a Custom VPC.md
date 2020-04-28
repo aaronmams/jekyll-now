@@ -141,7 +141,7 @@ To set an inbound rule for the *mams-rds-db-sg* navigate to the VPC Dashbord and
 * Using "Inbound Rules" tab to view the inbound rules
 * Use "Edit Rules" to set a new inbound rule
 
-<img src="/images/aws-securitygroup-inboundrules.png" width="400" height="200" />
+<img src="/images/securitygroup-inboundrules.png" width="400" height="200" />
 
 ### 1.5. Create Subnet Groups
 
