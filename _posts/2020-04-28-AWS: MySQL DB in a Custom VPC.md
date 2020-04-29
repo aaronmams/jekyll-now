@@ -24,7 +24,7 @@ Here is a summary of the steps:
     2. connect to the EC2 Instance via SSH protocol
 
 
-# Big Picture & Resources
+## Big Picture & Resources
 
 Here are some resources and references:
 
@@ -38,20 +38,18 @@ Here are some short vignettes on topics relevant to the material below:
 * [What is an Internet Gateways?](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
 * [What is a Route Table?](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
 
+I will also mention [that I wrote this post](https://aaronmams.github.io/Connect-to-Amazon-RDS-DB-with-MySQL-Workbench/) about creating a public MySQL database in Amazon AWS/RDS.  
 
-
-This is notably different from what I did [here in my last post](https://aaronmams.github.io/Connect-to-Amazon-RDS-DB-with-MySQL-Workbench/) where I created a public database. In this case, the inbound rules were set such that anyone (with the proper endpoint and log-in credentials) from any IP address could connect to the database. 
-
-Now, I'll go through the steps I outlined above 1-by-1:
+Without further build-up, I'll now go through the steps I outlined above 1-by-1:
 
 ## 1. Create a Custom VPC
 
-goal: create the 'mams-vpc' virtual private cloud with public and private subnets. 
+Goal: to create the 'mams-vpc' virtual private cloud with public and private subnets. 
 
 As noted above, the custom VPC plays an important security role. By launching an AWS/RDS instance in a VPC, it is only accessible by other resources that also reside within that VPC. In this case, access to the database will be limited to the EC2 instance that will be spawned in the same VPC. Since access to the EC2 instance is controlled by the use of a unique encrypted private key pair, the database is not exposed to random internet traffic. 
 
-* From the AWS Dashboard use the **Services** drop down and search for "VPC". 
-* Use the left column to navigate to "Your VPCs"
+* From the AWS Dashboard use the **Services** drop down menu and search for "VPC". 
+* Use the left-rail navigation and select "Your VPCs"
 * Find the call-to-action for "Create VPC"
 
 <img src="/images/aws-home.png" width="400" height="200" />
@@ -112,7 +110,7 @@ From the VPC Dashboard:
 
 Here, I'm creating a route table for the private subnet so I'm giving it the descriptive name, *mams-vpc-priv-rt*.
 
-Here's a moderately interesting aside: when I created my VPC, AWS created a default Route Table for that VPC. Curious readers maybe wondering why then do I need a new route table when a default route table exists? Basically, it's because I created two subnets: one public and one private. Any AWS resources deployed inside the private subnet must not get public IPs or internet connectivity. So that default route table will get assigned to my public subnet while this new route table is going to get assigned to the private subnet.  
+Here's a moderately interesting aside: when I created my VPC, AWS created a default Route Table for that VPC. Curious readers may be wondering why then do I need a new route table when a default route table exists? Basically, it's because I created two subnets: one public and one private. Any AWS resources deployed inside the private subnet must not get public IPs or internet connectivity. So that default route table will get assigned to my public subnet while this new route table is going to get assigned to the private subnet.  
 
 Here, you can see that my set-up has a route table (*mams-vpc-priv-rt*) with a local-only route, 
 
@@ -126,7 +124,7 @@ and default route table with a local route and a route to the internet gateway.
 
 There's one more step that I need to set up the route tables. I want my private subnets associated with the private (local only) route table and I want my public subnets associated with the public (internet connectivity) route table.
 
-From the Route Table Menu I select the route table that I want to edit then:
+From the Route Table Menu I select the route table that I want to edit, then:
 
 * choose the "Subnet Associations" table
 * make sure that only the subnets I want associated with this route table are checked
@@ -138,7 +136,7 @@ From the Route Table Menu I select the route table that I want to edit then:
 From the VPC Dashboard:
 
 * in the left-rail choose "Security Groups"
-* use the blue "Create Security Group" call-to-action to launch the security group wizard
+* use the "Create Security Group" call-to-action to launch the security group wizard
 * give the new security group a name and description (mine is *mams-rds-db-sg*)
 
 Next, I'm going to create a security group for the soon-to-be-created EC2 Instance. Same drill as above:
@@ -154,7 +152,7 @@ In my architecture, the MySQL Database in AWS/RDS (the *minty hippo* database) w
 
 Since I want my EC2 Instance to be able to communicate with my RDS database, I have to edit the inbound rules in the *mams-rds-db-sg*. Here, I'm setting an inbound rule for *mams-rds-db-sg* of type "MySQL/Aurora" to accept a MySQL connection from resources within the *public-vm-sg* security group. Again, this is because my EC2 Instance will be governed by the *public-vm-sg* security group and I want to connect my EC2 Instance to the MySQL database that is governed by the *mams-rds-db-sg* security group.
 
-To set an inbound rule for the *mams-rds-db-sg* navigate to the VPC Dashbord and find "Security Groups" on the left-rail nav:
+To set an inbound rule for the *mams-rds-db-sg*, navigate to the VPC Dashbord and find "Security Groups" on the left-rail nav:
 
 * In the top table, I select the security group I want to edit
 * Using "Inbound Rules" tab to view the inbound rules
@@ -171,8 +169,8 @@ From the RDS Dashboard:
 <img src="/images/aws-rds-subnetgroup.png" width="400" height="200" />
  
 * find "subnet groups" in the left-rail navigation
-* above the table displaying existing subnet groups find the CTA button "create database subnet group
-* the table below shows the fields needed to create a new subnet group
+* above the table displaying existing subnet groups find the CTA button "create database subnet group"
+* the table below shows the fields needed to create a new subnet group and the values I picked for each field
 
 | field       | value                         |
 |-------------|-------------------------------|
@@ -185,13 +183,13 @@ From the RDS Dashboard:
 
 The final step in creating the subnet groups is to assign subnets within the VPC to this subnet group. 
 
-This step is not difficult be does require a little attention. Within the *mams-vpc* VPC, I have 3 subnets defined. Two are private subnets and one is a public subnet. Because this is the subnet group in which I will ultimately provision my private Database Instance, I want to assign ONLY THE TWO PRIVATE SUBNETS to this subnet group.  
+This step is not difficult but does require a little attention. Within the *mams-vpc* VPC, I have 3 subnets defined. Two are private subnets and one is a public subnet. Because this is the subnet group in which I will ultimately provision my private Database Instance, I want to assign ONLY THE TWO PRIVATE SUBNETS to this subnet group.  
 
 ## 2. Launch an AWS/RDS Database in the Custom VPC
 
 So this is approximately where the fun stuff starts. I [provided some detail on provisioning an AWS/RDS MySQL Database Instance in this post](https://aaronmams.github.io/Connect-to-Amazon-RDS-DB-with-MySQL-Workbench/). 
 
-The current project follows these same steps with a couple important differences:
+The current project follows these same steps with a couple important differences. When launching the database instance for this build versus the prior post, the following optional fields are populated differently. Here are the key fields and values that differ between this build and [my last AWS/RDS Database Instance](https://aaronmams.github.io/Connect-to-Amazon-RDS-DB-with-MySQL-Workbench/). 
 
 | field               | value                 |
 |---------------------|-----------------------|
@@ -223,7 +221,7 @@ I had two reason for choosing this AMI but I fear neither of them is a very good
 1. Ubuntu 16.04 was "free tier" eligible, and
 2. I wanted a Linux distribution and I have some very remedial experience with the Ubuntu Linux distribution.
 
-After choosing the AMI, here are the remaining set-up steps:
+After choosing the AMI, here are the remaining set-up steps for launching an AWS/EC2 Instance:
 
 ### 3.1. EC2 Instance type
 
@@ -237,18 +235,17 @@ I choose the "t2-micro" instance type as this is kind of a proof-of-concept so I
 | Subnet                | mams-vpc-pub-sub |
 | Auto-assign Public IP | Enable           |
 
-
 ### 3.3. Add Storage
 
 I accepted the default 8 GB of storage here and moved on pretty quickly.
 
 ### 3.4. Add Tags
 
-Another short step. I named this EC2 Instance "public-vm-1" for no real good reason.
+Another short step. I named this EC2 Instance *public-vm-1* for no real good reason.
 
 ### 3.5. Configure Security Group
 
-I attached my EC2 Instance to the "public-vm-sg" security group that I created above.
+I attached my EC2 Instance to the *public-vm-sg* security group that I created above.
 
 ### 3.6. Review and Launch EC2 Instance
 
@@ -259,6 +256,8 @@ After all that, I have an EC2 Instance up and running.
 <img src="/images/aws-ec2-final.png" width="400" height="200" />
 
 ## 4. Connect to the EC2 Instance
+
+Quick admission: I connect to my EC2 Instances exclusively via ssh from the terminal on my Mac laptop. If there are other ways, I have no idea what they are. 
 
 On the EC2 Dashboard there a "Connect" button that provides details on how to connect to the EC2 Instance. 
 
@@ -293,11 +292,13 @@ ubuntu@ip-192-168-2-247:~$
 ```
 EUREKA! I'm in.
 
+IMPORTANT NOTE HERE: when using ssh to connect to your EC2 Instance the first argument is the name of the key pair file and the second argument is the public dns or endpoint of the EC2 Instance. The first time I tried to connect I got an error message saying that permissions for my key pair file were too open. If this happens to you [here is a short but elegant post on how to fix that issue](https://99robots.com/how-to-fix-permission-error-ssh-amazon-ec2-instance/).
+
 ## 5. Connect the EC2 Instance to the RDS Database
 
 ### 5.1. Make sure a MySQL Client is available
 
-In order to connect to the database, I will need to have a MySQL Client installed on the EC2 instance. I have already installed the MySQL client on my EC2 Instance, a fact I can verify by executing:
+In order to connect to the database, I will need to have a MySQL Client installed on the EC2 instance. I'm cheating a little as I have already installed the MySQL client on my EC2 Instance, a fact I can verify by executing:
 
 ```console
 ubuntu@ip-192-168-2-247:~$ whereis mysql
