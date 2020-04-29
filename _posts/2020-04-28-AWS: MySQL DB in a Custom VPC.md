@@ -172,6 +172,7 @@ From the RDS Dashboard:
 * above the table displaying existing subnet groups find the CTA button "create database subnet group"
 * the table below shows the fields needed to create a new subnet group and the values I picked for each field
 
+
 | field       | value                         |
 |-------------|-------------------------------|
 | name        | mams-rds-subnet-group         |
