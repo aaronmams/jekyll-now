@@ -1,8 +1,12 @@
 ![](/images/aws-cartoon.png)
 
-Here's something I've been working on that I thought was worth sharing. I set up a private relational database (a MySQL DB) in Amazon's AWS/RDS then connected to it using a virtual Ubuntu server set up in Amazon's EC2 service. In this case, the key to connecting the two was creating a virtual private cloud (VPC) where the two resources were spawned.   
+Just another *How I Built It* post. Let's start with the all-important What? and Why?
 
-This really, really long post is going to walk through how I did this.
+**What?** I created a custom Virtual Private Cloud (VPC) in Amazon AWS. I created this VPC with public and private subnet partitions. I deployed a private MySQL Database within the private subnets within my VPC. I then created an EC2 Instance (A virtual Linux Server) in the public subnet within my custom VPC in order to connect with the MySQL Database.
+
+**Why?** The architecture that I'm trying to get some dexterity with here seems really useful if you have an application that you would like to host on the web which needs to read from, and possibly write to, a database. I happen to have an R-Shiny application that I would like to host on a webserver. I intend for this application to read and write from a database. The database will contain some sensitive information that I do not want to be accessible from the internet. Point of clarification: I will not be demonstrating deployment of this R-Shiny App in this post. Here, I'm just covering how I set up the VPC and connected an EC2 instance to the private MySQL database. 
+
+**How?** This really, really long post is going to walk through how I did this.
 
 Here is a summary of the steps: 
 
@@ -20,21 +24,31 @@ Here is a summary of the steps:
     2. connect to the EC2 Instance via SSH protocol
 
 
-# Big Picture
+# Big Picture & Resources
 
-The most recent lesson I've been working though in my Amazon/AWS/RDS/EC2 skills challenge was focused on setting up a private database in RDS and connecting to it via an EC2 instance. 
+Here are some resources and references:
 
-The primary purpose of this exercise (as I understand it) is security. By launching the RDS instance in a VPC, it is only accessible by other resources that also reside within that VPC. In this case, access to the database is limited to the EC2 instance that will be spawned in the same VPC. Since access to the EC2 instance is controlled by the use of a unique encrypted private key pair, the database is not exposed to random internet traffic. 
+* This build was an assignment in an online class I'm working through. [The class is here](https://www.udemy.com/course/aws-master-class-databases-in-the-cloud-with-aws-rds/) if you're interested. 
+* [here's a really good, but pretty dense/technical tutorial](https://dev.to/frosnerd/deploying-and-benchmarking-an-aws-rds-mysql-instance-2faf)
+
+Here are some short vignettes on topics relevant to the material below:
+
+* [What is a VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+* [What is a Subnet?](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
+* [What is an Internet Gateways?](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
+* [What is a Route Table?](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
+
+
 
 This is notably different from what I did [here in my last post](https://aaronmams.github.io/Connect-to-Amazon-RDS-DB-with-MySQL-Workbench/) where I created a public database. In this case, the inbound rules were set such that anyone (with the proper endpoint and log-in credentials) from any IP address could connect to the database. 
-
-For context, my ultimate goal here is to have an R-Shiny Application hosted on the web. I would like this R-Shiny App to offer some interactive exploration of a database. The database I'm considering will hold private information on individual customers. For this reason, I don't want the database to be publicly accessible. I want access to the database controlled through the R-Shiny App so I can ensure that only aggregated data summaries (that don't expose individual private information) are displayed. I'm nowhere near this end goal yet...but the architecture I'm discussing here is what I believe to be my best shot at operationalizing this longer-term goal.
 
 Now, I'll go through the steps I outlined above 1-by-1:
 
 ## 1. Create a Custom VPC
 
 goal: create the 'mams-vpc' virtual private cloud with public and private subnets. 
+
+As noted above, the custom VPC plays an important security role. By launching an AWS/RDS instance in a VPC, it is only accessible by other resources that also reside within that VPC. In this case, access to the database will be limited to the EC2 instance that will be spawned in the same VPC. Since access to the EC2 instance is controlled by the use of a unique encrypted private key pair, the database is not exposed to random internet traffic. 
 
 * From the AWS Dashboard use the **Services** drop down and search for "VPC". 
 * Use the left column to navigate to "Your VPCs"
