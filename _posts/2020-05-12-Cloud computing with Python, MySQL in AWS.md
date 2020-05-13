@@ -140,3 +140,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 (3, u'aaron', u'mamula', u'aamamula@ucsc.edu')
 
 ``` 
+
+It's a small victory but an important one for me. It's a proof of concept. If I can connect the Python version running on the EC2 server to the RDS Database using command line tools then I can probably figure out how to do it in a .py file. That means I can write larger data analytics scripts that pull from the MySQL database on RDS and I can run the script on the EC2 Ubuntu server (probably). 
+
+
