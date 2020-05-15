@@ -1,4 +1,5 @@
-<img src "/images/fetchone-vim.png" width=400 height=200/>
+
+<img src "/images/fetchone-vim.png" width=400 height=200 />
 
 [In my last post](https://aaronmams.github.io/Cloud-computing-with-Python,-MySQL-in-AWS/) I established a python connection to a MySQL database running on in AWS/RDS. In this follow-up I want to do essentially the same thing but I'd like to do it through a python script. 
 
