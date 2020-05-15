@@ -90,7 +90,7 @@ user = ******
 password = *******
 ```
 
-## Step 2: send these files to the AWS server
+## Step 2: Send these files to the AWS server
 
 I have created a directory in my AWS Ubuntu server called rdstest. This is where I will be storing the aforementioned files.
 
