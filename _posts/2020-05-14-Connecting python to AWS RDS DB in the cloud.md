@@ -1,3 +1,6 @@
+
+![fetchone-file](/images/fetchone-vim.png)
+
 [In my last post](https://aaronmams.github.io/Cloud-computing-with-Python,-MySQL-in-AWS/) I established a python connection to a MySQL database running on in AWS/RDS. In this follow-up I want to do essentially the same thing but I'd like to do it through a python script. 
 
 There are 3 parts to this:
