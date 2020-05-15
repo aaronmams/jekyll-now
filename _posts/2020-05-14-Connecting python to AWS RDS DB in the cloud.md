@@ -91,10 +91,10 @@ password = *******
 
 I have created a directory in my AWS Ubuntu server called rdstest. This is where I will be storing the aforementioned files.
 
-Moving .py files to the AWS server
+Moving .py files to the AWS server. The first argument is the key-pair file allowing a connection to the remote server, the second argument is the file I want to me to the sever, the third argument is the dns or server endpoint.
 
 ```bash
-scp -i ~/Desktop/mams-ec2.pem ~/Desktop/AWSpython/python_mysql_dbconfig.py ubuntu@ec2-54-153-106-13.us-west-1.compute.amazonaws.com:~/rdstest
+(base) aarons-MacBook-Air-2:~ aaronmamula$ scp -i ~/Desktop/*****.pem ~/Desktop/AWSpython/python_mysql_dbconfig.py ubuntu@ec2-54-153-106-13.us-west-1.compute.amazonaws.com:~/rdstest
 ```
 
 After the file transfer I log back into my AWS server and check that the files I want are where I want them:
