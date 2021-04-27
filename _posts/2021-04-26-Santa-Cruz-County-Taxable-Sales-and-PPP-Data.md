@@ -1,11 +1,5 @@
-Some Fun Data on Regional Economic Activity
-================
-Aaron Mamula
-4/22/2021
-
-# 
-
-## Intro + Background
+Intro + Background
+------------------
 
 This is going to be a quick look at two kind of cool data sets that seem
 really interesting and useful for evaluating the economic impacts of
@@ -25,18 +19,18 @@ complexity and just focus in on what the two data sets have to say about
 the Retail and Food/Beverage Service Sector of the Santa Cruz County
 (CA) local economy. Here’s a quick outline for the rest of this post:
 
-  - First, I collect the PPP data for all businesses operating in Santa
+-   First, I collect the PPP data for all businesses operating in Santa
     Cruz County, CA
-  - I collect the California Taxable Sales by City data.
-  - I filter the PPP data to include businesses defined by NAICs Codes
+-   I collect the California Taxable Sales by City data.
+-   I filter the PPP data to include businesses defined by NAICs Codes
     associated with Retail and Food Service Establishments
-  - I filter the California Taxable Sales data to include just
+-   I filter the California Taxable Sales data to include just
     observations from Santa Cruz County
-  - Then, I plot the California Taxable Sales data for Santa Cruz County
+-   Then, I plot the California Taxable Sales data for Santa Cruz County
     from 2009 - 2020 which provides a quick and dirty look at how
     Covid-19 impacted Retail and Food Services Transactions in Santa
     Cruz County
-  - Finally, I plot the PPP data for Retail and Food Services
+-   Finally, I plot the PPP data for Retail and Food Services
     businesses. This gives a quick look at how much “bailout money” was
     given to Retail and Food Services firm in Santa Cruz County. This is
     a rough approximation of how much business lost because of the
@@ -46,21 +40,20 @@ the Retail and Food/Beverage Service Sector of the Santa Cruz County
 
 Here are the R libraries that this module depends on:
 
-``` r
-library(dplyr)
-library(ggplot2)
-library(DT)
-library(ggthemes)
-library(zoo)
-library(scales)
-library(lubridate)
-library(formattable)
-```
+    library(dplyr)
+    library(ggplot2)
+    library(DT)
+    library(ggthemes)
+    library(zoo)
+    library(scales)
+    library(lubridate)
+    library(formattable)
 
 There are also some data dependencies but I will discuss those in the
 next section.
 
-## Data
+Data
+----
 
 ### Source Data
 
@@ -78,7 +71,7 @@ These data are pretty interesting and folks interested in using them for
 things more serious than recreational data mining should do their own
 due diligence. Here’s a quick summary:
 
-  - The PPP program was created to help businesses retain and pay
+-   The PPP program was created to help businesses retain and pay
     workers during the Covid-19 pandemic. It was a form of economic
     stimulus that was offered to businesses on the condition that at
     least 75% of the payment amount go directly to payroll. The PPP data
@@ -88,11 +81,9 @@ due diligence. Here’s a quick summary:
     and address of the business, amount of PPP money received, and other
     helpful stuff (like NAICS Code for each recipient).
 
-  - The California Taxable Sales Data that I am using are reported
+-   The California Taxable Sales Data that I am using are reported
     quarterly for each major city in California. The values of most
     interest are reported in two columns:
-
-<!-- end list -->
 
 1.  Retail and Food Services Transactions, and
 2.  All Outlets Transactions
@@ -111,45 +102,41 @@ to:
 I’ll try to crank out a follow-up post to this one with more
 reproducible content on working with these PPP data.
 
-``` r
-# this part is a little cumbersome...in my PPP-EIDL Project I've created a linked set of functions to make this look nice...
-#   but it's hard to run these from within my GitHub Blog so we're going old-skool here:
-  public150plus <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_150k_plus.csv",
-                            stringsAsFactors = F)
-  public_up_to_150k_1 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_1.csv",
-                                  stringsAsFactors = F)
-  public_up_to_150k_2 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_2.csv",
-                                  stringsAsFactors = F)
-  public_up_to_150k_3<- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_3.csv",
-                                 stringsAsFactors = F)
-  public_up_to_150k_4 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_4.csv",
-                                  stringsAsFactors = F)
-  public_up_to_150k_5 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_5.csv",
-                                  stringsAsFactors = F)
-  public_up_to_150k_6 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_6.csv",
-                                  stringsAsFactors = F)
-  
-  
-  ppp.df <- rbind(public150plus,
-                  public_up_to_150k_1,
-                  public_up_to_150k_2,
-                  public_up_to_150k_3,
-                  public_up_to_150k_4,
-                  public_up_to_150k_5,
-                  public_up_to_150k_6)
-```
+    # this part is a little cumbersome...in my PPP-EIDL Project I've created a linked set of functions to make this look nice...
+    #   but it's hard to run these from within my GitHub Blog so we're going old-skool here:
+      public150plus <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_150k_plus.csv",
+                                stringsAsFactors = F)
+      public_up_to_150k_1 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_1.csv",
+                                      stringsAsFactors = F)
+      public_up_to_150k_2 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_2.csv",
+                                      stringsAsFactors = F)
+      public_up_to_150k_3<- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_3.csv",
+                                     stringsAsFactors = F)
+      public_up_to_150k_4 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_4.csv",
+                                      stringsAsFactors = F)
+      public_up_to_150k_5 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_5.csv",
+                                      stringsAsFactors = F)
+      public_up_to_150k_6 <- read.csv("C:/Users/aaron.mamula/Desktop/R-Projects/PPP-EIDL-Analysis/source-data/02-01-21 Paycheck Protection Program Data/public_up_to_150k_6.csv",
+                                      stringsAsFactors = F)
+      
+      
+      ppp.df <- rbind(public150plus,
+                      public_up_to_150k_1,
+                      public_up_to_150k_2,
+                      public_up_to_150k_3,
+                      public_up_to_150k_4,
+                      public_up_to_150k_5,
+                      public_up_to_150k_6)
 
 These data are quite large (mainly because they are very wide) so I’m
 going to filter them to include just Santa Cruz County for this
 illustration:
 
-``` r
-# the PPP data have a BorrowerCounty field and a ProjectCountyName field. These two values are generally the same but 
-# can be different. I'm going to argue that, for this application, the ProjectCountyName is the more important of the two 
-#  because this should be a better indicator of where the money was distributed. 
+    # the PPP data have a BorrowerCounty field and a ProjectCountyName field. These two values are generally the same but 
+    # can be different. I'm going to argue that, for this application, the ProjectCountyName is the more important of the two 
+    #  because this should be a better indicator of where the money was distributed. 
 
-ppp.df <- ppp.df %>% filter(ProjectCountyName=="SANTA CRUZ" & BorrowerState=="CA")
-```
+    ppp.df <- ppp.df %>% filter(ProjectCountyName=="SANTA CRUZ" & BorrowerState=="CA")
 
 The California Taxable Sales Data by City are accessible through an API
 maintained by the California Department of Tax and Fee Information. The
@@ -161,10 +148,8 @@ is the JSON object that is returned from my API request, which contains
 some meta-data about the API request itself. I extract the values of
 interest from this list object by collecting the `values` list element.
 
-``` r
-ca.taxable <- jsonlite::fromJSON("https://cdtfa.ca.gov/dataportal/api/odata/Taxable_Sales_by_City?%24count=true")
-ca.taxable <- ca.taxable$value
-```
+    ca.taxable <- jsonlite::fromJSON("https://cdtfa.ca.gov/dataportal/api/odata/Taxable_Sales_by_City?%24count=true")
+    ca.taxable <- ca.taxable$value
 
 ### Data Exploration
 
@@ -178,53 +163,311 @@ some emphasis on stuff that’s relevant for the illustration at hand:
 Here’s a quick look at some of the more interesting fields in the PPP
 Data for Santa Cruz County, CA:
 
-``` r
-knitr::kable(ppp.df %>% ungroup() %>% filter(row_number()<=10) %>%
-                select(BorrowerName,BorrowerAddress,BorrowerCity,BorrowerZip,InitialApprovalAmount,JobsReported,FranchiseName,
-                       ServicingLenderName, NAICSCode) %>% arrange(-JobsReported))
-```
+    knitr::kable(ppp.df %>% ungroup() %>% filter(row_number()<=10) %>%
+                    select(BorrowerName,BorrowerAddress,BorrowerCity,BorrowerZip,InitialApprovalAmount,JobsReported,FranchiseName,
+                           ServicingLenderName, NAICSCode) %>% arrange(-JobsReported))
 
-| BorrowerName                 | BorrowerAddress                | BorrowerCity  | BorrowerZip | InitialApprovalAmount | JobsReported | FranchiseName | ServicingLenderName            | NAICSCode |
-| :--------------------------- | :----------------------------- | :------------ | :---------- | --------------------: | -----------: | :------------ | :----------------------------- | --------: |
-| THRESHOLD ENTERPRISES LTD    | 23 Janis Way                   | Scotts Valley | 95066-3506  |               5439600 |          500 |               | PNC Bank, National Association |    325411 |
-| AMERI KLEEN                  | 119 BEACH ST                   | WATSONVILLE   | 95076-4557  |               3490200 |          500 |               | 1st Capital Bank               |    561720 |
-| ALTA VISTA FARMS LP          | 136 MARSH LN                   | WATSONVILLE   | 95076-2224  |               3680400 |          481 |               | 1st Capital Bank               |    111334 |
-| ENCOMPASS COMMUNITY SERVICES | 380 Encinal St. Suite 200      | SANTA CRUZ    | 95060-2101  |               4786545 |          450 |               | Santa Cruz County Bank         |    621112 |
-| SALUD PARA LA GENTE          | 195 Aviation Way, Suite 200    | WATSONVILLE   | 95076-2053  |               5218785 |          366 |               | Santa Cruz County Bank         |    624190 |
-| BAY PHOTO, INC.              | 920 DISC DR                    | SCOTTS VALLEY | 95066-4544  |               3599477 |          355 |               | Santa Cruz Community CU        |    323111 |
-| S. MARTINELLI & COMPANY      | 735 Beach Street               | WATSONVILLE   | 95076       |               3894618 |          326 |               | Santa Cruz County Bank         |    311411 |
-| SANTA CRUZ SEASIDE COMPANY   | 400 Beach Street               | Santa Cruz    | 95060-5416  |               6236226 |          243 |               | Santa Cruz County Bank         |    713110 |
-| UNIVERSAL AUDIO, INC         | 4585 Scotts Valley Drive       | SCOTTS VALLEY | 95066-4517  |               4088800 |          201 |               | Santa Cruz County Bank         |    334310 |
-| NEW TEACHER CENTER           | 1205 Pacific Avenue, Suite 301 | SANTA CRUZ    | 95060-3914  |               3071357 |          133 |               | Santa Cruz County Bank         |    923130 |
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+<col style="width: 12%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 17%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">BorrowerName</th>
+<th style="text-align: left;">BorrowerAddress</th>
+<th style="text-align: left;">BorrowerCity</th>
+<th style="text-align: left;">BorrowerZip</th>
+<th style="text-align: right;">InitialApprovalAmount</th>
+<th style="text-align: right;">JobsReported</th>
+<th style="text-align: left;">FranchiseName</th>
+<th style="text-align: left;">ServicingLenderName</th>
+<th style="text-align: right;">NAICSCode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">THRESHOLD ENTERPRISES LTD</td>
+<td style="text-align: left;">23 Janis Way</td>
+<td style="text-align: left;">Scotts Valley</td>
+<td style="text-align: left;">95066-3506</td>
+<td style="text-align: right;">5439600</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">PNC Bank, National Association</td>
+<td style="text-align: right;">325411</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AMERI KLEEN</td>
+<td style="text-align: left;">119 BEACH ST</td>
+<td style="text-align: left;">WATSONVILLE</td>
+<td style="text-align: left;">95076-4557</td>
+<td style="text-align: right;">3490200</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1st Capital Bank</td>
+<td style="text-align: right;">561720</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALTA VISTA FARMS LP</td>
+<td style="text-align: left;">136 MARSH LN</td>
+<td style="text-align: left;">WATSONVILLE</td>
+<td style="text-align: left;">95076-2224</td>
+<td style="text-align: right;">3680400</td>
+<td style="text-align: right;">481</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1st Capital Bank</td>
+<td style="text-align: right;">111334</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENCOMPASS COMMUNITY SERVICES</td>
+<td style="text-align: left;">380 Encinal St. Suite 200</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: left;">95060-2101</td>
+<td style="text-align: right;">4786545</td>
+<td style="text-align: right;">450</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz County Bank</td>
+<td style="text-align: right;">621112</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SALUD PARA LA GENTE</td>
+<td style="text-align: left;">195 Aviation Way, Suite 200</td>
+<td style="text-align: left;">WATSONVILLE</td>
+<td style="text-align: left;">95076-2053</td>
+<td style="text-align: right;">5218785</td>
+<td style="text-align: right;">366</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz County Bank</td>
+<td style="text-align: right;">624190</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BAY PHOTO, INC.</td>
+<td style="text-align: left;">920 DISC DR</td>
+<td style="text-align: left;">SCOTTS VALLEY</td>
+<td style="text-align: left;">95066-4544</td>
+<td style="text-align: right;">3599477</td>
+<td style="text-align: right;">355</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz Community CU</td>
+<td style="text-align: right;">323111</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S. MARTINELLI &amp; COMPANY</td>
+<td style="text-align: left;">735 Beach Street</td>
+<td style="text-align: left;">WATSONVILLE</td>
+<td style="text-align: left;">95076</td>
+<td style="text-align: right;">3894618</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz County Bank</td>
+<td style="text-align: right;">311411</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ SEASIDE COMPANY</td>
+<td style="text-align: left;">400 Beach Street</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">95060-5416</td>
+<td style="text-align: right;">6236226</td>
+<td style="text-align: right;">243</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz County Bank</td>
+<td style="text-align: right;">713110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UNIVERSAL AUDIO, INC</td>
+<td style="text-align: left;">4585 Scotts Valley Drive</td>
+<td style="text-align: left;">SCOTTS VALLEY</td>
+<td style="text-align: left;">95066-4517</td>
+<td style="text-align: right;">4088800</td>
+<td style="text-align: right;">201</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz County Bank</td>
+<td style="text-align: right;">334310</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NEW TEACHER CENTER</td>
+<td style="text-align: left;">1205 Pacific Avenue, Suite 301</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: left;">95060-3914</td>
+<td style="text-align: right;">3071357</td>
+<td style="text-align: right;">133</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Santa Cruz County Bank</td>
+<td style="text-align: right;">923130</td>
+</tr>
+</tbody>
+</table>
 
 #### CA Taxable Sales
 
 Next, let’s have a quick look at the Taxable Sales Data.
 
-``` r
-ca.taxable$RetailandFoodServicesTaxableTransactions <- currency(ca.taxable$RetailandFoodServicesTaxableTransactions,digits=0L)
-ca.taxable$TotalAllOutletsTaxableTransactions <- currency(ca.taxable$TotalAllOutletsTaxableTransactions,digits=0L)
+    ca.taxable$RetailandFoodServicesTaxableTransactions <- currency(ca.taxable$RetailandFoodServicesTaxableTransactions,digits=0L)
+    ca.taxable$TotalAllOutletsTaxableTransactions <- currency(ca.taxable$TotalAllOutletsTaxableTransactions,digits=0L)
 
-knitr::kable(ca.taxable %>% filter(County %in% c("Santa Cruz","SANTA CRUZ")) %>% filter(row_number() <= 10))
-```
+    knitr::kable(ca.taxable %>% filter(County %in% c("Santa Cruz","SANTA CRUZ")) %>% filter(row_number() <= 10))
 
-| CalendarYear | Quarter | QuarterMonthFrom | QuarterMonthTo | County     | City              | RetailandFoodServicesTaxableTransactions | TotalAllOutletsTaxableTransactions | DisclosureFlag | PerCapita |
-| -----------: | :------ | ---------------: | -------------: | :--------- | :---------------- | ---------------------------------------: | ---------------------------------: | :------------- | --------: |
-|         2009 | A       |                1 |             12 | Santa Cruz | Capitola          |                             $322,595,000 |                       $355,427,000 | NA             |        NA |
-|         2009 | A       |                1 |             12 | Santa Cruz | Santa Cruz        |                             $589,761,000 |                       $718,859,000 | NA             |        NA |
-|         2009 | A       |                1 |             12 | Santa Cruz | Santa Cruz County |                           $1,956,754,000 |                     $2,638,469,000 | NA             |        NA |
-|         2009 | A       |                1 |             12 | Santa Cruz | Scotts Valley     |                             $117,995,000 |                       $147,933,000 | NA             |        NA |
-|         2009 | A       |                1 |             12 | Santa Cruz | Watsonville       |                             $381,538,000 |                       $495,137,000 | NA             |        NA |
-|         2009 | Q1      |                1 |              3 | Santa Cruz | Capitola          |                              $69,397,000 |                        $76,375,000 | NA             |        NA |
-|         2009 | Q1      |                1 |              3 | Santa Cruz | Santa Cruz        |                             $128,250,000 |                       $156,001,000 | NA             |        NA |
-|         2009 | Q1      |                1 |              3 | Santa Cruz | Santa Cruz County |                             $426,714,000 |                       $584,519,000 | NA             |        NA |
-|         2009 | Q1      |                1 |              3 | Santa Cruz | Scotts Valley     |                              $24,822,000 |                        $32,275,000 | NA             |        NA |
-|         2009 | Q1      |                1 |              3 | Santa Cruz | Watsonville       |                              $84,602,000 |                       $110,666,000 | NA             |        NA |
+<table style="width:100%;">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 22%" />
+<col style="width: 19%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">CalendarYear</th>
+<th style="text-align: left;">Quarter</th>
+<th style="text-align: right;">QuarterMonthFrom</th>
+<th style="text-align: right;">QuarterMonthTo</th>
+<th style="text-align: left;">County</th>
+<th style="text-align: left;">City</th>
+<th style="text-align: right;">RetailandFoodServicesTaxableTransactions</th>
+<th style="text-align: right;">TotalAllOutletsTaxableTransactions</th>
+<th style="text-align: left;">DisclosureFlag</th>
+<th style="text-align: right;">PerCapita</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Capitola</td>
+<td style="text-align: right;">$322,595,000</td>
+<td style="text-align: right;">$355,427,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: right;">$589,761,000</td>
+<td style="text-align: right;">$718,859,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Santa Cruz County</td>
+<td style="text-align: right;">$1,956,754,000</td>
+<td style="text-align: right;">$2,638,469,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Scotts Valley</td>
+<td style="text-align: right;">$117,995,000</td>
+<td style="text-align: right;">$147,933,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Watsonville</td>
+<td style="text-align: right;">$381,538,000</td>
+<td style="text-align: right;">$495,137,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">Q1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Capitola</td>
+<td style="text-align: right;">$69,397,000</td>
+<td style="text-align: right;">$76,375,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">Q1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: right;">$128,250,000</td>
+<td style="text-align: right;">$156,001,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">Q1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Santa Cruz County</td>
+<td style="text-align: right;">$426,714,000</td>
+<td style="text-align: right;">$584,519,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">Q1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Scotts Valley</td>
+<td style="text-align: right;">$24,822,000</td>
+<td style="text-align: right;">$32,275,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">Q1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: left;">Watsonville</td>
+<td style="text-align: right;">$84,602,000</td>
+<td style="text-align: right;">$110,666,000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
 
-``` r
-#datatable(ca.taxable %>% filter(County %in% c("Santa Cruz","SANTA CRUZ"))) %>% 
-#  formatCurrency(c("RetailandFoodServicesTaxableTransactions","TotalAllOutletsTaxableTransactions"))
-```
+    #datatable(ca.taxable %>% filter(County %in% c("Santa Cruz","SANTA CRUZ"))) %>% 
+    #  formatCurrency(c("RetailandFoodServicesTaxableTransactions","TotalAllOutletsTaxableTransactions"))
 
 So there are two kind of weird things about the taxable sales data:
 
@@ -237,23 +480,23 @@ So there are two kind of weird things about the taxable sales data:
 
 These issues are pretty minor and easily dealt with.
 
-## Food Service Analysis - County
+Food Service Analysis - County
+------------------------------
 
-For starters, I’m going to isolate [a set of NAICS Codes with
-certian 4-digit
-prefixes](https://www.naics.com/six-digit-naics/?code=72).
+For starters, I’m going to isolate [a set of NAICS Codes with certian
+4-digit prefixes](https://www.naics.com/six-digit-naics/?code=72).
 
-  - 7223, 7224, 7225 are (as far as I can tell) are the main NAICS
+-   7223, 7224, 7225 are (as far as I can tell) are the main NAICS
     prefixes associated with Food Service Establisments, Restaurants,
     and Bars.
-  - 4451, 4452, 4453, and 4471 are grocery and food stores,
+-   4451, 4452, 4453, and 4471 are grocery and food stores,
     beer/wine/liquor stores, and gas stations
-  - 4481, 4482, 4483 - clothing stores, jewelry stores, shoe stores
-  - 4511 - Sporting Goods
-  - 4512 - Book Stores
-  - 4522 \_ Dept Stores
-  - 4531 - Florists
-  - 4539 - Miscellaneous stores like pet stores, art dealers, and
+-   4481, 4482, 4483 - clothing stores, jewelry stores, shoe stores
+-   4511 - Sporting Goods
+-   4512 - Book Stores
+-   4522 \_ Dept Stores
+-   4531 - Florists
+-   4539 - Miscellaneous stores like pet stores, art dealers, and
     tobacco stores
 
 I can’t say for sure if these are all the NAICS Codes that should match
@@ -261,53 +504,132 @@ up with the receipts in the `RetailandFoodServicesTaxableTransactions`
 column from the `ca.taxable` data frame, but it seems like a good
 approximation at least.
 
-``` r
-# extract the first 4 digits for each NAICS Code
-retail <- ppp.df %>% ungroup() %>% mutate(NAICS4dig=as.numeric(substring(as.character(NAICSCode),1,4))) %>%
-                filter(NAICS4dig %in% c(7223,7224,7225,4451,4452,4453,4471,4481,4482,4483,4511,4512,4522,4531,4539))
-retail$InitialApprovalAmount<-currency(retail$InitialApprovalAmount,digits=0L)
+    # extract the first 4 digits for each NAICS Code
+    retail <- ppp.df %>% ungroup() %>% mutate(NAICS4dig=as.numeric(substring(as.character(NAICSCode),1,4))) %>%
+                    filter(NAICS4dig %in% c(7223,7224,7225,4451,4452,4453,4471,4481,4482,4483,4511,4512,4522,4531,4539))
+    retail$InitialApprovalAmount<-currency(retail$InitialApprovalAmount,digits=0L)
 
-knitr::kable(retail %>% select(BorrowerName,BorrowerCity,InitialApprovalAmount,JobsReported,ProjectCountyName) %>%
-           arrange(-InitialApprovalAmount) %>% filter(row_number() <= 10))
-```
+    knitr::kable(retail %>% select(BorrowerName,BorrowerCity,InitialApprovalAmount,JobsReported,ProjectCountyName) %>%
+               arrange(-InitialApprovalAmount) %>% filter(row_number() <= 10))
 
-| BorrowerName                       | BorrowerCity   | InitialApprovalAmount | JobsReported | ProjectCountyName |
-| :--------------------------------- | :------------- | --------------------: | -----------: | :---------------- |
-| RICHARD MICHAEL HARRISON           | SOQUEL         |            $9,112,277 |           31 | SANTA CRUZ        |
-| J.J.’S SALOON AND SOCIAL CLUB, LLC | SOQUEL         |            $2,165,312 |            7 | SANTA CRUZ        |
-| SEA EAGLE LP.                      | Santa Cruz     |            $1,717,410 |          164 | SANTA CRUZ        |
-| CAPITOLA GAYLE’S, INC.             | CAPITOLA       |            $1,345,000 |           80 | SANTA CRUZ        |
-| SEA EAGLE, LP                      | SANTA CRUZ     |            $1,160,382 |          202 | SANTA CRUZ        |
-| DELUXE FOODS OF APTOS, INC.        | APTOS          |              $903,187 |           79 | SANTA CRUZ        |
-| CULINARY ENTERPRISES, INC.         | CAPITOLA       |              $885,855 |          136 | SANTA CRUZ        |
-| WHITING’S FOOD CONCESSIONS INC     | Santa Cruz     |              $860,850 |          100 | SANTA CRUZ        |
-| FLEW THE COOP INC                  | LA SELVA BEACH |              $816,400 |          194 | SANTA CRUZ        |
-| STAGNARO BROTHERS SEAFOOD INC      | Santa Cruz     |              $738,467 |          103 | SANTA CRUZ        |
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">BorrowerName</th>
+<th style="text-align: left;">BorrowerCity</th>
+<th style="text-align: right;">InitialApprovalAmount</th>
+<th style="text-align: right;">JobsReported</th>
+<th style="text-align: left;">ProjectCountyName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">RICHARD MICHAEL HARRISON</td>
+<td style="text-align: left;">SOQUEL</td>
+<td style="text-align: right;">$9,112,277</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J.J.’S SALOON AND SOCIAL CLUB, LLC</td>
+<td style="text-align: left;">SOQUEL</td>
+<td style="text-align: right;">$2,165,312</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SEA EAGLE LP.</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: right;">$1,717,410</td>
+<td style="text-align: right;">164</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CAPITOLA GAYLE’S, INC.</td>
+<td style="text-align: left;">CAPITOLA</td>
+<td style="text-align: right;">$1,345,000</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SEA EAGLE, LP</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$1,160,382</td>
+<td style="text-align: right;">202</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DELUXE FOODS OF APTOS, INC.</td>
+<td style="text-align: left;">APTOS</td>
+<td style="text-align: right;">$903,187</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CULINARY ENTERPRISES, INC.</td>
+<td style="text-align: left;">CAPITOLA</td>
+<td style="text-align: right;">$885,855</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WHITING’S FOOD CONCESSIONS INC</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: right;">$860,850</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FLEW THE COOP INC</td>
+<td style="text-align: left;">LA SELVA BEACH</td>
+<td style="text-align: right;">$816,400</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STAGNARO BROTHERS SEAFOOD INC</td>
+<td style="text-align: left;">Santa Cruz</td>
+<td style="text-align: right;">$738,467</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: left;">SANTA CRUZ</td>
+</tr>
+</tbody>
+</table>
 
 Next, I’m going create a really simple visual of the time-series of
 taxable sales in Santa Cruz County for just the Retail and Food Services
 Transactions:
 
-``` r
-# first I need to create a date from the quarterly observations...
-# I'm also going to rename these really long columns
-sc.taxable <- ca.taxable %>% filter(Quarter!="A") %>% 
-                  mutate(County=toupper(County),City=toupper(City)) %>%
-                filter(County=="SANTA CRUZ") %>% 
-                mutate(date=as.Date(paste(CalendarYear,"-",QuarterMonthFrom,"-","1",sep=""),format="%Y-%m-%d")) %>%
-                mutate(Q=as.yearqtr(paste(CalendarYear,Quarter,sep="")),
-                       RetailFood=RetailandFoodServicesTaxableTransactions) %>%
-                select(-RetailandFoodServicesTaxableTransactions)
-               
+    # first I need to create a date from the quarterly observations...
+    # I'm also going to rename these really long columns
+    sc.taxable <- ca.taxable %>% filter(Quarter!="A") %>% 
+                      mutate(County=toupper(County),City=toupper(City)) %>%
+                    filter(County=="SANTA CRUZ") %>% 
+                    mutate(date=as.Date(paste(CalendarYear,"-",QuarterMonthFrom,"-","1",sep=""),format="%Y-%m-%d")) %>%
+                    mutate(Q=as.yearqtr(paste(CalendarYear,Quarter,sep="")),
+                           RetailFood=RetailandFoodServicesTaxableTransactions) %>%
+                    select(-RetailandFoodServicesTaxableTransactions)
+                   
 
 
-ggplot(subset(sc.taxable,City=="SANTA CRUZ COUNTY"),aes(x=Q,y=RetailFood/1000000)) +
-  geom_point() + geom_line() + theme_bw() + ylab("$s (millions)") + xlab("") + scale_x_yearqtr(format = "%YQ%q") +
-  theme(axis.text.x=element_text(angle=45)) +
-  ggtitle("Santa Cruz County Retail & Food Service Transactions") 
-```
+    sc.plot <- ggplot(subset(sc.taxable,City=="SANTA CRUZ COUNTY"),aes(x=Q,y=RetailFood/1000000)) +
+      geom_point() + geom_line() + theme_bw() + ylab("$s (millions)") + xlab("") + scale_x_yearqtr(format = "%YQ%q") +
+      theme(axis.text.x=element_text(angle=45)) +
+      ggtitle("Santa Cruz County Retail & Food Service Transactions") 
+    ggsave(file='C:/Users/aaron.mamula/Desktop/ResearchBlog/aaronmams.github.io/images/sc-county-taxablesales.png')
 
-![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+    ## Saving 7 x 5 in image
+
+    knitr::include_graphics("C:/Users/aaron.mamula/Desktop/ResearchBlog/aaronmams.github.io/images/sc-county-taxablesales.png")
+
+<img src="C:/Users/aaron.mamula/Desktop/ResearchBlog/aaronmams.github.io/images/sc-county-taxablesales.png" width="2100" />
 <br>
 
 Even if all you know about Santa Cruz County, California is that it’s
@@ -332,71 +654,146 @@ same quarter previous year). 2020 is the first year since 2009 that Q2
 Retail and Food Service Transactions declined (again compared to same
 quarter previous year).
 
-``` r
-# filter for Q2 values and clean up labels for display
-q3 <- sc.taxable %>% filter(Quarter=="Q2" & City=="SANTA CRUZ COUNTY") %>% select(date,Q,County,City,RetailFood) %>%
-       arrange(date) %>%
-         mutate(PCT_CNG=(RetailFood-lag(RetailFood))/lag(RetailFood),
-                year=year(date),
-                quarter="Q2") %>% select(-date,-Q,-City)
-q3$RetailFood<-currency(q3$RetailFood,digits=0L)
-q3$PCT_CNG <- percent(q3$PCT_CNG)
-knitr::kable(q3,
-             digits=c(0,0,2,0,0),
-             caption="Quarter 2 Taxable Sales and Percent Change from Previous Quarter in the Retail and Food/Beverage Sector")
-```
+    # filter for Q2 values and clean up labels for display
+    q3 <- sc.taxable %>% filter(Quarter=="Q2" & City=="SANTA CRUZ COUNTY") %>% select(date,Q,County,City,RetailFood) %>%
+           arrange(date) %>%
+             mutate(PCT_CNG=(RetailFood-lag(RetailFood))/lag(RetailFood),
+                    year=year(date),
+                    quarter="Q2") %>% select(-date,-Q,-City)
+    q3$RetailFood<-currency(q3$RetailFood,digits=0L)
+    q3$PCT_CNG <- percent(q3$PCT_CNG)
+    knitr::kable(q3,
+                 digits=c(0,0,2,0,0),
+                 caption="Quarter 2 Taxable Sales and Percent Change from Previous Quarter in the Retail and Food/Beverage Sector")
 
-| County     |   RetailFood | PCT\_CNG | year | quarter |
-| :--------- | -----------: | -------: | ---: | :------ |
-| SANTA CRUZ | $489,492,000 |       NA | 2009 | Q2      |
-| SANTA CRUZ | $521,519,000 |    6.54% | 2010 | Q2      |
-| SANTA CRUZ | $567,292,000 |    8.78% | 2011 | Q2      |
-| SANTA CRUZ | $594,107,000 |    4.73% | 2012 | Q2      |
-| SANTA CRUZ | $639,874,000 |    7.70% | 2013 | Q2      |
-| SANTA CRUZ | $669,644,368 |    4.65% | 2014 | Q2      |
-| SANTA CRUZ | $681,535,151 |    1.78% | 2015 | Q2      |
-| SANTA CRUZ | $697,889,702 |    2.40% | 2016 | Q2      |
-| SANTA CRUZ | $735,575,775 |    5.40% | 2017 | Q2      |
-| SANTA CRUZ | $755,090,015 |    2.65% | 2018 | Q2      |
-| SANTA CRUZ | $782,691,045 |    3.66% | 2019 | Q2      |
-| SANTA CRUZ | $672,220,452 | \-14.11% | 2020 | Q2      |
-
-Quarter 2 Taxable Sales and Percent Change from Previous Quarter in the
-Retail and Food/Beverage Sector
+<table>
+<caption>Quarter 2 Taxable Sales and Percent Change from Previous Quarter in the Retail and Food/Beverage Sector</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">County</th>
+<th style="text-align: right;">RetailFood</th>
+<th style="text-align: right;">PCT_CNG</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">quarter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$489,492,000</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$521,519,000</td>
+<td style="text-align: right;">6.54%</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$567,292,000</td>
+<td style="text-align: right;">8.78%</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$594,107,000</td>
+<td style="text-align: right;">4.73%</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$639,874,000</td>
+<td style="text-align: right;">7.70%</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$669,644,368</td>
+<td style="text-align: right;">4.65%</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$681,535,151</td>
+<td style="text-align: right;">1.78%</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$697,889,702</td>
+<td style="text-align: right;">2.40%</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$735,575,775</td>
+<td style="text-align: right;">5.40%</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$755,090,015</td>
+<td style="text-align: right;">2.65%</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$782,691,045</td>
+<td style="text-align: right;">3.66%</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SANTA CRUZ</td>
+<td style="text-align: right;">$672,220,452</td>
+<td style="text-align: right;">-14.11%</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">Q2</td>
+</tr>
+</tbody>
+</table>
 
 The next step in this very simple “data story” is to aggregate the PPP
 funding received by Retail and Food Service Entities in Santa Cruz
 County.
 
-``` r
-retail.agg <- retail %>% group_by(NAICS4dig) %>% summarise(Jobs=sum(JobsReported,na.rm=T),
-                                             Dollars=sum(InitialApprovalAmount,na.rm=T)) %>%
-                arrange(-Dollars)
-```
+    retail.agg <- retail %>% group_by(NAICS4dig) %>% summarise(Jobs=sum(JobsReported,na.rm=T),
+                                                 Dollars=sum(InitialApprovalAmount,na.rm=T)) %>%
+                    arrange(-Dollars)
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-``` r
-# This next part is pretty cumbersome...but it's gonna make the plot look way nicer
-retail.agg <- retail.agg %>% 
-                mutate(BusType=ifelse(NAICS4dig %in% c(7225,7224,7223),"Food Service/Bars",
-                                  ifelse(NAICS4dig %in% c(4451,4452,4453),"Grocery/Food/Liquor Store",
-                                  ifelse(NAICS4dig %in% c(4481,4482,4483,4512,4531),"Retail (Clothes,Books,Shoes,etc)","Other"))))
+    # This next part is pretty cumbersome...but it's gonna make the plot look way nicer
+    retail.agg <- retail.agg %>% 
+                    mutate(BusType=ifelse(NAICS4dig %in% c(7225,7224,7223),"Food Service/Bars",
+                                      ifelse(NAICS4dig %in% c(4451,4452,4453),"Grocery/Food/Liquor Store",
+                                      ifelse(NAICS4dig %in% c(4481,4482,4483,4512,4531),"Retail (Clothes,Books,Shoes,etc)","Other"))))
 
-ggplot(retail.agg,aes(x=BusType,y=Dollars/1000000)) + geom_bar(stat="identity") + 
-  theme(axis.text.x=element_text(angle=45)) + ylab("$ (millions)") + xlab("") + theme_tufte()
-```
+    ggplot(retail.agg,aes(x=BusType,y=Dollars/1000000)) + geom_bar(stat="identity") + 
+      theme(axis.text.x=element_text(angle=45)) + ylab("$ (millions)") + xlab("") + theme_tufte()
 
-![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-markdown_strict/unnamed-chunk-11-1.png)
 
 So here are some related observations that we can make from a quick look
 at these two data set:
 
-  - Quarterly Taxable Sales for the Retail and Food/Beverage Services
+-   Quarterly Taxable Sales for the Retail and Food/Beverage Services
     Sector in Santa Cruz County were down about 11% in Q2 of 2020 when
     compared against Q2 of 2019
-  - In dollar terms this was a reduction of about $110 million
-  - PPP payments to Santa Cruz County businesses in this sector totaled
+-   In dollar terms this was a reduction of about $110 million
+-   PPP payments to Santa Cruz County businesses in this sector totaled
     approximately $72.4 million.
 
 These observations are not the result of careful analysis but rather
@@ -409,7 +806,8 @@ too hard to see how, with a little additional rigor, these data sets
 could generate some important insights about the economic/fiscal impacts
 of Covid-19 on local economies.
 
-## Bonus Content
+Bonus Content
+-------------
 
 The California Taxable Sales Data available at the city level. In the
 prior sections I just used the county aggregate but it might be fun for
@@ -417,46 +815,38 @@ some people to separate out the city level contributions. Here’s a quick
 picture of how county level taxable sales for Santa Cruz County are
 distributed among the various cities:
 
-``` r
-#aggretate taxable sales by year and city within Santa Cruz County...also reorder factor levels
-#     so that the plot looks nicer
-cities.annual <- sc.taxable %>% filter(City!="SANTA CRUZ COUNTY") %>% group_by(City,CalendarYear) %>%
-              summarise(RetailFood=sum(RetailFood)) %>% arrange(CalendarYear,-RetailFood) %>%
-               mutate(City=factor(City, levels=c("SCOTTS VALLEY","CAPITOLA","WATSONVILLE","SANTA CRUZ")))
-```
+    #aggretate taxable sales by year and city within Santa Cruz County...also reorder factor levels
+    #     so that the plot looks nicer
+    cities.annual <- sc.taxable %>% filter(City!="SANTA CRUZ COUNTY") %>% group_by(City,CalendarYear) %>%
+                  summarise(RetailFood=sum(RetailFood)) %>% arrange(CalendarYear,-RetailFood) %>%
+                   mutate(City=factor(City, levels=c("SCOTTS VALLEY","CAPITOLA","WATSONVILLE","SANTA CRUZ")))
 
     ## `summarise()` regrouping output by 'City' (override with `.groups` argument)
 
-``` r
-ggplot(cities.annual,aes(x=CalendarYear,y=RetailFood/1000000,fill=City)) + geom_bar(stat="identity") + 
-         theme_bw() + scale_fill_viridis_d() + xlab("") + ylab("$s (millions") + 
-            ggtitle("Retail and Food Service Taxable Sales in Santa Cruz County, CA")
-```
+    ggplot(cities.annual,aes(x=CalendarYear,y=RetailFood/1000000,fill=City)) + geom_bar(stat="identity") + 
+             theme_bw() + scale_fill_viridis_d() + xlab("") + ylab("$s (millions") + 
+                ggtitle("Retail and Food Service Taxable Sales in Santa Cruz County, CA")
 
-![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-markdown_strict/unnamed-chunk-12-1.png)
 
 We can then aggregate the PPP data by the `ProjectCity` field to get a
 city-level picture of PPP money in the Retail and Food Service Sector:
 
-``` r
-# use the "retail" data frame (which was derived from the source PPP data) and aggregate by city
-retail.city.agg <- retail %>% mutate(ProjectCity=toupper(ProjectCity)) %>%
-            group_by(ProjectCity) %>% summarise(InitialApprovalAmount=sum(InitialApprovalAmount,na.rm=T)) %>%
-             arrange(-InitialApprovalAmount)
-```
+    # use the "retail" data frame (which was derived from the source PPP data) and aggregate by city
+    retail.city.agg <- retail %>% mutate(ProjectCity=toupper(ProjectCity)) %>%
+                group_by(ProjectCity) %>% summarise(InitialApprovalAmount=sum(InitialApprovalAmount,na.rm=T)) %>%
+                 arrange(-InitialApprovalAmount)
 
     ## `summarise()` ungrouping output (override with `.groups` argument)
 
-``` r
-#order factor levels
-retail.city.agg <- retail.city.agg %>% mutate(ProjectCity=factor(ProjectCity,unique(retail.city.agg$ProjectCity)))
+    #order factor levels
+    retail.city.agg <- retail.city.agg %>% mutate(ProjectCity=factor(ProjectCity,unique(retail.city.agg$ProjectCity)))
 
-ggplot(retail.city.agg,aes(x=ProjectCity,y=InitialApprovalAmount/1000000)) + geom_bar(stat="identity") + 
-      theme_bw() +
-      theme(axis.text.x=element_text(angle=90)) + ylab("$s (millions)") + xlab("")
-```
+    ggplot(retail.city.agg,aes(x=ProjectCity,y=InitialApprovalAmount/1000000)) + geom_bar(stat="identity") + 
+          theme_bw() +
+          theme(axis.text.x=element_text(angle=90)) + ylab("$s (millions)") + xlab("")
 
-![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](2021-04-26-Santa-Cruz-County-Taxable-Sales-and-PPP-Data_files/figure-markdown_strict/unnamed-chunk-13-1.png)
 
 The first thing to notice here is that there are bunch of “cities” in
 the PPP data that don’t exist in the California Taxable Sales Data. I’m
