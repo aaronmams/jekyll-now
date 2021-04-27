@@ -9,8 +9,9 @@ Aaron Mamula
 
 This is going to be a quick look at two kind of cool data sets that seem
 really interesting and useful for evaluating the economic impacts of
-Covid…but I haven’t quite figured out exactly how to best use them in
-this capacity..yet. The data I’m talking about are:
+Covid. I haven’t quite figured out exactly how to best use them in this
+capacity yet…but I wanted to give you all a quick look at them. The data
+I’m talking about are:
 
 1.  California Taxable Sales from the California Department of Tax and
     Fee Administration
