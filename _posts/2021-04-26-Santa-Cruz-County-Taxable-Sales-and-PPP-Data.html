@@ -1402,6 +1402,10607 @@ NA
 </div>
 </div>
 </div>
+<div id="food-service-analysis---county" class="section level2">
+<h2>Food Service Analysis - County</h2>
+<p>For starters, I’m going to isolate <a href="https://www.naics.com/six-digit-naics/?code=72">a set of NAICS Codes with certian 4-digit prefixes</a>.</p>
+<ul>
+<li>7223, 7224, 7225 are (as far as I can tell) are the main NAICS prefixes associated with Food Service Establisments, Restaurants, and Bars.</li>
+<li>4451, 4452, 4453, and 4471 are grocery and food stores, beer/wine/liquor stores, and gas stations</li>
+<li>4481, 4482, 4483 - clothing stores, jewelry stores, shoe stores</li>
+<li>4511 - Sporting Goods</li>
+<li>4512 - Book Stores</li>
+<li>4522 _ Dept Stores</li>
+<li>4531 - Florists</li>
+<li>4539 - Miscellaneous stores like pet stores, art dealers, and tobacco stores</li>
+</ul>
+<p>I can’t say for sure if these are all the NAICS Codes that should match up with the receipts in the <code>RetailandFoodServicesTaxableTransactions</code> column from the <code>ca.taxable</code> data frame, but it seems like a good approximation at least.</p>
+<pre class="r"><code># extract the first 4 digits for each NAICS Code
+retail &lt;- ppp.df %&gt;% ungroup() %&gt;% mutate(NAICS4dig=as.numeric(substring(as.character(NAICSCode),1,4))) %&gt;%
+                filter(NAICS4dig %in% c(7223,7224,7225,4451,4452,4453,4471,4481,4482,4483,4511,4512,4522,4531,4539))
+retail$InitialApprovalAmount &lt;- currency(retail$InitialApprovalAmount,digits=0L)
+knitr::kable(retail %&gt;% select(BorrowerName,BorrowerCity,InitialApprovalAmount,JobsReported,ProjectCountyName) %&gt;%
+           arrange(-InitialApprovalAmount)) %&gt;% kable_styling(full_width=F)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+BorrowerName
+</th>
+<th style="text-align:left;">
+BorrowerCity
+</th>
+<th style="text-align:right;">
+InitialApprovalAmount
+</th>
+<th style="text-align:right;">
+JobsReported
+</th>
+<th style="text-align:left;">
+ProjectCountyName
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+RICHARD MICHAEL HARRISON
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$9,112,277
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J.J.’S SALOON AND SOCIAL CLUB, LLC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$2,165,312
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEA EAGLE LP.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$1,717,410
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAPITOLA GAYLE’S, INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$1,345,000
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEA EAGLE, LP
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$1,160,382
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DELUXE FOODS OF APTOS, INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$903,187
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CULINARY ENTERPRISES, INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$885,855
+</td>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WHITING’S FOOD CONCESSIONS INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$860,850
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FLEW THE COOP INC
+</td>
+<td style="text-align:left;">
+LA SELVA BEACH
+</td>
+<td style="text-align:right;">
+$816,400
+</td>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STAGNARO BROTHERS SEAFOOD INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$738,467
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WILD ROOTS MARKET, INC
+</td>
+<td style="text-align:left;">
+BEN LOMOND
+</td>
+<td style="text-align:right;">
+$731,370
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAS MAC INC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$710,540
+</td>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUN SHOPS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$645,470
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LILLIAN’S ITALIAN KITCHEN INCORPORATED
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$631,000
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WEST END TAP &amp; KITCHEN LP
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$597,900
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HULA’S SANTA CRUZ LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$574,651
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SHOPPER’S CORNER INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$549,434
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WHITING’S FOOD CONCESSIONS, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$545,000
+</td>
+<td style="text-align:right;">
+148
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL PALOMAR, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$526,565
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J &amp; J CORP.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$501,900
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUMANO’S BAKERY LLC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$466,929
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAPITOLA RJL INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$463,900
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE CRUZ INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$452,460
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CLEMENTS FAMILY MARKET, INC.
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$452,062
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OPTRONIC TECHNOLOGIES, INC.
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$449,700
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MO BURGER INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$448,417
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUMANO’S BAKERY LLC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$413,045
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MARK GILBERT ENERTPRISES
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$407,847
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LILLIAN’S ITALIAN KITCHEN, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$406,970
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D’LA COLMENA INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$392,500
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAT &amp; CLOUD COFFEE LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$378,705
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WEST END TAP &amp; KITCHEN LP
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$356,382
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CALIFORNIA GRILL PEIXOTO, LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$343,990
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA PRINCESA MARKET 14 INC
+</td>
+<td style="text-align:left;">
+watsonville
+</td>
+<td style="text-align:right;">
+$327,327
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EAST END GASTROPUB
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$322,980
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BAY COMPANY BOOKS INC/ACCT PAY
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$322,630
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VINOLUS INC. DBA BITTERSWEET BISTRO
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$317,600
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PARK &amp; KISS INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$313,860
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CORWIN &amp; VOSKOBOYNIKOV MANAGEMENT LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$312,380
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACIFIC COOKIE COMPANY, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$303,800
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JIA TELLAS CORP
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$299,593
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZACHARY’S RESTAURANT INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$296,300
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JUAN J VALLEDOR AND LAURIE K NEGRO
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$293,500
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUPER BANTAM LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$276,870
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE BAGELRY, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$276,500
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CILANTROS
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$270,000
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE GOLDEN SHEAF BREAD COMPANY, INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$269,600
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PETROGLYPH INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$263,760
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PET PALS DISCOUNT PET SUPPLIES INC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$255,000
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RARE, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$252,584
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUMMIT STORE INC.
+</td>
+<td style="text-align:left;">
+los gatos
+</td>
+<td style="text-align:right;">
+$251,100
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE SPA &amp; SAUNA CO. OF CALIFORNIA, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$249,500
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA PRINCESA 5
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$238,820
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ DINER, INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$235,200
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PALAPAS INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$235,017
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AKIRA WORLD, INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$230,000
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MANUEL’S MEXICAN RESTAURANT INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$228,303
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RIVA FISH HOUSE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$227,770
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ COFFEE ROASTING
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$225,797
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DINER SERVICES, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$224,382
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KIANTIS PIZZA AND PASTA BAR
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$223,622
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CORWIN &amp; VOSKOBOYNIKOV MANAGEMENT LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$223,135
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUDA DE VOLTA INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$222,400
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LAST BELIEVER INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$221,980
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VINOLUS, INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$220,000
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+515 KITCHEN &amp; COCKTAILS
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$218,718
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PEOPLES COFFEE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$215,667
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JIA TELLAS, CORP
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$213,994
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WALNUT AVENUE INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$212,920
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXUS ENTERPRISE INTERNATIONAL
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$212,500
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JOHNNY’S HARBORSIDE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$212,500
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SOCKSHOP &amp; SHOE COMPANY, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$212,002
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SOCKSHOP &amp; SHOE CO INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$212,000
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STEEPED, INC.
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$211,928
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OUTDOOR WORLD
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$210,323
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CLEMENTS FAMILY SUPERMARKET
+</td>
+<td style="text-align:left;">
+Ben Lomond
+</td>
+<td style="text-align:right;">
+$210,000
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SIX SECONDS
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$210,000
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUSHI GARDEN INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$209,740
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LUPULO LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$209,300
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAROLINA FOOD SERVICE INC.
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$208,600
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARPO’S, INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$208,332
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NEW DAVENPORT CORPORATION
+</td>
+<td style="text-align:left;">
+DAVENPORT
+</td>
+<td style="text-align:right;">
+$204,617
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DUNCAN PLUMBING
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$201,500
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A &amp; I OLIVIERI LLC DBA ALDO’S HARBOR RESTAURANT
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$199,950
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE EL PALOMAR INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$199,064
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FIRST PEAK, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$197,355
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUPER BANTAM, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$197,000
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EAST END GASTROPUB, LP
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$194,300
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LAS LOMAS MARKET
+</td>
+<td style="text-align:left;">
+ROYAL OAKS
+</td>
+<td style="text-align:right;">
+$193,487
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZACHARY’S RESTAURANT, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$193,300
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AJ’S FUEL AND FOOD MART, INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$192,501
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JJW RESTAURANT CO
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$192,440
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BARKING LION
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$191,674
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PAJARO FOOD CENTER LLC
+</td>
+<td style="text-align:left;">
+Royal Oaks
+</td>
+<td style="text-align:right;">
+$191,500
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USUALLY HIP, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$191,327
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACIFIC WAVE SURF SHOP INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$189,857
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHESTNUT IDENTITY APPAREL INC
+</td>
+<td style="text-align:left;">
+BROOKDALE
+</td>
+<td style="text-align:right;">
+$187,300
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEVERLY FABRICS, INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$186,700
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FAAB VENTURES INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$183,740
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STREELIGHT RECORDS LTD
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$175,055
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ GARDEN LIQUOR AND DELI INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$170,035
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE SPARROW INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$168,327
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SATURN CAFE INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$167,495
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DHARMALAND INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$166,250
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUDA DE VOLTA INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$163,300
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RED WHEEL BARREL INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$162,750
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7-11 STORE
+</td>
+<td style="text-align:left;">
+watsonville
+</td>
+<td style="text-align:right;">
+$161,280
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUELL WETSUITS AND SURF, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$159,625
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PEOPLE AND FOOD, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$159,232
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LAST BELIEVER, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$158,560
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5 STAR CATERING
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$158,230
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RIGOBERTO RENTERIA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$157,802
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SURF CITY WINE CO, A CALIFORNIA CORPORATION
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$157,680
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TWISSELMAN ENTERPRISES
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$156,776
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GO PRESENTS
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$156,200
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SG RDM, INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$155,662
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AKIRA UNLIMITED, INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$154,000
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZAMEEN, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$151,520
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IMURA JAPANESE RESTAURANT
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$150,000
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BLUE NILE HOLDINGS
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$150,000
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RANCH MILK MARKET
+</td>
+<td style="text-align:left;">
+FREEDOM
+</td>
+<td style="text-align:right;">
+$150,000
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZOCCOLI’ DELICATESSEN
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$149,272
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAROLINA FOOD SERVICE, INC
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$149,000
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KACHACHAI INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$148,814
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OTORO SUSHI INC.
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$148,240
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUPER SILVER INCORPORATED
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$148,225
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA SANTA CRUZ EXPRESS INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$146,387
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MENTONE RESTAURANT LLC
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$145,018
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FELTON CREATIONS AND LOGISTICS INC
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$145,000
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RED APPLE APTOS INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$144,190
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RICHARD MICHAEL HARRISON DBA MICHAEL’S ON MAIN
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$142,960
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRIMSON COMPLEX
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$141,200
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WAXWING, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$139,797
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAMPICO RESTUARANT INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$139,775
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PILLARS MANAGEMENT GROUP INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$138,071
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OSWALD LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$137,644
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINEAR LINGUICA, INC.
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$137,317
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PANE, COPERTO, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$134,870
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ MOUNTAIN BREWING INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$133,900
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEER THIRTY BOTTLE SHOP &amp; POUR HOUSE LLC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$133,737
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAPITOLA JJJ GROUP INC.
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$131,800
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MARK GILBERT VENTURES
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$130,535
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FEEL GOOD FOODS ORGANIC CATERING, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$129,676
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COFFEETOPIA, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$129,172
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SGR ENTERPRISE, INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$128,670
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ROUTE 17, LLC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$127,377
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JALISCO RESTAURANT
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$127,070
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACIFIC GREEK EATS CORP.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$126,320
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UPPER CRUST PIZZA LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$125,487
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+S &amp; N ASSOCIATES, INC.
+</td>
+<td style="text-align:left;">
+BOULDER CREEK
+</td>
+<td style="text-align:right;">
+$125,000
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MGS CORPORATION
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$125,000
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CALFEE DESIGN, INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$124,300
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WASSAR ENTERPRISES INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$124,030
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACIFIC THAI SANTA CRUZ INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$123,965
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAVE &amp; PEGGY JONES TRUST
+</td>
+<td style="text-align:left;">
+Boulder Creek
+</td>
+<td style="text-align:right;">
+$123,120
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAMPICO RESTAURANT INC.
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$121,828
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE SPOKESMAN BICYCLES
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$121,700
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N2YL INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$121,155
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EATA, INC. DBA ELLA’S AT THE AIRPORT
+</td>
+<td style="text-align:left;">
+watsonville
+</td>
+<td style="text-align:right;">
+$120,000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHOCOLATE
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$119,515
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CASA NOSTRA LLC
+</td>
+<td style="text-align:left;">
+BEN LOMOND
+</td>
+<td style="text-align:right;">
+$119,302
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STILLBREEZE EXPRESS,INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$117,500
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZAMEEN INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$117,390
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LENZ ARTS INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$115,600
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LENZ ARTS, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$115,200
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FOOD BIN TAKE TWO
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$115,000
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LIVING PONO, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$114,840
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MJJS CORPORATION
+</td>
+<td style="text-align:left;">
+santa cruz
+</td>
+<td style="text-align:right;">
+$113,650
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PURE VALLEY WATER INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$113,312
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE GARDEN COMPANY NURSERY AND GIFT SHOP INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$111,587
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CENTRAL CALIFORNIA FLOWER GROWERS, INC.
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$109,668
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KBBBNB, INC.
+</td>
+<td style="text-align:left;">
+BOULDER CREEK
+</td>
+<td style="text-align:right;">
+$109,590
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FENELLAS BERRIES LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$109,249
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LUPULO LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$108,600
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WATSONVILLE EXXON
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$108,502
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GOLDEN CHINA RESTAURANT, INC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$107,805
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BRITANNIA ARMS PUB &amp; RESTAURANT INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$107,500
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BOON LUCK SA INCORPORATED DBA REAL THAI KITCHEN
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$106,822
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VV VELOCE, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$105,740
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TWIG ENTERPRISES INC. DBA TONY &amp; ALBA’S PIZZA &amp; PA
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$104,800
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FOUR STAR LLC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$104,200
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RED APPLE APTOS, INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$102,992
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEACLIFF SERVICE, INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$102,300
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BAGEL BAKERY &amp; CAFE, INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$100,000
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SILVER SPUR RESTAURANT INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$100,000
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NIRVANA WAY INC
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$99,890
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LIUS GROUP INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$99,616
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BICYCLE TRIP INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$99,500
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAY’S SUSHI INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$99,287
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HANKEN &amp; LEE CORPORATION
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$98,842
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PILLARS MANAGEMENT GROUP INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$98,622
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JALALEDIN NADER
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$98,100
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GALDINO SAAVEDRA
+</td>
+<td style="text-align:left;">
+Freedom
+</td>
+<td style="text-align:right;">
+$97,737
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KSDD, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$97,500
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PAJARO VALLEY CHEVRON INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$96,697
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PROVOCATIVE PROVOLONE, INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$96,640
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STRIPE DESIGN GROUP, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$95,952
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA LOS GALLOS
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$95,550
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE PALM DELI LP
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$92,500
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RICARDO MAGANA
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$92,097
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEACH STREET CO LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$91,240
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PHO TRAN NOODLES RESTAURANT CORPORATION
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$90,000
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WASSAR ENTERPRISES, INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$89,525
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE SAND BAR CAPITOLA, INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$88,695
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GSL INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$87,650
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEER MULE BOTTLE SHOP + POUR HOUSE LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$87,572
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BAD ANIMAL BOOKS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$87,500
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE MARE, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$87,500
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ANOTHER BIKE SHOP, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$86,200
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA SANTA CRUZ N 2
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$86,117
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINDAS SEABREEZE CAFE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$86,062
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUNCHES
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$84,792
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CLIFF MASON, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$84,574
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KB PETROLEUM, INC.
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$84,200
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11TH HOUR COFFEE
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$82,600
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EKM METERING INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$82,200
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SHUN FENG RESTAURANT
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$81,860
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACIFIC FIREWOOD &amp; LUMBER INC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$81,670
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H. MARTIN SHIVELY DDS
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$81,600
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RAJINDER SINGH DHILLON
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$78,750
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VINOCRUZ ENTERPRISES LLC
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$77,511
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE GSC LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$75,705
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FIRST PEAK LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$75,000
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THAMPIPIT, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$73,574
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GERMANIA GGA
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$73,080
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHOCOLATE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$72,917
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COWBOY CORNER INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$72,641
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BRISKE BUSINESS LLC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$72,020
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNIVERSAL PIZZA, INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$71,520
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GLOBAL VILLAGE CAFE BY AMAZON JUICES, LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$71,490
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PACIFIC AXIS INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$71,200
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALOHA ISLAND GRILLE INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$70,664
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MIYAKO JAPANESE RESTAURANT
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$70,609
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DENTISTRY FOR ANIMALS
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$70,000
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MIYUKI RESTAURANT
+</td>
+<td style="text-align:left;">
+Watsonvile
+</td>
+<td style="text-align:right;">
+$69,013
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SPRENKEL, INC
+</td>
+<td style="text-align:left;">
+Freedom
+</td>
+<td style="text-align:right;">
+$68,800
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SASO INC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$68,142
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LOCAL FOODS, LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$66,702
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WILLIAM J YOUNG DBA ASPEN ENTERPRISES
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$66,667
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SPANU CORPORATION
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$66,635
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JILL ALEXANDER DESIGNS
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$65,185
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZEN ISLAND TRADING
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$65,137
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ROUX DAT LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$65,000
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL JARDIN SANTA CRUZ
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$64,700
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WATSONVILLE SANDWICH INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$64,611
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ WAVES, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$64,400
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE PALM DELI LP
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$64,300
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DONALD AND PAULA BOUCHER DBA 7-ELEVEN
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$63,897
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAPITOLA SANDWICH INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$63,737
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FAMILY TABLE, INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$63,044
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ROMATO INCORPORATED
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$62,805
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JJS EMPIRE INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$62,500
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BERDELS LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$62,500
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VEEVAA CORP
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$62,442
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LVC CO
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$62,255
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PPM, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$61,742
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CATAHOULIGANS INC.
+</td>
+<td style="text-align:left;">
+LOS GATOS
+</td>
+<td style="text-align:right;">
+$61,666
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMBA ROCK CO
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$61,600
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ASIAN EXPRESS CAPITOLS INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$61,287
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NARINTRA LLC
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$61,000
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GABRIELLA CAFE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$60,455
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARLOS S. ZAVALA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$59,950
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SCOTTS VALLEY SANDWICH INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$59,453
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CRAFT GALLERY INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$59,312
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SID’S SMOKEHOUSE &amp; GRILL INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$59,018
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11TH HOUR COFFEE
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$59,000
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HENFLINGS LLC
+</td>
+<td style="text-align:left;">
+Ben Lomond
+</td>
+<td style="text-align:right;">
+$58,900
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VIM LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$58,750
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SURF CITY BILLIARDS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$58,632
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEASCAPE FOODS INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$58,220
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OPTIMUM BUSINESS SERVICES
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$56,757
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MARK A AREIAS INC
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$56,647
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MARK AREIAS INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$56,647
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TOP BRAND DONUTS LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$56,200
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PERFORMANCEGAINES CONSULTING
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$55,700
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA SANTA CRUZ
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$55,603
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE BEACH STREET CAFE
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$55,415
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+APP-N-OTT INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$55,000
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL PUEBLO FOOD
+</td>
+<td style="text-align:left;">
+WATSONVILLA
+</td>
+<td style="text-align:right;">
+$54,865
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WHARF HOUSE
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$54,634
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAC FF #161, INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$54,195
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SPRENKEL INC
+</td>
+<td style="text-align:left;">
+Freedom
+</td>
+<td style="text-align:right;">
+$53,900
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ BOARDROOM INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$53,729
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DC KNUDSEN CORP
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$53,542
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HOWELL &amp; ASSOCIATES, INC.
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$53,122
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA MI TIERRA, INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$52,650
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BLACK POINT MARKET
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$52,275
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GERMANIA GGA
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$52,200
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WATSONVILLE DOWNTOWN SANDWICH INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$52,195
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PARTNERS THREE, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$52,082
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M&amp;M PARTY RENTALS INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$51,687
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLUMBED ELEGANCE, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$51,215
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GALDINO SAAVEDRA DBA CHUBBYS DINER
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$51,012
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AJ’S FUEL MARKET OF CAPITOLA, INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$50,789
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALLA SPINA INC
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$50,750
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUNTIE MAME’S
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$50,577
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE BRAZIL INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$50,437
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LINNAEA INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$50,256
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA AGAVE 2 LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$50,250
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BILL’S WHEELS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$50,000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL CHINO MEXICAN RESTAURANT INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$49,953
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TODD LANE POOL &amp; SPA, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$49,880
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GREMIC ROLLERHOCKEY INC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$49,140
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TIMOTHY A. HIGBEE
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$48,745
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ TACTICAL INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$48,400
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NO MOTIVE INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$48,100
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OLD SCHOOL SHOES INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$47,959
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUNTIE MAMES
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$47,250
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JACK’S HAMBURGERS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$47,197
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DA SUSHI ENTERPRISES INC
+</td>
+<td style="text-align:left;">
+BOULDER CREEK
+</td>
+<td style="text-align:right;">
+$47,183
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAC FF #91, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$47,160
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EMILY’S GOOD THINGS TO EAT
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$47,110
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TACOS MORENO
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$47,100
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7-ELEVEN STORE
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$47,050
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TACOS MORENO TWO
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$47,010
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEABRIGHT TAVERNS LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$46,492
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIG MATTS INC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$46,400
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ANA MARTINEZ
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$46,365
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D&amp;G TAVERNS INC
+</td>
+<td style="text-align:left;">
+Boulder Creek
+</td>
+<td style="text-align:right;">
+$46,035
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ADAM RICHINS
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$45,277
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPICENTER CYCLING WEST, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$45,270
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COWELL’S BEACH N BIKINI
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$45,167
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VENTURA LUNA
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$45,000
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DOLPHIN BAE INC
+</td>
+<td style="text-align:left;">
+FREEDOM
+</td>
+<td style="text-align:right;">
+$44,078
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BHAJANJIT CORPORATION
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$43,400
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GRENVILLE FOOD AND GAS CORP
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$43,150
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D &amp; J DELI LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$42,842
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BOTANIC AND LUXE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$42,520
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GRENVILLE FOOD AND GAS CORP
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$42,417
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+YESYS RESTAURANT
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$42,315
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ COMMUNITY FARMERS MARKET
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$41,507
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STOCKWELL CELLARS, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$41,257
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LEFT FOOT FORWARD LLC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$41,225
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CURRENT EBIKES INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$40,800
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VASILI’S GREEK RESTAURANT
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$40,000
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+YVONNE ZANNIS
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$40,000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHARLES E THORNE III AND CHRISTINE THORNE DBA QUALITY HOMES
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$39,590
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL POLLERO LLC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$39,570
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALLA SPINA INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$39,500
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ENGFER PIZZA WORKS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$39,370
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ORIGINAL EUROPEAN COLLECTION INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$38,500
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GREAT DAY INDUSTRIES INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$38,500
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CORNERSTONE AUTOMOTIVE SERVICES AND GAS, INC.
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$38,200
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAPITOLA DINER &amp; SPORT BAR, INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$38,100
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAIN STREET BURGER &amp; BREWS, LLC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$37,980
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HILL GUITAR, CO.
+</td>
+<td style="text-align:left;">
+BEN LOMOND
+</td>
+<td style="text-align:right;">
+$37,850
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+REDWOOD PIZZERIA CO.
+</td>
+<td style="text-align:left;">
+Felton
+</td>
+<td style="text-align:right;">
+$37,570
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I LOVE TO READ IN SPANISH LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$37,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAMERON MARKS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$37,292
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE DELMARETTE
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$36,800
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EPICENTER CYCLING LLC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$36,735
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JACOBA INC
+</td>
+<td style="text-align:left;">
+BEN LOMOND
+</td>
+<td style="text-align:right;">
+$36,600
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STEVEN KARL VOLK DBA THE UGLY MUG
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$36,085
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SOO J. LEE, AKA SOO JIN LEE
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$36,000
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GOOD NEWS RESTAURANT SUPPLY
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$35,750
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NO MOTIVE INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$35,700
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAITREYA LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$35,127
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ETCO INC
+</td>
+<td style="text-align:left;">
+santa cruz
+</td>
+<td style="text-align:right;">
+$35,021
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALPERT-TEBRICH &amp; ASSOCIATES, INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$34,883
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PEOPLES COFFEE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$34,717
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA FUENTE
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$34,582
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA JALAPENOS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$34,237
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+602CNE,INC DBA SUSHI BLOSSOM
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$34,113
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUSAN KIM
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$34,062
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COFFEE NINE, INC.
+</td>
+<td style="text-align:left;">
+BEN LOMOND
+</td>
+<td style="text-align:right;">
+$34,007
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D.J.’S MINI MART
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$33,500
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ROSE ROBIN
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$33,219
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COFFEEVILLE, LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$32,230
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HASHI HOUSE LLC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$32,062
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA TAQUERIA LOS PRIMOS INC
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$32,000
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WISTERIA ANTIQUES AND DESIGN, INC.
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$31,700
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+QUIK STOP 78
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$31,642
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JBN NAHAL INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$31,400
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FELTON NUTRITION CENTER
+</td>
+<td style="text-align:left;">
+Felton
+</td>
+<td style="text-align:right;">
+$31,250
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIZZERIA AVANTI
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$31,055
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RETAIL ALLIANCE SALES &amp;AMP; MARKETING
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$31,042
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUNRISE CAFE
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$30,560
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LAS ISLITAS RESTAURANT
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$30,500
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FINANCIAL PLANNING ASSOCIATES
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$30,317
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ TAVERNS LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$30,292
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ANEJ, INC.
+</td>
+<td style="text-align:left;">
+Boulder Creek
+</td>
+<td style="text-align:right;">
+$29,995
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ BAYE, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$29,782
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VELVET YETI INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$29,531
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JELLI BEANZ INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$29,250
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JENSEN FOOTWEAR LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$28,800
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL CHIPOTLE TAQUERIA &amp; RESTAURANT
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$28,676
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ILLICATTIL CORPORATION
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$28,649
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BANGKOK WEST, LLC
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$28,625
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+REDWOOD SKYE, INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$28,532
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WATSONVILLE JEANS
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$28,395
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PLEASURE PIZZA DOWNTOWN
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$28,250
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+APTOS FEED &amp; PET SUPPLY
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$27,860
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUSHI QU
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$27,833
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COFFEROOTS LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$27,803
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UPPER CRUST PIZZA &amp;AMP; PASTA S.D.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$27,500
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAIN STREET SUBWAY # 51984 INC.
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$27,202
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAPTAINS INN, INC.
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$27,100
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ASHBY CONFECTIONS
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$26,250
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SPORT ABOUT, INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$26,227
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHILL OUT CAFE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$26,160
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HIGHER CALLING CONCESSIONS LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$25,890
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BLUE BUNNY LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$25,617
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEACH LIQUORS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$25,000
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE WATER STREET GRILL
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$25,000
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+REECORP INC.
+</td>
+<td style="text-align:left;">
+Santa cruz
+</td>
+<td style="text-align:right;">
+$24,700
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAN KIM
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$23,586
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAM LUTFI
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$23,500
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JUICY SWEET INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$23,370
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HECTOR PLASCENCIA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$23,307
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAVENPORT POINT CORPORATION
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$23,257
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WALLFLOWER BOUTIQUE INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$23,050
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KELLY’S MANAGEMENT MS, INC.
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$23,020
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA TAQUERIA LOS PRIMOS, INC
+</td>
+<td style="text-align:left;">
+watsonville
+</td>
+<td style="text-align:right;">
+$22,900
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ ART LEAGUE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$22,865
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SOUTHWEST CONCESSIONS
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$22,812
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARUSO’S TUSCAN CUSINE
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$22,762
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE GROG SHOP
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$22,708
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+URBANI CELLAR LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$22,400
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+APPLE ENTERPRISE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$22,327
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GREG DEVECCHIO STEPHANS FINE JEWELRY/RIVERA DESIGNS
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$22,300
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JAVIER CORONA
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$21,839
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HIDDEN PEAK TEAHOUSE, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$21,765
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OCEANIA IMPORTS INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$21,720
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CIGAR PALACE INC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$21,594
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TERESA MARIA LOPEZ
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$21,577
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TAQUERIA MICHOACAN
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$21,537
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STRU-BEAR, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$21,525
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A&amp;A AUCTION GALLERY
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$21,331
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SENCION RESTAURANT GROUP LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$21,250
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE TRUE OLIVE CONNECTION, INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$21,250
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WONDERLAND TOYS LLC
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$21,150
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MELOMELO CRUZ LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$21,043
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE DOWNS GROUP LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$20,833
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EOTHEN
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$20,833
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JEFF TRAUGOTT GUITARS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$20,833
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AZARMIDOKHT ETTEHAD
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$20,833
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALG-MOR TRANSPORTATION LLC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$20,833
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JOHNNY CARMONA
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$20,833
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ OUTFITTERS LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$20,832
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GUY GIUFFRE DBA GUY GIUFFRE, REALTOR
+</td>
+<td style="text-align:left;">
+La Selva Beach
+</td>
+<td style="text-align:right;">
+$20,800
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GM VENTURES
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$20,782
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THOMAS MCINNIS
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$20,583
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARRIED AWAY
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$20,460
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MATTHEW O’BRIEN
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$20,248
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALTA ORGANIC COFFEE &amp; TEA CO
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$20,242
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LADD’S AUTO BODY AND TOWING IN.
+</td>
+<td style="text-align:left;">
+Felton
+</td>
+<td style="text-align:right;">
+$20,000
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUSHI SAN
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$20,000
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA BUENA TAQUERIA AND MORE INC.
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$19,990
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COLDSTONE CREAMERY
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$19,900
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SLOWCOAST
+</td>
+<td style="text-align:left;">
+DAVENPORT
+</td>
+<td style="text-align:right;">
+$19,734
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SPANKY’S CAFE
+</td>
+<td style="text-align:left;">
+BEN LOMOND
+</td>
+<td style="text-align:right;">
+$19,522
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PHYSICIANS ASSIST
+</td>
+<td style="text-align:left;">
+LOS GATOS
+</td>
+<td style="text-align:right;">
+$19,520
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE BLUE LAGOON
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$19,250
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ RUNNING COMPANY, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$18,850
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VARIANCE OBJECTS INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$18,812
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAUTTO HANDBAGS
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$18,750
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GRAFFIX PLEASURE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$18,647
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STIRLING CYCLES LLC
+</td>
+<td style="text-align:left;">
+BOULDER CREEK
+</td>
+<td style="text-align:right;">
+$18,416
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AGUIRRE AUTO SALES
+</td>
+<td style="text-align:left;">
+FREEDOM
+</td>
+<td style="text-align:right;">
+$18,000
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JOSEPH SCHULTZ
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$17,918
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HIDDEN FORTRESS COFFEE ROASTING, LLC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$17,800
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NORMA JEANS COFFEE &amp; TEA
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$17,360
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ZACHIAH MURRAY DBA ZACHIAH MURRAY
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$17,300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAVE’S GOURMET ALBACORE
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$17,040
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FOREVERFLY SKATE
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$17,007
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AQUA SAFARI SCUBA CENTER
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$16,863
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA MICHOACANA AUTENTICA ICE CREAM PARLOR
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$16,815
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PETITE IMPORTS, INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$16,735
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEACH MARKET
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$16,700
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUNNY’S SHOES LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$16,533
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JENNA LUPERTINO DBA NONE
+</td>
+<td style="text-align:left;">
+BOULDER CREEK,
+</td>
+<td style="text-align:right;">
+$16,480
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ATLANTIS FANTASYWORLD
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$16,453
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CALIFORNIA COAST UNIFORMS INC.
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$16,175
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANTA CRUZ JUICES, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$16,167
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAXXDOGG INC.
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$16,104
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MAXXDOGG INC.
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$16,104
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+URBANI CELLAR LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$16,000
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COMICOPOLIS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$16,000
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SHOE FETISH, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$15,794
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JOHNNY CARMONA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$15,790
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ETHOS SANTA CRUZ, LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$15,420
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CLIFF CAFE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$15,395
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FELTON FAIR
+</td>
+<td style="text-align:left;">
+Felton
+</td>
+<td style="text-align:right;">
+$15,202
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PALMINDERE S KAMBOW
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$15,045
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CALIFORNIA HOMES REALTY INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$15,000
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEASCAPE WINE AND SPIRITS INC.
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$15,000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BESANDING
+</td>
+<td style="text-align:left;">
+santa cruz
+</td>
+<td style="text-align:right;">
+$15,000
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COASTAL HOME SOLUTIONS INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$15,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALI HOOSEIN DHANANI RAMA PATEL
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$14,995
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MONSTER POT INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$14,922
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B&amp;M BUSINESS VENTURES, INC.
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$14,600
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+POKI BOWL
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$14,407
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TREASURES FINE JEWELRY INCORPORATED
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$14,031
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JAMES SEBASTIAN ROYER DBA JSR VENTURES
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$14,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UBLENDIT LLC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$13,440
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAWYER LAND &amp; SEA SUPPLY
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$13,205
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SCOTTS VALLEY GAS COMPANY
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$13,107
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BEVINCO SANTA CRUZ/SAN JOSE LLC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$12,950
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BYZANTINE JEWELRY, INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$12,947
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BELL BUILT INC.
+</td>
+<td style="text-align:left;">
+SOQUEL
+</td>
+<td style="text-align:right;">
+$12,900
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OYUNAA’S MONGOLIAN CUISINE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$12,885
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PEARL OF THE OCEAN
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$12,865
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PANAYOTIS GOUSKOS
+</td>
+<td style="text-align:left;">
+CORRALITOS
+</td>
+<td style="text-align:right;">
+$12,847
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE PANDA INN
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$12,606
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ICRAVE
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$12,520
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+QUEEN’S SHOES&amp;MORE
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$12,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SIMPATICO
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$12,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HIP &amp; CHICK ORGANIKS, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$12,393
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BOWLS BY CAFE BRAZIL, LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$12,352
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMUEL &amp; LUCAS FOOD TRUCKS COMPANY
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$12,345
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUSHI NOW!
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$12,280
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MISSION WEST SALOON
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$12,000
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+XIUQIN CEN
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$11,750
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAMUEL &amp; LUCAS FOOD TRUCKS COMPANY
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$11,610
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MEL’S MARKET INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$11,513
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL TORO BRAVO
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$11,348
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GOLDEN CITY RESTAURANT
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$11,218
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JOHN’S JEWELERS
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$11,214
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ECO LEO, LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$11,200
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FELTON FEED &amp; PET SUPPLY
+</td>
+<td style="text-align:left;">
+felton
+</td>
+<td style="text-align:right;">
+$10,900
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABREU ENTERTAINMENT LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$10,700
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNCLE KWOK’S SZECHWAN RESTAURANT
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$10,500
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MOUNTAIN ROASTING CO.
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$10,500
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MARIA J PENA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$10,405
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CORK AND FORK LLC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$10,250
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SOUTHPOINT COFFEEBAR AND TAP ROOM
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$10,205
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LETICIA MORALES
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$10,160
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GENERAL NUTRITION CENTER
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$10,000
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FULL STEAM DUMPLING
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$10,000
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL HERMOSO MAR LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$9,800
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DYNASTY RESTAURANT
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$9,500
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JAMIE MONIZ DBA JAMIE MONIZ
+</td>
+<td style="text-align:left;">
+La Selva Beach
+</td>
+<td style="text-align:right;">
+$9,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TRUE NATURE FOODS
+</td>
+<td style="text-align:left;">
+BOULDER CREEK
+</td>
+<td style="text-align:right;">
+$9,302
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+STARSHINE
+</td>
+<td style="text-align:left;">
+Soquel
+</td>
+<td style="text-align:right;">
+$9,300
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FLOWER OUTLET SV INC
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$9,220
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SEUNG GUEN
+</td>
+<td style="text-align:left;">
+Scotts Valley
+</td>
+<td style="text-align:right;">
+$9,051
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PEPPER PLACE DESIGN, INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$8,900
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KISS CATERING
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$8,710
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ANBAR, INC.
+</td>
+<td style="text-align:left;">
+Freedom
+</td>
+<td style="text-align:right;">
+$8,607
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABREU ENTERTAINMENT LLC DBA LEVEL UP VIDEO GAMES
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$8,600
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JUSTIN WADSTEIN
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$8,385
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE VANILLA COMPANY
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$8,250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SAPPORO RAMEN
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$8,125
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VANITY BY THE SEA
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$8,095
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GEORGE F. SAAD
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$8,037
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL ALTENO RESTAURANT
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$7,749
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WEIXIN LU
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$7,739
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FALAFEL HOUSE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$7,530
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FLOWER OUTLET SV INC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$7,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HONG KONG GARDEN RESTAURANT INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$7,500
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OCEAN MOTORSPORTS INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$7,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LUMEN GALLERY/ LIFESTYLE STORE
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$7,450
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FAT BOY BURGER AND GRILL INC
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$7,431
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BRISTOW INVESTMENTS LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$7,400
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DONUT KING
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$7,367
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WORKSPACE
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$7,150
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SOLEMATE
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$7,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DANIEL MCDONOUGH
+</td>
+<td style="text-align:left;">
+Boulder Creek
+</td>
+<td style="text-align:right;">
+$7,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MECA INC. D.B.A. EL ROSAL BAKERY
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$6,818
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+REX WALTERS
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$6,777
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R&amp;R PRODUCE INC
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$6,680
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CORRALITOS PIZZA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$6,510
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GABRIEL POTTER DBA GABRIEL POTTER
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$6,400
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EASYPREPS
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$6,381
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IM INC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$6,250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+QUALITY MARKET
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$6,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+QUALITY MARKET
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$5,995
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JESSENIA RUGAMA MCGINN
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$5,992
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MARILYN YUHARA
+</td>
+<td style="text-align:left;">
+Los Gatos
+</td>
+<td style="text-align:right;">
+$5,966
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABDUL MOTORS
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$5,956
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JOSEPH GOMEZ DBA SOUZA’S ICE CREAM AND CANDY
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$5,822
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JABBER
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$5,700
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COTTON+RYE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$5,685
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PHOENIX CERAMICS SUPPLIES
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$5,600
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EUPHORIA RIO MIX, INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$5,510
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LIVE OAK LIQUORS
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$5,497
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RITUAL RIDE CYCLE STUDIO
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$5,470
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41ST LIQUOR AND MARKET INC
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$5,451
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RACHAEL WHITTED
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$5,205
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DAN WHITTED
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$5,205
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RICHARD F DANDOLO
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$5,147
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUNT NETTIE’S KITCHEN
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$5,071
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EL CHARQUITO TAQUERIA
+</td>
+<td style="text-align:left;">
+Capitola
+</td>
+<td style="text-align:right;">
+$5,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CURATED
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$5,000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ONE DOUBLE OH SEVEN CLUB
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$4,885
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OMEED AHRARY
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$4,838
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LILIANA CATERING
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$4,373
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JM3 INC.
+</td>
+<td style="text-align:left;">
+soquel
+</td>
+<td style="text-align:right;">
+$3,900
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALAINA BIRCH
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$3,785
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AMOUREUSE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$3,750
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TOMBOY
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$3,745
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MA-BEE LIQUOR CORP
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$3,630
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AMORE PET SITTING SERVICES LLC
+</td>
+<td style="text-align:left;">
+FELTON
+</td>
+<td style="text-align:right;">
+$3,572
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FPG CREATIVE, LLC
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$3,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BRENNA DARCEY DBA BRENNA DARCEY
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$3,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ROSA AYALA
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$3,480
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ARWA ABDULLA
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$3,308
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MI MEXICO RESTAURANTE
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$3,267
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FRED MENG
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$3,050
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DANA SPANIERMAN
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$2,998
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CAFE LIMELIGHT
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$2,968
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BUBBLE LOUNGE BOUTIQUE
+</td>
+<td style="text-align:left;">
+APTOS
+</td>
+<td style="text-align:right;">
+$2,935
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IRMAS BOUTIQUE
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$2,873
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+KELLY’S BOOKS
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$2,657
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THAI HEART LLC
+</td>
+<td style="text-align:left;">
+SCOTTS VALLEY
+</td>
+<td style="text-align:right;">
+$2,560
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANDRA HERRANEN SALES
+</td>
+<td style="text-align:left;">
+ben lomond
+</td>
+<td style="text-align:right;">
+$2,500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LA FONDITA RESTAURANT
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$2,455
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AGNUS DEI CHRISTIAN BOOKS AND GIFTS INC.
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$2,300
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HAPPY FACES- CARITAS FELICES BILINGUAL DAYCARE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$2,136
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SONIA LE
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$2,114
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HERNANDEZ MARKET LLC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$2,090
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CESARIO RUIZ
+</td>
+<td style="text-align:left;">
+Watsonville
+</td>
+<td style="text-align:right;">
+$1,736
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SANG SOON AHN
+</td>
+<td style="text-align:left;">
+WATSONVILLE
+</td>
+<td style="text-align:right;">
+$1,590
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHELSEA SMITH
+</td>
+<td style="text-align:left;">
+Aptos
+</td>
+<td style="text-align:right;">
+$1,438
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SUMMIT HOUSE
+</td>
+<td style="text-align:left;">
+LOS GATOS
+</td>
+<td style="text-align:right;">
+$1,245
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JEREMY CARLSON
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$1,224
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALISSA BENNETT
+</td>
+<td style="text-align:left;">
+Santa Cruz
+</td>
+<td style="text-align:right;">
+$1,135
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JADE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$918
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+THE BLUE LOUNGE
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$300
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FERRI INC
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+<td style="text-align:right;">
+$75
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BELLA ROMA RISTORANTE
+</td>
+<td style="text-align:left;">
+CAPITOLA
+</td>
+<td style="text-align:right;">
+$30
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+SANTA CRUZ
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
